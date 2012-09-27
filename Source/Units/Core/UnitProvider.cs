@@ -110,7 +110,7 @@ namespace Units
             var type = unit.GetType();
             if (!this.units.ContainsKey(type))
             {
-                this.units.Add(type, new Dictionary<string, IQuantity>());
+                this.units.Add(type, new Dictionary<string, IQuantity>(StringComparer.OrdinalIgnoreCase));
             }
 
             if (this.units[type].ContainsKey(name))
@@ -176,8 +176,8 @@ namespace Units
             return true;
         }
 
-        private static Regex parserExpression = new Regex(@"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)\s*([a-z][a-z*/^\d]*)", RegexOptions.Compiled);
-        private static Regex formatExpression = new Regex(@"([0#]*\.?[0#]*)\s*([a-z\*\/]*)", RegexOptions.Compiled);
+        private static Regex parserExpression = new Regex(@"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)\s*([a-z][a-z*/^\d]*)?", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex formatExpression = new Regex(@"([0#]*\.?[0#]*)\s*([a-z\*\/]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Parses a string.
@@ -190,6 +190,12 @@ namespace Units
         /// <remarks></remarks>
         public bool TryParse<T>(string input, out double value, out T unit)
         {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                value = 0;
+                unit = default(T);
+                return true;
+            }
             input = input.Replace(',', '.');
 
             var m = parserExpression.Match(input);
