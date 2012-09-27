@@ -34,6 +34,24 @@ namespace Units
         public static Density KilogramPerCubicDecimetre = new Density(1000);
 
         /// <summary>
+        /// The g/cm^3 unit.
+        /// </summary>
+        [Unit("g/cm^3")]
+        public static Density GramPerCubicCentietre = new Density(1000);
+
+        /// <summary>
+        /// The kg/L unit.
+        /// </summary>
+        [Unit("kg/L")]
+        public static Density KilogramPerLitre = new Density(1000);
+
+        /// <summary>
+        /// The g/mL unit.
+        /// </summary>
+        [Unit("g/mL")]
+        public static Density GramPerMillilitre = new Density(1000);
+
+        /// <summary>
         /// The lb/ft^3 unit.
         /// </summary>
         [Unit("lb/ft^3")]
