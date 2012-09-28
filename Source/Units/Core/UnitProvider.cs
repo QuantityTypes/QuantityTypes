@@ -176,7 +176,7 @@ namespace Units
             return true;
         }
 
-        private static Regex parserExpression = new Regex(@"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)\s*([a-z][a-z*/^\d]*)?", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex parserExpression = new Regex(@"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)\s*([^0-9.\s].*)?", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static Regex formatExpression = new Regex(@"([0#]*\.?[0#]*)\s*([a-z\*\/]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
