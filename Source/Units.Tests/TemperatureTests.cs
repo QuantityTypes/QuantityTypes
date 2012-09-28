@@ -65,7 +65,7 @@ namespace Units.Tests
             Assert.AreEqual("100.0 C", l.ToString("0.0 C"));
             Assert.AreEqual("100.0 C", l.ToString("0.0C"));
             Assert.AreEqual("32 F", l0.ToString("0.# F"));
-            Assert.AreEqual("273 K", l.ToString("0. K"));
+            Assert.AreEqual("273 K", l0.ToString("0. K"));
         }
 
         [Test]
