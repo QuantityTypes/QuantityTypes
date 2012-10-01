@@ -108,5 +108,19 @@ namespace Units.Tests
             var l = 100 * Length.Metre;
             Console.WriteLine(l.ToString("0 Metre"));
         }
+        [Test]
+        public void Compare()
+        {
+            var l1 = 100 * Length.Metre;
+            var l2 = 200 * Length.Metre;
+            var l3 = 100 * Length.Metre;
+            Assert.IsTrue(l2 > l1);
+            Assert.IsTrue(l1 < l2);
+            Assert.IsTrue(l2 != l1);
+            Assert.IsTrue(l3 == l1);
+            Assert.AreEqual(1, l2.CompareTo(l1));
+            Assert.AreEqual(-1, l1.CompareTo(l2));
+            Assert.AreEqual(0, l1.CompareTo(l3));
+        }
     }
 }

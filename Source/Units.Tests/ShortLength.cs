@@ -114,7 +114,7 @@ namespace Units
         /// <summary>
         /// Gets the value.
         /// </summary>
-        internal double Value
+        public double Value
         {
             get
             {

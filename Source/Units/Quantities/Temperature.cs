@@ -30,6 +30,18 @@ namespace Units
         internal double value;
 
         /// <summary>
+        /// Gets the temperature in the base unit.
+        /// </summary>
+        /// <value>The value.</value>
+        public double Value
+        {
+            get
+            {
+                return value;
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Temperature"/> struct.
         /// </summary>
         /// <param name="value">The value.</param>
