@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a Time quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<Time>))]
     public partial struct Time : IQuantity<Time>
     {
@@ -46,6 +49,27 @@ namespace Units
         public static Time Millisecond = new Time(1e-3);
 
         /// <summary>
+        /// Gets or sets the Time as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields

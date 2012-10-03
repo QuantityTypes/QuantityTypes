@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a Density quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<Density>))]
     public partial struct Density : IQuantity<Density>
     {
@@ -70,6 +73,27 @@ namespace Units
         public static Density PoundPerGallon = new Density(99.7763287677);
 
         /// <summary>
+        /// Gets or sets the Density as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields

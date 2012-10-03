@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a Mass quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<Mass>))]
     public partial struct Mass : IQuantity<Mass>
     {
@@ -64,6 +67,27 @@ namespace Units
         public static Mass Ton = new Mass(1016.0469088);
 
         /// <summary>
+        /// Gets or sets the Mass as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields

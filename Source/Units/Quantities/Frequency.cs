@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a Frequency quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<Frequency>))]
     public partial struct Frequency : IQuantity<Frequency>
     {
@@ -34,6 +37,27 @@ namespace Units
         public static Frequency RevolutionsPerMinute = new Frequency(1.0 / 60);
 
         /// <summary>
+        /// Gets or sets the Frequency as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields

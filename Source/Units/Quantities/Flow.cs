@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a Flow quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<Flow>))]
     public partial struct Flow : IQuantity<Flow>
     {
@@ -34,6 +37,27 @@ namespace Units
         public static Flow LitrePerMinute = new Flow(1.6e-5);
 
         /// <summary>
+        /// Gets or sets the Flow as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields

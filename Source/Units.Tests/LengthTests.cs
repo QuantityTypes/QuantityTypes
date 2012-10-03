@@ -12,6 +12,11 @@ namespace Units.Tests
     using System;
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Text;
+    using System.Xml;
+    using System.Xml.Serialization;
 
     using Units;
 
@@ -121,6 +126,43 @@ namespace Units.Tests
             Assert.AreEqual(1, l2.CompareTo(l1));
             Assert.AreEqual(-1, l1.CompareTo(l2));
             Assert.AreEqual(0, l1.CompareTo(l3));
+        }
+
+        [Test]
+        public void Serialize_XmlSerializer()
+        {
+            var s = new XmlSerializer(typeof(Test));
+            var t = new Test { Distance = 100.2 * Length.Metre };
+            var ms = new MemoryStream();
+            s.Serialize(ms, t);
+            var xml = Encoding.UTF8.GetString(ms.ToArray());
+            Assert.IsTrue(xml.Contains(@"<Distance>100.2 m</Distance>"));
+
+            // Deserialize
+            var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            var t2 = (Test)s.Deserialize(ms2);
+            Assert.AreEqual(t2.Distance, t.Distance);
+        }
+
+        [Test]
+        public void Serialize_DataContractSerializer()
+        {
+            var s = new DataContractSerializer(typeof(Test));
+            var t = new Test { Distance = 100.2 * Length.Metre };
+            var ms = new MemoryStream();
+            s.WriteObject(ms, t);
+            var xml = Encoding.UTF8.GetString(ms.ToArray());
+            Assert.IsTrue(xml.Contains(@"<a:Data>100.2 m</a:Data>"));
+
+            // Deserialize
+            var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            var t2 = (Test)s.ReadObject(ms2);
+            Assert.AreEqual(t2.Distance, t.Distance);
+        }
+
+        public class Test
+        {
+            public Length Distance { get; set; }
         }
     }
 }
