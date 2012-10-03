@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a SecondMomentOfArea quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<SecondMomentOfArea>))]
     public partial struct SecondMomentOfArea : IQuantity<SecondMomentOfArea>
     {
@@ -28,6 +31,27 @@ namespace Units
         public static SecondMomentOfArea MetreToTheFourth = new SecondMomentOfArea(1);
 
         /// <summary>
+        /// Gets or sets the SecondMomentOfArea as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields

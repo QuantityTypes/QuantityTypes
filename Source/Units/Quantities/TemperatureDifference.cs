@@ -11,11 +11,14 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Represents a TemperatureDifference quantity.
     /// </summary>
     [Serializable]
+	[DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<TemperatureDifference>))]
     public partial struct TemperatureDifference : IQuantity<TemperatureDifference>
     {
@@ -40,6 +43,27 @@ namespace Units
         public static TemperatureDifference Fahrenheit = new TemperatureDifference(9.0/5);
 
         /// <summary>
+        /// Gets or sets the TemperatureDifference as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
+
+		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields
