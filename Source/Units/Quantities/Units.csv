@@ -115,9 +115,11 @@ Action,AtomicUnitOfAction,au,1.05457168e-34
 
 // Dynamic viscosity
 DynamicViscosity,PascalSecond,Pa*s,1
+DynamicViscosity,NewtonSecond,N*s,1
 
 // Kinematic viscosity
-KinematicViscocity,SquareMetrePerSecond,m^2/s,1
+KinematicViscosity,SquareMetrePerSecond,m^2/s,1
+KinematicViscosity,SquareMillimetrePerSecond,mm^2/s,1e-6
 
 // Electric current
 ElectricCurrent,Ampere,A,1
@@ -210,8 +212,6 @@ MassMomentOfInertia,PoundInchSquared,lb*in^2,0.0002926396534292
 MassMomentOfInertia,PoundFootSquared,lb*ft^2,0.0421401100938048
 MassMomentOfInertia,PoundforceInchSecondSquared,lbf*in*s^2,0.112984829027604
 
-DynamicViscocity,NewtonSecond,N*s,1
-KinematicViscosity,MetreSquaredPerSecond,m^2/s,1
 // Fluidity
 
 Curvature,PerMetre,1/m,1

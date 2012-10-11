@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LengthTests.cs" company="Units">
-//   http://Units.codeplex.com, license: Ms-PL
-// </copyright>
-// <summary>
-//   Unit tests for the Length type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Units.Tests
+﻿namespace Units.Tests
 {
     using System;
     using System.ComponentModel;
@@ -15,12 +6,11 @@ namespace Units.Tests
     using System.IO;
     using System.Runtime.Serialization;
     using System.Text;
-    using System.Xml;
     using System.Xml.Serialization;
 
-    using Units;
-
     using NUnit.Framework;
+
+    using Units;
 
     [TestFixture]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]

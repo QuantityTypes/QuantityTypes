@@ -1,18 +1,23 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Temperature.cs" company="Units.NET">
+//   Copyright (c) 2012 Oystein Bjorke
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace Units
 {
     using System;
 
+    /// <summary>
+    ///   Represents a temperature quantity.
+    /// </summary>
+    /// <remarks>
+    ///   This quantity type must be handled specially.
+    /// </remarks>
     public partial struct Temperature : IQuantity<Temperature>
     {
         /// <summary>
-        /// The Kelvin unit.
-        /// </summary>
-        [Unit("K")]
-        [Unit("degK")]
-        public static Temperature Kelvin = new Temperature(-1);
-
-        /// <summary>
-        /// The Celsius unit.
+        ///   The Celsius unit.
         /// </summary>
         [Unit("°C", true)]
         [Unit("C")]
@@ -20,43 +25,123 @@ namespace Units
         public static Temperature Celsius = new Temperature(-2);
 
         /// <summary>
-        /// The Fahrenheit unit.
+        ///   The Fahrenheit unit.
         /// </summary>
         [Unit("°F")]
         [Unit("F")]
         [Unit("degF")]
         public static Temperature Fahrenheit = new Temperature(-3);
 
-        internal double value;
+        /// <summary>
+        ///   The Kelvin unit.
+        /// </summary>
+        [Unit("K")]
+        [Unit("degK")]
+        public static Temperature Kelvin = new Temperature(-1);
 
         /// <summary>
-        /// Gets the temperature in the base unit.
+        ///   The value
         /// </summary>
-        /// <value>The value.</value>
-        public double Value
-        {
-            get
-            {
-                return value;
-            }
-        }
+        private readonly double value;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Temperature"/> struct.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <remarks></remarks>
+        /// <param name="value">
+        /// The value. 
+        /// </param>
         public Temperature(double value)
         {
             this.value = value;
         }
 
         /// <summary>
+        ///   Gets the temperature in the base unit.
+        /// </summary>
+        /// <value> The value. </value>
+        public double Value
+        {
+            get
+            {
+                return this.value;
+            }
+        }
+
+        /// <summary>
+        /// Parses the specified string.
+        /// </summary>
+        /// <param name="s">
+        /// The string. 
+        /// </param>
+        /// <param name="provider">
+        /// The unit provider. 
+        /// </param>
+        /// <returns>
+        /// The temperature. 
+        /// </returns>
+        public static Temperature Parse(string s, IUnitProvider provider = null)
+        {
+            if (provider == null)
+            {
+                provider = UnitProvider.Default;
+            }
+
+            double value;
+            Temperature unit;
+            if (!provider.TryParse(s, out value, out unit))
+            {
+                throw new FormatException();
+            }
+
+            return value * unit;
+        }
+
+        /// <summary>
+        ///   Implements the operator *.
+        /// </summary>
+        /// <param name="x"> The x. </param>
+        /// <param name="unit"> The unit. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Temperature operator *(double x, Temperature unit)
+        {
+            if (unit.Equals(Kelvin))
+            {
+                return new Temperature(x);
+            }
+
+            if (unit.Equals(Celsius))
+            {
+                return new Temperature(x + 273.15);
+            }
+
+            if (unit.Equals(Fahrenheit))
+            {
+                var celsius = (x - 32) * 5 / 9;
+                return new Temperature(celsius + 273.15);
+            }
+
+            throw new InvalidOperationException();
+        }
+
+        /// <summary>
+        /// Compares the temperature to the specified temperature.
+        /// </summary>
+        /// <param name="other">The other temperature.</param>
+        /// <returns>A 32-bit signed integer that indicates the relative order of the comparands.</returns>
+        public int CompareTo(Temperature other)
+        {
+            return this.value.CompareTo(other.value);
+        }
+
+        /// <summary>
         /// Converts to the specified unit.
         /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>The value.</returns>
-        /// <remarks></remarks>
+        /// <param name="unit">
+        /// The unit. 
+        /// </param>
+        /// <returns>
+        /// The value. 
+        /// </returns>
         public double ConvertTo(Temperature unit)
         {
             if (unit.Equals(Kelvin))
@@ -79,60 +164,19 @@ namespace Units
         }
 
         /// <summary>
-        /// Implements the operator *.
+        /// Determines whether two Object instances are equal.
         /// </summary>
-        /// <param name="x">The x.</param>
-        /// <param name="unit">The unit.</param>
-        /// <returns>The result of the operator.</returns>
-        /// <remarks></remarks>
-        public static Temperature operator *(double x, Temperature unit)
+        /// <param name="other">The other temperature.</param>
+        /// <returns><c>true</c> if equal, <c>false</c> otherwise</returns>
+        public bool Equals(Temperature other)
         {
-            if (unit.Equals(Kelvin))
-            {
-                return new Temperature(x);
-            }
-            if (unit.Equals(Celsius))
-            {
-                return new Temperature(x + 273.15);
-            }
-            if (unit.Equals(Fahrenheit))
-            {
-                var celsius = (x - 32) * 5 / 9;
-                return new Temperature(celsius + 273.15);
-            }
-
-            throw new InvalidOperationException();
+            return this.value.Equals(other.value);
         }
 
         /// <summary>
-        /// Parses the specified string.
+        ///   Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
-        /// <param name="s">The string.</param>
-        /// <param name="provider">The unit provider.</param>
-        /// <returns>The temperature.</returns>
-        /// <remarks></remarks>
-        public static Temperature Parse(string s, IUnitProvider provider = null)
-        {
-            if (provider == null)
-            {
-                provider = UnitProvider.Default;
-            }
-
-            double value;
-            Temperature unit;
-            if (!provider.TryParse(s, out value, out unit))
-            {
-                throw new FormatException();
-            }
-
-            return value * unit;
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
-        /// </summary>
-        /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
-        /// <remarks></remarks>
+        /// <returns> A <see cref="System.String" /> that represents this instance. </returns>
         public override string ToString()
         {
             return this.ToString(null, UnitProvider.Default);
@@ -141,36 +185,19 @@ namespace Units
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
-        /// <param name="format">The format to use.-or- A null reference (Nothing in Visual Basic) to use the default format defined for the type of the <see cref="T:System.IFormattable"/> implementation.</param>
-        /// <param name="formatProvider">The provider to use to format the value.-or- A null reference (Nothing in Visual Basic) to obtain the numeric format information from the current locale setting of the operating system.</param>
-        /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
-        /// <remarks></remarks>
+        /// <param name="format">
+        /// The format to use.-or- A null reference (Nothing in Visual Basic) to use the default format defined for the type of the <see cref="T:System.IFormattable"/> implementation. 
+        /// </param>
+        /// <param name="formatProvider">
+        /// The provider to use to format the value.-or- A null reference (Nothing in Visual Basic) to obtain the numeric format information from the current locale setting of the operating system. 
+        /// </param>
+        /// <returns>
+        /// A <see cref="System.String"/> that represents this instance. 
+        /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
             var up = formatProvider as IUnitProvider ?? UnitProvider.Default;
             return up.Format(format, this);
-        }
-
-        /// <summary>
-        /// Equalses the specified other.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        public bool Equals(Temperature other)
-        {
-            return this.value.Equals(other.value);
-        }
-
-        /// <summary>
-        /// Compares to.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        public int CompareTo(Temperature other)
-        {
-            return this.value.CompareTo(other.value);
         }
     }
 }

@@ -111,9 +111,6 @@
     <Compile Include="Quantities\Density.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Quantities\DynamicViscocity.cs">
-      <DependentUpon>CodeGenerator.tt</DependentUpon>
-    </Compile>
     <Compile Include="Quantities\DynamicViscosity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
@@ -166,9 +163,6 @@
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\InformationEntropy.cs">
-      <DependentUpon>CodeGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Quantities\KinematicViscocity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\KinematicViscosity.cs">
