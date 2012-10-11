@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TemperatureTests.cs" company="Units">
-//   http://Units.codeplex.com, license: Ms-PL
-// </copyright>
-// <summary>
-//   Unit tests for the Temperature type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Units.Tests
+﻿namespace Units.Tests
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
