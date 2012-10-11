@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Time.cs" company="Units.NET">
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
@@ -29,9 +29,9 @@ namespace Units
         public static Time Second = new Time(1);
 
         /// <summary>
-        /// The m unit.
+        /// The min unit.
         /// </summary>
-        [Unit("m")]
+        [Unit("min")]
         public static Time Minute = new Time(60);
 
         /// <summary>
@@ -39,6 +39,18 @@ namespace Units
         /// </summary>
         [Unit("h")]
         public static Time Hour = new Time(3600);
+
+        /// <summary>
+        /// The d unit.
+        /// </summary>
+        [Unit("d")]
+        public static Time Day = new Time(24 * Hour.Value);
+
+        /// <summary>
+        /// The wk unit.
+        /// </summary>
+        [Unit("wk")]
+        public static Time Week = new Time(7 * Day.Value);
 
         /// <summary>
         /// The ms unit.
@@ -59,7 +71,7 @@ namespace Units
         /// Initializes a new instance of the <see cref="Time"/> struct.
         /// </summary>
         /// <param name="value">
-        /// The value.
+        /// The value. 
         /// </param>
         public Time(double value)
         {
@@ -70,10 +82,10 @@ namespace Units
         /// Initializes a new instance of the <see cref="Time"/> struct.
         /// </summary>
         /// <param name="value">
-        /// The value.
+        /// The value. 
         /// </param>
         /// <param name="unitProvider">
-        /// The unit provider.
+        /// The unit provider. 
         /// </param>
         public Time(string value, IUnitProvider unitProvider = null)
         {
@@ -117,13 +129,13 @@ namespace Units
         /// Parses the specified string.
         /// </summary>
         /// <param name="input">
-        /// The input string.
+        /// The input string. 
         /// </param>
         /// <param name="provider">
-        /// The provider.
+        /// The provider. 
         /// </param>
         /// <returns>
-        /// The <see cref="Time"/> .
+        /// The <see cref="Time"/> . 
         /// </returns>
         public static Time Parse(string input, IUnitProvider provider = null)
         {
@@ -146,13 +158,13 @@ namespace Units
         /// Implements the operator +.
         /// </summary>
         /// <param name="x">
-        /// The first value.
+        /// The first value. 
         /// </param>
         /// <param name="y">
-        /// The second value.
+        /// The second value. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static Time operator +(Time x, Time y)
         {
@@ -163,13 +175,13 @@ namespace Units
         /// Implements the operator /.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static Time operator /(Time x, double y)
         {
@@ -180,13 +192,13 @@ namespace Units
         /// Implements the operator /.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static double operator /(Time x, Time y)
         {
@@ -197,13 +209,13 @@ namespace Units
         /// Implements the operator ==.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static bool operator ==(Time x, Time y)
         {
@@ -214,13 +226,13 @@ namespace Units
         /// Implements the operator &gt;.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static bool operator >(Time x, Time y)
         {
@@ -231,13 +243,13 @@ namespace Units
         /// Implements the operator &gt;=.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static bool operator >=(Time x, Time y)
         {
@@ -248,13 +260,13 @@ namespace Units
         /// Implements the operator !=.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static bool operator !=(Time x, Time y)
         {
@@ -265,13 +277,13 @@ namespace Units
         /// Implements the operator &lt;.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static bool operator <(Time x, Time y)
         {
@@ -282,13 +294,13 @@ namespace Units
         /// Implements the operator &lt;=.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static bool operator <=(Time x, Time y)
         {
@@ -299,13 +311,13 @@ namespace Units
         /// Implements the operator *.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static Time operator *(double x, Time y)
         {
@@ -316,13 +328,13 @@ namespace Units
         /// Implements the operator -.
         /// </summary>
         /// <param name="x">
-        /// The x.
+        /// The x. 
         /// </param>
         /// <param name="y">
-        /// The y.
+        /// The y. 
         /// </param>
         /// <returns>
-        /// The result of the operator.
+        /// The result of the operator. 
         /// </returns>
         public static Time operator -(Time x, Time y)
         {
@@ -333,10 +345,10 @@ namespace Units
         /// Compares this instance to the specified <see cref="Time"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="Time"/> .
+        /// The other <see cref="Time"/> . 
         /// </param>
         /// <returns>
-        /// A signed number indicating the relative values of this instance and the other value.
+        /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
         public int CompareTo(Time other)
         {
@@ -347,10 +359,10 @@ namespace Units
         /// Converts to the specified unit.
         /// </summary>
         /// <param name="unit">
-        /// The unit.
+        /// The unit. 
         /// </param>
         /// <returns>
-        /// The value in the specified unit.
+        /// The value in the specified unit. 
         /// </returns>
         public double ConvertTo(Time unit)
         {
@@ -361,10 +373,10 @@ namespace Units
         /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
         /// </summary>
         /// <param name="obj">
-        /// The <see cref="System.Object"/> to compare with this instance.
+        /// The <see cref="System.Object"/> to compare with this instance. 
         /// </param>
         /// <returns>
-        /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c> .
+        /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c> . 
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -375,10 +387,10 @@ namespace Units
         /// Determines if the specified <see cref="Time"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="Time"/> .
+        /// The other <see cref="Time"/> . 
         /// </param>
         /// <returns>
-        /// True if the values are equal.
+        /// True if the values are equal. 
         /// </returns>
         public bool Equals(Time other)
         {
@@ -389,7 +401,7 @@ namespace Units
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
         /// </returns>
         public override int GetHashCode()
         {
@@ -400,10 +412,10 @@ namespace Units
         /// Sets the value from the specified string.
         /// </summary>
         /// <param name="s">
-        /// The s.
+        /// The s. 
         /// </param>
         /// <param name="provider">
-        /// The provider.
+        /// The provider. 
         /// </param>
         public void SetFromString(string s, IUnitProvider provider)
         {
@@ -414,7 +426,7 @@ namespace Units
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
+        /// A <see cref="System.String"/> that represents this instance. 
         /// </returns>
         public override string ToString()
         {
@@ -425,13 +437,13 @@ namespace Units
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <param name="format">
-        /// The format.
+        /// The format. 
         /// </param>
         /// <param name="formatProvider">
-        /// The format provider.
+        /// The format provider. 
         /// </param>
         /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
+        /// A <see cref="System.String"/> that represents this instance. 
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
