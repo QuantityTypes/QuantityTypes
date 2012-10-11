@@ -1,3 +1,12 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IQuantity{T}.cs" company="Units.NET">
+//   Copyright (c) 2012 Oystein Bjorke
+// </copyright>
+// <summary>
+//   Defines functionality for unit conversion.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace Units
 {
     using System;
@@ -5,16 +14,21 @@ namespace Units
     /// <summary>
     /// Defines functionality for unit conversion.
     /// </summary>
-    /// <typeparam name="T">The quantity type.</typeparam>
-    /// <remarks></remarks>
+    /// <typeparam name="T">
+    /// The quantity type.
+    /// </typeparam>
     public interface IQuantity<T> : IQuantity, IFormattable, IEquatable<T>, IComparable<T>
     {
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>The amount of the specified unit.</returns>
-        /// <remarks></remarks>
+        /// <param name="unit">
+        /// The unit.
+        /// </param>
+        /// <returns>
+        /// The amount of the specified unit.
+        /// </returns>
         double ConvertTo(T unit);
+
     }
 }

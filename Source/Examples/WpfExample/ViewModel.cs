@@ -1,10 +1,7 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ViewModel.cs" company="X">
-//   X
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ViewModel.cs" company="Units.NET">
+//   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
-// <summary>
-//   Represents the main window's view model.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WpfExample
@@ -18,8 +15,6 @@ namespace WpfExample
     /// </summary>
     public class ViewModel : INotifyPropertyChanged
     {
-        #region Constants and Fields
-
         /// <summary>
         /// The length.
         /// </summary>
@@ -35,12 +30,8 @@ namespace WpfExample
         /// </summary>
         private Velocity velocity;
 
-        #endregion
-
-        #region Constructors and Destructors
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="ViewModel"/> class.
+        /// Initializes a new instance of the <see cref="ViewModel" /> class.
         /// </summary>
         public ViewModel()
         {
@@ -48,25 +39,15 @@ namespace WpfExample
             this.Time = 9.58 * Time.Second;
         }
 
-        #endregion
-
-        #region Public Events
-
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        #endregion
-
-        #region Public Properties
-
         /// <summary>
         /// Gets or sets the length.
         /// </summary>
-        /// <value>
-        /// The length. 
-        /// </value>
+        /// <value> The length. </value>
         public Length Length
         {
             get
@@ -90,9 +71,7 @@ namespace WpfExample
         /// <summary>
         /// Gets or sets the time.
         /// </summary>
-        /// <value>
-        /// The time. 
-        /// </value>
+        /// <value> The time. </value>
         public Time Time
         {
             get
@@ -135,15 +114,11 @@ namespace WpfExample
             }
         }
 
-        #endregion
-
-        #region Methods
-
         /// <summary>
         /// Raises the property changed event.
         /// </summary>
         /// <param name="property">
-        /// The property. 
+        /// The property.
         /// </param>
         protected void RaisePropertyChanged(string property)
         {
@@ -154,6 +129,5 @@ namespace WpfExample
             }
         }
 
-        #endregion
     }
 }
