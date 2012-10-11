@@ -35,6 +35,7 @@ syntax: glob
 Output/
 ClientBin/
 lib/
+Tools/      # Manual add
 
 _ReSharper*/
 _TeamCity*/
