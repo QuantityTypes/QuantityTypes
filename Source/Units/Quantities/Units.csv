@@ -61,8 +61,10 @@ Density,PoundPerGallon,lb/gal,99.7763287677
 
 // Time
 Time,Second,s,1
-Time,Minute,m,60
+Time,Minute,min,60
 Time,Hour,h,3600
+Time,Day,d,24 * Hour.Value
+Time,Week,wk,7 * Day.Value
 Time,Millisecond,ms,1e-3
 
 // Frequency
