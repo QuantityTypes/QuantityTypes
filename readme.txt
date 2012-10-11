@@ -1,8 +1,9 @@
-Lynx Toolkit
-================================================================================
+Units.NET
+=======================================================================
 Strongly typed physical quantities and unit conversion.
 
-License:       Ms-PL
+License:       The MIT License (MIT)
+Copyright:     Copyright (c) 2012 Oystein Bjorke
 Project page:  https://units.codeplex.com/
 Hg:            https://hg.codeplex.com/units
 

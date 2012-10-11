@@ -3,8 +3,8 @@
 <#@ import namespace="System.IO" #>
 <# if (!string.IsNullOrWhiteSpace(ClassName)) {
 #>// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="<#= ClassName #>.cs" company="Units for .NET">
-//   http://units.codeplex.com, license: Ms-PL
+// <copyright file="<#= ClassName #>.cs" company="Units.NET">
+//   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
 //   Represents a <#= ClassName #> quantity.
@@ -22,12 +22,10 @@ namespace Units
     /// Represents a <#= ClassName #> quantity.
     /// </summary>
     [Serializable]
-	[DataContract]
+    [DataContract]
     [TypeConverter(typeof(QuantityTypeConverter<<#= ClassName #>>))]
     public partial struct <#= ClassName #> : IQuantity<<#= ClassName #>>
     {
-        #region Constants and Fields
-
 <#
         string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
         string outputFilePath = Path.Combine(templateDirectory, "Units.csv");
@@ -53,27 +51,6 @@ namespace Units
 	}
 #>
         /// <summary>
-        /// Gets or sets the <#= ClassName #> as a string.
-        /// </summary>
-        /// <value>The string.</value>
-        /// <remarks>
-        /// This property is used for XML serialization.
-        /// </remarks>
-        [XmlText]
-        [DataMember]
-        public string Data
-        {
-            get
-            {
-                return this.ToString();
-            }
-            set
-            {
-                this.value = Parse(value).value;
-            }
-        }
-
-		/// <summary>
         /// The value.
         /// </summary>
 #if PublicFields
@@ -81,9 +58,6 @@ namespace Units
 #else
         private double value;
 #endif
-        #endregion
-
-        #region Constructors and Destructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="<#= ClassName #>"/> struct.
@@ -110,9 +84,27 @@ namespace Units
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
-        #endregion
+        /// <summary>
+        /// Gets or sets the <#= ClassName #> as a string.
+        /// </summary>
+        /// <value>The string.</value>
+        /// <remarks>
+        /// This property is used for XML serialization.
+        /// </remarks>
+        [XmlText]
+        [DataMember]
+        public string Data
+        {
+            get
+            {
+                return this.ToString();
+            }
 
-        #region Properties
+            set
+            {
+                this.value = Parse(value).value;
+            }
+        }
 
         /// <summary>
         /// Gets the value of the quantity in the base unit.
@@ -124,10 +116,6 @@ namespace Units
                 return this.value;
             }
         }
-
-        #endregion
-
-        #region Public Methods and Operators
 
         /// <summary>
         /// Parses the specified string.
@@ -454,8 +442,6 @@ namespace Units
             var up = formatProvider as IUnitProvider ?? UnitProvider.Default;
             return up.Format(format, this);
         }
-
-        #endregion
     }
 }
 <#}#>

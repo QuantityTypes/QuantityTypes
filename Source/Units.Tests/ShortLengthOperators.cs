@@ -1,4 +1,4 @@
-namespace Units
+namespace Units.Tests
 {
     public partial struct ShortLength
     {

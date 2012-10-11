@@ -1,5 +1,7 @@
-﻿namespace Units
+﻿namespace Units.Tests
 {
+    using Units;
+
     class Program
     {
         static void Main(string[] args)
