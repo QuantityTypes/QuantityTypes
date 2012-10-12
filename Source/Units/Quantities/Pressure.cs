@@ -337,6 +337,23 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <param name="y">
+        /// The y. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static Pressure operator *(Pressure x, double y)
+        {
+            return new Pressure(x.value * y);
+        }
+
+        /// <summary>
         /// Implements the operator -.
         /// </summary>
         /// <param name="x">
