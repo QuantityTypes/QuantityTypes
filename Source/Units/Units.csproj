@@ -67,12 +67,14 @@
     <Compile Include="Operators\Acceleration.cs" />
     <Compile Include="Operators\Angle.cs" />
     <Compile Include="Operators\Area.cs" />
+    <Compile Include="Operators\Density.cs" />
     <Compile Include="Operators\ElectricCurrent.cs" />
     <Compile Include="Operators\ElectricResistance.cs" />
     <Compile Include="Operators\ElectricVoltage.cs" />
     <Compile Include="Operators\Energy.cs" />
     <Compile Include="Operators\Force.cs" />
     <Compile Include="Operators\LinearMomentum.cs" />
+    <Compile Include="Operators\Mass.cs" />
     <Compile Include="Operators\Pressure.cs" />
     <Compile Include="Operators\Temperature.cs" />
     <Compile Include="Operators\Time.cs" />

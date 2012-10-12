@@ -307,6 +307,23 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <param name="y">
+        /// The y. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static Volume operator *(Volume x, double y)
+        {
+            return new Volume(x.value * y);
+        }
+
+        /// <summary>
         /// Implements the operator -.
         /// </summary>
         /// <param name="x">

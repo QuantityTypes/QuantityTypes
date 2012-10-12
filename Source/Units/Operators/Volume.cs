@@ -24,6 +24,5 @@ namespace Units
         {
             return new Length(l1.Value / l2.Value);
         }
-
     }
 }

@@ -295,6 +295,23 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <param name="y">
+        /// The y. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static SolidAngle operator *(SolidAngle x, double y)
+        {
+            return new SolidAngle(x.value * y);
+        }
+
+        /// <summary>
         /// Implements the operator -.
         /// </summary>
         /// <param name="x">

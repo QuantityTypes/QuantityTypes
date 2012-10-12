@@ -295,6 +295,23 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <param name="y">
+        /// The y. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static HeatCapacity operator *(HeatCapacity x, double y)
+        {
+            return new HeatCapacity(x.value * y);
+        }
+
+        /// <summary>
         /// Implements the operator -.
         /// </summary>
         /// <param name="x">

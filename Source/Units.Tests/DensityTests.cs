@@ -28,10 +28,18 @@
             Assert.AreEqual(0, Density.Parse(string.Empty).Value, "empty");
             Assert.AreEqual(0, Density.Parse(null).Value, "null");
         }
+
         [Test, ExpectedException(typeof(FormatException))]
         public void Parse_InvalidString()
         {
             Assert.AreEqual(2, Density.Parse("2kg").Value);
+        }
+
+        [Test]
+        public void Operator()
+        {
+            Assert.AreEqual(Density.KilogramPerCubicMetre, Mass.Kilogram / Volume.CubicMetre);
+            Assert.AreEqual(Density.KilogramPerCubicMetre, Mass.Kilogram / (Length.Metre * Length.Metre * Length.Metre));
         }
     }
 }
