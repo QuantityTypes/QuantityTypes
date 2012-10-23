@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Area quantity.
+//   Represents the area quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Area quantity.
+    /// Represents the area quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,43 +23,34 @@ namespace Units
     public partial struct Area : IQuantity<Area>
     {
         /// <summary>
-        /// The m^2 unit.
+        /// The backing field for the <see cref="SquareMetre" /> property.
         /// </summary>
-        [Unit("m^2", true)]
-        public static Area SquareMetre = new Area(1);
+        private static readonly Area SquareMetreField = new Area(1);
 
         /// <summary>
-        /// The ac unit.
+        /// The backing field for the <see cref="Acre" /> property.
         /// </summary>
-        [Unit("ac")]
-        public static Area Acre = new Area(4046.8564224);
+        private static readonly Area AcreField = new Area(4046.8564224);
 
         /// <summary>
-        /// The ha unit.
+        /// The backing field for the <see cref="Hectare" /> property.
         /// </summary>
-        [Unit("ha")]
-        public static Area Hectare = new Area(1e4);
+        private static readonly Area HectareField = new Area(1e4);
 
         /// <summary>
-        /// The ft^2 unit.
+        /// The backing field for the <see cref="SquareFoot" /> property.
         /// </summary>
-        [Unit("ft^2")]
-        public static Area SquareFoot = new Area(9.290304e-2);
+        private static readonly Area SquareFootField = new Area(9.290304e-2);
 
         /// <summary>
-        /// The km^2 unit.
+        /// The backing field for the <see cref="SquareKilometre" /> property.
         /// </summary>
-        [Unit("km^2")]
-        public static Area SquareKilometre = new Area(1e6);
+        private static readonly Area SquareKilometreField = new Area(1e6);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Area"/> struct.
@@ -87,7 +78,52 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Area as a string.
+        /// Gets the "m^2" unit.
+        /// </summary>
+        [Unit("m^2", true)]
+        public static Area SquareMetre 
+        { 
+            get { return SquareMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ac" unit.
+        /// </summary>
+        [Unit("ac")]
+        public static Area Acre 
+        { 
+            get { return AcreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ha" unit.
+        /// </summary>
+        [Unit("ha")]
+        public static Area Hectare 
+        { 
+            get { return HectareField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ft^2" unit.
+        /// </summary>
+        [Unit("ft^2")]
+        public static Area SquareFoot 
+        { 
+            get { return SquareFootField; } 
+        }
+
+        /// <summary>
+        /// Gets the "km^2" unit.
+        /// </summary>
+        [Unit("km^2")]
+        public static Area SquareKilometre 
+        { 
+            get { return SquareKilometreField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the area as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -95,7 +131,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -109,7 +145,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the area in the base unit.
         /// </summary>
         public double Value
         {

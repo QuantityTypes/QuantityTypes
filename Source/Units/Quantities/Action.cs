@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Action quantity.
+//   Represents the action quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Action quantity.
+    /// Represents the action quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct Action : IQuantity<Action>
     {
         /// <summary>
-        /// The au unit.
+        /// The backing field for the <see cref="AtomicUnitOfAction" /> property.
         /// </summary>
-        [Unit("au", true)]
-        public static Action AtomicUnitOfAction = new Action(1.05457168e-34);
+        private static readonly Action AtomicUnitOfActionField = new Action(1.05457168e-34);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Action"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Action as a string.
+        /// Gets the "au" unit.
+        /// </summary>
+        [Unit("au", true)]
+        public static Action AtomicUnitOfAction 
+        { 
+            get { return AtomicUnitOfActionField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the action as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the action in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a AmountOfSubstance quantity.
+//   Represents the amount of substance quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a AmountOfSubstance quantity.
+    /// Represents the amount of substance quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct AmountOfSubstance : IQuantity<AmountOfSubstance>
     {
         /// <summary>
-        /// The mol unit.
+        /// The backing field for the <see cref="Mole" /> property.
         /// </summary>
-        [Unit("mol", true)]
-        public static AmountOfSubstance Mole = new AmountOfSubstance(1);
+        private static readonly AmountOfSubstance MoleField = new AmountOfSubstance(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AmountOfSubstance"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the AmountOfSubstance as a string.
+        /// Gets the "mol" unit.
+        /// </summary>
+        [Unit("mol", true)]
+        public static AmountOfSubstance Mole 
+        { 
+            get { return MoleField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the amount of substance as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the amount of substance in the base unit.
         /// </summary>
         public double Value
         {

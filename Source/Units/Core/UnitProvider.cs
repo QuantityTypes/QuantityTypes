@@ -1,12 +1,32 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="UnitProvider.cs" company="Units.NET">
+//   The MIT License (MIT)
+//   
 //   Copyright (c) 2012 Oystein Bjorke
+//   
+//   Permission is hereby granted, free of charge, to any person obtaining a
+//   copy of this software and associated documentation files (the
+//   "Software"), to deal in the Software without restriction, including
+//   without limitation the rights to use, copy, modify, merge, publish,
+//   distribute, sublicense, and/or sell copies of the Software, and to
+//   permit persons to whom the Software is furnished to do so, subject to
+//   the following conditions:
+//   
+//   The above copyright notice and this permission notice shall be included
+//   in all copies or substantial portions of the Software.
+//   
+//   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+//   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+//   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+//   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+//   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+//   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+//   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // </copyright>
 // <summary>
 //   Implements a unit provider.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Units
 {
     using System;
@@ -16,36 +36,36 @@ namespace Units
     using System.Text.RegularExpressions;
 
     /// <summary>
-    /// Implements a unit provider.
+    ///     Implements a unit provider.
     /// </summary>
     public class UnitProvider : IUnitProvider
     {
         /// <summary>
-        /// The format expression.
+        ///     The format expression.
         /// </summary>
-        private static readonly Regex formatExpression = new Regex(
+        private static readonly Regex FormatExpression = new Regex(
             @"([0#]*\.?[0#]*)\s*([a-z\*\/]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
-        /// The parser expression.
+        ///     The parser expression.
         /// </summary>
-        private static readonly Regex parserExpression =
+        private static readonly Regex ParserExpression =
             new Regex(
                 @"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)\s*([^0-9.\s].*)?",
                 RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
-        /// The display units.
+        ///     The display units.
         /// </summary>
         private readonly Dictionary<Type, UnitDefinition> displayUnits;
 
         /// <summary>
-        /// The units.
+        ///     The units.
         /// </summary>
         private readonly Dictionary<Type, Dictionary<string, IQuantity>> units;
 
         /// <summary>
-        /// Initializes static members of the <see cref="UnitProvider"/> class.
+        ///     Initializes static members of the <see cref="UnitProvider" /> class.
         /// </summary>
         static UnitProvider()
         {
@@ -57,10 +77,10 @@ namespace Units
         /// Initializes a new instance of the <see cref="UnitProvider"/> class.
         /// </summary>
         /// <param name="a">
-        /// A.
+        /// A. 
         /// </param>
         /// <param name="culture">
-        /// The culture.
+        /// The culture. 
         /// </param>
         public UnitProvider(Assembly a, CultureInfo culture = null)
             : this(culture)
@@ -72,7 +92,7 @@ namespace Units
         /// Initializes a new instance of the <see cref="UnitProvider"/> class.
         /// </summary>
         /// <param name="culture">
-        /// The culture.
+        /// The culture. 
         /// </param>
         public UnitProvider(CultureInfo culture = null)
         {
@@ -88,18 +108,18 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the default unit provider.
+        ///     Gets the default unit provider.
         /// </summary>
         public static IUnitProvider Default { get; private set; }
 
         /// <summary>
-        /// Gets or sets the culture.
+        ///     Gets or sets the culture.
         /// </summary>
         /// <value> The culture. </value>
         public CultureInfo Culture { get; set; }
 
         /// <summary>
-        /// Gets or sets the separator.
+        ///     Gets or sets the separator.
         /// </summary>
         /// <value> The separator. </value>
         public string Separator { get; set; }
@@ -110,21 +130,21 @@ namespace Units
         /// <typeparam name="T">
         /// </typeparam>
         /// <param name="format">
-        /// The format.
+        /// The format. 
         /// </param>
         /// <param name="length">
-        /// The length.
+        /// The length. 
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        /// The <see cref="string"/> . 
         /// </returns>
         public string Format<T>(string format, T length) where T : IQuantity<T>
         {
-            T q = default(T);
-            string unit = default(string);
+            T q;
+            var unit = default(string);
             if (!string.IsNullOrEmpty(format))
             {
-                var m = formatExpression.Match(format);
+                var m = FormatExpression.Match(format);
                 if (m.Success)
                 {
                     format = m.Groups[1].Value;
@@ -144,7 +164,7 @@ namespace Units
                 }
             }
 
-            var s = length.ConvertTo(q).ToString(format, this);
+            string s = length.ConvertTo(q).ToString(format, this);
             return string.Format("{0}{1}{2}", s, this.Separator, unit);
         }
 
@@ -152,10 +172,10 @@ namespace Units
         /// Returns an object that provides formatting services for the specified type.
         /// </summary>
         /// <param name="formatType">
-        /// An object that specifies the type of format object to return.
+        /// An object that specifies the type of format object to return. 
         /// </param>
         /// <returns>
-        /// An instance of the object specified by <paramref name="formatType"/> , if the <see cref="T:System.IFormatProvider"/> implementation can supply that type of object; otherwise, null.
+        /// An instance of the object specified by <paramref name="formatType"/> , if the <see cref="T:System.IFormatProvider"/> implementation can supply that type of object; otherwise, null. 
         /// </returns>
         public object GetFormat(Type formatType)
         {
@@ -166,10 +186,10 @@ namespace Units
         /// Gets the first registered unit (of any quantity type) that matches the specified name.
         /// </summary>
         /// <param name="name">
-        /// The name.
+        /// The name. 
         /// </param>
         /// <returns>
-        /// The unit.
+        /// The unit. 
         /// </returns>
         public IQuantity GetUnit(string name)
         {
@@ -186,27 +206,13 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the units.
-        /// </summary>
-        /// <typeparam name="T">
-        /// The type of units to get.
-        /// </typeparam>
-        /// <returns>
-        /// A dictionary of units.
-        /// </returns>
-        public Dictionary<string, IQuantity> GetUnits<T>()
-        {
-            return this.GetUnits(typeof(T));
-        }
-
-        /// <summary>
         /// Gets the registered units of the specified type.
         /// </summary>
         /// <param name="type">
-        /// The type.
+        /// The type. 
         /// </param>
         /// <returns>
-        /// The registered units.
+        /// The registered units. 
         /// </returns>
         public Dictionary<string, IQuantity> GetUnits(Type type)
         {
@@ -217,14 +223,14 @@ namespace Units
         /// Registers the unit.
         /// </summary>
         /// <param name="unit">
-        /// The unit.
+        /// The unit. 
         /// </param>
         /// <param name="name">
-        /// The name.
+        /// The name. 
         /// </param>
         public void RegisterUnit(IQuantity unit, string name)
         {
-            var type = unit.GetType();
+            Type type = unit.GetType();
             if (!this.units.ContainsKey(type))
             {
                 this.units.Add(type, new Dictionary<string, IQuantity>(StringComparer.OrdinalIgnoreCase));
@@ -242,10 +248,10 @@ namespace Units
         /// Sets the display unit.
         /// </summary>
         /// <param name="q">
-        /// The q.
+        /// The q. 
         /// </param>
         /// <param name="name">
-        /// The name.
+        /// The name. 
         /// </param>
         public void SetDisplayUnit(IQuantity q, string name)
         {
@@ -258,13 +264,13 @@ namespace Units
         /// <typeparam name="T">
         /// </typeparam>
         /// <param name="q">
-        /// The q.
+        /// The q. 
         /// </param>
         /// <param name="unit">
-        /// The unit.
+        /// The unit. 
         /// </param>
         /// <returns>
-        /// The <see cref="bool"/>.
+        /// The <see cref="bool"/> . 
         /// </returns>
         public bool TryGetDisplayUnit<T>(out T q, out string unit)
         {
@@ -285,19 +291,19 @@ namespace Units
         /// Parses a string.
         /// </summary>
         /// <typeparam name="T">
-        /// The type.
+        /// The type. 
         /// </typeparam>
         /// <param name="input">
-        /// The input string.
+        /// The input string. 
         /// </param>
         /// <param name="value">
-        /// The value (output).
+        /// The value (output). 
         /// </param>
         /// <param name="unit">
-        /// The unit (output).
+        /// The unit (output). 
         /// </param>
         /// <returns>
-        /// True if the parsing was successful.
+        /// True if the parsing was successful. 
         /// </returns>
         public bool TryParse<T>(string input, out double value, out T unit)
         {
@@ -310,7 +316,7 @@ namespace Units
 
             input = input.Replace(',', '.');
 
-            var m = parserExpression.Match(input);
+            Match m = ParserExpression.Match(input);
             if (!m.Success)
             {
                 value = double.NaN;
@@ -324,16 +330,26 @@ namespace Units
         }
 
         /// <summary>
+        ///     Gets the units.
+        /// </summary>
+        /// <typeparam name="T"> The type of units to get. </typeparam>
+        /// <returns> A dictionary of units. </returns>
+        public Dictionary<string, IQuantity> GetUnits<T>()
+        {
+            return this.GetUnits(typeof(T));
+        }
+
+        /// <summary>
         /// Gets the unit of the specified name and type.
         /// </summary>
         /// <param name="name">
-        /// The name.
+        /// The name. 
         /// </param>
         /// <typeparam name="T">
-        /// The type of unit.
+        /// The type of unit. 
         /// </typeparam>
         /// <returns>
-        /// The unit.
+        /// The unit. 
         /// </returns>
         /// <exception cref="InvalidOperationException">
         /// </exception>
@@ -370,11 +386,11 @@ namespace Units
         /// Registers the units.
         /// </summary>
         /// <param name="a">
-        /// A.
+        /// The assembly. 
         /// </param>
         private void RegisterUnits(Assembly a)
         {
-            foreach (var t in a.GetTypes())
+            foreach (Type t in a.GetTypes())
             {
                 if (typeof(IQuantity).IsAssignableFrom(t))
                 {
@@ -384,51 +400,41 @@ namespace Units
         }
 
         /// <summary>
-        /// Registers the units.
-        /// </summary>
-        /// <typeparam name="T"> </typeparam>
-        private void RegisterUnits<T>() where T : IQuantity
-        {
-            this.RegisterUnits(typeof(T));
-        }
-
-        /// <summary>
-        /// Registers the units.
+        /// Registers the static unit properties in the spedified type.
         /// </summary>
         /// <param name="t">
-        /// The t.
+        /// The type. 
         /// </param>
         private void RegisterUnits(Type t)
         {
-            foreach (var field in t.GetFields(BindingFlags.Static | BindingFlags.Public))
+            foreach (var property in t.GetProperties(BindingFlags.Static | BindingFlags.Public))
             {
-                foreach (UnitAttribute ua in field.GetCustomAttributes(typeof(UnitAttribute), false))
+                foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
                 {
-                    this.RegisterUnit((IQuantity)field.GetValue(null), ua.Name);
+                    this.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Name);
 
                     if (ua.IsDefaultDisplayUnit)
                     {
-                        this.SetDisplayUnit((IQuantity)field.GetValue(null), ua.Name);
+                        this.SetDisplayUnit((IQuantity)property.GetValue(null, null), ua.Name);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// The unit definition.
+        ///     The unit definition.
         /// </summary>
         private struct UnitDefinition
         {
             /// <summary>
-            /// Gets or sets the name.
+            ///     Gets or sets the name.
             /// </summary>
             public string Name { get; set; }
 
             /// <summary>
-            /// Gets or sets the unit.
+            ///     Gets or sets the unit.
             /// </summary>
             public object Unit { get; set; }
-
         }
     }
 }

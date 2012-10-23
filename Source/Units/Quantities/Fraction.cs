@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Fraction quantity.
+//   Represents the fraction quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Fraction quantity.
+    /// Represents the fraction quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,37 +23,29 @@ namespace Units
     public partial struct Fraction : IQuantity<Fraction>
     {
         /// <summary>
-        /// The  unit.
+        /// The backing field for the <see cref="Frac" /> property.
         /// </summary>
-        [Unit("", true)]
-        public static Fraction Frac = new Fraction(1);
+        private static readonly Fraction FracField = new Fraction(1);
 
         /// <summary>
-        /// The % unit.
+        /// The backing field for the <see cref="Percent" /> property.
         /// </summary>
-        [Unit("%")]
-        public static Fraction Percent = new Fraction(0.01);
+        private static readonly Fraction PercentField = new Fraction(0.01);
 
         /// <summary>
-        /// The ‰ unit.
+        /// The backing field for the <see cref="Permil" /> property.
         /// </summary>
-        [Unit("‰")]
-        public static Fraction Permil = new Fraction(0.001);
+        private static readonly Fraction PermilField = new Fraction(0.001);
 
         /// <summary>
-        /// The ppm unit.
+        /// The backing field for the <see cref="PartPerMillion" /> property.
         /// </summary>
-        [Unit("ppm")]
-        public static Fraction PartPerMillion = new Fraction(1E-06);
+        private static readonly Fraction PartPerMillionField = new Fraction(1E-06);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Fraction"/> struct.
@@ -81,7 +73,43 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Fraction as a string.
+        /// Gets the "" unit.
+        /// </summary>
+        [Unit("", true)]
+        public static Fraction Frac 
+        { 
+            get { return FracField; } 
+        }
+
+        /// <summary>
+        /// Gets the "%" unit.
+        /// </summary>
+        [Unit("%")]
+        public static Fraction Percent 
+        { 
+            get { return PercentField; } 
+        }
+
+        /// <summary>
+        /// Gets the "‰" unit.
+        /// </summary>
+        [Unit("‰")]
+        public static Fraction Permil 
+        { 
+            get { return PermilField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ppm" unit.
+        /// </summary>
+        [Unit("ppm")]
+        public static Fraction PartPerMillion 
+        { 
+            get { return PartPerMillionField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the fraction as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -89,7 +117,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -103,7 +131,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the fraction in the base unit.
         /// </summary>
         public double Value
         {

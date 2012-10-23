@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a TemperatureDifference quantity.
+//   Represents the temperature difference quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a TemperatureDifference quantity.
+    /// Represents the temperature difference quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,31 +23,24 @@ namespace Units
     public partial struct TemperatureDifference : IQuantity<TemperatureDifference>
     {
         /// <summary>
-        /// The K unit.
+        /// The backing field for the <see cref="Kelvin" /> property.
         /// </summary>
-        [Unit("K", true)]
-        public static TemperatureDifference Kelvin = new TemperatureDifference(1);
+        private static readonly TemperatureDifference KelvinField = new TemperatureDifference(1);
 
         /// <summary>
-        /// The C unit.
+        /// The backing field for the <see cref="Celsius" /> property.
         /// </summary>
-        [Unit("C")]
-        public static TemperatureDifference Celsius = new TemperatureDifference(1);
+        private static readonly TemperatureDifference CelsiusField = new TemperatureDifference(1);
 
         /// <summary>
-        /// The F unit.
+        /// The backing field for the <see cref="Fahrenheit" /> property.
         /// </summary>
-        [Unit("F")]
-        public static TemperatureDifference Fahrenheit = new TemperatureDifference(9.0/5);
+        private static readonly TemperatureDifference FahrenheitField = new TemperatureDifference(9.0 / 5);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TemperatureDifference"/> struct.
@@ -75,7 +68,34 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the TemperatureDifference as a string.
+        /// Gets the "K" unit.
+        /// </summary>
+        [Unit("K", true)]
+        public static TemperatureDifference Kelvin 
+        { 
+            get { return KelvinField; } 
+        }
+
+        /// <summary>
+        /// Gets the "C" unit.
+        /// </summary>
+        [Unit("C")]
+        public static TemperatureDifference Celsius 
+        { 
+            get { return CelsiusField; } 
+        }
+
+        /// <summary>
+        /// Gets the "F" unit.
+        /// </summary>
+        [Unit("F")]
+        public static TemperatureDifference Fahrenheit 
+        { 
+            get { return FahrenheitField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the temperature difference as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -83,7 +103,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -97,7 +117,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the temperature difference in the base unit.
         /// </summary>
         public double Value
         {

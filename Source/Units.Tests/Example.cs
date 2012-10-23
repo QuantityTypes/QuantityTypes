@@ -1,10 +1,14 @@
 ﻿namespace Units.Tests
 {
+    using NUnit.Framework;
+
     using Units;
 
-    class Program
+    [TestFixture]
+    public class Example
     {
-        static void Main(string[] args)
+        [Test]
+        public void Example1()
         {
             var v = 100 * Length.Metre / (9 * Time.Second);
             var l = Length.Metre;
@@ -20,9 +24,6 @@
             var b2 = l1.Equals(l2);
             var b3 = l1 < l2;
             var b4 = l1 <= l2;
-            var sl1 = ShortLength.Millimetre;
-            Length sl2 = sl1;
-            Velocity v2 = (Length)sl1 / Time.Second;
 
             UnitProvider.Default.SetDisplayUnit(Length.Millimetre, "millim");
             var s3 = l1.ToString();

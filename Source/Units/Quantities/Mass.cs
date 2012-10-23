@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Mass quantity.
+//   Represents the mass quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Mass quantity.
+    /// Represents the mass quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,55 +23,44 @@ namespace Units
     public partial struct Mass : IQuantity<Mass>
     {
         /// <summary>
-        /// The kg unit.
+        /// The backing field for the <see cref="Kilogram" /> property.
         /// </summary>
-        [Unit("kg", true)]
-        public static Mass Kilogram = new Mass(1);
+        private static readonly Mass KilogramField = new Mass(1);
 
         /// <summary>
-        /// The g unit.
+        /// The backing field for the <see cref="Gram" /> property.
         /// </summary>
-        [Unit("g")]
-        public static Mass Gram = new Mass(1e-3);
+        private static readonly Mass GramField = new Mass(1e-3);
 
         /// <summary>
-        /// The t unit.
+        /// The backing field for the <see cref="Tonne" /> property.
         /// </summary>
-        [Unit("t")]
-        public static Mass Tonne = new Mass(1e3);
+        private static readonly Mass TonneField = new Mass(1e3);
 
         /// <summary>
-        /// The kips unit.
+        /// The backing field for the <see cref="Kips" /> property.
         /// </summary>
-        [Unit("kips")]
-        public static Mass Kips = new Mass(453.59237);
+        private static readonly Mass KipsField = new Mass(453.59237);
 
         /// <summary>
-        /// The lb unit.
+        /// The backing field for the <see cref="Pound" /> property.
         /// </summary>
-        [Unit("lb")]
-        public static Mass Pound = new Mass(0.45359237);
+        private static readonly Mass PoundField = new Mass(0.45359237);
 
         /// <summary>
-        /// The slug unit.
+        /// The backing field for the <see cref="Slug" /> property.
         /// </summary>
-        [Unit("slug")]
-        public static Mass Slug = new Mass(14.5939035919985);
+        private static readonly Mass SlugField = new Mass(14.5939035919985);
 
         /// <summary>
-        /// The ton unit.
+        /// The backing field for the <see cref="Ton" /> property.
         /// </summary>
-        [Unit("ton")]
-        public static Mass Ton = new Mass(1016.0469088);
+        private static readonly Mass TonField = new Mass(1016.0469088);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Mass"/> struct.
@@ -99,7 +88,70 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Mass as a string.
+        /// Gets the "kg" unit.
+        /// </summary>
+        [Unit("kg", true)]
+        public static Mass Kilogram 
+        { 
+            get { return KilogramField; } 
+        }
+
+        /// <summary>
+        /// Gets the "g" unit.
+        /// </summary>
+        [Unit("g")]
+        public static Mass Gram 
+        { 
+            get { return GramField; } 
+        }
+
+        /// <summary>
+        /// Gets the "t" unit.
+        /// </summary>
+        [Unit("t")]
+        public static Mass Tonne 
+        { 
+            get { return TonneField; } 
+        }
+
+        /// <summary>
+        /// Gets the "kips" unit.
+        /// </summary>
+        [Unit("kips")]
+        public static Mass Kips 
+        { 
+            get { return KipsField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lb" unit.
+        /// </summary>
+        [Unit("lb")]
+        public static Mass Pound 
+        { 
+            get { return PoundField; } 
+        }
+
+        /// <summary>
+        /// Gets the "slug" unit.
+        /// </summary>
+        [Unit("slug")]
+        public static Mass Slug 
+        { 
+            get { return SlugField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ton" unit.
+        /// </summary>
+        [Unit("ton")]
+        public static Mass Ton 
+        { 
+            get { return TonField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the mass as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -107,7 +159,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -121,7 +173,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the mass in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Length quantity.
+//   Represents the length quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Length quantity.
+    /// Represents the length quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,91 +23,74 @@ namespace Units
     public partial struct Length : IQuantity<Length>
     {
         /// <summary>
-        /// The m unit.
+        /// The backing field for the <see cref="Metre" /> property.
         /// </summary>
-        [Unit("m", true)]
-        public static Length Metre = new Length(1);
+        private static readonly Length MetreField = new Length(1);
 
         /// <summary>
-        /// The dm unit.
+        /// The backing field for the <see cref="Decimetre" /> property.
         /// </summary>
-        [Unit("dm")]
-        public static Length Decimetre = new Length(1e-1);
+        private static readonly Length DecimetreField = new Length(1e-1);
 
         /// <summary>
-        /// The cm unit.
+        /// The backing field for the <see cref="Centimetre" /> property.
         /// </summary>
-        [Unit("cm")]
-        public static Length Centimetre = new Length(1e-2);
+        private static readonly Length CentimetreField = new Length(1e-2);
 
         /// <summary>
-        /// The mm unit.
+        /// The backing field for the <see cref="Millimetre" /> property.
         /// </summary>
-        [Unit("mm")]
-        public static Length Millimetre = new Length(1e-3);
+        private static readonly Length MillimetreField = new Length(1e-3);
 
         /// <summary>
-        /// The km unit.
+        /// The backing field for the <see cref="Kilometre" /> property.
         /// </summary>
-        [Unit("km")]
-        public static Length Kilometre = new Length(1e3);
+        private static readonly Length KilometreField = new Length(1e3);
 
         /// <summary>
-        /// The yd unit.
+        /// The backing field for the <see cref="Yard" /> property.
         /// </summary>
-        [Unit("yd")]
-        public static Length Yard = new Length(0.9144);
+        private static readonly Length YardField = new Length(0.9144);
 
         /// <summary>
-        /// The ft unit.
+        /// The backing field for the <see cref="Foot" /> property.
         /// </summary>
-        [Unit("ft")]
-        public static Length Foot = new Length(0.3048);
+        private static readonly Length FootField = new Length(0.3048);
 
         /// <summary>
-        /// The in unit.
+        /// The backing field for the <see cref="Inch" /> property.
         /// </summary>
-        [Unit("in")]
-        public static Length Inch = new Length(0.0254);
+        private static readonly Length InchField = new Length(0.0254);
 
         /// <summary>
-        /// The mi unit.
+        /// The backing field for the <see cref="Mile" /> property.
         /// </summary>
-        [Unit("mi")]
-        public static Length Mile = new Length(1609.344);
+        private static readonly Length MileField = new Length(1609.344);
 
         /// <summary>
-        /// The nmi unit.
+        /// The backing field for the <see cref="NauticalMile" /> property.
         /// </summary>
-        [Unit("nmi")]
-        public static Length NauticalMile = new Length(1852);
+        private static readonly Length NauticalMileField = new Length(1852);
 
         /// <summary>
-        /// The Å unit.
+        /// The backing field for the <see cref="Ångström" /> property.
         /// </summary>
-        [Unit("Å")]
-        public static Length Ångström = new Length(1e-10);
+        private static readonly Length ÅngströmField = new Length(1e-10);
 
         /// <summary>
-        /// The AU unit.
+        /// The backing field for the <see cref="AstronomicalUnit" /> property.
         /// </summary>
-        [Unit("AU")]
-        public static Length AstronomicalUnit = new Length(149597871464);
+        private static readonly Length AstronomicalUnitField = new Length(149597871464);
 
         /// <summary>
-        /// The ly unit.
+        /// The backing field for the <see cref="LightYear" /> property.
         /// </summary>
-        [Unit("ly")]
-        public static Length LightYear = new Length(9.4607304725808e15);
+        private static readonly Length LightYearField = new Length(9.4607304725808e15);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Length"/> struct.
@@ -135,7 +118,124 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Length as a string.
+        /// Gets the "m" unit.
+        /// </summary>
+        [Unit("m", true)]
+        public static Length Metre 
+        { 
+            get { return MetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "dm" unit.
+        /// </summary>
+        [Unit("dm")]
+        public static Length Decimetre 
+        { 
+            get { return DecimetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "cm" unit.
+        /// </summary>
+        [Unit("cm")]
+        public static Length Centimetre 
+        { 
+            get { return CentimetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "mm" unit.
+        /// </summary>
+        [Unit("mm")]
+        public static Length Millimetre 
+        { 
+            get { return MillimetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "km" unit.
+        /// </summary>
+        [Unit("km")]
+        public static Length Kilometre 
+        { 
+            get { return KilometreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "yd" unit.
+        /// </summary>
+        [Unit("yd")]
+        public static Length Yard 
+        { 
+            get { return YardField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ft" unit.
+        /// </summary>
+        [Unit("ft")]
+        public static Length Foot 
+        { 
+            get { return FootField; } 
+        }
+
+        /// <summary>
+        /// Gets the "in" unit.
+        /// </summary>
+        [Unit("in")]
+        public static Length Inch 
+        { 
+            get { return InchField; } 
+        }
+
+        /// <summary>
+        /// Gets the "mi" unit.
+        /// </summary>
+        [Unit("mi")]
+        public static Length Mile 
+        { 
+            get { return MileField; } 
+        }
+
+        /// <summary>
+        /// Gets the "nmi" unit.
+        /// </summary>
+        [Unit("nmi")]
+        public static Length NauticalMile 
+        { 
+            get { return NauticalMileField; } 
+        }
+
+        /// <summary>
+        /// Gets the "Å" unit.
+        /// </summary>
+        [Unit("Å")]
+        public static Length Ångström 
+        { 
+            get { return ÅngströmField; } 
+        }
+
+        /// <summary>
+        /// Gets the "AU" unit.
+        /// </summary>
+        [Unit("AU")]
+        public static Length AstronomicalUnit 
+        { 
+            get { return AstronomicalUnitField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ly" unit.
+        /// </summary>
+        [Unit("ly")]
+        public static Length LightYear 
+        { 
+            get { return LightYearField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the length as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -143,7 +243,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -157,7 +257,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the length in the base unit.
         /// </summary>
         public double Value
         {

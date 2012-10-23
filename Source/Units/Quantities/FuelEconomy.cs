@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a FuelEconomy quantity.
+//   Represents the fuel economy quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a FuelEconomy quantity.
+    /// Represents the fuel economy quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct FuelEconomy : IQuantity<FuelEconomy>
     {
         /// <summary>
-        /// The km/l unit.
+        /// The backing field for the <see cref="KilometrePerLitre" /> property.
         /// </summary>
-        [Unit("km/l", true)]
-        public static FuelEconomy KilometrePerLitre = new FuelEconomy(1e6);
+        private static readonly FuelEconomy KilometrePerLitreField = new FuelEconomy(1e6);
 
         /// <summary>
-        /// The mpg unit.
+        /// The backing field for the <see cref="MilesPerGallon" /> property.
         /// </summary>
-        [Unit("mpg")]
-        public static FuelEconomy MilesPerGallon = new FuelEconomy(425143.7074);
+        private static readonly FuelEconomy MilesPerGallonField = new FuelEconomy(425143.7074);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FuelEconomy"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the FuelEconomy as a string.
+        /// Gets the "km/l" unit.
+        /// </summary>
+        [Unit("km/l", true)]
+        public static FuelEconomy KilometrePerLitre 
+        { 
+            get { return KilometrePerLitreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "mpg" unit.
+        /// </summary>
+        [Unit("mpg")]
+        public static FuelEconomy MilesPerGallon 
+        { 
+            get { return MilesPerGallonField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the fuel economy as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the fuel economy in the base unit.
         /// </summary>
         public double Value
         {

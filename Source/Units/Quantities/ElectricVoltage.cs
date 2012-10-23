@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a ElectricVoltage quantity.
+//   Represents the electric voltage quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a ElectricVoltage quantity.
+    /// Represents the electric voltage quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct ElectricVoltage : IQuantity<ElectricVoltage>
     {
         /// <summary>
-        /// The V unit.
+        /// The backing field for the <see cref="Volt" /> property.
         /// </summary>
-        [Unit("V", true)]
-        public static ElectricVoltage Volt = new ElectricVoltage(1);
+        private static readonly ElectricVoltage VoltField = new ElectricVoltage(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectricVoltage"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the ElectricVoltage as a string.
+        /// Gets the "V" unit.
+        /// </summary>
+        [Unit("V", true)]
+        public static ElectricVoltage Volt 
+        { 
+            get { return VoltField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the electric voltage as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the electric voltage in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Frequency quantity.
+//   Represents the frequency quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Frequency quantity.
+    /// Represents the frequency quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Frequency : IQuantity<Frequency>
     {
         /// <summary>
-        /// The Hz unit.
+        /// The backing field for the <see cref="Hertz" /> property.
         /// </summary>
-        [Unit("Hz", true)]
-        public static Frequency Hertz = new Frequency(1);
+        private static readonly Frequency HertzField = new Frequency(1);
 
         /// <summary>
-        /// The rpm unit.
+        /// The backing field for the <see cref="RevolutionsPerMinute" /> property.
         /// </summary>
-        [Unit("rpm")]
-        public static Frequency RevolutionsPerMinute = new Frequency(1.0 / 60);
+        private static readonly Frequency RevolutionsPerMinuteField = new Frequency(1.0 / 60);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Frequency"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Frequency as a string.
+        /// Gets the "Hz" unit.
+        /// </summary>
+        [Unit("Hz", true)]
+        public static Frequency Hertz 
+        { 
+            get { return HertzField; } 
+        }
+
+        /// <summary>
+        /// Gets the "rpm" unit.
+        /// </summary>
+        [Unit("rpm")]
+        public static Frequency RevolutionsPerMinute 
+        { 
+            get { return RevolutionsPerMinuteField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the frequency as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the frequency in the base unit.
         /// </summary>
         public double Value
         {

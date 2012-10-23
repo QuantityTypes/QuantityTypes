@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a MassMomentOfInertia quantity.
+//   Represents the mass moment of inertia quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a MassMomentOfInertia quantity.
+    /// Represents the mass moment of inertia quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,37 +23,29 @@ namespace Units
     public partial struct MassMomentOfInertia : IQuantity<MassMomentOfInertia>
     {
         /// <summary>
-        /// The kg*m^2 unit.
+        /// The backing field for the <see cref="KilogramMetreSquared" /> property.
         /// </summary>
-        [Unit("kg*m^2", true)]
-        public static MassMomentOfInertia KilogramMetreSquared = new MassMomentOfInertia(1);
+        private static readonly MassMomentOfInertia KilogramMetreSquaredField = new MassMomentOfInertia(1);
 
         /// <summary>
-        /// The lb*in^2 unit.
+        /// The backing field for the <see cref="PoundInchSquared" /> property.
         /// </summary>
-        [Unit("lb*in^2")]
-        public static MassMomentOfInertia PoundInchSquared = new MassMomentOfInertia(0.0002926396534292);
+        private static readonly MassMomentOfInertia PoundInchSquaredField = new MassMomentOfInertia(0.0002926396534292);
 
         /// <summary>
-        /// The lb*ft^2 unit.
+        /// The backing field for the <see cref="PoundFootSquared" /> property.
         /// </summary>
-        [Unit("lb*ft^2")]
-        public static MassMomentOfInertia PoundFootSquared = new MassMomentOfInertia(0.0421401100938048);
+        private static readonly MassMomentOfInertia PoundFootSquaredField = new MassMomentOfInertia(0.0421401100938048);
 
         /// <summary>
-        /// The lbf*in*s^2 unit.
+        /// The backing field for the <see cref="PoundforceInchSecondSquared" /> property.
         /// </summary>
-        [Unit("lbf*in*s^2")]
-        public static MassMomentOfInertia PoundforceInchSecondSquared = new MassMomentOfInertia(0.112984829027604);
+        private static readonly MassMomentOfInertia PoundforceInchSecondSquaredField = new MassMomentOfInertia(0.112984829027604);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MassMomentOfInertia"/> struct.
@@ -81,7 +73,43 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the MassMomentOfInertia as a string.
+        /// Gets the "kg*m^2" unit.
+        /// </summary>
+        [Unit("kg*m^2", true)]
+        public static MassMomentOfInertia KilogramMetreSquared 
+        { 
+            get { return KilogramMetreSquaredField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lb*in^2" unit.
+        /// </summary>
+        [Unit("lb*in^2")]
+        public static MassMomentOfInertia PoundInchSquared 
+        { 
+            get { return PoundInchSquaredField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lb*ft^2" unit.
+        /// </summary>
+        [Unit("lb*ft^2")]
+        public static MassMomentOfInertia PoundFootSquared 
+        { 
+            get { return PoundFootSquaredField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lbf*in*s^2" unit.
+        /// </summary>
+        [Unit("lbf*in*s^2")]
+        public static MassMomentOfInertia PoundforceInchSecondSquared 
+        { 
+            get { return PoundforceInchSecondSquaredField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the mass moment of inertia as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -89,7 +117,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -103,7 +131,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the mass moment of inertia in the base unit.
         /// </summary>
         public double Value
         {

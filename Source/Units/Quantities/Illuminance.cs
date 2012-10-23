@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Illuminance quantity.
+//   Represents the illuminance quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Illuminance quantity.
+    /// Represents the illuminance quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct Illuminance : IQuantity<Illuminance>
     {
         /// <summary>
-        /// The lx unit.
+        /// The backing field for the <see cref="Lux" /> property.
         /// </summary>
-        [Unit("lx", true)]
-        public static Illuminance Lux = new Illuminance(1);
+        private static readonly Illuminance LuxField = new Illuminance(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Illuminance"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Illuminance as a string.
+        /// Gets the "lx" unit.
+        /// </summary>
+        [Unit("lx", true)]
+        public static Illuminance Lux 
+        { 
+            get { return LuxField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the illuminance as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the illuminance in the base unit.
         /// </summary>
         public double Value
         {

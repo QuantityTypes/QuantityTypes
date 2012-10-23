@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Density quantity.
+//   Represents the density quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Density quantity.
+    /// Represents the density quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,61 +23,49 @@ namespace Units
     public partial struct Density : IQuantity<Density>
     {
         /// <summary>
-        /// The kg/m^3 unit.
+        /// The backing field for the <see cref="KilogramPerCubicMetre" /> property.
         /// </summary>
-        [Unit("kg/m^3", true)]
-        public static Density KilogramPerCubicMetre = new Density(1);
+        private static readonly Density KilogramPerCubicMetreField = new Density(1);
 
         /// <summary>
-        /// The kg/dm^3 unit.
+        /// The backing field for the <see cref="KilogramPerCubicDecimetre" /> property.
         /// </summary>
-        [Unit("kg/dm^3")]
-        public static Density KilogramPerCubicDecimetre = new Density(1000);
+        private static readonly Density KilogramPerCubicDecimetreField = new Density(1000);
 
         /// <summary>
-        /// The g/cm^3 unit.
+        /// The backing field for the <see cref="GramPerCubicCentietre" /> property.
         /// </summary>
-        [Unit("g/cm^3")]
-        public static Density GramPerCubicCentietre = new Density(1000);
+        private static readonly Density GramPerCubicCentietreField = new Density(1000);
 
         /// <summary>
-        /// The kg/L unit.
+        /// The backing field for the <see cref="KilogramPerLitre" /> property.
         /// </summary>
-        [Unit("kg/L")]
-        public static Density KilogramPerLitre = new Density(1000);
+        private static readonly Density KilogramPerLitreField = new Density(1000);
 
         /// <summary>
-        /// The g/mL unit.
+        /// The backing field for the <see cref="GramPerMillilitre" /> property.
         /// </summary>
-        [Unit("g/mL")]
-        public static Density GramPerMillilitre = new Density(1000);
+        private static readonly Density GramPerMillilitreField = new Density(1000);
 
         /// <summary>
-        /// The lb/ft^3 unit.
+        /// The backing field for the <see cref="PoundPerCubicFoot" /> property.
         /// </summary>
-        [Unit("lb/ft^3")]
-        public static Density PoundPerCubicFoot = new Density(16.01846337396);
+        private static readonly Density PoundPerCubicFootField = new Density(16.01846337396);
 
         /// <summary>
-        /// The lb/in^3 unit.
+        /// The backing field for the <see cref="PoundPerCubicInch" /> property.
         /// </summary>
-        [Unit("lb/in^3")]
-        public static Density PoundPerCubicInch = new Density(27679.9047102031);
+        private static readonly Density PoundPerCubicInchField = new Density(27679.9047102031);
 
         /// <summary>
-        /// The lb/gal unit.
+        /// The backing field for the <see cref="PoundPerGallon" /> property.
         /// </summary>
-        [Unit("lb/gal")]
-        public static Density PoundPerGallon = new Density(99.7763287677);
+        private static readonly Density PoundPerGallonField = new Density(99.7763287677);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Density"/> struct.
@@ -105,7 +93,79 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Density as a string.
+        /// Gets the "kg/m^3" unit.
+        /// </summary>
+        [Unit("kg/m^3", true)]
+        public static Density KilogramPerCubicMetre 
+        { 
+            get { return KilogramPerCubicMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "kg/dm^3" unit.
+        /// </summary>
+        [Unit("kg/dm^3")]
+        public static Density KilogramPerCubicDecimetre 
+        { 
+            get { return KilogramPerCubicDecimetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "g/cm^3" unit.
+        /// </summary>
+        [Unit("g/cm^3")]
+        public static Density GramPerCubicCentietre 
+        { 
+            get { return GramPerCubicCentietreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "kg/L" unit.
+        /// </summary>
+        [Unit("kg/L")]
+        public static Density KilogramPerLitre 
+        { 
+            get { return KilogramPerLitreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "g/mL" unit.
+        /// </summary>
+        [Unit("g/mL")]
+        public static Density GramPerMillilitre 
+        { 
+            get { return GramPerMillilitreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lb/ft^3" unit.
+        /// </summary>
+        [Unit("lb/ft^3")]
+        public static Density PoundPerCubicFoot 
+        { 
+            get { return PoundPerCubicFootField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lb/in^3" unit.
+        /// </summary>
+        [Unit("lb/in^3")]
+        public static Density PoundPerCubicInch 
+        { 
+            get { return PoundPerCubicInchField; } 
+        }
+
+        /// <summary>
+        /// Gets the "lb/gal" unit.
+        /// </summary>
+        [Unit("lb/gal")]
+        public static Density PoundPerGallon 
+        { 
+            get { return PoundPerGallonField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the density as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -113,7 +173,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -127,7 +187,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the density in the base unit.
         /// </summary>
         public double Value
         {

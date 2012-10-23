@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Capacitance quantity.
+//   Represents the capacitance quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Capacitance quantity.
+    /// Represents the capacitance quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct Capacitance : IQuantity<Capacitance>
     {
         /// <summary>
-        /// The F unit.
+        /// The backing field for the <see cref="Farad" /> property.
         /// </summary>
-        [Unit("F", true)]
-        public static Capacitance Farad = new Capacitance(1);
+        private static readonly Capacitance FaradField = new Capacitance(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Capacitance"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Capacitance as a string.
+        /// Gets the "F" unit.
+        /// </summary>
+        [Unit("F", true)]
+        public static Capacitance Farad 
+        { 
+            get { return FaradField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the capacitance as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the capacitance in the base unit.
         /// </summary>
         public double Value
         {

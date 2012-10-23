@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a ElectricDipole quantity.
+//   Represents the electric dipole quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a ElectricDipole quantity.
+    /// Represents the electric dipole quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct ElectricDipole : IQuantity<ElectricDipole>
     {
         /// <summary>
-        /// The C*m unit.
+        /// The backing field for the <see cref="CoulombMetre" /> property.
         /// </summary>
-        [Unit("C*m", true)]
-        public static ElectricDipole CoulombMetre = new ElectricDipole(1);
+        private static readonly ElectricDipole CoulombMetreField = new ElectricDipole(1);
 
         /// <summary>
-        /// The D unit.
+        /// The backing field for the <see cref="Debye" /> property.
         /// </summary>
-        [Unit("D")]
-        public static ElectricDipole Debye = new ElectricDipole(3.33564095e-30);
+        private static readonly ElectricDipole DebyeField = new ElectricDipole(3.33564095e-30);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectricDipole"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the ElectricDipole as a string.
+        /// Gets the "C*m" unit.
+        /// </summary>
+        [Unit("C*m", true)]
+        public static ElectricDipole CoulombMetre 
+        { 
+            get { return CoulombMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "D" unit.
+        /// </summary>
+        [Unit("D")]
+        public static ElectricDipole Debye 
+        { 
+            get { return DebyeField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the electric dipole as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the electric dipole in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a MagneticFluxDensity quantity.
+//   Represents the magnetic flux density quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a MagneticFluxDensity quantity.
+    /// Represents the magnetic flux density quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct MagneticFluxDensity : IQuantity<MagneticFluxDensity>
     {
         /// <summary>
-        /// The T unit.
+        /// The backing field for the <see cref="Tesla" /> property.
         /// </summary>
-        [Unit("T", true)]
-        public static MagneticFluxDensity Tesla = new MagneticFluxDensity(1);
+        private static readonly MagneticFluxDensity TeslaField = new MagneticFluxDensity(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MagneticFluxDensity"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the MagneticFluxDensity as a string.
+        /// Gets the "T" unit.
+        /// </summary>
+        [Unit("T", true)]
+        public static MagneticFluxDensity Tesla 
+        { 
+            get { return TeslaField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the magnetic flux density as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the magnetic flux density in the base unit.
         /// </summary>
         public double Value
         {

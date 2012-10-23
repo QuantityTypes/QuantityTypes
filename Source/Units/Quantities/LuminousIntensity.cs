@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a LuminousIntensity quantity.
+//   Represents the luminous intensity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a LuminousIntensity quantity.
+    /// Represents the luminous intensity quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct LuminousIntensity : IQuantity<LuminousIntensity>
     {
         /// <summary>
-        /// The cd unit.
+        /// The backing field for the <see cref="Candela" /> property.
         /// </summary>
-        [Unit("cd", true)]
-        public static LuminousIntensity Candela = new LuminousIntensity(1);
+        private static readonly LuminousIntensity CandelaField = new LuminousIntensity(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LuminousIntensity"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the LuminousIntensity as a string.
+        /// Gets the "cd" unit.
+        /// </summary>
+        [Unit("cd", true)]
+        public static LuminousIntensity Candela 
+        { 
+            get { return CandelaField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the luminous intensity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the luminous intensity in the base unit.
         /// </summary>
         public double Value
         {

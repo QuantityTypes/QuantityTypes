@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a FirstMomentOfArea quantity.
+//   Represents the first moment of area quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a FirstMomentOfArea quantity.
+    /// Represents the first moment of area quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct FirstMomentOfArea : IQuantity<FirstMomentOfArea>
     {
         /// <summary>
-        /// The m^3 unit.
+        /// The backing field for the <see cref="MetreCubed" /> property.
         /// </summary>
-        [Unit("m^3", true)]
-        public static FirstMomentOfArea MetreCubed = new FirstMomentOfArea(1);
+        private static readonly FirstMomentOfArea MetreCubedField = new FirstMomentOfArea(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FirstMomentOfArea"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the FirstMomentOfArea as a string.
+        /// Gets the "m^3" unit.
+        /// </summary>
+        [Unit("m^3", true)]
+        public static FirstMomentOfArea MetreCubed 
+        { 
+            get { return MetreCubedField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the first moment of area as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the first moment of area in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a SecondMomentOfArea quantity.
+//   Represents the second moment of area quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a SecondMomentOfArea quantity.
+    /// Represents the second moment of area quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct SecondMomentOfArea : IQuantity<SecondMomentOfArea>
     {
         /// <summary>
-        /// The m^4 unit.
+        /// The backing field for the <see cref="MetreToTheFourth" /> property.
         /// </summary>
-        [Unit("m^4", true)]
-        public static SecondMomentOfArea MetreToTheFourth = new SecondMomentOfArea(1);
+        private static readonly SecondMomentOfArea MetreToTheFourthField = new SecondMomentOfArea(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecondMomentOfArea"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the SecondMomentOfArea as a string.
+        /// Gets the "m^4" unit.
+        /// </summary>
+        [Unit("m^4", true)]
+        public static SecondMomentOfArea MetreToTheFourth 
+        { 
+            get { return MetreToTheFourthField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the second moment of area as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the second moment of area in the base unit.
         /// </summary>
         public double Value
         {

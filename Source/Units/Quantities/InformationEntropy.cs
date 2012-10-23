@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a InformationEntropy quantity.
+//   Represents the information entropy quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a InformationEntropy quantity.
+    /// Represents the information entropy quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct InformationEntropy : IQuantity<InformationEntropy>
     {
         /// <summary>
-        /// The J/K unit.
+        /// The backing field for the <see cref="JoulePerKelvin" /> property.
         /// </summary>
-        [Unit("J/K", true)]
-        public static InformationEntropy JoulePerKelvin = new InformationEntropy(1);
+        private static readonly InformationEntropy JoulePerKelvinField = new InformationEntropy(1);
 
         /// <summary>
-        /// The B unit.
+        /// The backing field for the <see cref="Byte" /> property.
         /// </summary>
-        [Unit("B")]
-        public static InformationEntropy Byte = new InformationEntropy(7.655952e-23);
+        private static readonly InformationEntropy ByteField = new InformationEntropy(7.655952e-23);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InformationEntropy"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the InformationEntropy as a string.
+        /// Gets the "J/K" unit.
+        /// </summary>
+        [Unit("J/K", true)]
+        public static InformationEntropy JoulePerKelvin 
+        { 
+            get { return JoulePerKelvinField; } 
+        }
+
+        /// <summary>
+        /// Gets the "B" unit.
+        /// </summary>
+        [Unit("B")]
+        public static InformationEntropy Byte 
+        { 
+            get { return ByteField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the information entropy as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the information entropy in the base unit.
         /// </summary>
         public double Value
         {

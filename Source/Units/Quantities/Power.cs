@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Power quantity.
+//   Represents the power quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Power quantity.
+    /// Represents the power quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Power : IQuantity<Power>
     {
         /// <summary>
-        /// The W unit.
+        /// The backing field for the <see cref="Watt" /> property.
         /// </summary>
-        [Unit("W", true)]
-        public static Power Watt = new Power(1);
+        private static readonly Power WattField = new Power(1);
 
         /// <summary>
-        /// The hp unit.
+        /// The backing field for the <see cref="HorsePower" /> property.
         /// </summary>
-        [Unit("hp")]
-        public static Power HorsePower = new Power(735.49875);
+        private static readonly Power HorsePowerField = new Power(735.49875);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Power"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Power as a string.
+        /// Gets the "W" unit.
+        /// </summary>
+        [Unit("W", true)]
+        public static Power Watt 
+        { 
+            get { return WattField; } 
+        }
+
+        /// <summary>
+        /// Gets the "hp" unit.
+        /// </summary>
+        [Unit("hp")]
+        public static Power HorsePower 
+        { 
+            get { return HorsePowerField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the power as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the power in the base unit.
         /// </summary>
         public double Value
         {

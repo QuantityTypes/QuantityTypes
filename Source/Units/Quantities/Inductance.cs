@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Inductance quantity.
+//   Represents the inductance quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Inductance quantity.
+    /// Represents the inductance quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct Inductance : IQuantity<Inductance>
     {
         /// <summary>
-        /// The H unit.
+        /// The backing field for the <see cref="Henry" /> property.
         /// </summary>
-        [Unit("H", true)]
-        public static Inductance Henry = new Inductance(1);
+        private static readonly Inductance HenryField = new Inductance(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Inductance"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Inductance as a string.
+        /// Gets the "H" unit.
+        /// </summary>
+        [Unit("H", true)]
+        public static Inductance Henry 
+        { 
+            get { return HenryField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the inductance as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the inductance in the base unit.
         /// </summary>
         public double Value
         {

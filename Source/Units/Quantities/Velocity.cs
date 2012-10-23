@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Velocity quantity.
+//   Represents the velocity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Velocity quantity.
+    /// Represents the velocity quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,31 +23,24 @@ namespace Units
     public partial struct Velocity : IQuantity<Velocity>
     {
         /// <summary>
-        /// The m/s unit.
+        /// The backing field for the <see cref="MetrePerSecond" /> property.
         /// </summary>
-        [Unit("m/s", true)]
-        public static Velocity MetrePerSecond = new Velocity(1);
+        private static readonly Velocity MetrePerSecondField = new Velocity(1);
 
         /// <summary>
-        /// The km/h unit.
+        /// The backing field for the <see cref="KilometrePerHour" /> property.
         /// </summary>
-        [Unit("km/h")]
-        public static Velocity KilometrePerHour = new Velocity(1/3.6);
+        private static readonly Velocity KilometrePerHourField = new Velocity(1/3.6);
 
         /// <summary>
-        /// The knot unit.
+        /// The backing field for the <see cref="Knot" /> property.
         /// </summary>
-        [Unit("knot")]
-        public static Velocity Knot = new Velocity(0.514444444444444);
+        private static readonly Velocity KnotField = new Velocity(0.514444444444444);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Velocity"/> struct.
@@ -75,7 +68,34 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Velocity as a string.
+        /// Gets the "m/s" unit.
+        /// </summary>
+        [Unit("m/s", true)]
+        public static Velocity MetrePerSecond 
+        { 
+            get { return MetrePerSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets the "km/h" unit.
+        /// </summary>
+        [Unit("km/h")]
+        public static Velocity KilometrePerHour 
+        { 
+            get { return KilometrePerHourField; } 
+        }
+
+        /// <summary>
+        /// Gets the "knot" unit.
+        /// </summary>
+        [Unit("knot")]
+        public static Velocity Knot 
+        { 
+            get { return KnotField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the velocity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -83,7 +103,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -97,7 +117,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the velocity in the base unit.
         /// </summary>
         public double Value
         {

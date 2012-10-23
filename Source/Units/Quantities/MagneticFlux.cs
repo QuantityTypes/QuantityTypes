@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a MagneticFlux quantity.
+//   Represents the magnetic flux quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a MagneticFlux quantity.
+    /// Represents the magnetic flux quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct MagneticFlux : IQuantity<MagneticFlux>
     {
         /// <summary>
-        /// The Wb unit.
+        /// The backing field for the <see cref="Weber" /> property.
         /// </summary>
-        [Unit("Wb", true)]
-        public static MagneticFlux Weber = new MagneticFlux(1);
+        private static readonly MagneticFlux WeberField = new MagneticFlux(1);
 
         /// <summary>
-        /// The Mx unit.
+        /// The backing field for the <see cref="Maxwell" /> property.
         /// </summary>
-        [Unit("Mx")]
-        public static MagneticFlux Maxwell = new MagneticFlux(1e-8);
+        private static readonly MagneticFlux MaxwellField = new MagneticFlux(1e-8);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MagneticFlux"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the MagneticFlux as a string.
+        /// Gets the "Wb" unit.
+        /// </summary>
+        [Unit("Wb", true)]
+        public static MagneticFlux Weber 
+        { 
+            get { return WeberField; } 
+        }
+
+        /// <summary>
+        /// Gets the "Mx" unit.
+        /// </summary>
+        [Unit("Mx")]
+        public static MagneticFlux Maxwell 
+        { 
+            get { return MaxwellField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the magnetic flux as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the magnetic flux in the base unit.
         /// </summary>
         public double Value
         {

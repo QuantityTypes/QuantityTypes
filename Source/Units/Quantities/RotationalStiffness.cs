@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a RotationalStiffness quantity.
+//   Represents the rotational stiffness quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a RotationalStiffness quantity.
+    /// Represents the rotational stiffness quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct RotationalStiffness : IQuantity<RotationalStiffness>
     {
         /// <summary>
-        /// The N*m/rad unit.
+        /// The backing field for the <see cref="NewtonMetrePerRadian" /> property.
         /// </summary>
-        [Unit("N*m/rad", true)]
-        public static RotationalStiffness NewtonMetrePerRadian = new RotationalStiffness(1);
+        private static readonly RotationalStiffness NewtonMetrePerRadianField = new RotationalStiffness(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RotationalStiffness"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the RotationalStiffness as a string.
+        /// Gets the "N*m/rad" unit.
+        /// </summary>
+        [Unit("N*m/rad", true)]
+        public static RotationalStiffness NewtonMetrePerRadian 
+        { 
+            get { return NewtonMetrePerRadianField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the rotational stiffness as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the rotational stiffness in the base unit.
         /// </summary>
         public double Value
         {
