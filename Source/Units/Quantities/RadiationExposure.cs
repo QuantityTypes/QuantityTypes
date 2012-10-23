@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a RadiationExposure quantity.
+//   Represents the radiation exposure quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a RadiationExposure quantity.
+    /// Represents the radiation exposure quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct RadiationExposure : IQuantity<RadiationExposure>
     {
         /// <summary>
-        /// The R unit.
+        /// The backing field for the <see cref="Roentgen" /> property.
         /// </summary>
-        [Unit("R", true)]
-        public static RadiationExposure Roentgen = new RadiationExposure(2.58e-4);
+        private static readonly RadiationExposure RoentgenField = new RadiationExposure(2.58e-4);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RadiationExposure"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the RadiationExposure as a string.
+        /// Gets the "R" unit.
+        /// </summary>
+        [Unit("R", true)]
+        public static RadiationExposure Roentgen 
+        { 
+            get { return RoentgenField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the radiation exposure as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the radiation exposure in the base unit.
         /// </summary>
         public double Value
         {

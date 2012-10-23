@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Acceleration quantity.
+//   Represents the acceleration quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Acceleration quantity.
+    /// Represents the acceleration quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Acceleration : IQuantity<Acceleration>
     {
         /// <summary>
-        /// The m/s^2 unit.
+        /// The backing field for the <see cref="MetrePerSecondSquared" /> property.
         /// </summary>
-        [Unit("m/s^2", true)]
-        public static Acceleration MetrePerSecondSquared = new Acceleration(1);
+        private static readonly Acceleration MetrePerSecondSquaredField = new Acceleration(1);
 
         /// <summary>
-        /// The g unit.
+        /// The backing field for the <see cref="StandardGravity" /> property.
         /// </summary>
-        [Unit("g")]
-        public static Acceleration StandardGravity = new Acceleration(9.80665);
+        private static readonly Acceleration StandardGravityField = new Acceleration(9.80665);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Acceleration"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Acceleration as a string.
+        /// Gets the "m/s^2" unit.
+        /// </summary>
+        [Unit("m/s^2", true)]
+        public static Acceleration MetrePerSecondSquared 
+        { 
+            get { return MetrePerSecondSquaredField; } 
+        }
+
+        /// <summary>
+        /// Gets the "g" unit.
+        /// </summary>
+        [Unit("g")]
+        public static Acceleration StandardGravity 
+        { 
+            get { return StandardGravityField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the acceleration as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the acceleration in the base unit.
         /// </summary>
         public double Value
         {

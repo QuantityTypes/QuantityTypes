@@ -2,12 +2,39 @@
 <#@ import namespace="System.Runtime.Remoting.Messaging" #>
 <#@ import namespace="System.IO" #>
 <# if (!string.IsNullOrWhiteSpace(ClassName)) {
+	string classname = ClassName.Substring(0,1);
+	for (int i=1;i<ClassName.Length;i++) {
+	  if (Char.IsUpper(ClassName[i])) classname+=" ";
+	  classname+=ClassName[i];
+	}
+	classname = classname.ToLower();
 #>// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="<#= ClassName #>.cs" company="Units.NET">
+//   The MIT License (MIT)
+//   
 //   Copyright (c) 2012 Oystein Bjorke
+//   
+//   Permission is hereby granted, free of charge, to any person obtaining a
+//   copy of this software and associated documentation files (the
+//   "Software"), to deal in the Software without restriction, including
+//   without limitation the rights to use, copy, modify, merge, publish,
+//   distribute, sublicense, and/or sell copies of the Software, and to
+//   permit persons to whom the Software is furnished to do so, subject to
+//   the following conditions:
+//   
+//   The above copyright notice and this permission notice shall be included
+//   in all copies or substantial portions of the Software.
+//   
+//   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+//   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+//   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+//   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+//   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+//   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+//   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // </copyright>
 // <summary>
-//   Represents a <#= ClassName #> quantity.
+//   Represents the <#= classname #> quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -19,7 +46,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a <#= ClassName #> quantity.
+    /// Represents the <#= classname #> quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -30,34 +57,26 @@ namespace Units
         string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
         string outputFilePath = Path.Combine(templateDirectory, "Units.csv");
 		var lines=File.ReadAllLines(outputFilePath);
-		bool first=true;
 		foreach (var line in lines) {
-  		  if (string.IsNullOrWhiteSpace(line) || line.Trim().StartsWith("//")) continue;
-		  var values=line.Split(',');
-		  if (values.Length<4 || values[0]!=ClassName) continue;
-		  var name=values[1];
-		  var symbol=values[2];
-		  var value=values[3];
-		  var dispu = first ? ", true" : "";
-		  first=false;
-	#>
+  			if (string.IsNullOrWhiteSpace(line) || line.Trim().StartsWith("//")) continue;
+			var values=line.Split(',');
+			if (values.Length < 4 || values[0] != ClassName) continue;
+			var name = values[1];
+			var value = values[3];
+			var fieldName = name + "Field";
+#>
         /// <summary>
-        /// The <#= symbol #> unit.
+        /// The backing field for the <see cref="<#= name #>" /> property.
         /// </summary>
-        [Unit("<#= symbol #>"<#= dispu #>)]
-        public static <#= ClassName #> <#= name #> = new <#= ClassName #>(<#= value #>);
+        private static readonly <#= ClassName #> <#= fieldName #> = new <#= ClassName #>(<#= value #>);
 
 <#
-	}
+		}
 #>
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="<#= ClassName #>"/> struct.
@@ -84,8 +103,32 @@ namespace Units
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
+<#
+        bool isFirstLine = true;
+		foreach (var line in lines) {
+  			if (string.IsNullOrWhiteSpace(line) || line.Trim().StartsWith("//")) continue;
+			var values=line.Split(',');
+			if (values.Length < 4 || values[0] != ClassName) continue;
+			var name = values[1];
+			var fieldName = name + "Field";
+			var symbol = values[2];
+			var displayUnit = isFirstLine ? ", true" : "";
+			isFirstLine=false;
+#>
         /// <summary>
-        /// Gets or sets the <#= ClassName #> as a string.
+        /// Gets the "<#= symbol #>" unit.
+        /// </summary>
+        [Unit("<#= symbol #>"<#= displayUnit #>)]
+        public static <#= ClassName #> <#= name #> 
+        { 
+            get { return <#= fieldName #>; } 
+        }
+
+<#
+		}
+#>
+        /// <summary>
+        /// Gets or sets the <#= classname #> as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -93,7 +136,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -107,7 +150,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the <#= classname #> in the base unit.
         /// </summary>
         public double Value
         {

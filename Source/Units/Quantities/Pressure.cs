@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Pressure quantity.
+//   Represents the pressure quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Pressure quantity.
+    /// Represents the pressure quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,61 +23,49 @@ namespace Units
     public partial struct Pressure : IQuantity<Pressure>
     {
         /// <summary>
-        /// The Pa unit.
+        /// The backing field for the <see cref="Pascal" /> property.
         /// </summary>
-        [Unit("Pa", true)]
-        public static Pressure Pascal = new Pressure(1);
+        private static readonly Pressure PascalField = new Pressure(1);
 
         /// <summary>
-        /// The kPa unit.
+        /// The backing field for the <see cref="Kilopascal" /> property.
         /// </summary>
-        [Unit("kPa")]
-        public static Pressure Kilopascal = new Pressure(1000);
+        private static readonly Pressure KilopascalField = new Pressure(1000);
 
         /// <summary>
-        /// The psi unit.
+        /// The backing field for the <see cref="PoundPerSquareInch" /> property.
         /// </summary>
-        [Unit("psi")]
-        public static Pressure PoundPerSquareInch = new Pressure(6.894757e3);
+        private static readonly Pressure PoundPerSquareInchField = new Pressure(6.894757e3);
 
         /// <summary>
-        /// The ksi unit.
+        /// The backing field for the <see cref="KilopoundPerSquareInch" /> property.
         /// </summary>
-        [Unit("ksi")]
-        public static Pressure KilopoundPerSquareInch = new Pressure(6.8947572931783e6);
+        private static readonly Pressure KilopoundPerSquareInchField = new Pressure(6.8947572931783e6);
 
         /// <summary>
-        /// The mmHg unit.
+        /// The backing field for the <see cref="MillimetreOfMercury" /> property.
         /// </summary>
-        [Unit("mmHg")]
-        public static Pressure MillimetreOfMercury = new Pressure(133.3224);
+        private static readonly Pressure MillimetreOfMercuryField = new Pressure(133.3224);
 
         /// <summary>
-        /// The bar unit.
+        /// The backing field for the <see cref="Bar" /> property.
         /// </summary>
-        [Unit("bar")]
-        public static Pressure Bar = new Pressure(1e5);
+        private static readonly Pressure BarField = new Pressure(1e5);
 
         /// <summary>
-        /// The Megapascal unit.
+        /// The backing field for the <see cref="Megapascal" /> property.
         /// </summary>
-        [Unit("Megapascal")]
-        public static Pressure Megapascal = new Pressure(1000000);
+        private static readonly Pressure MegapascalField = new Pressure(1000000);
 
         /// <summary>
-        /// The atm unit.
+        /// The backing field for the <see cref="Atmosphere" /> property.
         /// </summary>
-        [Unit("atm")]
-        public static Pressure Atmosphere = new Pressure(101325);
+        private static readonly Pressure AtmosphereField = new Pressure(101325);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Pressure"/> struct.
@@ -105,7 +93,79 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Pressure as a string.
+        /// Gets the "Pa" unit.
+        /// </summary>
+        [Unit("Pa", true)]
+        public static Pressure Pascal 
+        { 
+            get { return PascalField; } 
+        }
+
+        /// <summary>
+        /// Gets the "kPa" unit.
+        /// </summary>
+        [Unit("kPa")]
+        public static Pressure Kilopascal 
+        { 
+            get { return KilopascalField; } 
+        }
+
+        /// <summary>
+        /// Gets the "psi" unit.
+        /// </summary>
+        [Unit("psi")]
+        public static Pressure PoundPerSquareInch 
+        { 
+            get { return PoundPerSquareInchField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ksi" unit.
+        /// </summary>
+        [Unit("ksi")]
+        public static Pressure KilopoundPerSquareInch 
+        { 
+            get { return KilopoundPerSquareInchField; } 
+        }
+
+        /// <summary>
+        /// Gets the "mmHg" unit.
+        /// </summary>
+        [Unit("mmHg")]
+        public static Pressure MillimetreOfMercury 
+        { 
+            get { return MillimetreOfMercuryField; } 
+        }
+
+        /// <summary>
+        /// Gets the "bar" unit.
+        /// </summary>
+        [Unit("bar")]
+        public static Pressure Bar 
+        { 
+            get { return BarField; } 
+        }
+
+        /// <summary>
+        /// Gets the "Megapascal" unit.
+        /// </summary>
+        [Unit("Megapascal")]
+        public static Pressure Megapascal 
+        { 
+            get { return MegapascalField; } 
+        }
+
+        /// <summary>
+        /// Gets the "atm" unit.
+        /// </summary>
+        [Unit("atm")]
+        public static Pressure Atmosphere 
+        { 
+            get { return AtmosphereField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the pressure as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -113,7 +173,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -127,7 +187,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the pressure in the base unit.
         /// </summary>
         public double Value
         {

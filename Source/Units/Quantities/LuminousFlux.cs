@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a LuminousFlux quantity.
+//   Represents the luminous flux quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a LuminousFlux quantity.
+    /// Represents the luminous flux quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct LuminousFlux : IQuantity<LuminousFlux>
     {
         /// <summary>
-        /// The lm unit.
+        /// The backing field for the <see cref="Lumen" /> property.
         /// </summary>
-        [Unit("lm", true)]
-        public static LuminousFlux Lumen = new LuminousFlux(1);
+        private static readonly LuminousFlux LumenField = new LuminousFlux(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LuminousFlux"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the LuminousFlux as a string.
+        /// Gets the "lm" unit.
+        /// </summary>
+        [Unit("lm", true)]
+        public static LuminousFlux Lumen 
+        { 
+            get { return LumenField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the luminous flux as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the luminous flux in the base unit.
         /// </summary>
         public double Value
         {

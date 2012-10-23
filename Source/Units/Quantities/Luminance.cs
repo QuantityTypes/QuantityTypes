@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Luminance quantity.
+//   Represents the luminance quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Luminance quantity.
+    /// Represents the luminance quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Luminance : IQuantity<Luminance>
     {
         /// <summary>
-        /// The cd/m^2 unit.
+        /// The backing field for the <see cref="CandelaPerSquareMetre" /> property.
         /// </summary>
-        [Unit("cd/m^2", true)]
-        public static Luminance CandelaPerSquareMetre = new Luminance(1);
+        private static readonly Luminance CandelaPerSquareMetreField = new Luminance(1);
 
         /// <summary>
-        /// The L unit.
+        /// The backing field for the <see cref="Lambert" /> property.
         /// </summary>
-        [Unit("L")]
-        public static Luminance Lambert = new Luminance(3183.0988618);
+        private static readonly Luminance LambertField = new Luminance(3183.0988618);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Luminance"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Luminance as a string.
+        /// Gets the "cd/m^2" unit.
+        /// </summary>
+        [Unit("cd/m^2", true)]
+        public static Luminance CandelaPerSquareMetre 
+        { 
+            get { return CandelaPerSquareMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "L" unit.
+        /// </summary>
+        [Unit("L")]
+        public static Luminance Lambert 
+        { 
+            get { return LambertField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the luminance as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the luminance in the base unit.
         /// </summary>
         public double Value
         {

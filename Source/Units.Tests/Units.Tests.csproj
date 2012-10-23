@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,16 +47,17 @@
     <Compile Include="DensityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemperatureTests.cs" />
-    <Compile Include="ShortLength.cs" />
     <Compile Include="LengthTests.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="ShortLengthOperators.cs" />
+    <Compile Include="Example.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Units\Units.csproj">
       <Project>{626A772F-2D08-4C9C-B258-431E40133EF6}</Project>
       <Name>Units</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a KinematicViscosity quantity.
+//   Represents the kinematic viscosity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a KinematicViscosity quantity.
+    /// Represents the kinematic viscosity quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct KinematicViscosity : IQuantity<KinematicViscosity>
     {
         /// <summary>
-        /// The m^2/s unit.
+        /// The backing field for the <see cref="SquareMetrePerSecond" /> property.
         /// </summary>
-        [Unit("m^2/s", true)]
-        public static KinematicViscosity SquareMetrePerSecond = new KinematicViscosity(1);
+        private static readonly KinematicViscosity SquareMetrePerSecondField = new KinematicViscosity(1);
 
         /// <summary>
-        /// The mm^2/s unit.
+        /// The backing field for the <see cref="SquareMillimetrePerSecond" /> property.
         /// </summary>
-        [Unit("mm^2/s")]
-        public static KinematicViscosity SquareMillimetrePerSecond = new KinematicViscosity(1e-6);
+        private static readonly KinematicViscosity SquareMillimetrePerSecondField = new KinematicViscosity(1e-6);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KinematicViscosity"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the KinematicViscosity as a string.
+        /// Gets the "m^2/s" unit.
+        /// </summary>
+        [Unit("m^2/s", true)]
+        public static KinematicViscosity SquareMetrePerSecond 
+        { 
+            get { return SquareMetrePerSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets the "mm^2/s" unit.
+        /// </summary>
+        [Unit("mm^2/s")]
+        public static KinematicViscosity SquareMillimetrePerSecond 
+        { 
+            get { return SquareMillimetrePerSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the kinematic viscosity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the kinematic viscosity in the base unit.
         /// </summary>
         public double Value
         {

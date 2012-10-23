@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a HeatCapacity quantity.
+//   Represents the heat capacity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a HeatCapacity quantity.
+    /// Represents the heat capacity quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct HeatCapacity : IQuantity<HeatCapacity>
     {
         /// <summary>
-        /// The J/K unit.
+        /// The backing field for the <see cref="JoulePerKelvin" /> property.
         /// </summary>
-        [Unit("J/K", true)]
-        public static HeatCapacity JoulePerKelvin = new HeatCapacity(1);
+        private static readonly HeatCapacity JoulePerKelvinField = new HeatCapacity(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HeatCapacity"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the HeatCapacity as a string.
+        /// Gets the "J/K" unit.
+        /// </summary>
+        [Unit("J/K", true)]
+        public static HeatCapacity JoulePerKelvin 
+        { 
+            get { return JoulePerKelvinField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the heat capacity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the heat capacity in the base unit.
         /// </summary>
         public double Value
         {

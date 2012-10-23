@@ -142,7 +142,7 @@
             var ms = new MemoryStream();
             s.WriteObject(ms, t);
             var xml = Encoding.UTF8.GetString(ms.ToArray());
-            Assert.IsTrue(xml.Contains(@"<a:Data>100.2 m</a:Data>"));
+            Assert.IsTrue(xml.Contains(@"<a:XmlValue>100.2 m</a:XmlValue>"));
 
             // Deserialize
             var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Time quantity.
+//   Represents the time quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Time quantity.
+    /// Represents the time quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,49 +23,39 @@ namespace Units
     public partial struct Time : IQuantity<Time>
     {
         /// <summary>
-        /// The s unit.
+        /// The backing field for the <see cref="Second" /> property.
         /// </summary>
-        [Unit("s", true)]
-        public static Time Second = new Time(1);
+        private static readonly Time SecondField = new Time(1);
 
         /// <summary>
-        /// The min unit.
+        /// The backing field for the <see cref="Minute" /> property.
         /// </summary>
-        [Unit("min")]
-        public static Time Minute = new Time(60);
+        private static readonly Time MinuteField = new Time(60);
 
         /// <summary>
-        /// The h unit.
+        /// The backing field for the <see cref="Hour" /> property.
         /// </summary>
-        [Unit("h")]
-        public static Time Hour = new Time(3600);
+        private static readonly Time HourField = new Time(3600);
 
         /// <summary>
-        /// The d unit.
+        /// The backing field for the <see cref="Day" /> property.
         /// </summary>
-        [Unit("d")]
-        public static Time Day = new Time(24 * Hour.Value);
+        private static readonly Time DayField = new Time(24 * Hour.Value);
 
         /// <summary>
-        /// The wk unit.
+        /// The backing field for the <see cref="Week" /> property.
         /// </summary>
-        [Unit("wk")]
-        public static Time Week = new Time(7 * Day.Value);
+        private static readonly Time WeekField = new Time(7 * Day.Value);
 
         /// <summary>
-        /// The ms unit.
+        /// The backing field for the <see cref="Millisecond" /> property.
         /// </summary>
-        [Unit("ms")]
-        public static Time Millisecond = new Time(1e-3);
+        private static readonly Time MillisecondField = new Time(1e-3);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Time"/> struct.
@@ -93,7 +83,61 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Time as a string.
+        /// Gets the "s" unit.
+        /// </summary>
+        [Unit("s", true)]
+        public static Time Second 
+        { 
+            get { return SecondField; } 
+        }
+
+        /// <summary>
+        /// Gets the "min" unit.
+        /// </summary>
+        [Unit("min")]
+        public static Time Minute 
+        { 
+            get { return MinuteField; } 
+        }
+
+        /// <summary>
+        /// Gets the "h" unit.
+        /// </summary>
+        [Unit("h")]
+        public static Time Hour 
+        { 
+            get { return HourField; } 
+        }
+
+        /// <summary>
+        /// Gets the "d" unit.
+        /// </summary>
+        [Unit("d")]
+        public static Time Day 
+        { 
+            get { return DayField; } 
+        }
+
+        /// <summary>
+        /// Gets the "wk" unit.
+        /// </summary>
+        [Unit("wk")]
+        public static Time Week 
+        { 
+            get { return WeekField; } 
+        }
+
+        /// <summary>
+        /// Gets the "ms" unit.
+        /// </summary>
+        [Unit("ms")]
+        public static Time Millisecond 
+        { 
+            get { return MillisecondField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the time as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -101,7 +145,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -115,7 +159,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the time in the base unit.
         /// </summary>
         public double Value
         {

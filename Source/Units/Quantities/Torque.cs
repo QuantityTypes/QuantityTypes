@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Torque quantity.
+//   Represents the torque quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Torque quantity.
+    /// Represents the torque quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct Torque : IQuantity<Torque>
     {
         /// <summary>
-        /// The N*m unit.
+        /// The backing field for the <see cref="NewtonMetre" /> property.
         /// </summary>
-        [Unit("N*m", true)]
-        public static Torque NewtonMetre = new Torque(1);
+        private static readonly Torque NewtonMetreField = new Torque(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Torque"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Torque as a string.
+        /// Gets the "N*m" unit.
+        /// </summary>
+        [Unit("N*m", true)]
+        public static Torque NewtonMetre 
+        { 
+            get { return NewtonMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the torque as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the torque in the base unit.
         /// </summary>
         public double Value
         {

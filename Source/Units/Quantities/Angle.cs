@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Angle quantity.
+//   Represents the angle quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Angle quantity.
+    /// Represents the angle quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Angle : IQuantity<Angle>
     {
         /// <summary>
-        /// The rad unit.
+        /// The backing field for the <see cref="Radian" /> property.
         /// </summary>
-        [Unit("rad", true)]
-        public static Angle Radian = new Angle(1);
+        private static readonly Angle RadianField = new Angle(1);
 
         /// <summary>
-        /// The deg unit.
+        /// The backing field for the <see cref="Degree" /> property.
         /// </summary>
-        [Unit("deg")]
-        public static Angle Degree = new Angle(180 / Math.PI);
+        private static readonly Angle DegreeField = new Angle(180 / Math.PI);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Angle"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Angle as a string.
+        /// Gets the "rad" unit.
+        /// </summary>
+        [Unit("rad", true)]
+        public static Angle Radian 
+        { 
+            get { return RadianField; } 
+        }
+
+        /// <summary>
+        /// Gets the "deg" unit.
+        /// </summary>
+        [Unit("deg")]
+        public static Angle Degree 
+        { 
+            get { return DegreeField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the angle as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the angle in the base unit.
         /// </summary>
         public double Value
         {

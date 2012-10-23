@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a ElectricCurrent quantity.
+//   Represents the electric current quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a ElectricCurrent quantity.
+    /// Represents the electric current quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct ElectricCurrent : IQuantity<ElectricCurrent>
     {
         /// <summary>
-        /// The A unit.
+        /// The backing field for the <see cref="Ampere" /> property.
         /// </summary>
-        [Unit("A", true)]
-        public static ElectricCurrent Ampere = new ElectricCurrent(1);
+        private static readonly ElectricCurrent AmpereField = new ElectricCurrent(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectricCurrent"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the ElectricCurrent as a string.
+        /// Gets the "A" unit.
+        /// </summary>
+        [Unit("A", true)]
+        public static ElectricCurrent Ampere 
+        { 
+            get { return AmpereField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the electric current as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the electric current in the base unit.
         /// </summary>
         public double Value
         {

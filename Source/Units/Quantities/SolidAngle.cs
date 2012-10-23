@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a SolidAngle quantity.
+//   Represents the solid angle quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a SolidAngle quantity.
+    /// Represents the solid angle quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct SolidAngle : IQuantity<SolidAngle>
     {
         /// <summary>
-        /// The sr unit.
+        /// The backing field for the <see cref="Steradian" /> property.
         /// </summary>
-        [Unit("sr", true)]
-        public static SolidAngle Steradian = new SolidAngle(1);
+        private static readonly SolidAngle SteradianField = new SolidAngle(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolidAngle"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the SolidAngle as a string.
+        /// Gets the "sr" unit.
+        /// </summary>
+        [Unit("sr", true)]
+        public static SolidAngle Steradian 
+        { 
+            get { return SteradianField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the solid angle as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the solid angle in the base unit.
         /// </summary>
         public double Value
         {

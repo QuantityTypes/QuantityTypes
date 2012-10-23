@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Curvature quantity.
+//   Represents the curvature quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Curvature quantity.
+    /// Represents the curvature quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct Curvature : IQuantity<Curvature>
     {
         /// <summary>
-        /// The 1/m unit.
+        /// The backing field for the <see cref="PerMetre" /> property.
         /// </summary>
-        [Unit("1/m", true)]
-        public static Curvature PerMetre = new Curvature(1);
+        private static readonly Curvature PerMetreField = new Curvature(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Curvature"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Curvature as a string.
+        /// Gets the "1/m" unit.
+        /// </summary>
+        [Unit("1/m", true)]
+        public static Curvature PerMetre 
+        { 
+            get { return PerMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the curvature as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the curvature in the base unit.
         /// </summary>
         public double Value
         {

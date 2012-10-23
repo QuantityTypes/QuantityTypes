@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Flow quantity.
+//   Represents the flow quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Flow quantity.
+    /// Represents the flow quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Flow : IQuantity<Flow>
     {
         /// <summary>
-        /// The m^3/s unit.
+        /// The backing field for the <see cref="CubicMetrePerSecond" /> property.
         /// </summary>
-        [Unit("m^3/s", true)]
-        public static Flow CubicMetrePerSecond = new Flow(1);
+        private static readonly Flow CubicMetrePerSecondField = new Flow(1);
 
         /// <summary>
-        /// The L/min unit.
+        /// The backing field for the <see cref="LitrePerMinute" /> property.
         /// </summary>
-        [Unit("L/min")]
-        public static Flow LitrePerMinute = new Flow(1.6e-5);
+        private static readonly Flow LitrePerMinuteField = new Flow(1.6e-5);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Flow"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Flow as a string.
+        /// Gets the "m^3/s" unit.
+        /// </summary>
+        [Unit("m^3/s", true)]
+        public static Flow CubicMetrePerSecond 
+        { 
+            get { return CubicMetrePerSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets the "L/min" unit.
+        /// </summary>
+        [Unit("L/min")]
+        public static Flow LitrePerMinute 
+        { 
+            get { return LitrePerMinuteField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the flow as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the flow in the base unit.
         /// </summary>
         public double Value
         {

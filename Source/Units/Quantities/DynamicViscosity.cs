@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a DynamicViscosity quantity.
+//   Represents the dynamic viscosity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a DynamicViscosity quantity.
+    /// Represents the dynamic viscosity quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct DynamicViscosity : IQuantity<DynamicViscosity>
     {
         /// <summary>
-        /// The Pa*s unit.
+        /// The backing field for the <see cref="PascalSecond" /> property.
         /// </summary>
-        [Unit("Pa*s", true)]
-        public static DynamicViscosity PascalSecond = new DynamicViscosity(1);
+        private static readonly DynamicViscosity PascalSecondField = new DynamicViscosity(1);
 
         /// <summary>
-        /// The N*s unit.
+        /// The backing field for the <see cref="NewtonSecond" /> property.
         /// </summary>
-        [Unit("N*s")]
-        public static DynamicViscosity NewtonSecond = new DynamicViscosity(1);
+        private static readonly DynamicViscosity NewtonSecondField = new DynamicViscosity(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicViscosity"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the DynamicViscosity as a string.
+        /// Gets the "Pa*s" unit.
+        /// </summary>
+        [Unit("Pa*s", true)]
+        public static DynamicViscosity PascalSecond 
+        { 
+            get { return PascalSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets the "N*s" unit.
+        /// </summary>
+        [Unit("N*s")]
+        public static DynamicViscosity NewtonSecond 
+        { 
+            get { return NewtonSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the dynamic viscosity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the dynamic viscosity in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a ElectricResistance quantity.
+//   Represents the electric resistance quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a ElectricResistance quantity.
+    /// Represents the electric resistance quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct ElectricResistance : IQuantity<ElectricResistance>
     {
         /// <summary>
-        /// The Ω unit.
+        /// The backing field for the <see cref="Ohm" /> property.
         /// </summary>
-        [Unit("Ω", true)]
-        public static ElectricResistance Ohm = new ElectricResistance(1);
+        private static readonly ElectricResistance OhmField = new ElectricResistance(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectricResistance"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the ElectricResistance as a string.
+        /// Gets the "Ω" unit.
+        /// </summary>
+        [Unit("Ω", true)]
+        public static ElectricResistance Ohm 
+        { 
+            get { return OhmField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the electric resistance as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the electric resistance in the base unit.
         /// </summary>
         public double Value
         {

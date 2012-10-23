@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a LinearMomentum quantity.
+//   Represents the linear momentum quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a LinearMomentum quantity.
+    /// Represents the linear momentum quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct LinearMomentum : IQuantity<LinearMomentum>
     {
         /// <summary>
-        /// The kg*m/s unit.
+        /// The backing field for the <see cref="KilogramMeterPerSecond" /> property.
         /// </summary>
-        [Unit("kg*m/s", true)]
-        public static LinearMomentum KilogramMeterPerSecond = new LinearMomentum(1);
+        private static readonly LinearMomentum KilogramMeterPerSecondField = new LinearMomentum(1);
 
         /// <summary>
-        /// The N*s unit.
+        /// The backing field for the <see cref="NewtonSecond" /> property.
         /// </summary>
-        [Unit("N*s")]
-        public static LinearMomentum NewtonSecond = new LinearMomentum(1);
+        private static readonly LinearMomentum NewtonSecondField = new LinearMomentum(1);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LinearMomentum"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the LinearMomentum as a string.
+        /// Gets the "kg*m/s" unit.
+        /// </summary>
+        [Unit("kg*m/s", true)]
+        public static LinearMomentum KilogramMeterPerSecond 
+        { 
+            get { return KilogramMeterPerSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets the "N*s" unit.
+        /// </summary>
+        [Unit("N*s")]
+        public static LinearMomentum NewtonSecond 
+        { 
+            get { return NewtonSecondField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the linear momentum as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the linear momentum in the base unit.
         /// </summary>
         public double Value
         {

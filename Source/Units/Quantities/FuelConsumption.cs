@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a FuelConsumption quantity.
+//   Represents the fuel consumption quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a FuelConsumption quantity.
+    /// Represents the fuel consumption quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,19 +23,14 @@ namespace Units
     public partial struct FuelConsumption : IQuantity<FuelConsumption>
     {
         /// <summary>
-        /// The l/100km unit.
+        /// The backing field for the <see cref="LitrePer100Kilometre" /> property.
         /// </summary>
-        [Unit("l/100km", true)]
-        public static FuelConsumption LitrePer100Kilometre = new FuelConsumption(1e5);
+        private static readonly FuelConsumption LitrePer100KilometreField = new FuelConsumption(1e5);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FuelConsumption"/> struct.
@@ -63,7 +58,16 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the FuelConsumption as a string.
+        /// Gets the "l/100km" unit.
+        /// </summary>
+        [Unit("l/100km", true)]
+        public static FuelConsumption LitrePer100Kilometre 
+        { 
+            get { return LitrePer100KilometreField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the fuel consumption as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -71,7 +75,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the fuel consumption in the base unit.
         /// </summary>
         public double Value
         {

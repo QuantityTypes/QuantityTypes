@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a ElectricCharge quantity.
+//   Represents the electric charge quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a ElectricCharge quantity.
+    /// Represents the electric charge quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,31 +23,24 @@ namespace Units
     public partial struct ElectricCharge : IQuantity<ElectricCharge>
     {
         /// <summary>
-        /// The C unit.
+        /// The backing field for the <see cref="Coulomb" /> property.
         /// </summary>
-        [Unit("C", true)]
-        public static ElectricCharge Coulomb = new ElectricCharge(1);
+        private static readonly ElectricCharge CoulombField = new ElectricCharge(1);
 
         /// <summary>
-        /// The F unit.
+        /// The backing field for the <see cref="Faraday" /> property.
         /// </summary>
-        [Unit("F")]
-        public static ElectricCharge Faraday = new ElectricCharge(96485.3383);
+        private static readonly ElectricCharge FaradayField = new ElectricCharge(96485.3383);
 
         /// <summary>
-        /// The au unit.
+        /// The backing field for the <see cref="AtomicUnitOfCharge" /> property.
         /// </summary>
-        [Unit("au")]
-        public static ElectricCharge AtomicUnitOfCharge = new ElectricCharge(1.602176462e-19);
+        private static readonly ElectricCharge AtomicUnitOfChargeField = new ElectricCharge(1.602176462e-19);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectricCharge"/> struct.
@@ -75,7 +68,34 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the ElectricCharge as a string.
+        /// Gets the "C" unit.
+        /// </summary>
+        [Unit("C", true)]
+        public static ElectricCharge Coulomb 
+        { 
+            get { return CoulombField; } 
+        }
+
+        /// <summary>
+        /// Gets the "F" unit.
+        /// </summary>
+        [Unit("F")]
+        public static ElectricCharge Faraday 
+        { 
+            get { return FaradayField; } 
+        }
+
+        /// <summary>
+        /// Gets the "au" unit.
+        /// </summary>
+        [Unit("au")]
+        public static ElectricCharge AtomicUnitOfCharge 
+        { 
+            get { return AtomicUnitOfChargeField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the electric charge as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -83,7 +103,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -97,7 +117,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the electric charge in the base unit.
         /// </summary>
         public double Value
         {

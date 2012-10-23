@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Volume quantity.
+//   Represents the volume quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Volume quantity.
+    /// Represents the volume quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,31 +23,24 @@ namespace Units
     public partial struct Volume : IQuantity<Volume>
     {
         /// <summary>
-        /// The m^3 unit.
+        /// The backing field for the <see cref="CubicMetre" /> property.
         /// </summary>
-        [Unit("m^3", true)]
-        public static Volume CubicMetre = new Volume(1);
+        private static readonly Volume CubicMetreField = new Volume(1);
 
         /// <summary>
-        /// The L unit.
+        /// The backing field for the <see cref="Litre" /> property.
         /// </summary>
-        [Unit("L")]
-        public static Volume Litre = new Volume(1e-3);
+        private static readonly Volume LitreField = new Volume(1e-3);
 
         /// <summary>
-        /// The gal unit.
+        /// The backing field for the <see cref="Gallon" /> property.
         /// </summary>
-        [Unit("gal")]
-        public static Volume Gallon = new Volume(3.785411784e-3);
+        private static readonly Volume GallonField = new Volume(3.785411784e-3);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Volume"/> struct.
@@ -75,7 +68,34 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Volume as a string.
+        /// Gets the "m^3" unit.
+        /// </summary>
+        [Unit("m^3", true)]
+        public static Volume CubicMetre 
+        { 
+            get { return CubicMetreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "L" unit.
+        /// </summary>
+        [Unit("L")]
+        public static Volume Litre 
+        { 
+            get { return LitreField; } 
+        }
+
+        /// <summary>
+        /// Gets the "gal" unit.
+        /// </summary>
+        [Unit("gal")]
+        public static Volume Gallon 
+        { 
+            get { return GallonField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the volume as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -83,7 +103,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -97,7 +117,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the volume in the base unit.
         /// </summary>
         public double Value
         {

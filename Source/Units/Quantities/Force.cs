@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Force quantity.
+//   Represents the force quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Force quantity.
+    /// Represents the force quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,31 +23,24 @@ namespace Units
     public partial struct Force : IQuantity<Force>
     {
         /// <summary>
-        /// The N unit.
+        /// The backing field for the <see cref="Newton" /> property.
         /// </summary>
-        [Unit("N", true)]
-        public static Force Newton = new Force(1);
+        private static readonly Force NewtonField = new Force(1);
 
         /// <summary>
-        /// The kgf unit.
+        /// The backing field for the <see cref="KilogramForce" /> property.
         /// </summary>
-        [Unit("kgf")]
-        public static Force KilogramForce = new Force(9.80665);
+        private static readonly Force KilogramForceField = new Force(9.80665);
 
         /// <summary>
-        /// The kipf unit.
+        /// The backing field for the <see cref="KipForce" /> property.
         /// </summary>
-        [Unit("kipf")]
-        public static Force KipForce = new Force(4.4482216152605e3);
+        private static readonly Force KipForceField = new Force(4.4482216152605e3);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Force"/> struct.
@@ -75,7 +68,34 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Force as a string.
+        /// Gets the "N" unit.
+        /// </summary>
+        [Unit("N", true)]
+        public static Force Newton 
+        { 
+            get { return NewtonField; } 
+        }
+
+        /// <summary>
+        /// Gets the "kgf" unit.
+        /// </summary>
+        [Unit("kgf")]
+        public static Force KilogramForce 
+        { 
+            get { return KilogramForceField; } 
+        }
+
+        /// <summary>
+        /// Gets the "kipf" unit.
+        /// </summary>
+        [Unit("kipf")]
+        public static Force KipForce 
+        { 
+            get { return KipForceField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the force as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -83,7 +103,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -97,7 +117,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the force in the base unit.
         /// </summary>
         public double Value
         {

@@ -3,7 +3,7 @@
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // <summary>
-//   Represents a Energy quantity.
+//   Represents the energy quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace Units
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents a Energy quantity.
+    /// Represents the energy quantity.
     /// </summary>
     [Serializable]
     [DataContract]
@@ -23,25 +23,19 @@ namespace Units
     public partial struct Energy : IQuantity<Energy>
     {
         /// <summary>
-        /// The J unit.
+        /// The backing field for the <see cref="Joule" /> property.
         /// </summary>
-        [Unit("J", true)]
-        public static Energy Joule = new Energy(1);
+        private static readonly Energy JouleField = new Energy(1);
 
         /// <summary>
-        /// The cal unit.
+        /// The backing field for the <see cref="Calorie" /> property.
         /// </summary>
-        [Unit("cal")]
-        public static Energy Calorie = new Energy(4.1868);
+        private static readonly Energy CalorieField = new Energy(4.1868);
 
         /// <summary>
         /// The value.
         /// </summary>
-#if PublicFields
-        public double value;
-#else
         private double value;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Energy"/> struct.
@@ -69,7 +63,25 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets or sets the Energy as a string.
+        /// Gets the "J" unit.
+        /// </summary>
+        [Unit("J", true)]
+        public static Energy Joule 
+        { 
+            get { return JouleField; } 
+        }
+
+        /// <summary>
+        /// Gets the "cal" unit.
+        /// </summary>
+        [Unit("cal")]
+        public static Energy Calorie 
+        { 
+            get { return CalorieField; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the energy as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -77,7 +89,7 @@ namespace Units
         /// </remarks>
         [XmlText]
         [DataMember]
-        public string Data
+        public string XmlValue
         {
             get
             {
@@ -91,7 +103,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the value of the quantity in the base unit.
+        /// Gets the value of the energy in the base unit.
         /// </summary>
         public double Value
         {
