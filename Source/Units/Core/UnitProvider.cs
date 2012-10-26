@@ -165,7 +165,14 @@ namespace Units
             }
 
             string s = length.ConvertTo(q).ToString(format, this);
-            return string.Format("{0}{1}{2}", s, this.Separator, unit);
+            
+            var separator = this.Separator;
+            if (unit.StartsWith("°"))
+            {
+                separator = string.Empty;
+            }
+
+            return string.Format("{0}{1}{2}", s, separator, unit);
         }
 
         /// <summary>
