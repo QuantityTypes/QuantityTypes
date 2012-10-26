@@ -52,39 +52,7 @@ namespace Units
         private static readonly Temperature KelvinField = new Temperature(-1);
 
         /// <summary>
-        ///     The Celsius unit.
-        /// </summary>
-        [Unit("°C", true)]
-        [Unit("C")]
-        [Unit("degC")]
-        public static Temperature Celsius
-        {
-            get { return CelsiusField; }
-        }
-
-        /// <summary>
-        ///     The Fahrenheit unit.
-        /// </summary>
-        [Unit("°F")]
-        [Unit("F")]
-        [Unit("degF")]
-        public static Temperature Fahrenheit
-        {
-            get { return FahrenheitField; }
-        }
-
-        /// <summary>
-        ///     The Kelvin unit.
-        /// </summary>
-        [Unit("K")]
-        [Unit("degK")]
-        public static Temperature Kelvin
-        {
-            get { return KelvinField; }
-        }
-
-        /// <summary>
-        ///     The value
+        ///     The value backing field.
         /// </summary>
         private readonly double value;
 
@@ -100,6 +68,38 @@ namespace Units
         }
 
         /// <summary>
+        ///     Gets the Celsius unit.
+        /// </summary>
+        [Unit("°C", true)]
+        [Unit("C")]
+        [Unit("degC")]
+        public static Temperature Celsius
+        {
+            get { return CelsiusField; }
+        }
+
+        /// <summary>
+        ///     Gets the Fahrenheit unit.
+        /// </summary>
+        [Unit("°F")]
+        [Unit("F")]
+        [Unit("degF")]
+        public static Temperature Fahrenheit
+        {
+            get { return FahrenheitField; }
+        }
+
+        /// <summary>
+        ///     Gets the Kelvin unit.
+        /// </summary>
+        [Unit("K")]
+        [Unit("degK")]
+        public static Temperature Kelvin
+        {
+            get { return KelvinField; }
+        }
+
+        /// <summary>
         ///     Gets the temperature in the base unit.
         /// </summary>
         /// <value> The value. </value>
@@ -109,6 +109,62 @@ namespace Units
             {
                 return this.value;
             }
+        }
+
+        /// <summary>
+        /// Parses the specified string.
+        /// </summary>
+        /// <param name="s">
+        /// The string. 
+        /// </param>
+        /// <param name="provider">
+        /// The unit provider. 
+        /// </param>
+        /// <returns>
+        /// The temperature. 
+        /// </returns>
+        public static Temperature Parse(string s, IUnitProvider provider = null)
+        {
+            if (provider == null)
+            {
+                provider = UnitProvider.Default;
+            }
+
+            double value;
+            Temperature unit;
+            if (!provider.TryParse(s, out value, out unit))
+            {
+                throw new FormatException();
+            }
+
+            return value * unit;
+        }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="x"> The x. </param>
+        /// <param name="unit"> The unit. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Temperature operator *(double x, Temperature unit)
+        {
+            if (unit.Equals(Kelvin))
+            {
+                return new Temperature(x);
+            }
+
+            if (unit.Equals(Celsius))
+            {
+                return new Temperature(x + 273.15);
+            }
+
+            if (unit.Equals(Fahrenheit))
+            {
+                double celsius = (x - 32) * 5 / 9;
+                return new Temperature(celsius + 273.15);
+            }
+
+            throw new InvalidOperationException();
         }
 
         /// <summary>
@@ -123,6 +179,16 @@ namespace Units
         public int CompareTo(Temperature other)
         {
             return this.value.CompareTo(other.value);
+        }
+
+        /// <summary>
+        /// Converts the quantity to the specified unit.
+        /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>The amount of the specified unit.</returns>
+        double IQuantity.ConvertTo(IQuantity unit)
+        {
+            return this.ConvertTo((Temperature)unit);
         }
 
         /// <summary>
@@ -185,62 +251,6 @@ namespace Units
         {
             IUnitProvider up = formatProvider as IUnitProvider ?? UnitProvider.Default;
             return up.Format(format, this);
-        }
-
-        /// <summary>
-        /// Parses the specified string.
-        /// </summary>
-        /// <param name="s">
-        /// The string. 
-        /// </param>
-        /// <param name="provider">
-        /// The unit provider. 
-        /// </param>
-        /// <returns>
-        /// The temperature. 
-        /// </returns>
-        public static Temperature Parse(string s, IUnitProvider provider = null)
-        {
-            if (provider == null)
-            {
-                provider = UnitProvider.Default;
-            }
-
-            double value;
-            Temperature unit;
-            if (!provider.TryParse(s, out value, out unit))
-            {
-                throw new FormatException();
-            }
-
-            return value * unit;
-        }
-
-        /// <summary>
-        ///     Implements the operator *.
-        /// </summary>
-        /// <param name="x"> The x. </param>
-        /// <param name="unit"> The unit. </param>
-        /// <returns> The result of the operator. </returns>
-        public static Temperature operator *(double x, Temperature unit)
-        {
-            if (unit.Equals(Kelvin))
-            {
-                return new Temperature(x);
-            }
-
-            if (unit.Equals(Celsius))
-            {
-                return new Temperature(x + 273.15);
-            }
-
-            if (unit.Equals(Fahrenheit))
-            {
-                double celsius = (x - 32) * 5 / 9;
-                return new Temperature(celsius + 273.15);
-            }
-
-            throw new InvalidOperationException();
         }
 
         /// <summary>
