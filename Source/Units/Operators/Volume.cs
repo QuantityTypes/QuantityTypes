@@ -44,5 +44,16 @@ namespace Units
         {
             return new Length(l1.Value / l2.Value);
         }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="x"> The volume. </param>
+        /// <param name="y"> The density. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Mass operator *(Volume x, Density y)
+        {
+            return new Mass(x.Value * y.Value);
+        }
     }
 }

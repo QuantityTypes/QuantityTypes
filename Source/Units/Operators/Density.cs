@@ -34,19 +34,15 @@ namespace Units
     /// </summary>
     public partial struct Density
     {
-        #region Public Methods and Operators
-
         /// <summary>
         ///     Implements the operator *.
         /// </summary>
-        /// <param name="x"> The x. </param>
-        /// <param name="y"> The y. </param>
+        /// <param name="x"> The density. </param>
+        /// <param name="y"> The volume. </param>
         /// <returns> The result of the operator. </returns>
         public static Mass operator *(Density x, Volume y)
         {
             return new Mass(x.Value * y.Value);
         }
-
-        #endregion
     }
 }
