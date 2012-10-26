@@ -34,8 +34,6 @@ namespace Units
     /// </summary>
     public partial struct Mass
     {
-        #region Public Methods and Operators
-
         /// <summary>
         ///     Implements the operator /.
         /// </summary>
@@ -46,7 +44,16 @@ namespace Units
         {
             return new Density(m.Value / v.Value);
         }
-
-        #endregion
+    
+        /// <summary>
+        ///     Implements the operator /.
+        /// </summary>
+        /// <param name="m"> The mass. </param>
+        /// <param name="d"> The density. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Volume operator /(Mass m, Density d)
+        {
+            return new Volume(m.Value / d.Value);
+        }
     }
 }
