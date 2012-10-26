@@ -50,9 +50,9 @@
         {
             var l = 100 * Temperature.Celsius;
             var l0 = 0 * Temperature.Celsius;
-            Assert.AreEqual("100 °C", l.ToString());
-            Assert.AreEqual("100.00 °C", l.ToString("0.00"));
-            Assert.AreEqual("0100 °C", l.ToString("0000"));
+            Assert.AreEqual("100°C", l.ToString());
+            Assert.AreEqual("100.00°C", l.ToString("0.00"));
+            Assert.AreEqual("0100°C", l.ToString("0000"));
             Assert.AreEqual("100.0 C", l.ToString("0.0 C"));
             Assert.AreEqual("100.0 C", l.ToString("0.0C"));
             Assert.AreEqual("32 F", l0.ToString("0.# F"));
