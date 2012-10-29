@@ -23,7 +23,7 @@
             var b3 = l1 < l2;
             var b4 = l1 <= l2;
 
-            UnitProvider.Default.SetDisplayUnit(Length.Millimetre, "millim");
+            UnitProvider.Default.TrySetDisplayUnit<Length>("mm");
             var s3 = l1.ToString();
             UnitProvider.Default.RegisterUnit(0.3048 * Length.Metre, "fot");
             var l5 = Length.Parse("2fot");
@@ -33,7 +33,7 @@
             var t3 = 0 * Temperature.DegreeFahrenheit;
             var t4 = Temperature.Parse("300C");
             var b5 = (0 * Temperature.DegreeCelsius).Equals(273.15 * Temperature.DegreeKelvin);
-            UnitProvider.Default.SetDisplayUnit(Temperature.DegreeFahrenheit, "f");
+            UnitProvider.Default.TrySetDisplayUnit<Temperature>("F");
 
             var mf = Force.Newton * Length.Metre;
             Energy e = Force.Newton * Length.Metre;

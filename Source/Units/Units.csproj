@@ -61,9 +61,14 @@
     </Compile>
     <Compile Include="Core\IQuantity.cs" />
     <Compile Include="Core\IQuantity{T}.cs" />
-    <Compile Include="Core\IUnitProvider.cs" />
+    <Compile Include="Quantities\CodeGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitProvider\IUnitProvider.cs" />
     <Compile Include="Attributes\UnitAttribute.cs" />
-    <Compile Include="Core\UnitProvider.cs" />
+    <Compile Include="UnitProvider\UnitProvider.cs" />
     <Compile Include="Operators\Acceleration.cs" />
     <Compile Include="Operators\Angle.cs" />
     <Compile Include="Operators\Area.cs" />
@@ -100,11 +105,6 @@
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\Capacitance.cs">
-      <DependentUpon>CodeGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Quantities\CodeGenerator.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\Curvature.cs">
@@ -246,6 +246,7 @@
     <Compile Include="Quantities\Volume.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnitProvider\UnitProviderExtensions.cs" />
     <None Include="Quantities\MultiOutput.tt" />
     <None Include="Quantities\QuantityTemplate.tt" />
     <Compile Include="Operators\Length.cs" />

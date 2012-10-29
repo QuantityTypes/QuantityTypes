@@ -29,30 +29,30 @@ namespace Units
     using System;
 
     /// <summary>
-    ///     Represents a temperature quantity.
+    ///   Represents a temperature quantity.
     /// </summary>
     /// <remarks>
-    ///     This quantity type must be handled specially.
+    ///   This quantity type must be handled specially.
     /// </remarks>
     public partial struct Temperature : IQuantity<Temperature>
     {
         /// <summary>
-        /// The celsius backing field.
+        ///   The celsius backing field.
         /// </summary>
         private static readonly Temperature DegreeCelsiusField = new Temperature(-2);
 
         /// <summary>
-        /// The fahrenheit backing field.
+        ///   The fahrenheit backing field.
         /// </summary>
         private static readonly Temperature DegreeFahrenheitField = new Temperature(-3);
 
         /// <summary>
-        /// The kelvin backing field.
+        ///   The kelvin backing field.
         /// </summary>
         private static readonly Temperature DegreeKelvinField = new Temperature(-1);
 
         /// <summary>
-        ///     The value backing field.
+        ///   The value backing field.
         /// </summary>
         private readonly double value;
 
@@ -68,39 +68,48 @@ namespace Units
         }
 
         /// <summary>
-        ///     Gets the DegreeCelsius unit.
+        ///   Gets the DegreeCelsius unit.
         /// </summary>
         [Unit("°C", true)]
         [Unit("C")]
         [Unit("degC")]
         public static Temperature DegreeCelsius
         {
-            get { return DegreeCelsiusField; }
+            get
+            {
+                return DegreeCelsiusField;
+            }
         }
 
         /// <summary>
-        ///     Gets the DegreeFahrenheit unit.
+        ///   Gets the DegreeFahrenheit unit.
         /// </summary>
         [Unit("°F")]
         [Unit("F")]
         [Unit("degF")]
         public static Temperature DegreeFahrenheit
         {
-            get { return DegreeFahrenheitField; }
+            get
+            {
+                return DegreeFahrenheitField;
+            }
         }
 
         /// <summary>
-        ///     Gets the DegreeKelvin unit.
+        ///   Gets the DegreeKelvin unit.
         /// </summary>
         [Unit("K")]
         [Unit("degK")]
         public static Temperature DegreeKelvin
         {
-            get { return DegreeKelvinField; }
+            get
+            {
+                return DegreeKelvinField;
+            }
         }
 
         /// <summary>
-        ///     Gets the temperature in the base unit.
+        ///   Gets the temperature in the base unit.
         /// </summary>
         /// <value> The value. </value>
         public double Value
@@ -130,18 +139,17 @@ namespace Units
                 provider = UnitProvider.Default;
             }
 
-            double value;
-            Temperature unit;
-            if (!provider.TryParse(s, out value, out unit))
+            Temperature value;
+            if (!provider.TryParse(s, out value))
             {
                 throw new FormatException();
             }
 
-            return value * unit;
+            return value;
         }
 
         /// <summary>
-        ///     Implements the operator *.
+        ///   Implements the operator *.
         /// </summary>
         /// <param name="x"> The x. </param>
         /// <param name="unit"> The unit. </param>
@@ -182,13 +190,17 @@ namespace Units
         }
 
         /// <summary>
-        /// Converts the quantity to the specified unit.
+        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
         /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>The amount of the specified unit.</returns>
-        double IQuantity.ConvertTo(IQuantity unit)
+        /// <param name="obj">
+        /// An object to compare with this instance. 
+        /// </param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has these meanings: Value Meaning Less than zero This instance is less than <paramref name="obj"/> . Zero This instance is equal to <paramref name="obj"/> . Greater than zero This instance is greater than <paramref name="obj"/> . 
+        /// </returns>
+        public int CompareTo(object obj)
         {
-            return this.ConvertTo((Temperature)unit);
+            return this.CompareTo((Temperature)obj);
         }
 
         /// <summary>
@@ -236,6 +248,23 @@ namespace Units
         }
 
         /// <summary>
+        /// Multiplies by the specified number.
+        /// </summary>
+        /// <param name="x">
+        /// The number. 
+        /// </param>
+        /// <returns>
+        /// The new quantity. 
+        /// </returns>
+        /// <exception cref="System.InvalidOperationException">
+        /// Cannot multiply a temperature.
+        /// </exception>
+        public IQuantity MultiplyBy(double x)
+        {
+            return x * this;
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <param name="format">
@@ -254,12 +283,26 @@ namespace Units
         }
 
         /// <summary>
-        ///     Returns a <see cref="System.String" /> that represents this instance.
+        ///   Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns> A <see cref="System.String" /> that represents this instance. </returns>
         public override string ToString()
         {
             return this.ToString(null, UnitProvider.Default);
+        }
+
+        /// <summary>
+        /// Converts the quantity to the specified unit.
+        /// </summary>
+        /// <param name="unit">
+        /// The unit. 
+        /// </param>
+        /// <returns>
+        /// The amount of the specified unit. 
+        /// </returns>
+        double IQuantity.ConvertTo(IQuantity unit)
+        {
+            return this.ConvertTo((Temperature)unit);
         }
     }
 }

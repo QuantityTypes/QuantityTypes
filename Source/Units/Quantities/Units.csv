@@ -36,6 +36,9 @@ Volume,Gallon,gal,3.785411784e-3
 // Plane angle
 Angle,Radian,rad,1
 Angle,Degree,deg,Math.PI / 180
+Angle,DegreeSymbol,°,Math.PI / 180
+Angle,Grad,grad,Math.PI / 200
+Angle,Gon,gon,Math.PI / 200
 
 // Solid angle
 SolidAngle,Steradian,sr,1
