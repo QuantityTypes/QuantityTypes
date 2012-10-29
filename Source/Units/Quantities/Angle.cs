@@ -54,6 +54,21 @@ namespace Units
         private static readonly Angle DegreeField = new Angle(Math.PI / 180);
 
         /// <summary>
+        /// The backing field for the <see cref="DegreeSymbol" /> property.
+        /// </summary>
+        private static readonly Angle DegreeSymbolField = new Angle(Math.PI / 180);
+
+        /// <summary>
+        /// The backing field for the <see cref="Grad" /> property.
+        /// </summary>
+        private static readonly Angle GradField = new Angle(Math.PI / 200);
+
+        /// <summary>
+        /// The backing field for the <see cref="Gon" /> property.
+        /// </summary>
+        private static readonly Angle GonField = new Angle(Math.PI / 200);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -99,6 +114,33 @@ namespace Units
         public static Angle Degree 
         { 
             get { return DegreeField; } 
+        }
+
+        /// <summary>
+        /// Gets the "°" unit.
+        /// </summary>
+        [Unit("°")]
+        public static Angle DegreeSymbol 
+        { 
+            get { return DegreeSymbolField; } 
+        }
+
+        /// <summary>
+        /// Gets the "grad" unit.
+        /// </summary>
+        [Unit("grad")]
+        public static Angle Grad 
+        { 
+            get { return GradField; } 
+        }
+
+        /// <summary>
+        /// Gets the "gon" unit.
+        /// </summary>
+        [Unit("gon")]
+        public static Angle Gon 
+        { 
+            get { return GonField; } 
         }
 
         /// <summary>
@@ -153,14 +195,13 @@ namespace Units
                 provider = UnitProvider.Default;
             }
 
-            double value;
-            Angle unit;
-            if (!provider.TryParse(input, out value, out unit))
+            Angle value;
+            if (!provider.TryParse(input, out value))
             {
-                throw new FormatException();
+                throw new FormatException("Invalid format.");
             }
 
-            return value * unit;
+            return value;
         }
 
         /// <summary>
@@ -382,6 +423,22 @@ namespace Units
         }
 
         /// <summary>
+        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the 
+        /// current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+        /// </summary>
+        /// <param name="obj">An object to compare with this instance.</param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has these meanings: 
+        /// Value Meaning Less than zero This instance is less than <paramref name="obj" />. Zero This instance is equal to 
+        /// <paramref name="obj" />. Greater than zero This instance is greater than <paramref name="obj" />.
+        /// </returns>
+        public int CompareTo(object obj)
+        {
+            return this.CompareTo((Angle)obj);
+        }
+
+
+        /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
         /// <param name="unit">The unit.</param>
@@ -442,6 +499,17 @@ namespace Units
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
+        }
+
+
+        /// <summary>
+        /// Multiplies by the specified number.
+        /// </summary>
+        /// <param name="x">The number.</param>
+        /// <returns>The new quantity.</returns>
+        public IQuantity MultiplyBy(double x)
+        {
+            return this * x;
         }
 
         /// <summary>

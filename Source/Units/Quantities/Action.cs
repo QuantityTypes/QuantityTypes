@@ -139,14 +139,13 @@ namespace Units
                 provider = UnitProvider.Default;
             }
 
-            double value;
-            Action unit;
-            if (!provider.TryParse(input, out value, out unit))
+            Action value;
+            if (!provider.TryParse(input, out value))
             {
-                throw new FormatException();
+                throw new FormatException("Invalid format.");
             }
 
-            return value * unit;
+            return value;
         }
 
         /// <summary>
@@ -368,6 +367,22 @@ namespace Units
         }
 
         /// <summary>
+        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the 
+        /// current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+        /// </summary>
+        /// <param name="obj">An object to compare with this instance.</param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has these meanings: 
+        /// Value Meaning Less than zero This instance is less than <paramref name="obj" />. Zero This instance is equal to 
+        /// <paramref name="obj" />. Greater than zero This instance is greater than <paramref name="obj" />.
+        /// </returns>
+        public int CompareTo(object obj)
+        {
+            return this.CompareTo((Action)obj);
+        }
+
+
+        /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
         /// <param name="unit">The unit.</param>
@@ -428,6 +443,17 @@ namespace Units
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
+        }
+
+
+        /// <summary>
+        /// Multiplies by the specified number.
+        /// </summary>
+        /// <param name="x">The number.</param>
+        /// <returns>The new quantity.</returns>
+        public IQuantity MultiplyBy(double x)
+        {
+            return this * x;
         }
 
         /// <summary>

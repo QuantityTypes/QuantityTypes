@@ -27,6 +27,7 @@
 namespace Units.Tests
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
 
     using NUnit.Framework;
 
@@ -40,10 +41,29 @@ namespace Units.Tests
         {
             string unitName;
             var unit = UnitProvider.Default.GetDisplayUnit(typeof(Length), out unitName);
-            UnitProvider.Default.SetDisplayUnit(Length.Metre, "M");
-            Assert.AreEqual("1 M", Length.Metre.ToString());
-            UnitProvider.Default.SetDisplayUnit(unit, unitName);
+
+            // Change the display unit
+            UnitProvider.Default.RegisterUnit(627.48 * Length.Millimetre, "alen");
+            UnitProvider.Default.TrySetDisplayUnit<Length>("alen");
+            Assert.AreEqual("1 alen", (0.62748 * Length.Metre).ToString());
+
+            // Revert
+            UnitProvider.Default.TrySetDisplayUnit<Length>(unitName);
             Assert.AreEqual("1 m", Length.Metre.ToString());
+        }
+
+        [Test]
+        public void InvariantCulture()
+        {
+            var up = new UnitProvider(typeof(Length).Assembly, CultureInfo.InvariantCulture);
+            Assert.AreEqual("1.2 m", (1.2 * Length.Metre).ToString(null, up));
+        }
+
+        [Test]
+        public void LocalCulture()
+        {
+            var up = new UnitProvider(typeof(Length).Assembly, new CultureInfo("no"));
+            Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(null, up));
         }
     }
 }
