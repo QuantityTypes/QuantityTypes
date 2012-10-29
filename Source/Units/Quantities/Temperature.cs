@@ -39,17 +39,17 @@ namespace Units
         /// <summary>
         /// The celsius backing field.
         /// </summary>
-        private static readonly Temperature CelsiusField = new Temperature(-2);
+        private static readonly Temperature DegreeCelsiusField = new Temperature(-2);
 
         /// <summary>
         /// The fahrenheit backing field.
         /// </summary>
-        private static readonly Temperature FahrenheitField = new Temperature(-3);
+        private static readonly Temperature DegreeFahrenheitField = new Temperature(-3);
 
         /// <summary>
         /// The kelvin backing field.
         /// </summary>
-        private static readonly Temperature KelvinField = new Temperature(-1);
+        private static readonly Temperature DegreeKelvinField = new Temperature(-1);
 
         /// <summary>
         ///     The value backing field.
@@ -68,35 +68,35 @@ namespace Units
         }
 
         /// <summary>
-        ///     Gets the Celsius unit.
+        ///     Gets the DegreeCelsius unit.
         /// </summary>
         [Unit("°C", true)]
         [Unit("C")]
         [Unit("degC")]
-        public static Temperature Celsius
+        public static Temperature DegreeCelsius
         {
-            get { return CelsiusField; }
+            get { return DegreeCelsiusField; }
         }
 
         /// <summary>
-        ///     Gets the Fahrenheit unit.
+        ///     Gets the DegreeFahrenheit unit.
         /// </summary>
         [Unit("°F")]
         [Unit("F")]
         [Unit("degF")]
-        public static Temperature Fahrenheit
+        public static Temperature DegreeFahrenheit
         {
-            get { return FahrenheitField; }
+            get { return DegreeFahrenheitField; }
         }
 
         /// <summary>
-        ///     Gets the Kelvin unit.
+        ///     Gets the DegreeKelvin unit.
         /// </summary>
         [Unit("K")]
         [Unit("degK")]
-        public static Temperature Kelvin
+        public static Temperature DegreeKelvin
         {
-            get { return KelvinField; }
+            get { return DegreeKelvinField; }
         }
 
         /// <summary>
@@ -148,17 +148,17 @@ namespace Units
         /// <returns> The result of the operator. </returns>
         public static Temperature operator *(double x, Temperature unit)
         {
-            if (unit.Equals(Kelvin))
+            if (unit.Equals(DegreeKelvin))
             {
                 return new Temperature(x);
             }
 
-            if (unit.Equals(Celsius))
+            if (unit.Equals(DegreeCelsius))
             {
                 return new Temperature(x + 273.15);
             }
 
-            if (unit.Equals(Fahrenheit))
+            if (unit.Equals(DegreeFahrenheit))
             {
                 double celsius = (x - 32) * 5 / 9;
                 return new Temperature(celsius + 273.15);
@@ -202,17 +202,17 @@ namespace Units
         /// </returns>
         public double ConvertTo(Temperature unit)
         {
-            if (unit.Equals(Kelvin))
+            if (unit.Equals(DegreeKelvin))
             {
                 return this.value;
             }
 
-            if (unit.Equals(Celsius))
+            if (unit.Equals(DegreeCelsius))
             {
                 return this.value - 273.15;
             }
 
-            if (unit.Equals(Fahrenheit))
+            if (unit.Equals(DegreeFahrenheit))
             {
                 double celsius = this.value - 273.15;
                 return (celsius * 9 / 5) + 32;
