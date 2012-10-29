@@ -51,7 +51,7 @@ namespace Units
         /// </summary>
         private static readonly Regex ParserExpression =
             new Regex(
-                @"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)\s*([^0-9.\s].*)?",
+                @"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
                 RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
@@ -74,10 +74,10 @@ namespace Units
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnitProvider"/> class.
+        /// Initializes a new instance of the <see cref="UnitProvider"/> class and initialize with the units found in the specified assembly.
         /// </summary>
         /// <param name="a">
-        /// A. 
+        /// The assembly containing unit definitions.
         /// </param>
         /// <param name="culture">
         /// The culture. 
@@ -85,7 +85,7 @@ namespace Units
         public UnitProvider(Assembly a, CultureInfo culture = null)
             : this(culture)
         {
-            RegisterUnits(a);
+            this.RegisterUnits(a);
         }
 
         /// <summary>
@@ -125,20 +125,21 @@ namespace Units
         public string Separator { get; set; }
 
         /// <summary>
-        /// Formats the specified format.
+        /// Formats the specified quantity.
         /// </summary>
         /// <typeparam name="T">
+        /// The quantity type.
         /// </typeparam>
         /// <param name="format">
         /// The format. 
         /// </param>
-        /// <param name="length">
-        /// The length. 
+        /// <param name="quantity">
+        /// The quantity. 
         /// </param>
         /// <returns>
         /// The <see cref="string"/> . 
         /// </returns>
-        public string Format<T>(string format, T length) where T : IQuantity<T>
+        public string Format<T>(string format, T quantity) where T : IQuantity<T>
         {
             T q;
             var unit = default(string);
@@ -164,8 +165,8 @@ namespace Units
                 }
             }
 
-            string s = length.ConvertTo(q).ToString(format, this);
-            
+            string s = quantity.ConvertTo(q).ToString(format, this);
+
             var separator = this.Separator;
             if (unit.StartsWith("°"))
             {
@@ -227,7 +228,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Registers the unit.
+        /// Registers the specified unit.
         /// </summary>
         /// <param name="unit">
         /// The unit. 
@@ -237,7 +238,7 @@ namespace Units
         /// </param>
         public void RegisterUnit(IQuantity unit, string name)
         {
-            Type type = unit.GetType();
+            var type = unit.GetType();
             if (!this.units.ContainsKey(type))
             {
                 this.units.Add(type, new Dictionary<string, IQuantity>(StringComparer.OrdinalIgnoreCase));
@@ -254,44 +255,64 @@ namespace Units
         /// <summary>
         /// Sets the display unit.
         /// </summary>
-        /// <param name="q">
-        /// The q. 
+        /// <param name="unit">
+        /// The unit. 
         /// </param>
         /// <param name="name">
         /// The name. 
         /// </param>
-        public void SetDisplayUnit(IQuantity q, string name)
+        public void SetDisplayUnit(IQuantity unit, string name)
         {
-            this.displayUnits[q.GetType()] = new UnitDefinition { Name = name, Unit = q };
+            this.displayUnits[unit.GetType()] = new UnitDefinition { Name = name, Unit = unit };
         }
 
         /// <summary>
-        /// Tries the get display unit.
+        /// Gets the display unit for the specified type.
         /// </summary>
         /// <typeparam name="T">
+        /// The unit type.
         /// </typeparam>
-        /// <param name="q">
-        /// The q. 
-        /// </param>
         /// <param name="unit">
         /// The unit. 
+        /// </param>
+        /// <param name="unitName">
+        /// The unit symbol. 
         /// </param>
         /// <returns>
         /// The <see cref="bool"/> . 
         /// </returns>
-        public bool TryGetDisplayUnit<T>(out T q, out string unit)
+        public bool TryGetDisplayUnit<T>(out T unit, out string unitName)
         {
             UnitDefinition ud;
             if (!this.displayUnits.TryGetValue(typeof(T), out ud))
             {
-                q = default(T);
-                unit = null;
+                unit = default(T);
+                unitName = null;
                 return false;
             }
 
-            unit = ud.Name;
-            q = (T)ud.Unit;
+            unitName = ud.Name;
+            unit = (T)ud.Unit;
             return true;
+        }
+
+        /// <summary>
+        /// Gets the display unit for the specified type.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="unitName">Name of the unit.</param>
+        /// <returns>IQuantity.</returns>
+        /// <exception cref="System.InvalidOperationException">No display unit defined for  + type</exception>
+        public IQuantity GetDisplayUnit(Type type, out string unitName)
+        {
+            UnitDefinition ud;
+            if (!this.displayUnits.TryGetValue(type, out ud))
+            {
+                throw new InvalidOperationException("No display unit defined for " + type);
+            }
+
+            unitName = ud.Name;
+            return (IQuantity)ud.Unit;
         }
 
         /// <summary>
@@ -323,7 +344,7 @@ namespace Units
 
             input = input.Replace(',', '.');
 
-            Match m = ParserExpression.Match(input);
+            var m = ParserExpression.Match(input);
             if (!m.Success)
             {
                 value = double.NaN;
@@ -331,13 +352,13 @@ namespace Units
                 return false;
             }
 
-            value = double.Parse(m.Groups[1].Value, this);
+            value = string.IsNullOrEmpty(m.Groups[1].Value) ? 1 : double.Parse(m.Groups[1].Value, this);
             unit = this.GetUnit<T>(m.Groups[3].Value);
             return true;
         }
 
         /// <summary>
-        ///     Gets the units.
+        ///     Gets the units of the specified type.
         /// </summary>
         /// <typeparam name="T"> The type of units to get. </typeparam>
         /// <returns> A dictionary of units. </returns>
@@ -358,10 +379,6 @@ namespace Units
         /// <returns>
         /// The unit. 
         /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// </exception>
-        /// <exception cref="FormatException">
-        /// </exception>
         private T GetUnit<T>(string name)
         {
             Dictionary<string, IQuantity> typeUnits;
@@ -390,31 +407,31 @@ namespace Units
         }
 
         /// <summary>
-        /// Registers the units.
+        /// Registers the units in the specified assembly.
         /// </summary>
-        /// <param name="a">
+        /// <param name="assembly">
         /// The assembly. 
         /// </param>
-        private void RegisterUnits(Assembly a)
+        private void RegisterUnits(Assembly assembly)
         {
-            foreach (Type t in a.GetTypes())
+            foreach (Type t in assembly.GetTypes())
             {
                 if (typeof(IQuantity).IsAssignableFrom(t))
                 {
-                    RegisterUnits(t);
+                    this.RegisterUnits(t);
                 }
             }
         }
 
         /// <summary>
-        /// Registers the static unit properties in the spedified type.
+        /// Registers the unit properties in the specified type.
         /// </summary>
-        /// <param name="t">
+        /// <param name="type">
         /// The type. 
         /// </param>
-        private void RegisterUnits(Type t)
+        private void RegisterUnits(Type type)
         {
-            foreach (var property in t.GetProperties(BindingFlags.Static | BindingFlags.Public))
+            foreach (var property in type.GetProperties(BindingFlags.Static | BindingFlags.Public))
             {
                 foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
                 {
@@ -441,7 +458,7 @@ namespace Units
             /// <summary>
             ///     Gets or sets the unit.
             /// </summary>
-            public object Unit { get; set; }
+            public IQuantity Unit { get; set; }
         }
     }
 }

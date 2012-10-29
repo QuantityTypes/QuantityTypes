@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DensityTests.cs" company="Units.NET">
+// <copyright file="UnitProviderTests.cs" company="Units.NET">
 //   The MIT License (MIT)
 //   
 //   Copyright (c) 2012 Oystein Bjorke
@@ -26,46 +26,24 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Units.Tests
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
 
     using NUnit.Framework;
 
     [TestFixture]
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
-        Justification = "Reviewed. Suppression is OK here.")]
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     // ReSharper disable InconsistentNaming
-    public class DensityTests
+    public class UnitProviderTests
     {
         [Test]
-        public void Constructors()
+        public void SetDisplayUnit()
         {
-            Assert.AreEqual(2, new Density(2).Value);
-            Assert.AreEqual(2, new Density("2Kg/M^3").Value);
-        }
-
-        [Test]
-        public void Operator()
-        {
-            Assert.AreEqual(Density.KilogramPerCubicMetre, Mass.Kilogram / Volume.CubicMetre);
-            Assert.AreEqual(Density.KilogramPerCubicMetre, Mass.Kilogram / (Length.Metre * Length.Metre * Length.Metre));
-        }
-
-        [Test]
-        [ExpectedException(typeof(FormatException))]
-        public void Parse_InvalidString()
-        {
-            Assert.AreEqual(2, Density.Parse("2kg").Value);
-        }
-
-        [Test]
-        public void Parse_ValidStrings()
-        {
-            Assert.AreEqual(2, Density.Parse("2kg/m^3").Value, "correct unit");
-            Assert.AreEqual(2, Density.Parse("2Kg/M^3").Value, "wrong case");
-            Assert.AreEqual(2, Density.Parse("2").Value, "no unit");
-            Assert.AreEqual(0, Density.Parse(string.Empty).Value, "empty");
-            Assert.AreEqual(0, Density.Parse(null).Value, "null");
+            string unitName;
+            var unit = UnitProvider.Default.GetDisplayUnit(typeof(Length), out unitName);
+            UnitProvider.Default.SetDisplayUnit(Length.Metre, "M");
+            Assert.AreEqual("1 M", Length.Metre.ToString());
+            UnitProvider.Default.SetDisplayUnit(unit, unitName);
+            Assert.AreEqual("1 m", Length.Metre.ToString());
         }
     }
 }

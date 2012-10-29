@@ -81,6 +81,15 @@
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2m"));
             Assert.AreEqual(1e-10 * Length.Metre, Length.Parse("1Å"));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
+        }
+
+        [Test]
+        public void Parse_UnitSymbolOnly()
+        {
+            Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse(" m"));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse("m "));
         }
 
         [Test]
