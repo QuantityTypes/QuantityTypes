@@ -44,19 +44,19 @@ namespace Units
     public partial struct TemperatureDifference : IQuantity<TemperatureDifference>
     {
         /// <summary>
-        /// The backing field for the <see cref="Kelvin" /> property.
+        /// The backing field for the <see cref="DegreeKelvin" /> property.
         /// </summary>
-        private static readonly TemperatureDifference KelvinField = new TemperatureDifference(1);
+        private static readonly TemperatureDifference DegreeKelvinField = new TemperatureDifference(1);
 
         /// <summary>
-        /// The backing field for the <see cref="Celsius" /> property.
+        /// The backing field for the <see cref="DegreeCelsius" /> property.
         /// </summary>
-        private static readonly TemperatureDifference CelsiusField = new TemperatureDifference(1);
+        private static readonly TemperatureDifference DegreeCelsiusField = new TemperatureDifference(1);
 
         /// <summary>
-        /// The backing field for the <see cref="Fahrenheit" /> property.
+        /// The backing field for the <see cref="DegreeFahrenheit" /> property.
         /// </summary>
-        private static readonly TemperatureDifference FahrenheitField = new TemperatureDifference(9.0 / 5);
+        private static readonly TemperatureDifference DegreeFahrenheitField = new TemperatureDifference(9.0 / 5);
 
         /// <summary>
         /// The value.
@@ -92,27 +92,27 @@ namespace Units
         /// Gets the "K" unit.
         /// </summary>
         [Unit("K", true)]
-        public static TemperatureDifference Kelvin 
+        public static TemperatureDifference DegreeKelvin 
         { 
-            get { return KelvinField; } 
+            get { return DegreeKelvinField; } 
         }
 
         /// <summary>
         /// Gets the "C" unit.
         /// </summary>
         [Unit("C")]
-        public static TemperatureDifference Celsius 
+        public static TemperatureDifference DegreeCelsius 
         { 
-            get { return CelsiusField; } 
+            get { return DegreeCelsiusField; } 
         }
 
         /// <summary>
         /// Gets the "F" unit.
         /// </summary>
         [Unit("F")]
-        public static TemperatureDifference Fahrenheit 
+        public static TemperatureDifference DegreeFahrenheit 
         { 
-            get { return FahrenheitField; } 
+            get { return DegreeFahrenheitField; } 
         }
 
         /// <summary>

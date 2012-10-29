@@ -199,9 +199,9 @@ RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
 
 HeatCapacity,JoulePerKelvin,J/K,1
 
-TemperatureDifference,Kelvin,K,1
-TemperatureDifference,Celsius,C,1
-TemperatureDifference,Fahrenheit,F,9.0 / 5
+TemperatureDifference,DegreeKelvin,K,1
+TemperatureDifference,DegreeCelsius,C,1
+TemperatureDifference,DegreeFahrenheit,F,9.0 / 5
 
 LinearMomentum,KilogramMeterPerSecond,kg*m/s,1
 LinearMomentum,NewtonSecond,N*s,1
