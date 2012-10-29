@@ -88,7 +88,7 @@ namespace Units
         void RegisterUnit(IQuantity unit, string name);
 
         /// <summary>
-        /// Sets the display unit.
+        /// Sets the display unit (the default unit when formatting).
         /// </summary>
         /// <param name="unit">
         /// The unit. 
@@ -101,19 +101,27 @@ namespace Units
         /// <summary>
         /// Gets the display unit for the specified type.
         /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="name">The unit name.</param>
+        /// <returns>The unit quantity.</returns>
+        IQuantity GetDisplayUnit(Type type, out string name);
+
+        /// <summary>
+        /// Gets the display unit for the specified type.
+        /// </summary>
         /// <typeparam name="T">
         /// The type 
         /// </typeparam>
         /// <param name="unit">
         /// The unit (output). 
         /// </param>
-        /// <param name="name">
+        /// <param name="unitName">
         /// The unit symbol (output). 
         /// </param>
         /// <returns>
         /// True if the display unit was found. 
         /// </returns>
-        bool TryGetDisplayUnit<T>(out T unit, out string name);
+        bool TryGetDisplayUnit<T>(out T unit, out string unitName);
 
         /// <summary>
         /// Parses a string.

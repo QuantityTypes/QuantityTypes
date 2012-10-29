@@ -4,10 +4,8 @@
 
     using Units;
 
-    [TestFixture]
     public class Example
     {
-        [Test]
         public void Example1()
         {
             var v = 100 * Length.Metre / (9 * Time.Second);
@@ -30,12 +28,12 @@
             UnitProvider.Default.RegisterUnit(0.3048 * Length.Metre, "fot");
             var l5 = Length.Parse("2fot");
 
-            var t1 = 10 * Temperature.Celsius;
+            var t1 = 10 * Temperature.DegreeCelsius;
             var t2 = Temperature.Parse("300K");
-            var t3 = 0 * Temperature.Fahrenheit;
+            var t3 = 0 * Temperature.DegreeFahrenheit;
             var t4 = Temperature.Parse("300C");
-            var b5 = (0 * Temperature.Celsius).Equals(273.15 * Temperature.Kelvin);
-            UnitProvider.Default.SetDisplayUnit(Temperature.Fahrenheit, "f");
+            var b5 = (0 * Temperature.DegreeCelsius).Equals(273.15 * Temperature.DegreeKelvin);
+            UnitProvider.Default.SetDisplayUnit(Temperature.DegreeFahrenheit, "f");
 
             var mf = Force.Newton * Length.Metre;
             Energy e = Force.Newton * Length.Metre;
