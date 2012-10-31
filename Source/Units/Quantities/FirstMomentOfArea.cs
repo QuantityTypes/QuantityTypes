@@ -381,7 +381,6 @@ namespace Units
             return this.CompareTo((FirstMomentOfArea)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -417,7 +416,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((FirstMomentOfArea)obj);
+            if (obj is FirstMomentOfArea)
+            {
+              return this.Equals((FirstMomentOfArea)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -444,7 +448,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

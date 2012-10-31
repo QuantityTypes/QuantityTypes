@@ -381,7 +381,6 @@ namespace Units
             return this.CompareTo((AngularFrequency)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -417,7 +416,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((AngularFrequency)obj);
+            if (obj is AngularFrequency)
+            {
+              return this.Equals((AngularFrequency)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -444,7 +448,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

@@ -395,7 +395,6 @@ namespace Units
             return this.CompareTo((Acceleration)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -431,7 +430,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Acceleration)obj);
+            if (obj is Acceleration)
+            {
+              return this.Equals((Acceleration)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -458,7 +462,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

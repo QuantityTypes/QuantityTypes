@@ -549,7 +549,6 @@ namespace Units
             return this.CompareTo((Length)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -585,7 +584,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Length)obj);
+            if (obj is Length)
+            {
+              return this.Equals((Length)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -612,7 +616,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.
