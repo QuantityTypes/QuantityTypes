@@ -423,7 +423,6 @@ namespace Units
             return this.CompareTo((Fraction)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -459,7 +458,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Fraction)obj);
+            if (obj is Fraction)
+            {
+              return this.Equals((Fraction)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -486,7 +490,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

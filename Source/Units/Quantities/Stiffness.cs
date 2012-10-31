@@ -381,7 +381,6 @@ namespace Units
             return this.CompareTo((Stiffness)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -417,7 +416,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Stiffness)obj);
+            if (obj is Stiffness)
+            {
+              return this.Equals((Stiffness)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -444,7 +448,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

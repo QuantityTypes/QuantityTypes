@@ -437,7 +437,6 @@ namespace Units
             return this.CompareTo((Area)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -473,7 +472,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Area)obj);
+            if (obj is Area)
+            {
+              return this.Equals((Area)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -500,7 +504,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

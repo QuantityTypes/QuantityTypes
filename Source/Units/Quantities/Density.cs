@@ -479,7 +479,6 @@ namespace Units
             return this.CompareTo((Density)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -515,7 +514,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Density)obj);
+            if (obj is Density)
+            {
+              return this.Equals((Density)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -542,7 +546,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

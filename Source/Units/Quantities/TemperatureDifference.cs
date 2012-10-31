@@ -409,7 +409,6 @@ namespace Units
             return this.CompareTo((TemperatureDifference)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -445,7 +444,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((TemperatureDifference)obj);
+            if (obj is TemperatureDifference)
+            {
+              return this.Equals((TemperatureDifference)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -472,7 +476,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.

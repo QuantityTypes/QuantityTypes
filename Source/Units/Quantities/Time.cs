@@ -451,7 +451,6 @@ namespace Units
             return this.CompareTo((Time)obj);
         }
 
-
         /// <summary>
         /// Converts the quantity to the specified unit.
         /// </summary>
@@ -487,7 +486,12 @@ namespace Units
         /// </returns>
         public override bool Equals(object obj)
         {
-            return this.Equals((Time)obj);
+            if (obj is Time)
+            {
+              return this.Equals((Time)obj);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -514,7 +518,6 @@ namespace Units
         {
             return this.Value.GetHashCode();
         }
-
 
         /// <summary>
         /// Multiplies by the specified number.
