@@ -37,7 +37,7 @@ namespace Units.Tests
     public class AngleTests
     {
         [Test]
-        public void ToString()
+        public void ToString_CheckSpaces()
         {
             var a = 90 * Angle.Degree;
             Assert.AreEqual("90.0°", a.ToString("0.0 °"));

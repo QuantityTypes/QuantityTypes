@@ -55,24 +55,24 @@ namespace Units
         string Format<T>(string format, T quantity) where T : IQuantity<T>;
 
         /// <summary>
-        /// Gets the first registered unit (of any quantity type) that matches the specified name.
+        /// Gets the first registered unit (of any quantity type) that matches the specified symbol.
         /// </summary>
-        /// <param name="name">
-        /// The name. 
+        /// <param name="symbol">
+        /// The unit symbol. 
         /// </param>
         /// <returns>
         /// The unit. 
         /// </returns>
-        IQuantity GetUnit(string name);
+        IQuantity GetUnit(string symbol);
 
         /// <summary>
-        /// Gets the unit that matches the specified name.
+        /// Gets the unit that matches the specified symbol.
         /// </summary>
         /// <param name="type">The type.</param>
-        /// <param name="name">The name of the unit.</param>
+        /// <param name="symbol">The symbol of the unit.</param>
         /// <param name="unit">The unit.</param>
-        /// <returns><c>true</c> if the unit name was found, <c>false</c> otherwise</returns>
-        bool TryGetUnit(Type type, string name, out IQuantity unit);
+        /// <returns><c>true</c> if the unit symbol was found, <c>false</c> otherwise</returns>
+        bool TryGetUnit(Type type, string symbol, out IQuantity unit);
 
         /// <summary>
         /// Gets the registered units of the specified type.
@@ -91,26 +91,26 @@ namespace Units
         /// <param name="unit">
         /// The unit. 
         /// </param>
-        /// <param name="name">
+        /// <param name="symbol">
         /// The name. 
         /// </param>
-        void RegisterUnit(IQuantity unit, string name);
+        void RegisterUnit(IQuantity unit, string symbol);
 
         /// <summary>
         /// Sets the display unit.
         /// </summary>
         /// <param name="type">The type.</param>
-        /// <param name="name">The unit name (must be registered).</param>
+        /// <param name="symbol">The unit name (must be registered).</param>
         /// <returns><c>true</c> if the unit was set, <c>false</c> otherwise</returns>
-        bool TrySetDisplayUnit(Type type, string name);
+        bool TrySetDisplayUnit(Type type, string symbol);
 
         /// <summary>
         /// Gets the display unit for the specified type.
         /// </summary>
         /// <param name="type">The type.</param>
-        /// <param name="name">The unit name.</param>
+        /// <param name="symbol">The unit symbol.</param>
         /// <returns>The unit quantity.</returns>
-        IQuantity GetDisplayUnit(Type type, out string name);
+        IQuantity GetDisplayUnit(Type type, out string symbol);
 
         /// <summary>
         /// Gets the display unit for the specified type.
@@ -124,9 +124,9 @@ namespace Units
         /// </summary>
         /// <param name="type">The unit type.</param>
         /// <param name="unit">The unit (output).</param>
-        /// <param name="unitName">The unit symbol (output).</param>
+        /// <param name="unitSymbol">The unit symbol (output).</param>
         /// <returns>True if the display unit was found.</returns>
-        bool TryGetDisplayUnit(Type type, out IQuantity unit, out string unitName);
+        bool TryGetDisplayUnit(Type type, out IQuantity unit, out string unitSymbol);
 
         /// <summary>
         /// Parses the specified string.

@@ -63,16 +63,16 @@ namespace Units
         /// <param name="unit">
         /// The unit. 
         /// </param>
-        /// <param name="unitName">
+        /// <param name="unitSymbol">
         /// The unit symbol. 
         /// </param>
         /// <returns>
         /// The <see cref="bool"/> . 
         /// </returns>
-        public static bool TryGetDisplayUnit<T>(this IUnitProvider unitProvider, out T unit, out string unitName)
+        public static bool TryGetDisplayUnit<T>(this IUnitProvider unitProvider, out T unit, out string unitSymbol)
         {
             IQuantity quantity;
-            if (!unitProvider.TryGetDisplayUnit(typeof(T), out quantity, out unitName))
+            if (!unitProvider.TryGetDisplayUnit(typeof(T), out quantity, out unitSymbol))
             {
                 unit = default(T);
                 return false;
@@ -91,8 +91,8 @@ namespace Units
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        /// <param name="name">
-        /// The name. 
+        /// <param name="symbol">
+        /// The unit symbol. 
         /// </param>
         /// <param name="unit">
         /// The unit. 
@@ -100,11 +100,11 @@ namespace Units
         /// <returns>
         /// <c>true</c> if the unit name was found, <c>false</c> otherwise 
         /// </returns>
-        public static bool TryGetUnit<T>(this IUnitProvider unitProvider, string name, out T unit)
+        public static bool TryGetUnit<T>(this IUnitProvider unitProvider, string symbol, out T unit)
             where T : IQuantity<T>
         {
             IQuantity u;
-            if (unitProvider.TryGetUnit(typeof(T), name, out u))
+            if (unitProvider.TryGetUnit(typeof(T), symbol, out u))
             {
                 unit = (T)u;
                 return true;
@@ -154,15 +154,15 @@ namespace Units
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        /// <param name="name">
-        /// The unit name (must be registered). 
+        /// <param name="symbol">
+        /// The unit symbol (must be registered). 
         /// </param>
         /// <returns>
         /// <c>true</c> if the unit was set, <c>false</c> otherwise 
         /// </returns>
-        public static bool TrySetDisplayUnit<T>(this IUnitProvider unitProvider, string name) where T : IQuantity<T>
+        public static bool TrySetDisplayUnit<T>(this IUnitProvider unitProvider, string symbol) where T : IQuantity<T>
         {
-            return unitProvider.TrySetDisplayUnit(typeof(T), name);
+            return unitProvider.TrySetDisplayUnit(typeof(T), symbol);
         }
     }
 }
