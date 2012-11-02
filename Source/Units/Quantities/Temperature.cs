@@ -29,25 +29,22 @@ namespace Units
     using System;
 
     /// <summary>
-    ///   Represents a temperature quantity.
+    ///   Represents a thermodynamic temperature.
     /// </summary>
-    /// <remarks>
-    ///   This quantity type must be handled specially.
-    /// </remarks>
     public partial struct Temperature : IQuantity<Temperature>
     {
         /// <summary>
-        ///   The celsius backing field.
+        ///   The Celsius degree backing field.
         /// </summary>
         private static readonly Temperature DegreeCelsiusField = new Temperature(-2);
 
         /// <summary>
-        ///   The fahrenheit backing field.
+        ///   The Fahrenheit degree backing field.
         /// </summary>
         private static readonly Temperature DegreeFahrenheitField = new Temperature(-3);
 
         /// <summary>
-        ///   The kelvin backing field.
+        ///   The Kelvin degree backing field.
         /// </summary>
         private static readonly Temperature DegreeKelvinField = new Temperature(-1);
 
@@ -109,7 +106,7 @@ namespace Units
         }
 
         /// <summary>
-        ///   Gets the temperature in the base unit.
+        ///   Gets the numeric value of the temperature in the base unit.
         /// </summary>
         /// <value> The value. </value>
         public double Value
@@ -278,7 +275,7 @@ namespace Units
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            IUnitProvider up = formatProvider as IUnitProvider ?? UnitProvider.Default;
+            var up = formatProvider as IUnitProvider ?? UnitProvider.Default;
             return up.Format(format, this);
         }
 

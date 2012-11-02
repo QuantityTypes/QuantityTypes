@@ -41,7 +41,7 @@ namespace Units
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
-            @"([0#]*\.?[0#]*)\s*([a-z\*\/%]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            @"([0#]*\.?[0#]*)\s*([a-z\*\/%°]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The parser expression.
@@ -165,7 +165,8 @@ namespace Units
             string s = quantity.ConvertTo(q).ToString(format, this);
 
             var separator = this.Separator;
-            if (string.IsNullOrEmpty(unit) || unit.StartsWith("°"))
+            var isTemperature = quantity is Temperature;
+            if (!isTemperature && (string.IsNullOrEmpty(unit) || unit.StartsWith("°")))
             {
                 separator = string.Empty;
             }
