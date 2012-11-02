@@ -40,15 +40,15 @@ namespace Units
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitAttribute"/> class.
         /// </summary>
-        /// <param name="name">
-        /// The name. 
+        /// <param name="symbol">
+        /// The unit symbol. 
         /// </param>
         /// <param name="isDefaultDisplayUnit">
-        /// if set to <c>true</c> [is default display unit]. 
+        /// if set to <c>true</c>, the unit is the default display unit. 
         /// </param>
-        public UnitAttribute(string name, bool isDefaultDisplayUnit = false)
+        public UnitAttribute(string symbol, bool isDefaultDisplayUnit = false)
         {
-            this.Name = name;
+            this.Symbol = symbol;
             this.IsDefaultDisplayUnit = isDefaultDisplayUnit;
         }
 
@@ -59,10 +59,10 @@ namespace Units
         public bool IsDefaultDisplayUnit { get; private set; }
 
         /// <summary>
-        ///     Gets the name of the unit.
+        ///     Gets the symbol of the unit.
         /// </summary>
         /// <value> The name. </value>
-        public string Name { get; private set; }
+        public string Symbol { get; private set; }
 
         /// <summary>
         ///     When implemented in a derived class, gets a unique identifier for this <see cref="T:System.Attribute" />.
@@ -72,7 +72,7 @@ namespace Units
         {
             get
             {
-                return new Guid(this.Name);
+                return new Guid(this.Symbol);
             }
         }
     }

@@ -39,8 +39,8 @@ namespace Units.Tests
         [Test]
         public void SetDisplayUnit()
         {
-            string unitName;
-            var unit = UnitProvider.Default.GetDisplayUnit(typeof(Length), out unitName);
+            string unitSymbol;
+            var unit = UnitProvider.Default.GetDisplayUnit(typeof(Length), out unitSymbol);
 
             // Change the display unit
             UnitProvider.Default.RegisterUnit(627.48 * Length.Millimetre, "alen");
@@ -48,7 +48,7 @@ namespace Units.Tests
             Assert.AreEqual("1 alen", (0.62748 * Length.Metre).ToString());
 
             // Revert
-            UnitProvider.Default.TrySetDisplayUnit<Length>(unitName);
+            UnitProvider.Default.TrySetDisplayUnit<Length>(unitSymbol);
             Assert.AreEqual("1 m", Length.Metre.ToString());
         }
 
