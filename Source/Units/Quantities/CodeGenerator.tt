@@ -1,0 +1,26 @@
+﻿<#@ import namespace="System.Runtime.Remoting.Messaging" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ include file="MultiOutput.tt" #>
+<#@ include file="QuantityTemplate.tt" #>
+
+<#
+	var lines1=File.ReadAllLines(Path.Combine(Path.GetDirectoryName(Host.TemplateFile),"Units.csv"));
+
+	var generated = new Dictionary<string,int>();
+	foreach (var line in lines1) {
+  		  if (string.IsNullOrWhiteSpace(line) || line.Trim().StartsWith("//")) {
+		      continue;
+		  }
+
+		  var values=line.Split(',');
+		  var name = values[0];
+		  if (generated.ContainsKey(name)) {
+			  continue;
+		  }
+
+          ProcessTemplate("QuantityTemplate.tt", name+".cs", name);  
+		  generated.Add(name,0);
+	}
+	DeleteOldOutputs();
+#>

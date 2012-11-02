@@ -1,0 +1,228 @@
+﻿// This list of quantity types and units is converted to c# code by the CodeGenerator T4 template
+
+// http://en.wikipedia.org/wiki/Units_of_measurement
+// http://en.wikipedia.org/wiki/Conversion_of_units
+// http://en.wikipedia.org/wiki/Quantity
+// http://en.wikipedia.org/wiki/Physical_quantities
+// http://en.wikipedia.org/wiki/Phenomenon
+
+// Length
+Length,Metre,m,1
+Length,Decimetre,dm,1e-1
+Length,Centimetre,cm,1e-2
+Length,Millimetre,mm,1e-3
+Length,Kilometre,km,1e3
+Length,Yard,yd,0.9144
+Length,Foot,ft,0.3048
+Length,Inch,in,0.0254
+Length,Mile,mi,1609.344
+Length,NauticalMile,nmi,1852
+Length,Ångström,Å,1e-10
+Length,AstronomicalUnit,AU,149597871464
+Length,LightYear,ly,9.4607304725808e15
+
+// Area
+Area,SquareMetre,m^2,1
+Area,Acre,ac,4046.8564224
+Area,Hectare,ha,1e4
+Area,SquareFoot,ft^2,9.290304e-2
+Area,SquareKilometre,km^2,1e6
+
+// Volume
+Volume,CubicMetre,m^3,1
+Volume,Litre,L,1e-3
+Volume,Gallon,gal,3.785411784e-3
+
+// Plane angle
+Angle,Radian,rad,1
+Angle,Degree,deg,Math.PI / 180
+Angle,DegreeSymbol,°,Math.PI / 180
+Angle,Grad,grad,Math.PI / 200
+Angle,Gon,gon,Math.PI / 200
+
+// Solid angle
+SolidAngle,Steradian,sr,1
+
+// Mass
+Mass,Kilogram,kg,1
+Mass,Gram,g,1e-3
+Mass,Tonne,t,1e3
+Mass,Kips,kips,453.59237
+Mass,Pound,lb,0.45359237
+Mass,Slug,slug,14.5939035919985
+Mass,Ton,ton,1016.0469088
+
+// Density
+Density,KilogramPerCubicMetre,kg/m^3,1
+Density,KilogramPerCubicDecimetre,kg/dm^3,1000
+Density,GramPerCubicCentietre,g/cm^3,1000
+Density,KilogramPerLitre,kg/L,1000
+Density,GramPerMillilitre,g/mL,1000
+Density,PoundPerCubicFoot,lb/ft^3,16.01846337396
+Density,PoundPerCubicInch,lb/in^3,27679.9047102031
+Density,PoundPerGallon,lb/gal,99.7763287677
+
+// Time
+Time,Second,s,1
+Time,Minute,min,60
+Time,Hour,h,3600
+Time,Day,d,24 * Hour.Value
+Time,Week,wk,7 * Day.Value
+Time,Millisecond,ms,1e-3
+
+// Frequency
+Frequency,Hertz,Hz,1
+Frequency,RevolutionsPerMinute,rpm,1.0 / 60
+
+AngularFrequency,RadiansPerSecond,rad/s,1
+
+// Speed or velocity
+Velocity,MetrePerSecond,m/s,1
+Velocity,KilometrePerHour,km/h,1/3.6
+Velocity,Knot,knot,0.514444444444444
+
+// Flow (volume)
+Flow,CubicMetrePerSecond,m^3/s,1
+Flow,LitrePerMinute,L/min,1.6e-5
+
+// Acceleration
+Acceleration,MetrePerSecondSquared,m/s^2,1
+Acceleration,StandardGravity,g,9.80665
+
+// Force
+Force,Newton,N,1
+Force,KilogramForce,kgf,9.80665
+Force,KipForce,kipf,4.4482216152605e3
+
+// Pressure or mechanical stress
+Pressure,Pascal,Pa,1
+Pressure,Kilopascal,kPa,1000
+Pressure,PoundPerSquareInch,psi,6.894757e3
+Pressure,KilopoundPerSquareInch,ksi,6.8947572931783e6
+Pressure,MillimetreOfMercury,mmHg,133.3224
+Pressure,Bar,bar,1e5
+Pressure,Megapascal,Megapascal,1000000
+Pressure,Atmosphere,atm,101325
+
+// Torque or moment of force
+Torque,NewtonMetre,N*m,1
+
+// Energy
+Energy,Joule,J,1
+Energy,Calorie,cal,4.1868
+
+// Power or heat flow rate
+Power,Watt,W,1
+Power,HorsePower,hp,735.49875
+
+// Action
+Action,AtomicUnitOfAction,au,1.05457168e-34
+
+// Dynamic viscosity
+DynamicViscosity,PascalSecond,Pa*s,1
+DynamicViscosity,NewtonSecond,N*s,1
+
+// Kinematic viscosity
+KinematicViscosity,SquareMetrePerSecond,m^2/s,1
+KinematicViscosity,SquareMillimetrePerSecond,mm^2/s,1e-6
+
+// Electric current
+ElectricCurrent,Ampere,A,1
+
+// Electric charge
+ElectricCharge,Coulomb,C,1
+ElectricCharge,Faraday,F,96485.3383
+ElectricCharge,AtomicUnitOfCharge,au,1.602176462e-19
+
+// Electric dipole
+ElectricDipole,CoulombMetre,C*m,1
+ElectricDipole,Debye,D,3.33564095e-30
+
+// Electromotive force, electric potential difference
+ElectricVoltage,Volt,V,1
+
+// Electric resistance
+ElectricResistance,Ohm,Ω,1
+
+// Capacitance
+Capacitance,Farad,F,1
+
+// Magnetic flux
+MagneticFlux,Weber,Wb,1
+MagneticFlux,Maxwell,Mx,1e-8
+
+// Magnetic flux density
+MagneticFluxDensity,Tesla,T,1
+
+// Inductance
+Inductance,Henry,H,1
+
+// Temperature (special case)
+
+// Information entropy
+InformationEntropy,JoulePerKelvin,J/K,1
+InformationEntropy,Byte,B,7.655952e-23
+
+// Luminous intensity
+LuminousIntensity,Candela,cd,1
+
+// Luminance
+Luminance,CandelaPerSquareMetre,cd/m^2,1
+Luminance,Lambert,L,3183.0988618
+
+// LuminousFlux
+LuminousFlux,Lumen,lm,1
+
+// Illuminance
+Illuminance,Lux,lx,1
+
+// Radiation
+Radiation,Becquerel,Bq,1
+
+// Radiation - exposure
+RadiationExposure,Roentgen,R,2.58e-4
+
+// Radiation - absorbed dose
+RadiationAbsorbedDose,Gray,Gy,1
+
+// Radiation - equivalent dose
+RadiationEquivalentDose,Sievert,Sv,1
+
+// Other quantities
+
+Fraction,Frac,,1
+Fraction,Percent,%,0.01
+Fraction,Permil,‰,0.001
+Fraction,PartPerMillion,ppm,1E-06
+
+AmountOfSubstance,Mole,mol,1
+
+Stiffness,NewtonPerMetre,N/m,1
+RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
+
+HeatCapacity,JoulePerKelvin,J/K,1
+
+TemperatureDifference,DegreeKelvin,K,1
+TemperatureDifference,DegreeCelsius,C,1
+TemperatureDifference,DegreeFahrenheit,F,9.0 / 5
+
+LinearMomentum,KilogramMeterPerSecond,kg*m/s,1
+LinearMomentum,NewtonSecond,N*s,1
+
+FirstMomentOfArea,MetreCubed,m^3,1
+SecondMomentOfArea,MetreToTheFourth,m^4,1
+
+MassMomentOfInertia,KilogramMetreSquared,kg*m^2,1
+MassMomentOfInertia,PoundInchSquared,lb*in^2,0.0002926396534292
+MassMomentOfInertia,PoundFootSquared,lb*ft^2,0.0421401100938048
+MassMomentOfInertia,PoundforceInchSecondSquared,lbf*in*s^2,0.112984829027604
+
+// Fluidity
+
+Curvature,PerMetre,1/m,1
+
+SectionModulus,MetreCubed,m^3,1
+
+FuelConsumption,LitrePer100Kilometre,l/100km,1e5
+FuelEconomy,KilometrePerLitre,km/l,1e6
+FuelEconomy,MilesPerGallon,mpg,425143.7074
