@@ -41,14 +41,14 @@ namespace Units
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
-            @"([0#]*\.?[0#]*)\s*([a-z\*\/%]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            @"([0#\s]*\.?[0#\s]*)\s*([a-z\*\/%]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The parser expression.
         /// </summary>
         private static readonly Regex ParserExpression =
             new Regex(
-                @"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
+                @"\s*([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
                 RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Units
                 var m = FormatExpression.Match(format);
                 if (m.Success)
                 {
-                    format = m.Groups[1].Value;
+                    format = m.Groups[1].Value.Trim();
                     unit = m.Groups[2].Value;
                 }
             }
@@ -170,7 +170,7 @@ namespace Units
                 separator = string.Empty;
             }
 
-            return string.Format("{0}{1}{2}", s, separator, unit);
+            return string.Format("{0}{1}{2}", s, separator, unit).Trim();
         }
 
         /// <summary>
