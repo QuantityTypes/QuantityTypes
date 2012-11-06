@@ -82,6 +82,8 @@
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2m"));
             Assert.AreEqual(1e-10 * Length.Metre, Length.Parse("1Å"));
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
+            Assert.AreEqual(-60 * Length.Metre, Length.Parse(" -60 m"));
+            Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m "));
         }
 
         [Test]
@@ -103,6 +105,17 @@
             Assert.AreEqual("0.1 km", l.ToString("0.0km"));
             Assert.AreEqual("100000 mm", l.ToString("0.# mm"));
             Assert.AreEqual("100000 mm", l.ToString("0. mm"));
+        }
+
+        [Test]
+        public void ToString_ThousandSeparator_ValidFormatStrings()
+        {
+            var l = 1000 * Length.Kilometre;
+            Assert.AreEqual("1 000 000 m", l.ToString("# ### ###"));
+            Assert.AreEqual("1 000 km", l.ToString("# ### km"));
+            var l2 = 1 * Length.Metre;
+            // Assert.AreEqual("1", 1.ToString("# ### ###"));
+            Assert.AreEqual("1 m", l2.ToString("# ### ###"));
         }
 
         [Test]

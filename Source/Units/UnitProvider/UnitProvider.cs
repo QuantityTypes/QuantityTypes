@@ -41,14 +41,14 @@ namespace Units
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
-            @"([0#]*\.?[0#]*)\s*([a-z\*\/%°]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            @"([0#\s]*\.?[0#\s]*)\s*([a-z\*\/%]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The parser expression.
         /// </summary>
         private static readonly Regex ParserExpression =
             new Regex(
-                @"([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
+                @"\s*([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
                 RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Units
                 var m = FormatExpression.Match(format);
                 if (m.Success)
                 {
-                    format = m.Groups[1].Value;
+                    format = m.Groups[1].Value.Trim();
                     unit = m.Groups[2].Value;
                 }
             }
@@ -165,13 +165,12 @@ namespace Units
             string s = quantity.ConvertTo(q).ToString(format, this);
 
             var separator = this.Separator;
-            var isTemperature = quantity is Temperature;
-            if (!isTemperature && (string.IsNullOrEmpty(unit) || unit.StartsWith("°")))
+            if (string.IsNullOrEmpty(unit) || unit.StartsWith("°"))
             {
                 separator = string.Empty;
             }
 
-            return string.Format("{0}{1}{2}", s, separator, unit);
+            return string.Format("{0}{1}{2}", s, separator, unit).Trim();
         }
 
         /// <summary>
@@ -191,7 +190,7 @@ namespace Units
                 return null;
             }
 
-            return ud.Symbol;
+            return ud.Name;
         }
 
         /// <summary>
@@ -200,8 +199,8 @@ namespace Units
         /// <param name="type">
         /// The type. 
         /// </param>
-        /// <param name="symbol">
-        /// The symbol of the unit. 
+        /// <param name="unitName">
+        /// Name of the unit. 
         /// </param>
         /// <returns>
         /// A quantity. 
@@ -209,7 +208,7 @@ namespace Units
         /// <exception cref="System.InvalidOperationException">
         /// No display unit defined for  + type
         /// </exception>
-        public IQuantity GetDisplayUnit(Type type, out string symbol)
+        public IQuantity GetDisplayUnit(Type type, out string unitName)
         {
             UnitDefinition ud;
             if (!this.displayUnits.TryGetValue(type, out ud))
@@ -217,7 +216,7 @@ namespace Units
                 throw new InvalidOperationException("No display unit defined for " + type);
             }
 
-            symbol = ud.Symbol;
+            unitName = ud.Name;
             return ud.Unit;
         }
 
@@ -236,20 +235,20 @@ namespace Units
         }
 
         /// <summary>
-        /// Gets the first registered unit (of any quantity type) that matches the specified symbol.
+        /// Gets the first registered unit (of any quantity type) that matches the specified name.
         /// </summary>
-        /// <param name="symbol">
-        /// The unit symbol. 
+        /// <param name="name">
+        /// The name. 
         /// </param>
         /// <returns>
         /// The unit. 
         /// </returns>
-        public IQuantity GetUnit(string symbol)
+        public IQuantity GetUnit(string name)
         {
             foreach (var u in this.units.Values)
             {
                 IQuantity v;
-                if (u.TryGetValue(symbol, out v))
+                if (u.TryGetValue(name, out v))
                 {
                     return v;
                 }
@@ -278,10 +277,10 @@ namespace Units
         /// <param name="unit">
         /// The unit. 
         /// </param>
-        /// <param name="symbol">
-        /// The unit symbol. 
+        /// <param name="name">
+        /// The name. 
         /// </param>
-        public void RegisterUnit(IQuantity unit, string symbol)
+        public void RegisterUnit(IQuantity unit, string name)
         {
             var type = unit.GetType();
             if (!this.units.ContainsKey(type))
@@ -289,12 +288,12 @@ namespace Units
                 this.units.Add(type, new Dictionary<string, IQuantity>(StringComparer.OrdinalIgnoreCase));
             }
 
-            if (this.units[type].ContainsKey(symbol))
+            if (this.units[type].ContainsKey(name))
             {
-                throw new InvalidOperationException(string.Format("{0} is already added to {1}", symbol, type));
+                throw new InvalidOperationException(string.Format("{0} is already added to {1}", name, type));
             }
 
-            this.units[type].Add(symbol, unit);
+            this.units[type].Add(name, unit);
         }
 
         /// <summary>
@@ -306,35 +305,35 @@ namespace Units
         /// <param name="unit">
         /// The unit (output). 
         /// </param>
-        /// <param name="unitSymbol">
+        /// <param name="unitName">
         /// The unit symbol (output). 
         /// </param>
         /// <returns>
         /// True if the display unit was found. 
         /// </returns>
-        public bool TryGetDisplayUnit(Type type, out IQuantity unit, out string unitSymbol)
+        public bool TryGetDisplayUnit(Type type, out IQuantity unit, out string unitName)
         {
             UnitDefinition ud;
             if (!this.displayUnits.TryGetValue(type, out ud))
             {
                 unit = null;
-                unitSymbol = null;
+                unitName = null;
                 return false;
             }
 
-            unitSymbol = ud.Symbol;
+            unitName = ud.Name;
             unit = ud.Unit;
             return true;
         }
 
         /// <summary>
-        /// Gets the unit that matches the specified symbol.
+        /// Gets the unit that matches the specified name.
         /// </summary>
         /// <param name="type">
         /// The type. 
         /// </param>
-        /// <param name="symbol">
-        /// The symbol of the unit. 
+        /// <param name="name">
+        /// The name of the unit. 
         /// </param>
         /// <param name="unit">
         /// The unit. 
@@ -342,7 +341,7 @@ namespace Units
         /// <returns>
         /// <c>true</c> if the unit name was found, <c>false</c> otherwise 
         /// </returns>
-        public bool TryGetUnit(Type type, string symbol, out IQuantity unit)
+        public bool TryGetUnit(Type type, string name, out IQuantity unit)
         {
             Dictionary<string, IQuantity> d;
             if (!this.units.TryGetValue(type, out d))
@@ -352,7 +351,7 @@ namespace Units
             }
 
             IQuantity u;
-            if (symbol == null || !d.TryGetValue(symbol, out u))
+            if (name == null || !d.TryGetValue(name, out u))
             {
                 unit = default(IQuantity);
                 return false;
@@ -395,12 +394,12 @@ namespace Units
             }
 
             var valueString = m.Groups[1].Value;
-            var unitSymbolString = m.Groups[3].Value;
+            var unitString = m.Groups[3].Value;
 
             double value = 0;
             if (string.IsNullOrEmpty(valueString))
             {
-                if (!string.IsNullOrEmpty(unitSymbolString))
+                if (!string.IsNullOrEmpty(unitString))
                 {
                     value = 1;
                 }
@@ -411,11 +410,11 @@ namespace Units
             }
 
             IQuantity unit;
-            if (string.IsNullOrEmpty(unitSymbolString))
+            if (string.IsNullOrEmpty(unitString))
             {
                 // No unit was provided - use the display unit
-                string unitSymbol;
-                if (!this.TryGetDisplayUnit(unitType, out unit, out unitSymbol))
+                string name;
+                if (!this.TryGetDisplayUnit(unitType, out unit, out name))
                 {
                     quantity = null;
                     return false;
@@ -424,7 +423,7 @@ namespace Units
             else
             {
                 // Find the unit
-                if (!this.TryGetUnit(unitType, unitSymbolString, out unit))
+                if (!this.TryGetUnit(unitType, unitString, out unit))
                 {
                     quantity = null;
                     return false;
@@ -441,29 +440,29 @@ namespace Units
         /// <param name="type">
         /// The type. 
         /// </param>
-        /// <param name="symbol">
-        /// The unit symbol (must be registered). 
+        /// <param name="name">
+        /// The unit name (must be registered). 
         /// </param>
         /// <returns>
         /// <c>true</c> if the unit was set, <c>false</c> otherwise 
         /// </returns>
-        public bool TrySetDisplayUnit(Type type, string symbol)
+        public bool TrySetDisplayUnit(Type type, string name)
         {
             IQuantity unit;
-            if (!this.TryGetUnit(type, symbol, out unit))
+            if (!this.TryGetUnit(type, name, out unit))
             {
                 return false;
             }
 
-            this.displayUnits[type] = new UnitDefinition { Symbol = symbol, Unit = unit };
+            this.displayUnits[type] = new UnitDefinition { Name = name, Unit = unit };
             return true;
         }
 
         /// <summary>
         /// Gets the unit of the specified name and type.
         /// </summary>
-        /// <param name="symbol">
-        /// The unit symbol. 
+        /// <param name="name">
+        /// The name. 
         /// </param>
         /// <typeparam name="T">
         /// The type of unit. 
@@ -471,7 +470,7 @@ namespace Units
         /// <returns>
         /// The unit. 
         /// </returns>
-        private T GetUnit<T>(string symbol)
+        private T GetUnit<T>(string name)
         {
             Dictionary<string, IQuantity> typeUnits;
             if (!this.units.TryGetValue(typeof(T), out typeUnits))
@@ -480,19 +479,19 @@ namespace Units
             }
 
             IQuantity unit;
-            if (!typeUnits.TryGetValue(symbol, out unit))
+            if (!typeUnits.TryGetValue(name, out unit))
             {
-                if (string.IsNullOrEmpty(symbol))
+                if (string.IsNullOrEmpty(name))
                 {
                     T displayUnit;
-                    string displayUnitSymbol;
-                    if (this.TryGetDisplayUnit(out displayUnit, out displayUnitSymbol))
+                    string displayUnitName;
+                    if (this.TryGetDisplayUnit(out displayUnit, out displayUnitName))
                     {
                         return displayUnit;
                     }
                 }
 
-                throw new FormatException(string.Format("Unit '{0}' not found in type {1}.", symbol, typeof(T)));
+                throw new FormatException(string.Format("Unit '{0}' not found in type {1}.", name, typeof(T)));
             }
 
             return (T)unit;
@@ -519,7 +518,7 @@ namespace Units
         /// Registers the unit properties in the specified type.
         /// </summary>
         /// <param name="type">
-        /// The type containing unit properties. 
+        /// The type. 
         /// </param>
         private void RegisterUnits(Type type)
         {
@@ -527,12 +526,12 @@ namespace Units
             {
                 foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
                 {
-                    this.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Symbol);
+                    this.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Name);
 
                     if (ua.IsDefaultDisplayUnit)
                     {
                         var unit = (IQuantity)property.GetValue(null, null);
-                        this.TrySetDisplayUnit(unit.GetType(), ua.Symbol);
+                        this.TrySetDisplayUnit(unit.GetType(), ua.Name);
                     }
                 }
             }
@@ -544,9 +543,9 @@ namespace Units
         private struct UnitDefinition
         {
             /// <summary>
-            ///   Gets or sets the unit symbol.
+            ///   Gets or sets the name.
             /// </summary>
-            public string Symbol { get; set; }
+            public string Name { get; set; }
 
             /// <summary>
             ///   Gets or sets the unit.
