@@ -386,6 +386,9 @@ namespace Units
 
             input = input.Replace(',', '.');
 
+            // remove whitespace
+            input = input.Replace(" ", string.Empty);
+
             var m = ParserExpression.Match(input);
             if (!m.Success)
             {

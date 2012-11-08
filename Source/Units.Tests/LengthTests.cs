@@ -87,6 +87,13 @@
         }
 
         [Test]
+        public void Parse_StringsWithWhitespace()
+        {
+            Assert.AreEqual(1100 * Length.Metre, Length.Parse("1 100 m"));
+            Assert.AreEqual(-100 * Length.Metre, Length.Parse("- 100 m"));
+        }
+
+        [Test]
         public void Parse_UnitSymbolOnly()
         {
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
