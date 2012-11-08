@@ -30,7 +30,7 @@
 namespace Units
 {
     /// <summary>
-    ///     Provides operators related to mass.
+    /// Provides operators related to mass.
     /// </summary>
     public partial struct Mass
     {
@@ -54,6 +54,17 @@ namespace Units
         public static Volume operator /(Mass m, Density d)
         {
             return new Volume(m.Value / d.Value);
+        }
+
+        /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="m">The mass.</param>
+        /// <param name="a">The area.</param>
+        /// <returns>The mass moment of inertia.</returns>
+        public static MassMomentOfInertia operator *(Mass m, Area a)
+        {
+            return new MassMomentOfInertia(m.Value * a.Value);
         }
     }
 }
