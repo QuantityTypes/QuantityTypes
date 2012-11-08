@@ -526,12 +526,12 @@ namespace Units
             {
                 foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
                 {
-                    this.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Name);
+                    this.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Symbol);
 
                     if (ua.IsDefaultDisplayUnit)
                     {
                         var unit = (IQuantity)property.GetValue(null, null);
-                        this.TrySetDisplayUnit(unit.GetType(), ua.Name);
+                        this.TrySetDisplayUnit(unit.GetType(), ua.Symbol);
                     }
                 }
             }
