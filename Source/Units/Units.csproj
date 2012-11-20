@@ -247,6 +247,9 @@
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitProvider\UnitProviderExtensions.cs" />
+    <Compile Include="Utilities\Csv.cs" />
+    <Compile Include="Utilities\CsvColumnAttribute.cs" />
+    <Compile Include="Utilities\CsvFile.cs" />
     <None Include="Quantities\MultiOutput.tt" />
     <None Include="Quantities\QuantityTemplate.tt" />
     <Compile Include="Operators\Length.cs" />
