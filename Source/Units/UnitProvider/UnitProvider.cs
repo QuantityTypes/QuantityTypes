@@ -41,7 +41,7 @@ namespace Units
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
-            @"([0#\s]*\.?[0#\s]*)\s*([a-z\*\/%]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            @"([0#\s]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The parser expression.
@@ -122,6 +122,14 @@ namespace Units
         public string Separator { get; set; }
 
         /// <summary>
+        /// The 'hide unit' format string marker.
+        /// </summary>
+        /// <remarks>
+        /// When a format string contains this marker at the end, the unit symbol will not be included in the formatted string.
+        /// </remarks>
+        private const string HideUnitMarker = "[]";
+
+        /// <summary>
         /// Formats the specified quantity.
         /// </summary>
         /// <typeparam name="T">
@@ -138,6 +146,12 @@ namespace Units
         /// </returns>
         public string Format<T>(string format, T quantity) where T : IQuantity<T>
         {
+            bool hideUnitSymbol = format != null && format.EndsWith(HideUnitMarker);
+            if (hideUnitSymbol)
+            {
+                format = format.Remove(format.Length - HideUnitMarker.Length);
+            }
+
             T q;
             var unit = default(string);
             if (!string.IsNullOrEmpty(format))
@@ -163,9 +177,14 @@ namespace Units
             }
 
             string s = quantity.ConvertTo(q).ToString(format, this);
+            if (hideUnitSymbol)
+            {
+                return s;
+            }
 
             var separator = this.Separator;
-            if (string.IsNullOrEmpty(unit) || unit.StartsWith("°"))
+            var isTemperature = quantity is Temperature;
+            if (!isTemperature && (string.IsNullOrEmpty(unit) || unit.StartsWith("°")))
             {
                 separator = string.Empty;
             }
