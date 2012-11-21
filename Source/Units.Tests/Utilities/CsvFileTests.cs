@@ -70,6 +70,13 @@ Two;17;42,195";
             Assert.AreEqual(Test1Content, Encoding.UTF8.GetString(outputStream.ToArray()));
         }
 
+        [Test, ExpectedException]
+        public void PropertyDescriptor()
+        {
+            var properties = TypeDescriptor.GetProperties(typeof(CsvFile.CsvRow));
+            Assert.AreEqual(0, properties.Count);
+        }
+
         private static void ValidateTest1(CsvFile file)
         {
             Assert.AreEqual(3, file.Columns.Count);

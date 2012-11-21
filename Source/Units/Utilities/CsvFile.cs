@@ -97,13 +97,13 @@ namespace Units
 
             foreach (var item in items)
             {
-                var csvItem = new CsvRow(file);
+                var csvRow = new CsvRow(file);
                 for (int i = 0; i < properties.Count; i++)
                 {
-                    csvItem.Values[i] = properties[i].GetValue(item);
+                    csvRow.Values[i] = properties[i].GetValue(item);
                 }
 
-                file.Rows.Add(csvItem);
+                file.Rows.Add(csvRow);
             }
 
             return file;
@@ -460,7 +460,7 @@ namespace Units
         /// <summary>
         /// Provides a property descriptor for an object in the <see cref="CsvRow" />.
         /// </summary>
-        public class CsvItemPropertyDescriptor : PropertyDescriptor
+        public class CsvPropertyDescriptor : PropertyDescriptor
         {
             /// <summary>
             /// The column
@@ -473,7 +473,7 @@ namespace Units
             private readonly int index;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="CsvItemPropertyDescriptor"/> class.
+            /// Initializes a new instance of the <see cref="CsvPropertyDescriptor"/> class.
             /// </summary>
             /// <param name="column">
             /// The column.
@@ -481,7 +481,7 @@ namespace Units
             /// <param name="index">
             /// The index.
             /// </param>
-            public CsvItemPropertyDescriptor(CsvColumn column, int index)
+            public CsvPropertyDescriptor(CsvColumn column, int index)
                 : base(column.Name, null)
             {
                 this.column = column;
@@ -599,7 +599,7 @@ namespace Units
         /// <summary>
         /// Provides a custom TypeDescriptionProvider for <see cref="CsvRow" />.
         /// </summary>
-        public class CsvItemTypeDescriptionProvider : TypeDescriptionProvider
+        public class CsvTypeDescriptionProvider : TypeDescriptionProvider
         {
             /// <summary>
             /// Gets a custom type descriptor for the given type and object.
@@ -615,14 +615,19 @@ namespace Units
             /// </returns>
             public override ICustomTypeDescriptor GetTypeDescriptor(Type objectType, object instance)
             {
-                return instance == null ? base.GetTypeDescriptor(objectType, null) : new CsvItemTypeDescriptor(instance);
+                if (instance == null)
+                {
+                    throw new InvalidOperationException("An instance is necessary to get type descriptor.");
+                }
+
+                return instance == null ? base.GetTypeDescriptor(objectType, null) : new CsvRowTypeDescriptor(instance);
             }
         }
 
         /// <summary>
         /// Provides a custom type descriptor for the <see cref="CsvRow" />.
         /// </summary>
-        public class CsvItemTypeDescriptor : CustomTypeDescriptor
+        public class CsvRowTypeDescriptor : CustomTypeDescriptor
         {
             /// <summary>
             /// The row.
@@ -630,12 +635,12 @@ namespace Units
             private readonly CsvRow row;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="CsvItemTypeDescriptor"/> class.
+            /// Initializes a new instance of the <see cref="CsvRowTypeDescriptor"/> class.
             /// </summary>
             /// <param name="instance">
             /// The instance.
             /// </param>
-            public CsvItemTypeDescriptor(object instance)
+            public CsvRowTypeDescriptor(object instance)
             {
                 this.row = (CsvRow)instance;
             }
@@ -649,7 +654,7 @@ namespace Units
                 var result = new List<PropertyDescriptor>(this.row.File.Columns.Count);
                 for (int i = 0; i < this.row.File.Columns.Count; i++)
                 {
-                    result.Add(new CsvItemPropertyDescriptor(this.row.File.Columns[i], i));
+                    result.Add(new CsvPropertyDescriptor(this.row.File.Columns[i], i));
                 }
 
                 return new PropertyDescriptorCollection(result.ToArray());
@@ -659,7 +664,7 @@ namespace Units
         /// <summary>
         /// Represents a row in the <see cref="CsvFile"/>.
         /// </summary>
-        [TypeDescriptionProvider(typeof(CsvItemTypeDescriptionProvider))]
+        [TypeDescriptionProvider(typeof(CsvTypeDescriptionProvider))]
         public class CsvRow
         {
             /// <summary>

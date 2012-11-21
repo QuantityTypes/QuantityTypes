@@ -45,38 +45,28 @@ namespace Units
         /// <summary>
         /// Loads from the specified path.
         /// </summary>
-        /// <typeparam name="T">
-        /// The type of the output items.
-        /// </typeparam>
-        /// <param name="path">
-        /// The path.
-        /// </param>
-        /// <returns>
-        /// An enumeration of the specified type.
-        /// </returns>
-        public static IEnumerable<T> Load<T>(string path)
+        /// <typeparam name="T">The type of the output items.</typeparam>
+        /// <param name="path">The path.</param>
+        /// <param name="cultureInfo">The culture info.</param>
+        /// <returns>An enumeration of the specified type.</returns>
+        public static IList<T> Load<T>(string path, CultureInfo cultureInfo = null)
         {
             using (var r = new StreamReader(path))
             {
-                return Load<T>(r);
+                return Load<T>(r, cultureInfo);
             }
         }
 
         /// <summary>
         /// Loads from the specified stream.
         /// </summary>
-        /// <typeparam name="T">
-        /// The type of the output items.
-        /// </typeparam>
-        /// <param name="stream">
-        /// The stream.
-        /// </param>
-        /// <returns>
-        /// An enumeration of the specified type.
-        /// </returns>
-        public static IEnumerable<T> Load<T>(Stream stream)
+        /// <typeparam name="T">The type of the output items.</typeparam>
+        /// <param name="stream">The stream.</param>
+        /// <param name="cultureInfo">The culture info.</param>
+        /// <returns>An enumeration of the specified type.</returns>
+        public static IList<T> Load<T>(Stream stream, CultureInfo cultureInfo = null)
         {
-            return Load<T>(new StreamReader(stream));
+            return Load<T>(new StreamReader(stream), cultureInfo);
         }
 
         /// <summary>
@@ -89,7 +79,7 @@ namespace Units
         /// An enumeration of the specified type.
         /// </returns>
         /// <exception cref="System.FormatException">Unit  + unit +  not recognized</exception>
-        public static IEnumerable<T> Load<T>(StreamReader r, CultureInfo cultureInfo = null)
+        public static IList<T> Load<T>(StreamReader r, CultureInfo cultureInfo = null)
         {
             if (cultureInfo == null)
             {
@@ -103,7 +93,7 @@ namespace Units
             var header = r.ReadLine();
             if (header == null)
             {
-                yield break;
+                return null;
             }
 
             // Parse the header
@@ -132,6 +122,7 @@ namespace Units
                 }
             }
 
+            var items = new List<T>();
             // Read the rows
             int lineNumber = 1;
             while (!r.EndOfStream)
@@ -143,7 +134,7 @@ namespace Units
                     continue;
                 }
 
-                var values = line.Split(';');
+                var values = CsvFile.SplitLine(line, separator[0]);
                 if (values.Length != n)
                 {
                     throw new FormatException("Wrong number of columns on line " + lineNumber);
@@ -156,8 +147,10 @@ namespace Units
                     propertyDescriptors[i].SetValue(item, value);
                 }
 
-                yield return item;
+                items.Add(item);
             }
+
+            return items;
         }
 
         /// <summary>
@@ -169,7 +162,10 @@ namespace Units
         /// <param name="cultureInfo">The culture info.</param>
         public static void Save<T>(IEnumerable<T> items, string path, CultureInfo cultureInfo = null)
         {
-            Save(items, new StreamWriter(path), cultureInfo);
+            using (var w = new StreamWriter(path))
+            {
+                Save(items, w, cultureInfo);
+            }
         }
 
         /// <summary>
