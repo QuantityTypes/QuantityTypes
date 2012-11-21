@@ -115,6 +115,15 @@
         }
 
         [Test]
+        public void ToString_NoUnit()
+        {
+            var l = 100 * Length.Metre;
+            Assert.AreEqual("100", l.ToString("[]"));
+            Assert.AreEqual("100.00", l.ToString("0.00 []"));
+            Assert.AreEqual("100.00", l.ToString("0.00[]"));
+        }
+
+        [Test]
         public void ToString_ThousandSeparator_ValidFormatStrings()
         {
             var l = 1000 * Length.Kilometre;
