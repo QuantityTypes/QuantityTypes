@@ -66,5 +66,16 @@ namespace Units
         {
             return new MassMomentOfInertia(m.Value * a.Value);
         }
+
+        /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="m">The mass.</param>
+        /// <param name="a">The acceleration.</param>
+        /// <returns>The force.</returns>
+        public static Force operator *(Mass m, Acceleration a)
+        {
+            return new Force(m.Value * a.Value);
+        }
     }
 }
