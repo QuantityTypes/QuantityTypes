@@ -73,18 +73,13 @@ namespace Units
         public List<CsvRow> Rows { get; private set; }
 
         /// <summary>
-        /// Loads the specified items into a <see cref="CsvFile"/>.
+        /// Loads the specified items into a <see cref="CsvFile" />.
         /// </summary>
-        /// <typeparam name="T">
-        /// The type of the items
-        /// </typeparam>
-        /// <param name="items">
-        /// The items.
-        /// </param>
-        /// <returns>
-        /// A <see cref="CsvFile"/>.
-        /// </returns>
-        public static CsvFile Load<T>(IEnumerable<T> items)
+        /// <typeparam name="T">The type of the items</typeparam>
+        /// <param name="items">The items.</param>
+        /// <param name="unitProvider">The unit provider.</param>
+        /// <returns>A <see cref="CsvFile" />.</returns>
+        public static CsvFile Load<T>(IEnumerable<T> items, IUnitProvider unitProvider = null)
         {
             var type = typeof(T);
             var properties = TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>().OrderBy(CsvColumnAttribute.GetColumn).ToList();
@@ -92,7 +87,7 @@ namespace Units
             var file = new CsvFile();
             foreach (var p in properties)
             {
-                file.Columns.Add(new CsvColumn(p.Name, string.Empty, p.PropertyType));
+                file.Columns.Add(new CsvColumn(p.Name, string.Empty, p.PropertyType, unitProvider));
             }
 
             foreach (var item in items)
@@ -233,9 +228,9 @@ namespace Units
         /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="cultureInfo">The culture info.</param>
-        public void Save(string path, CultureInfo cultureInfo = null)
+        public void Save(string path, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
-            this.Save(new StreamWriter(path), cultureInfo);
+            this.Save(new StreamWriter(path), cultureInfo, unitProvider);
         }
 
         /// <summary>
@@ -243,10 +238,10 @@ namespace Units
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <param name="cultureInfo">The culture info.</param>
-        public void Save(Stream stream, CultureInfo cultureInfo = null)
+        public void Save(Stream stream, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
             var writer = new StreamWriter(stream);
-            this.Save(writer, cultureInfo);
+            this.Save(writer, cultureInfo, unitProvider);
             writer.Flush();
         }
 
@@ -255,11 +250,17 @@ namespace Units
         /// </summary>
         /// <param name="streamWriter">The writer.</param>
         /// <param name="cultureInfo">The culture info.</param>
-        public void Save(StreamWriter streamWriter, CultureInfo cultureInfo = null)
+        /// <param name="unitProvider">The unit provider.</param>
+        public void Save(StreamWriter streamWriter, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
+            if (unitProvider == null)
+            {
+                unitProvider = UnitProvider.Default;
+            }
+
             if (cultureInfo == null)
             {
-                cultureInfo = CultureInfo.InvariantCulture;
+                cultureInfo = unitProvider.Culture ?? CultureInfo.InvariantCulture;
             }
 
             var separator = cultureInfo.TextInfo.ListSeparator;
@@ -277,7 +278,7 @@ namespace Units
             string symbol;
             var displayUnit =
                 this.Columns.Select(
-                    c => c.IsQuantityType() ? UnitProvider.Default.GetDisplayUnit(c.Type, out symbol) : null).ToList();
+                    c => c.IsQuantityType() ? unitProvider.GetDisplayUnit(c.Type, out symbol) : null).ToList();
 
             streamWriter.WriteLine();
 
@@ -360,22 +361,17 @@ namespace Units
         public class CsvColumn
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="CsvColumn"/> class.
+            /// Initializes a new instance of the <see cref="CsvColumn" /> class.
             /// </summary>
-            /// <param name="name">
-            /// The name.
-            /// </param>
-            /// <param name="unit">
-            /// The unit.
-            /// </param>
-            /// <param name="type">
-            /// The type.
-            /// </param>
-            public CsvColumn(string name, string unit, Type type)
+            /// <param name="name">The name.</param>
+            /// <param name="unit">The unit.</param>
+            /// <param name="type">The type.</param>
+            /// <param name="unitProvider">The unit provider.</param>
+            public CsvColumn(string name, string unit, Type type, IUnitProvider unitProvider = null)
             {
                 this.Name = name;
                 this.Type = type;
-                this.Unit = this.IsQuantityType() ? UnitProvider.Default.GetDisplayUnit(type) : unit;
+                this.Unit = this.IsQuantityType() ? (unitProvider ?? UnitProvider.Default).GetDisplayUnit(type) : unit;
             }
 
             /// <summary>
@@ -615,11 +611,6 @@ namespace Units
             /// </returns>
             public override ICustomTypeDescriptor GetTypeDescriptor(Type objectType, object instance)
             {
-                if (instance == null)
-                {
-                    throw new InvalidOperationException("An instance is necessary to get type descriptor.");
-                }
-
                 return instance == null ? base.GetTypeDescriptor(objectType, null) : new CsvRowTypeDescriptor(instance);
             }
         }

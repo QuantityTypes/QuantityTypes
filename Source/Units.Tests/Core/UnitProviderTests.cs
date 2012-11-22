@@ -39,16 +39,17 @@ namespace Units.Tests
         [Test]
         public void SetDisplayUnit()
         {
-            var unitSymbol = UnitProvider.Default.GetDisplayUnit(typeof(Length));
+            var unitProvider = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+            var unitSymbol = unitProvider.GetDisplayUnit(typeof(Length));
 
             // Change the display unit
-            UnitProvider.Default.RegisterUnit(627.48 * Length.Millimetre, "alen");
-            UnitProvider.Default.TrySetDisplayUnit<Length>("alen");
-            Assert.AreEqual("1 alen", (0.62748 * Length.Metre).ToString());
+            unitProvider.RegisterUnit(627.48 * Length.Millimetre, "alen");
+            unitProvider.TrySetDisplayUnit<Length>("alen");
+            Assert.AreEqual("1 alen", (0.62748 * Length.Metre).ToString(null, unitProvider));
 
             // Revert
-            Assert.IsTrue(UnitProvider.Default.TrySetDisplayUnit<Length>(unitSymbol));
-            Assert.AreEqual("1 m", Length.Metre.ToString());
+            Assert.IsTrue(unitProvider.TrySetDisplayUnit<Length>(unitSymbol));
+            Assert.AreEqual("1 m", Length.Metre.ToString(null, unitProvider));
         }
 
         [Test]

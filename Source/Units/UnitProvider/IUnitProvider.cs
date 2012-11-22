@@ -31,12 +31,19 @@ namespace Units
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
 
     /// <summary>
     ///     Provides units for parsing and formatting.
     /// </summary>
     public interface IUnitProvider : IFormatProvider
     {
+        /// <summary>
+        /// Gets the culture.
+        /// </summary>
+        /// <value>The culture.</value>
+        CultureInfo Culture { get; }
+
         /// <summary>
         /// Formats the quantity by the specified format string.
         /// </summary>
