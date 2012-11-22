@@ -54,23 +54,24 @@ Two;17;42,195";
         [Test]
         public void LoadFromList_Test1()
         {
-            UnitProvider.Default.TrySetDisplayUnit<Length>("km");
+            var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+            up.TrySetDisplayUnit<Length>("km");
             var items = new List<TestObject>
                             {
                                 new TestObject { Text = "One", Number = -3, Length = 1 * Length.Kilometre },
                                 new TestObject { Text = "Two", Number = 17, Length = 42.195 * Length.Kilometre }
                             };
 
-            var file = CsvFile.Load(items);
+            var file = CsvFile.Load(items, up);
             ValidateTest1(file);
             Assert.AreEqual(typeof(Length), file.Columns[2].Type);
 
             var outputStream = new MemoryStream();
-            file.Save(outputStream);
+            file.Save(outputStream, null, up);
             Assert.AreEqual(Test1Content, Encoding.UTF8.GetString(outputStream.ToArray()));
         }
 
-        [Test, ExpectedException]
+        [Test]
         public void PropertyDescriptor()
         {
             var properties = TypeDescriptor.GetProperties(typeof(CsvFile.CsvRow));
