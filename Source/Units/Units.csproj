@@ -61,9 +61,17 @@
     </Compile>
     <Compile Include="Core\IQuantity.cs" />
     <Compile Include="Core\IQuantity{T}.cs" />
+    <Compile Include="Operators\TypographicLength.cs" />
+    <Compile Include="Operators\TypographicResolution.cs" />
     <Compile Include="Quantities\CodeGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantities\TypographicLength.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantities\TypographicResolution.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitProvider\IUnitProvider.cs" />
