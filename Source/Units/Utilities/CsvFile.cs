@@ -228,6 +228,7 @@ namespace Units
         /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="cultureInfo">The culture info.</param>
+        /// <param name="unitProvider">The unit provider.</param>
         public void Save(string path, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
             this.Save(new StreamWriter(path), cultureInfo, unitProvider);
@@ -238,6 +239,7 @@ namespace Units
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <param name="cultureInfo">The culture info.</param>
+        /// <param name="unitProvider">The unit provider.</param>
         public void Save(Stream stream, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
             var writer = new StreamWriter(stream);
