@@ -237,6 +237,11 @@ namespace Units
                     }
 
                     var value = properties[i].GetValue(item);
+                    if (IsUndefined(value))
+                    {
+                        continue;
+                    }
+
                     var q = value as IQuantity;
                     streamWriter.Write(
                         q != null
@@ -244,6 +249,26 @@ namespace Units
                             : string.Format(cultureInfo, "{0}", value));
                 }
             }
+        }
+
+        /// <summary>
+        /// Determines whether the specified value is undefined.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns><c>true</c> if the specified value is undefined; otherwise, <c>false</c>.</returns>
+        public static bool IsUndefined(object value)
+        {
+            if (value is double && double.IsNaN((double)value))
+            {
+                return true;
+            }
+
+            if (value is IQuantity && double.IsNaN(((IQuantity)value).Value))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
