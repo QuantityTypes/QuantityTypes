@@ -157,6 +157,14 @@
         }
 
         [Test]
+        public void XmlValue_RoundTrip_ValuesShouldBeEqual()
+        {
+            var l1 = 4.0 / 7 * Length.Metre;
+            var l2 = new Length { XmlValue = l1.XmlValue };
+            Assert.AreEqual(l1, l2);
+        }
+
+        [Test]
         public void Serialize_XmlSerializer()
         {
             var s = new XmlSerializer(typeof(Test));
