@@ -299,6 +299,11 @@ namespace Units
                     }
 
                     var value = this.Rows[j].Values[i];
+                    if (Csv.IsUndefined(value))
+                    {
+                        continue;
+                    }
+
                     var q = value as IQuantity;
                     streamWriter.Write(
                         q != null
