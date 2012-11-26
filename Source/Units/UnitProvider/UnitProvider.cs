@@ -41,7 +41,7 @@ namespace Units
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
-            @"([0#\s]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            @"([0#\sDEFGNPRX]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The parser expression.

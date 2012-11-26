@@ -142,7 +142,8 @@ namespace Units
         {
             get
             {
-                return this.ToString();
+                // Use round-trip format
+                return this.ToString("R");
             }
 
             set
