@@ -71,5 +71,16 @@ namespace Units
         {
             return new Volume(a1.value * a2.Value);
         }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="a1"> The area. </param>
+        /// <param name="a2"> The area. </param>
+        /// <returns> The result of the operator. </returns>
+        public static SecondMomentOfArea operator *(Area a1, Area a2)
+        {
+            return new SecondMomentOfArea(a1.value * a2.Value);
+        }
     }
 }
