@@ -55,5 +55,18 @@ namespace Units
         {
             return new Mass(x.Value * y.Value);
         }
+    
+        /// <summary>
+        /// Implements the operator *.
+        /// </summary>
+        /// <param name="x">The volume.</param>
+        /// <param name="y">The length.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static SecondMomentOfArea operator *(Volume x, Length y)
+        {
+            return new SecondMomentOfArea(x.value * y.Value);
+        }
     }
 }
