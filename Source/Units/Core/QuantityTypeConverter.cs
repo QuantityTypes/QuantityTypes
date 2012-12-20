@@ -89,6 +89,14 @@ namespace Units
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             var s = value as string;
+            if (Nullable.GetUnderlyingType(typeof(T))!=null)
+            {
+                if (value == null || string.IsNullOrWhiteSpace(s))
+                {
+                    return null;
+                }
+            }
+
             if (s != null)
             {
                 return (T)Activator.CreateInstance(typeof(T), s, null);

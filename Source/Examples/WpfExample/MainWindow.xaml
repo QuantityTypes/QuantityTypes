@@ -1,6 +1,6 @@
 ﻿<Window x:Class="WpfExample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="WPF Example" Height="350" Width="525">
     <Window.Resources>
         <Style TargetType="Label">
@@ -20,6 +20,8 @@
             <TextBox Text="{Binding Velocity, Mode=OneWay, StringFormat='0.00'}"/>
             <Label Content=""/>
             <TextBox Text="{Binding Velocity, Mode=OneWay,StringFormat='0.00 km/h'}"/>
+            <Label Content="Mass:"/>
+            <TextBox Text="{Binding Mass, TargetNullValue={x:Static sys:String.Empty}}"/>
         </UniformGrid>
     </Grid>
 </Window>

@@ -30,12 +30,14 @@ namespace WpfExample
         /// </summary>
         private Velocity velocity;
 
+        private Mass? mass;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewModel" /> class.
         /// </summary>
         public ViewModel()
         {
-            this.Length = 100 * Length.Metre;
+            this.Length = 100 * Units.Length.Metre;
             this.Time = 9.58 * Time.Second;
         }
 
@@ -114,6 +116,19 @@ namespace WpfExample
             }
         }
 
+        public Mass? Mass
+        {
+            get
+            {
+                return this.mass;
+            }
+            set
+            {
+                this.mass = value;
+                this.RaisePropertyChanged("Mass");
+            }
+        }
+
         /// <summary>
         /// Raises the property changed event.
         /// </summary>
@@ -128,6 +143,5 @@ namespace WpfExample
                 handler(this, new PropertyChangedEventArgs(property));
             }
         }
-
     }
 }
