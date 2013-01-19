@@ -28,11 +28,7 @@
         {
             var old = UnitProvider.Default.GetDisplayUnit(typeof(Length));
             UnitProvider.Default.TrySetDisplayUnit<Length>("km");
-            var items = new List<CsvFileTests.TestObject>
-                            {
-                                new CsvFileTests.TestObject { Text = "One", Number = -3, Length = 1 * Length.Kilometre },
-                                new CsvFileTests.TestObject { Text = "Two", Number = 17, Length = 42.195 * Length.Kilometre }
-                            };
+            var items = CsvFileTests.TestList;
 
             var outputStream = new MemoryStream();
             Csv.Save(items, outputStream);
