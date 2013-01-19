@@ -224,6 +224,17 @@ namespace Units
         }
 
         /// <summary>
+        /// Gets the (underlying) quantity type or null if the type is not a quantity type.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>The quantity type, or null.</returns>
+        public static Type GetQuantityType(Type type)
+        {
+            type = Nullable.GetUnderlyingType(type) ?? type;
+            return QuantityType.IsAssignableFrom(type) ? type : null;
+        }
+
+        /// <summary>
         /// Saves the specified path.
         /// </summary>
         /// <param name="path">The path.</param>
@@ -277,10 +288,14 @@ namespace Units
                 streamWriter.Write(this.Columns[i]);
             }
 
-            string symbol;
             var displayUnit =
                 this.Columns.Select(
-                    c => c.IsQuantityType() ? unitProvider.GetDisplayUnit(c.Type, out symbol) : null).ToList();
+                    c =>
+                        {
+                            var qt = GetQuantityType(c.Type);
+                            string symbol;
+                            return qt != null ? unitProvider.GetDisplayUnit(qt, out symbol) : null;
+                        }).ToList();
 
             streamWriter.WriteLine();
 
@@ -378,7 +393,8 @@ namespace Units
             {
                 this.Name = name;
                 this.Type = type;
-                this.Unit = this.IsQuantityType() ? (unitProvider ?? UnitProvider.Default).GetDisplayUnit(type) : unit;
+                var qt = GetQuantityType(type);
+                this.Unit = qt != null ? (unitProvider ?? UnitProvider.Default).GetDisplayUnit(qt) : unit;
             }
 
             /// <summary>
@@ -446,17 +462,6 @@ namespace Units
                 }
 
                 return input;
-            }
-
-            /// <summary>
-            /// Determines whether the type of the column is an IQuantity type.
-            /// </summary>
-            /// <returns>
-            ///   <c>true</c> if it is an IQuantity type; otherwise, <c>false</c>.
-            /// </returns>
-            public bool IsQuantityType()
-            {
-                return QuantityType.IsAssignableFrom(this.Type);
             }
         }
 

@@ -106,12 +106,13 @@ namespace Units
                 string name, unit;
                 CsvFile.SplitHeader(headers[i], out name, out unit);
                 propertyDescriptors[i] = properties.Find(name, false);
+                var quantityType = CsvFile.GetQuantityType(propertyDescriptors[i].PropertyType);
 
                 // Set the unit if it is a IQuantity based property
-                if (CsvFile.QuantityType.IsAssignableFrom(propertyDescriptors[i].PropertyType))
+                if (quantityType != null)
                 {
                     IQuantity displayUnit;
-                    if (UnitProvider.Default.TryGetUnit(propertyDescriptors[i].PropertyType, unit, out displayUnit))
+                    if (UnitProvider.Default.TryGetUnit(quantityType, unit, out displayUnit))
                     {
                         units[i] = displayUnit;
                     }
@@ -122,8 +123,8 @@ namespace Units
                 }
             }
 
-            var items = new List<T>();
             // Read the rows
+            var items = new List<T>();
             int lineNumber = 1;
             while (!r.EndOfStream)
             {
@@ -211,10 +212,12 @@ namespace Units
                 }
 
                 streamWriter.Write(properties[i].Name);
-                if (CsvFile.QuantityType.IsAssignableFrom(properties[i].PropertyType))
+                var quantityType = CsvFile.GetQuantityType(properties[i].PropertyType);
+
+                if (quantityType != null)
                 {
                     string unitSymbol;
-                    displayUnits[i] = UnitProvider.Default.GetDisplayUnit(properties[i].PropertyType, out unitSymbol);
+                    displayUnits[i] = UnitProvider.Default.GetDisplayUnit(quantityType, out unitSymbol);
                     streamWriter.Write(" [{0}]", unitSymbol);
                 }
             }
@@ -301,9 +304,20 @@ namespace Units
                 return double.Parse(s, provider);
             }
 
+            var underlyingType = Nullable.GetUnderlyingType(type);
+            if (underlyingType != null)
+            {
+                type = underlyingType;
+            }
+
             if (CsvFile.QuantityType.IsAssignableFrom(type))
             {
-                double value = double.Parse(s, provider);
+                if (string.IsNullOrWhiteSpace(s) && underlyingType != null)
+                {
+                    return null;
+                }
+
+                double value = !string.IsNullOrWhiteSpace(s) ? double.Parse(s, provider) : 0;
                 return unit.MultiplyBy(value);
             }
 
