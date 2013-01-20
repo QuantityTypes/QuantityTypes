@@ -18,16 +18,24 @@ One,-3,1,0.1
 Two,17,42.195,";
 
         // Content of a culture-specific CSV file
-        internal const string Test2Content = @"Text;Number;Length [km];NullableLength [km]
+        internal const string Test1ContentCultureSpecific = @"Text;Number;Length [km];NullableLength [km]
 One;-3;1;0,1
 Two;17;42,195;";
 
-        internal static List<CsvFileTests.TestObject> TestList = new List<TestObject>
+        // Content of an invariant culture CSV file
+        internal const string Test2Content = @"Length [km]
+0
+0.1";
+
+        // Content of a culture-specific CSV file
+        internal const string Test2ContentCultureSpecific = @"Length [km]
+0
+0,1";
+internal static List<CsvFileTests.TestObject> TestList = new List<TestObject>
                             {
                                 new CsvFileTests.TestObject { Text = "One", Number = -3, Length = 1 * Length.Kilometre, NullableLength=100*Length.Metre },
                                 new CsvFileTests.TestObject { Text = "Two", Number = 17, Length = 42.195 * Length.Kilometre }
                             };
-
         [Test]
         public void LoadFromString_Test1()
         {
@@ -46,7 +54,7 @@ Two;17;42,195;";
         public void LoadFromString_Test2()
         {
             var c = new CultureInfo("no");
-            var input = Test2Content;
+            var input = Test1ContentCultureSpecific;
             var inputStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
             var file = CsvFile.Load(inputStream, c);
             ValidateTest1(file);

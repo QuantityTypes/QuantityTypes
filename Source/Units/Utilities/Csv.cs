@@ -23,11 +23,7 @@
 //   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // </copyright>
-// <summary>
-//   Provides methods to read Csv files.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Units
 {
     using System;
@@ -42,13 +38,47 @@ namespace Units
     /// </summary>
     public static class Csv
     {
+        #region Public Methods and Operators
+
+        /// <summary>
+        /// Determines whether the specified value is undefined.
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the specified value is undefined; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsUndefined(object value)
+        {
+            if (value is double && double.IsNaN((double)value))
+            {
+                return true;
+            }
+
+            if (value is IQuantity && double.IsNaN(((IQuantity)value).Value))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Loads from the specified path.
         /// </summary>
-        /// <typeparam name="T">The type of the output items.</typeparam>
-        /// <param name="path">The path.</param>
-        /// <param name="cultureInfo">The culture info.</param>
-        /// <returns>An enumeration of the specified type.</returns>
+        /// <typeparam name="T">
+        /// The type of the output items.
+        /// </typeparam>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        /// <returns>
+        /// An enumeration of the specified type.
+        /// </returns>
         public static IList<T> Load<T>(string path, CultureInfo cultureInfo = null)
         {
             using (var r = new StreamReader(path))
@@ -60,25 +90,41 @@ namespace Units
         /// <summary>
         /// Loads from the specified stream.
         /// </summary>
-        /// <typeparam name="T">The type of the output items.</typeparam>
-        /// <param name="stream">The stream.</param>
-        /// <param name="cultureInfo">The culture info.</param>
-        /// <returns>An enumeration of the specified type.</returns>
+        /// <typeparam name="T">
+        /// The type of the output items.
+        /// </typeparam>
+        /// <param name="stream">
+        /// The stream.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        /// <returns>
+        /// An enumeration of the specified type.
+        /// </returns>
         public static IList<T> Load<T>(Stream stream, CultureInfo cultureInfo = null)
         {
             return Load<T>(new StreamReader(stream), cultureInfo);
         }
 
         /// <summary>
-        /// Loads the specified stream reader.
+        /// Loads items from the specified stream reader.
         /// </summary>
-        /// <typeparam name="T">The type of the output items.</typeparam>
-        /// <param name="r">The reader.</param>
-        /// <param name="cultureInfo">The culture info.</param>
+        /// <typeparam name="T">
+        /// The type of the output items.
+        /// </typeparam>
+        /// <param name="r">
+        /// The reader.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
         /// <returns>
         /// An enumeration of the specified type.
         /// </returns>
-        /// <exception cref="System.FormatException">Unit  + unit +  not recognized</exception>
+        /// <exception cref="System.FormatException">
+        /// Unit  + unit +  not recognized
+        /// </exception>
         public static IList<T> Load<T>(StreamReader r, CultureInfo cultureInfo = null)
         {
             if (cultureInfo == null)
@@ -87,9 +133,10 @@ namespace Units
             }
 
             var separator = cultureInfo.TextInfo.ListSeparator;
+            var type = typeof(T);
 
             // Get the properties from the type
-            var properties = TypeDescriptor.GetProperties(typeof(T));
+            var properties = TypeDescriptor.GetProperties(type);
             var header = r.ReadLine();
             if (header == null)
             {
@@ -155,12 +202,127 @@ namespace Units
         }
 
         /// <summary>
+        /// Loads a list of quantities from the specified path.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the output items.
+        /// </typeparam>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        /// <returns>
+        /// An enumeration of the specified type.
+        /// </returns>
+        public static IList<T> LoadQuantities<T>(string path, CultureInfo cultureInfo = null) where T : IQuantity
+        {
+            using (var r = new StreamReader(path))
+            {
+                return LoadQuantities<T>(r, cultureInfo);
+            }
+        }
+
+        /// <summary>
+        /// Loads a list of quantities from the specified stream.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the output items.
+        /// </typeparam>
+        /// <param name="stream">
+        /// The stream.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        /// <returns>
+        /// An enumeration of the specified type.
+        /// </returns>
+        public static IList<T> LoadQuantities<T>(Stream stream, CultureInfo cultureInfo = null) where T : IQuantity
+        {
+            return LoadQuantities<T>(new StreamReader(stream), cultureInfo);
+        }
+
+        /// <summary>
+        /// Loads quantities from the specified stream reader.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the output items.
+        /// </typeparam>
+        /// <param name="r">
+        /// The reader.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        /// <returns>
+        /// An enumeration of the specified type.
+        /// </returns>
+        /// <exception cref="System.FormatException">
+        /// Unit  + unit +  not recognized
+        /// </exception>
+        public static IList<T> LoadQuantities<T>(StreamReader r, CultureInfo cultureInfo = null) where T : IQuantity
+        {
+            if (cultureInfo == null)
+            {
+                cultureInfo = CultureInfo.InvariantCulture;
+            }
+
+            var type = typeof(T);
+
+            // Get the properties from the type
+            var header = r.ReadLine();
+            if (header == null)
+            {
+                return null;
+            }
+
+            // Parse the header
+            string name, unit;
+            CsvFile.SplitHeader(header, out name, out unit);
+
+            IQuantity displayUnit;
+            if (UnitProvider.Default.TryGetUnit(type, unit, out displayUnit))
+            {
+            }
+            else
+            {
+                throw new FormatException("Unit " + unit + " not recognized");
+            }
+
+            // Read the rows
+            var items = new List<T>();
+            while (!r.EndOfStream)
+            {
+                var line = r.ReadLine();
+                if (line == null)
+                {
+                    continue;
+                }
+
+                var value = ChangeType(line, type, displayUnit, cultureInfo);
+                items.Add((T)value);
+            }
+
+            return items;
+        }
+
+        /// <summary>
         /// Saves the specified items to the specified file.
         /// </summary>
-        /// <typeparam name="T">The type of the items</typeparam>
-        /// <param name="items">The items.</param>
-        /// <param name="path">The path.</param>
-        /// <param name="cultureInfo">The culture info.</param>
+        /// <typeparam name="T">
+        /// The type of the items
+        /// </typeparam>
+        /// <param name="items">
+        /// The items.
+        /// </param>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
         public static void Save<T>(IEnumerable<T> items, string path, CultureInfo cultureInfo = null)
         {
             using (var w = new StreamWriter(path))
@@ -172,10 +334,18 @@ namespace Units
         /// <summary>
         /// Saves the specified items to the specified stream.
         /// </summary>
-        /// <typeparam name="T">The type of the items</typeparam>
-        /// <param name="items">The items.</param>
-        /// <param name="stream">The stream.</param>
-        /// <param name="cultureInfo">The culture info.</param>
+        /// <typeparam name="T">
+        /// The type of the items
+        /// </typeparam>
+        /// <param name="items">
+        /// The items.
+        /// </param>
+        /// <param name="stream">
+        /// The stream.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
         public static void Save<T>(IEnumerable<T> items, Stream stream, CultureInfo cultureInfo = null)
         {
             var writer = new StreamWriter(stream);
@@ -186,10 +356,18 @@ namespace Units
         /// <summary>
         /// Saves the items to the specified stream writer.
         /// </summary>
-        /// <typeparam name="T">The type of the items</typeparam>
-        /// <param name="items">The items.</param>
-        /// <param name="streamWriter">The stream writer.</param>
-        /// <param name="cultureInfo">The culture info.</param>
+        /// <typeparam name="T">
+        /// The type of the items
+        /// </typeparam>
+        /// <param name="items">
+        /// The items.
+        /// </param>
+        /// <param name="streamWriter">
+        /// The stream writer.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
         public static void Save<T>(IEnumerable<T> items, StreamWriter streamWriter, CultureInfo cultureInfo = null)
         {
             if (cultureInfo == null)
@@ -200,7 +378,11 @@ namespace Units
             var separator = cultureInfo.TextInfo.ListSeparator;
 
             var type = typeof(T);
-            var properties = TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>().OrderBy(CsvColumnAttribute.GetColumn).ToList();
+            var properties =
+                TypeDescriptor.GetProperties(type)
+                              .Cast<PropertyDescriptor>()
+                              .OrderBy(CsvColumnAttribute.GetColumn)
+                              .ToList();
             int n = properties.Count;
             var displayUnits = new IQuantity[n];
 
@@ -255,24 +437,109 @@ namespace Units
         }
 
         /// <summary>
-        /// Determines whether the specified value is undefined.
+        /// Saves the specified items to the specified file.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns><c>true</c> if the specified value is undefined; otherwise, <c>false</c>.</returns>
-        public static bool IsUndefined(object value)
+        /// <typeparam name="T">
+        /// The type of the items
+        /// </typeparam>
+        /// <param name="items">
+        /// The items.
+        /// </param>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        public static void SaveQuantities<T>(IEnumerable<T> items, string path, CultureInfo cultureInfo = null)
+            where T : IQuantity
         {
-            if (value is double && double.IsNaN((double)value))
+            using (var w = new StreamWriter(path))
             {
-                return true;
+                SaveQuantities(items, w, cultureInfo);
             }
-
-            if (value is IQuantity && double.IsNaN(((IQuantity)value).Value))
-            {
-                return true;
-            }
-
-            return false;
         }
+
+        /// <summary>
+        /// Saves the specified items to the specified stream.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the items
+        /// </typeparam>
+        /// <param name="items">
+        /// The items.
+        /// </param>
+        /// <param name="stream">
+        /// The stream.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        public static void SaveQuantities<T>(IEnumerable<T> items, Stream stream, CultureInfo cultureInfo = null)
+            where T : IQuantity
+        {
+            var writer = new StreamWriter(stream);
+            SaveQuantities(items, writer, cultureInfo);
+            writer.Flush();
+        }
+
+        /// <summary>
+        /// Saves the quantities to the specified stream writer.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the items
+        /// </typeparam>
+        /// <param name="items">
+        /// The items.
+        /// </param>
+        /// <param name="streamWriter">
+        /// The stream writer.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture info.
+        /// </param>
+        public static void SaveQuantities<T>(
+            IEnumerable<T> items, StreamWriter streamWriter, CultureInfo cultureInfo = null) where T : IQuantity
+        {
+            if (cultureInfo == null)
+            {
+                cultureInfo = CultureInfo.InvariantCulture;
+            }
+
+            var type = typeof(T);
+
+            // Header
+            streamWriter.Write(type.Name);
+            string unitSymbol;
+            var displayUnit = UnitProvider.Default.GetDisplayUnit(type, out unitSymbol);
+            streamWriter.Write(" [{0}]", unitSymbol);
+            streamWriter.WriteLine();
+
+            // Items
+            int k = 0;
+            foreach (var item in items)
+            {
+                if (k++ > 0)
+                {
+                    streamWriter.WriteLine();
+                }
+
+                var q = item as IQuantity;
+                if (IsUndefined(q))
+                {
+                    continue;
+                }
+
+                streamWriter.Write(
+                    q != null
+                        ? string.Format(cultureInfo, "{0}", q.ConvertTo(displayUnit))
+                        : string.Format(cultureInfo, "{0}", q));
+            }
+        }
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Converts a string to the specified type.
@@ -323,5 +590,7 @@ namespace Units
 
             return Convert.ChangeType(s, type);
         }
+
+        #endregion
     }
 }
