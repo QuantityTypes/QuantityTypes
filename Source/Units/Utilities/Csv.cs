@@ -38,8 +38,6 @@ namespace Units
     /// </summary>
     public static class Csv
     {
-        #region Public Methods and Operators
-
         /// <summary>
         /// Determines whether the specified value is undefined.
         /// </summary>
@@ -381,6 +379,7 @@ namespace Units
             var properties =
                 TypeDescriptor.GetProperties(type)
                               .Cast<PropertyDescriptor>()
+                              .Where(CsvIgnoreAttribute.IsNotIgnored)
                               .OrderBy(CsvColumnAttribute.GetColumn)
                               .ToList();
             int n = properties.Count;
@@ -428,10 +427,14 @@ namespace Units
                     }
 
                     var q = value as IQuantity;
-                    streamWriter.Write(
-                        q != null
-                            ? string.Format(cultureInfo, "{0}", q.ConvertTo(displayUnits[i]))
-                            : string.Format(cultureInfo, "{0}", value));
+                    if (q != null && displayUnits[i] != null)
+                    {
+                        streamWriter.Write(string.Format(cultureInfo, "{0}", q.ConvertTo(displayUnits[i])));
+                    }
+                    else
+                    {
+                        streamWriter.Write(string.Format(cultureInfo, "{0}", value));
+                    }
                 }
             }
         }
@@ -530,16 +533,12 @@ namespace Units
                     continue;
                 }
 
-                streamWriter.Write(
-                    q != null
-                        ? string.Format(cultureInfo, "{0}", q.ConvertTo(displayUnit))
-                        : string.Format(cultureInfo, "{0}", q));
+                if (q != null)
+                {
+                    streamWriter.Write(string.Format(cultureInfo, "{0}", q.ConvertTo(displayUnit)));
+                }
             }
         }
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         /// Converts a string to the specified type.
@@ -590,7 +589,5 @@ namespace Units
 
             return Convert.ChangeType(s, type);
         }
-
-        #endregion
     }
 }
