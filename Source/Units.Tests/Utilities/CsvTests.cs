@@ -36,7 +36,36 @@
 
             var outputStream2 = new MemoryStream();
             Csv.Save(items, outputStream2, new CultureInfo("no"));
-            Assert.AreEqual(CsvFileTests.Test2Content, Encoding.UTF8.GetString(outputStream2.ToArray()));
+            Assert.AreEqual(CsvFileTests.Test1ContentCultureSpecific, Encoding.UTF8.GetString(outputStream2.ToArray()));
+
+            UnitProvider.Default.TrySetDisplayUnit<Length>(old);
+        }
+
+        [Test]
+        public void LoadQuantities_Test2_ToList()
+        {
+            var input = CsvFileTests.Test2Content;
+            var inputStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
+            var items = Csv.LoadQuantities<Length>(inputStream, CultureInfo.InvariantCulture).ToList();
+            Assert.AreEqual(2, items.Count);
+            Assert.AreEqual(0, items[0].Value);
+            Assert.AreEqual(100, items[1].Value);
+        }
+
+        [Test]
+        public void SaveQuantities_FromList_Test2()
+        {
+            var old = UnitProvider.Default.GetDisplayUnit(typeof(Length));
+            UnitProvider.Default.TrySetDisplayUnit<Length>("km");
+            var items = new List<Length> { 0 * Length.Metre, 100 * Length.Metre };
+
+            var outputStream = new MemoryStream();
+            Csv.SaveQuantities(items, outputStream);
+            Assert.AreEqual(CsvFileTests.Test2Content, Encoding.UTF8.GetString(outputStream.ToArray()));
+
+            var outputStream2 = new MemoryStream();
+            Csv.SaveQuantities(items, outputStream2, new CultureInfo("no"));
+            Assert.AreEqual(CsvFileTests.Test2ContentCultureSpecific, Encoding.UTF8.GetString(outputStream2.ToArray()));
 
             UnitProvider.Default.TrySetDisplayUnit<Length>(old);
         }
