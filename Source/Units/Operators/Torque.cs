@@ -30,7 +30,7 @@
 namespace Units
 {
     /// <summary>
-    ///     Provides operators related to torque.
+    /// Provides operators related to torque.
     /// </summary>
     public partial struct Torque
     {
@@ -42,6 +42,17 @@ namespace Units
         public static implicit operator Torque(Energy m)
         {
             return new Torque(m.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="x"> The torque. </param>
+        /// <param name="y"> The angle. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Energy operator *(Torque x, Angle y)
+        {
+            return new Energy(x.Value * y.Value);
         }
     }
 }
