@@ -54,6 +54,11 @@ namespace Units
         private static readonly Energy CalorieField = new Energy(4.1868);
 
         /// <summary>
+        /// The backing field for the <see cref="NewtonMetreRadian" /> property.
+        /// </summary>
+        private static readonly Energy NewtonMetreRadianField = new Energy(1);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -99,6 +104,15 @@ namespace Units
         public static Energy Calorie 
         { 
             get { return CalorieField; } 
+        }
+
+        /// <summary>
+        /// Gets the "N*m*rad" unit.
+        /// </summary>
+        [Unit("N*m*rad")]
+        public static Energy NewtonMetreRadian 
+        { 
+            get { return NewtonMetreRadianField; } 
         }
 
         /// <summary>

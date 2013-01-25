@@ -110,6 +110,7 @@ Torque,NewtonMetre,N*m,1
 // Energy
 Energy,Joule,J,1
 Energy,Calorie,cal,4.1868
+Energy,NewtonMetreRadian,N*m*rad,1
 
 // Power or heat flow rate
 Power,Watt,W,1
