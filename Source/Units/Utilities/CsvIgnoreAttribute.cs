@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CsvColumnAttribute.cs" company="Units.NET">
+// <copyright file="CsvIgnoreAttribute.cs" company="Units.NET">
 //   The MIT License (MIT)
 //   
 //   Copyright (c) 2012 Oystein Bjorke
@@ -24,33 +24,43 @@
 //   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // </copyright>
 // <summary>
-//   Specifies the column index in a csv file of the decorated property.
+//   Specifies that a property should be ignored in comma separated file output.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Units
 {
     using System;
     using System.ComponentModel;
 
     /// <summary>
-    /// Specifies that a property should be ignored in csv output.
+    /// Specifies that a property should be ignored in comma separated file output.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public class CsvIgnoreAttribute : Attribute
     {
         /// <summary>
-        /// Determines whether the specified property has the CsvIgnored attribute.
+        /// Determines whether the specified property should be ignored.
         /// </summary>
-        /// <param name="propertyDescriptor">The property descriptor.</param>
+        /// <param name="propertyDescriptor">
+        /// The property descriptor.
+        /// </param>
+        /// <returns>
+        /// A <see cref="bool"/>.
+        /// </returns>
         public static bool IsIgnored(PropertyDescriptor propertyDescriptor)
         {
             return propertyDescriptor.Attributes[typeof(CsvIgnoreAttribute)] != null;
         }
 
         /// <summary>
-        /// Determines whether the specified property does not have the CsvIgnored attribute.
+        /// Determines whether the specified property should not be ignored.
         /// </summary>
-        /// <param name="propertyDescriptor">The property descriptor.</param>
+        /// <param name="propertyDescriptor">
+        /// The property descriptor.
+        /// </param>
+        /// <returns>
+        /// A <see cref="bool"/>.
+        /// </returns>
         public static bool IsNotIgnored(PropertyDescriptor propertyDescriptor)
         {
             return !IsIgnored(propertyDescriptor);
