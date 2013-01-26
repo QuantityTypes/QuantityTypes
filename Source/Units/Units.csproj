@@ -258,10 +258,13 @@
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitProvider\UnitProviderExtensions.cs" />
+    <Compile Include="Utilities\CsvWriter.cs" />
     <Compile Include="Utilities\CsvIgnoreAttribute.cs" />
     <Compile Include="Utilities\Csv.cs" />
     <Compile Include="Utilities\CsvColumnAttribute.cs" />
     <Compile Include="Utilities\CsvFile.cs" />
+    <Compile Include="Utilities\CsvParser.cs" />
+    <Compile Include="Utilities\MemoryStreamWriter.cs" />
     <None Include="Quantities\MultiOutput.tt" />
     <None Include="Quantities\QuantityTemplate.tt" />
     <Compile Include="Operators\Length.cs" />

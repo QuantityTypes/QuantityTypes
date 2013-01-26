@@ -1,4 +1,4 @@
-﻿namespace Units.Tests.DataModel
+﻿namespace Units.Tests.Utilities
 {
     using System;
     using System.Collections.Generic;
