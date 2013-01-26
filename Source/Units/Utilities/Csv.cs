@@ -34,7 +34,7 @@ namespace Units
     using System.Linq;
 
     /// <summary>
-    /// Provides methods to read comma separated files with support for units.
+    /// Provides methods to read and write comma separated files with support for units.
     /// </summary>
     public static class Csv
     {

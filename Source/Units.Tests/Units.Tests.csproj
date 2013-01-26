@@ -53,6 +53,8 @@
     <Compile Include="Quantities\LengthTests.cs" />
     <Compile Include="Example.cs" />
     <Compile Include="Utilities\CsvFileTests.cs" />
+    <Compile Include="Utilities\CsvFormatterTests.cs" />
+    <Compile Include="Utilities\CsvParserTests.cs" />
     <Compile Include="Utilities\CsvTests.cs" />
   </ItemGroup>
   <ItemGroup>
