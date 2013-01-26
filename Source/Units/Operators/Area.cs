@@ -47,7 +47,7 @@ namespace Units
         /// </returns>
         public static Length Sqrt(Area l)
         {
-            return new Length(Math.Sqrt(l.value));
+            return new Length(System.Math.Sqrt(l.value));
         }
 
         /// <summary>
