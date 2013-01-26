@@ -47,7 +47,7 @@ namespace Units
         /// </returns>
         public static Angle Acos(double d)
         {
-            return new Angle(Math.Acos(d));
+            return new Angle(System.Math.Acos(d));
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Units
         /// </returns>
         public static Angle Asin(double d)
         {
-            return new Angle(Math.Asin(d));
+            return new Angle(System.Math.Asin(d));
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Units
         /// </returns>
         public static Angle Atan(double d)
         {
-            return new Angle(Math.Atan(d));
+            return new Angle(System.Math.Atan(d));
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Units
         /// <returns> The value. </returns>
         public double Cos()
         {
-            return Math.Cos(this.value);
+            return System.Math.Cos(this.value);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Units
         /// <returns> The value. </returns>
         public double Sin()
         {
-            return Math.Sin(this.value);
+            return System.Math.Sin(this.value);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Units
         /// <returns> The value. </returns>
         public double Tan()
         {
-            return Math.Tan(this.value);
+            return System.Math.Tan(this.value);
         }
     }
 }
