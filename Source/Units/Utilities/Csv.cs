@@ -421,10 +421,10 @@ namespace Units
                     }
 
                     var value = properties[i].GetValue(item);
-                    if (IsUndefined(value))
-                    {
-                        continue;
-                    }
+                    //if (IsUndefined(value))
+                    //{
+                    //    continue;
+                    //}
 
                     var q = value as IQuantity;
                     if (q != null && displayUnits[i] != null)
