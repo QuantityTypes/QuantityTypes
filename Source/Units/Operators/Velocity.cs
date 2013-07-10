@@ -37,8 +37,8 @@ namespace Units
         /// <summary>
         ///     Implements the operator /.
         /// </summary>
-        /// <param name="x"> The x. </param>
-        /// <param name="y"> The y. </param>
+        /// <param name="x"> The velocity. </param>
+        /// <param name="y"> The time. </param>
         /// <returns> The result of the operator. </returns>
         public static Acceleration operator /(Velocity x, Time y)
         {
@@ -46,10 +46,21 @@ namespace Units
         }
 
         /// <summary>
+        ///     Implements the operator /.
+        /// </summary>
+        /// <param name="x"> The velocity. </param>
+        /// <param name="y"> The acceleration. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Time operator /(Velocity x, Acceleration y)
+        {
+            return new Time(x.Value / y.Value);
+        }
+
+        /// <summary>
         ///     Implements the operator *.
         /// </summary>
-        /// <param name="x"> The x. </param>
-        /// <param name="y"> The y. </param>
+        /// <param name="x"> The velocity. </param>
+        /// <param name="y"> The time. </param>
         /// <returns> The result of the operator. </returns>
         public static Length operator *(Velocity x, Time y)
         {

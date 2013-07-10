@@ -207,6 +207,17 @@
             Assert.AreEqual(t2.Distance, t.Distance);
         }
 
+        [Test]
+        public void StoppingDistance()
+        {
+            var speed = 100.0 * Velocity.KilometrePerHour;
+            var reactionTime = 1.0 * Time.Second;
+            var deceleration = 6.0 * Acceleration.MetrePerSecondSquared;
+
+            var distance = (speed * reactionTime) + (speed * (speed / (2.0 * deceleration)));
+            Assert.AreEqual(92, distance.Value, 1);
+        }
+
         public class Test
         {
             public Length Distance { get; set; }
