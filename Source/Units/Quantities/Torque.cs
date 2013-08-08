@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the torque quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Torque>))]
+#endif
     public partial struct Torque : IQuantity<Torque>
     {
         /// <summary>

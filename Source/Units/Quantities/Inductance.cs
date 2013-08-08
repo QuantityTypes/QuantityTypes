@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the inductance quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Inductance>))]
+#endif
     public partial struct Inductance : IQuantity<Inductance>
     {
         /// <summary>

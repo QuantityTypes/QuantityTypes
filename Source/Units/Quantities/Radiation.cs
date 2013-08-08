@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the radiation quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Radiation>))]
+#endif
     public partial struct Radiation : IQuantity<Radiation>
     {
         /// <summary>

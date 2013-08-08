@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the volume quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Volume>))]
+#endif
     public partial struct Volume : IQuantity<Volume>
     {
         /// <summary>

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the electric resistance quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<ElectricResistance>))]
+#endif
     public partial struct ElectricResistance : IQuantity<ElectricResistance>
     {
         /// <summary>

@@ -30,6 +30,9 @@ namespace WpfExample
         /// </summary>
         private Velocity velocity;
 
+        /// <summary>
+        /// The mass.
+        /// </summary>
         private Mass? mass;
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace WpfExample
         /// </summary>
         public ViewModel()
         {
-            this.Length = 100 * Units.Length.Metre;
+            this.Length = 100 * Length.Metre;
             this.Time = 9.58 * Time.Second;
         }
 
@@ -116,12 +119,17 @@ namespace WpfExample
             }
         }
 
+        /// <summary>
+        /// Gets or sets the mass.
+        /// </summary>
+        /// <value>The mass.</value>
         public Mass? Mass
         {
             get
             {
                 return this.mass;
             }
+
             set
             {
                 this.mass = value;

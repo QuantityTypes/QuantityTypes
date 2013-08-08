@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the action quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Action>))]
+#endif
     public partial struct Action : IQuantity<Action>
     {
         /// <summary>

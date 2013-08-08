@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the electric current quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<ElectricCurrent>))]
+#endif
     public partial struct ElectricCurrent : IQuantity<ElectricCurrent>
     {
         /// <summary>

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the time quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Time>))]
+#endif
     public partial struct Time : IQuantity<Time>
     {
         /// <summary>

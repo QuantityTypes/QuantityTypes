@@ -64,6 +64,7 @@ namespace Units
         /// <value> The name. </value>
         public string Symbol { get; private set; }
 
+#if !PCL
         /// <summary>
         ///     When implemented in a derived class, gets a unique identifier for this <see cref="T:System.Attribute" />.
         /// </summary>
@@ -75,5 +76,6 @@ namespace Units
                 return new Guid(this.Symbol);
             }
         }
+#endif
     }
 }

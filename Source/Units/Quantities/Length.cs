@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the length quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Length>))]
+#endif
     public partial struct Length : IQuantity<Length>
     {
         /// <summary>

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the stiffness quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Stiffness>))]
+#endif
     public partial struct Stiffness : IQuantity<Stiffness>
     {
         /// <summary>

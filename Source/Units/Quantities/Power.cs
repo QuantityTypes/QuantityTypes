@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the power quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Power>))]
+#endif
     public partial struct Power : IQuantity<Power>
     {
         /// <summary>

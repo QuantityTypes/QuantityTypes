@@ -30,7 +30,7 @@
 namespace Units
 {
     using System;
-    using System.ComponentModel;
+    using System.Reflection;
 
     /// <summary>
     /// Specifies that a property should be ignored in comma separated file output.
@@ -41,29 +41,25 @@ namespace Units
         /// <summary>
         /// Determines whether the specified property should be ignored.
         /// </summary>
-        /// <param name="propertyDescriptor">
+        /// <param name="propertyInfo">
         /// The property descriptor.
         /// </param>
         /// <returns>
         /// A <see cref="bool"/>.
         /// </returns>
-        public static bool IsIgnored(PropertyDescriptor propertyDescriptor)
+        public static bool IsIgnored(PropertyInfo propertyInfo)
         {
-            return propertyDescriptor.Attributes[typeof(CsvIgnoreAttribute)] != null;
+            return propertyInfo.GetCustomAttributes(typeof(CsvIgnoreAttribute), false).Length > 0;
         }
 
         /// <summary>
         /// Determines whether the specified property should not be ignored.
         /// </summary>
-        /// <param name="propertyDescriptor">
-        /// The property descriptor.
-        /// </param>
-        /// <returns>
-        /// A <see cref="bool"/>.
-        /// </returns>
-        public static bool IsNotIgnored(PropertyDescriptor propertyDescriptor)
+        /// <param name="propertyInfo">The property info.</param>
+        /// <returns>A <see cref="bool" />.</returns>
+        public static bool IsNotIgnored(PropertyInfo propertyInfo)
         {
-            return !IsIgnored(propertyDescriptor);
+            return !IsIgnored(propertyInfo);
         }
     }
 }

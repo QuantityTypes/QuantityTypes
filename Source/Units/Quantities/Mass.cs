@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the mass quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Mass>))]
+#endif
     public partial struct Mass : IQuantity<Mass>
     {
         /// <summary>

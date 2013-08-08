@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the typographic resolution quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<TypographicResolution>))]
+#endif
     public partial struct TypographicResolution : IQuantity<TypographicResolution>
     {
         /// <summary>

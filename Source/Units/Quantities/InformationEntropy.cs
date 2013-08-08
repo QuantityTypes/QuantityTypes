@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the information entropy quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<InformationEntropy>))]
+#endif
     public partial struct InformationEntropy : IQuantity<InformationEntropy>
     {
         /// <summary>

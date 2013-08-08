@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the solid angle quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<SolidAngle>))]
+#endif
     public partial struct SolidAngle : IQuantity<SolidAngle>
     {
         /// <summary>

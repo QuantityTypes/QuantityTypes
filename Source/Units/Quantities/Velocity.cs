@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the velocity quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Velocity>))]
+#endif
     public partial struct Velocity : IQuantity<Velocity>
     {
         /// <summary>

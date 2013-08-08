@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the electric voltage quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<ElectricVoltage>))]
+#endif
     public partial struct ElectricVoltage : IQuantity<ElectricVoltage>
     {
         /// <summary>

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the radiation absorbed dose quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<RadiationAbsorbedDose>))]
+#endif
     public partial struct RadiationAbsorbedDose : IQuantity<RadiationAbsorbedDose>
     {
         /// <summary>

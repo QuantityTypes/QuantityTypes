@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the radiation equivalent dose quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<RadiationEquivalentDose>))]
+#endif
     public partial struct RadiationEquivalentDose : IQuantity<RadiationEquivalentDose>
     {
         /// <summary>

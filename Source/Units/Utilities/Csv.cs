@@ -28,10 +28,10 @@ namespace Units
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// Provides methods to read and write comma separated files with support for units.
@@ -62,6 +62,7 @@ namespace Units
             return false;
         }
 
+#if !PCL
         /// <summary>
         /// Loads from the specified path.
         /// </summary>
@@ -84,6 +85,7 @@ namespace Units
                 return Load<T>(r, cultureInfo);
             }
         }
+#endif
 
         /// <summary>
         /// Loads from the specified stream.
@@ -134,7 +136,7 @@ namespace Units
             var type = typeof(T);
 
             // Get the properties from the type
-            var properties = TypeDescriptor.GetProperties(type);
+            var properties = type.GetProperties();
             var header = r.ReadLine();
             if (header == null)
             {
@@ -144,13 +146,13 @@ namespace Units
             // Parse the header
             var headers = CsvFile.SplitLine(header, separator[0]);
             int n = headers.Length;
-            var propertyDescriptors = new PropertyDescriptor[n];
+            var propertyDescriptors = new PropertyInfo[n];
             var units = new IQuantity[n];
             for (int i = 0; i < n; i++)
             {
                 string name, unit;
                 CsvFile.SplitHeader(headers[i], out name, out unit);
-                propertyDescriptors[i] = properties.Find(name, false);
+                propertyDescriptors[i] = properties.First(pi => pi.Name == name);
                 var quantityType = CsvFile.GetQuantityType(propertyDescriptors[i].PropertyType);
 
                 // Set the unit if it is a IQuantity based property
@@ -190,7 +192,7 @@ namespace Units
                 for (int i = 0; i < headers.Length; i++)
                 {
                     var value = ChangeType(values[i], propertyDescriptors[i].PropertyType, units[i], cultureInfo);
-                    propertyDescriptors[i].SetValue(item, value);
+                    propertyDescriptors[i].SetValue(item, value, null);
                 }
 
                 items.Add(item);
@@ -199,6 +201,7 @@ namespace Units
             return items;
         }
 
+#if !PCL
         /// <summary>
         /// Loads a list of quantities from the specified path.
         /// </summary>
@@ -221,6 +224,7 @@ namespace Units
                 return LoadQuantities<T>(r, cultureInfo);
             }
         }
+#endif
 
         /// <summary>
         /// Loads a list of quantities from the specified stream.
@@ -306,6 +310,7 @@ namespace Units
             return items;
         }
 
+#if !PCL
         /// <summary>
         /// Saves the specified items to the specified file.
         /// </summary>
@@ -328,6 +333,7 @@ namespace Units
                 Save(items, w, cultureInfo);
             }
         }
+#endif
 
         /// <summary>
         /// Saves the specified items to the specified stream.
@@ -377,8 +383,7 @@ namespace Units
 
             var type = typeof(T);
             var properties =
-                TypeDescriptor.GetProperties(type)
-                              .Cast<PropertyDescriptor>()
+                type.GetProperties()
                               .Where(CsvIgnoreAttribute.IsNotIgnored)
                               .OrderBy(CsvColumnAttribute.GetColumn)
                               .ToList();
@@ -420,9 +425,9 @@ namespace Units
                         streamWriter.Write(separator);
                     }
 
-                    var value = properties[i].GetValue(item);
+                    var value = properties[i].GetValue(item, null);
                     //if (IsUndefined(value))
-                    //{
+                    // {
                     //    continue;
                     //}
 
@@ -439,6 +444,7 @@ namespace Units
             }
         }
 
+#if !PCL
         /// <summary>
         /// Saves the specified items to the specified file.
         /// </summary>
@@ -462,6 +468,7 @@ namespace Units
                 SaveQuantities(items, w, cultureInfo);
             }
         }
+#endif
 
         /// <summary>
         /// Saves the specified items to the specified stream.
@@ -578,16 +585,16 @@ namespace Units
 
             if (CsvFile.QuantityType.IsAssignableFrom(type))
             {
-                if (string.IsNullOrWhiteSpace(s) && underlyingType != null)
+                if (string.IsNullOrEmpty(s) && underlyingType != null)
                 {
                     return null;
                 }
 
-                double value = !string.IsNullOrWhiteSpace(s) ? double.Parse(s, provider) : 0;
+                double value = !string.IsNullOrEmpty(s) ? double.Parse(s, provider) : 0;
                 return unit.MultiplyBy(value);
             }
 
-            return Convert.ChangeType(s, type);
+            return Convert.ChangeType(s, type, provider);
         }
     }
 }

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the mass moment of inertia quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<MassMomentOfInertia>))]
+#endif
     public partial struct MassMomentOfInertia : IQuantity<MassMomentOfInertia>
     {
         /// <summary>

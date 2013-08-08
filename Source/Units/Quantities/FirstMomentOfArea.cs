@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the first moment of area quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<FirstMomentOfArea>))]
+#endif
     public partial struct FirstMomentOfArea : IQuantity<FirstMomentOfArea>
     {
         /// <summary>

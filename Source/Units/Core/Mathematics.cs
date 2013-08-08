@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Math.cs" company="Units.NET">
+// <copyright file="Mathematics.cs" company="Units.NET">
 //   The MIT License (MIT)
 //   
 //   Copyright (c) 2012 Oystein Bjorke
@@ -30,10 +30,12 @@
 
 namespace Units
 {
+    using System;
+
     /// <summary>
     /// Provides constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
     /// </summary>
-    public static class Math
+    public static class Mathematics
     {
         /// <summary>
         /// Calculates the sine of the specified angle.
@@ -46,7 +48,7 @@ namespace Units
         /// </returns>
         public static double Sin(Angle a)
         {
-            return System.Math.Sin(a.ConvertTo(Angle.Radian));
+            return Math.Sin(a.ConvertTo(Angle.Radian));
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace Units
         /// </returns>
         public static double Cos(Angle a)
         {
-            return System.Math.Cos(a.ConvertTo(Angle.Radian));
+            return Math.Cos(a.ConvertTo(Angle.Radian));
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace Units
         /// </returns>
         public static double Tan(Angle a)
         {
-            return System.Math.Tan(a.ConvertTo(Angle.Radian));
+            return Math.Tan(a.ConvertTo(Angle.Radian));
         }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace Units
         /// </returns>
         public static Angle Acos(double d)
         {
-            return new Angle(System.Math.Acos(d));
+            return new Angle(Math.Acos(d));
         }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace Units
         /// </returns>
         public static Angle Asin(double d)
         {
-            return new Angle(System.Math.Asin(d));
+            return new Angle(Math.Asin(d));
         }
 
         /// <summary>
@@ -116,7 +118,7 @@ namespace Units
         /// </returns>
         public static Angle Atan(double d)
         {
-            return new Angle(System.Math.Atan(d));
+            return new Angle(Math.Atan(d));
         }
 
         /// <summary>
@@ -133,7 +135,7 @@ namespace Units
         /// </returns>
         public static Angle Atan2(double y, double x)
         {
-            return new Angle(System.Math.Atan2(y, x));
+            return new Angle(Math.Atan2(y, x));
         }
 
         /// <summary>
@@ -147,7 +149,7 @@ namespace Units
         /// </returns>
         public static Length Sqrt(Area a)
         {
-            return System.Math.Sqrt(a.ConvertTo(Area.SquareMetre)) * Length.Metre;
+            return Math.Sqrt(a.ConvertTo(Area.SquareMetre)) * Length.Metre;
         }
 
         /// <summary>
@@ -181,7 +183,7 @@ namespace Units
         /// </returns>
         public static int Sign<T>(T a) where T : IQuantity
         {
-            return System.Math.Sign(a.Value);
+            return Math.Sign(a.Value);
         }
     }
 }

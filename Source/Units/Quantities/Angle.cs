@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the angle quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Angle>))]
+#endif
     public partial struct Angle : IQuantity<Angle>
     {
         /// <summary>
@@ -51,22 +53,22 @@ namespace Units
         /// <summary>
         /// The backing field for the <see cref="Degree" /> property.
         /// </summary>
-        private static readonly Angle DegreeField = new Angle(System.Math.PI / 180);
+        private static readonly Angle DegreeField = new Angle(Math.PI / 180);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeSymbol" /> property.
         /// </summary>
-        private static readonly Angle DegreeSymbolField = new Angle(System.Math.PI / 180);
+        private static readonly Angle DegreeSymbolField = new Angle(Math.PI / 180);
 
         /// <summary>
         /// The backing field for the <see cref="Grad" /> property.
         /// </summary>
-        private static readonly Angle GradField = new Angle(System.Math.PI / 200);
+        private static readonly Angle GradField = new Angle(Math.PI / 200);
 
         /// <summary>
         /// The backing field for the <see cref="Gon" /> property.
         /// </summary>
-        private static readonly Angle GonField = new Angle(System.Math.PI / 200);
+        private static readonly Angle GonField = new Angle(Math.PI / 200);
 
         /// <summary>
         /// The value.

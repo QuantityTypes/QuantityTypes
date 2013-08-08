@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the angular frequency quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<AngularFrequency>))]
+#endif
     public partial struct AngularFrequency : IQuantity<AngularFrequency>
     {
         /// <summary>

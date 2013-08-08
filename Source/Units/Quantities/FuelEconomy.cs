@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the fuel economy quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<FuelEconomy>))]
+#endif
     public partial struct FuelEconomy : IQuantity<FuelEconomy>
     {
         /// <summary>

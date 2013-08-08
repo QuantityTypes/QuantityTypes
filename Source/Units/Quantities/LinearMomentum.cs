@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the linear momentum quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<LinearMomentum>))]
+#endif
     public partial struct LinearMomentum : IQuantity<LinearMomentum>
     {
         /// <summary>

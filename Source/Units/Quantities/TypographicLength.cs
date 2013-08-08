@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the typographic length quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<TypographicLength>))]
+#endif
     public partial struct TypographicLength : IQuantity<TypographicLength>
     {
         /// <summary>

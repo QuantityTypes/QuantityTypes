@@ -32,47 +32,46 @@ namespace Units
 {
     using System.Globalization;
     using System.IO;
-    using System.Linq;
     using System.Text;
 
     /// <summary>
-    /// Provides functionality to format and write csv content.
+    /// Provides TextWriter extension methods for writing csv content.
     /// </summary>
     public static class CsvWriter
     {
         /// <summary>
         /// Writes a CSV line to the specified stream writer using the current culture.
         /// </summary>
-        /// <param name="sw">
-        /// The stream writer.
+        /// <param name="w">
+        /// The text writer.
         /// </param>
         /// <param name="objects">
         /// The objects to write.
         /// </param>
-        public static void WriteCsvLine(this StreamWriter sw, params object[] objects)
+        public static void WriteCsvLine(this TextWriter w, params object[] objects)
         {
-            WriteCsvLine(sw, CultureInfo.CurrentCulture, objects);
+            WriteCsvLine(w, CultureInfo.CurrentCulture, objects);
         }
 
         /// <summary>
         /// Writes a CSV line to the specified stream writer using invariant culture.
         /// </summary>
-        /// <param name="sw">
-        /// The stream writer.
+        /// <param name="w">
+        /// The text writer.
         /// </param>
         /// <param name="objects">
         /// The objects to write.
         /// </param>
-        public static void WriteInvariantCsvLine(this StreamWriter sw, params object[] objects)
+        public static void WriteInvariantCsvLine(this TextWriter w, params object[] objects)
         {
-            WriteCsvLine(sw, CultureInfo.InvariantCulture, objects);
+            WriteCsvLine(w, CultureInfo.InvariantCulture, objects);
         }
 
         /// <summary>
         /// Writes a CSV line to the specified stream writer using the specified culture.
         /// </summary>
-        /// <param name="sw">
-        /// The stream writer.
+        /// <param name="w">
+        /// The text writer.
         /// </param>
         /// <param name="culture">
         /// The culture.
@@ -80,16 +79,16 @@ namespace Units
         /// <param name="objects">
         /// The objects to write.
         /// </param>
-        public static void WriteCsvLine(this StreamWriter sw, CultureInfo culture, params object[] objects)
+        public static void WriteCsvLine(this TextWriter w, CultureInfo culture, params object[] objects)
         {
-            WriteCsvLine(sw, culture, '"', objects);
+            WriteCsvLine(w, culture, '"', objects);
         }
 
         /// <summary>
         /// Writes a CSV line to the specified stream writer using the specified culture and quote character.
         /// </summary>
-        /// <param name="sw">
-        /// The stream writer.
+        /// <param name="w">
+        /// The text writer.
         /// </param>
         /// <param name="culture">
         /// The culture.
@@ -100,9 +99,9 @@ namespace Units
         /// <param name="objects">
         /// The objects to write.
         /// </param>
-        public static void WriteCsvLine(this StreamWriter sw, CultureInfo culture, char quote, params object[] objects)
+        public static void WriteCsvLine(this TextWriter w, CultureInfo culture, char quote, params object[] objects)
         {
-            sw.WriteLine(Format(culture, quote, objects));
+            w.WriteLine(Format(culture, quote, objects));
         }
 
         /// <summary>
@@ -141,7 +140,7 @@ namespace Units
         {
             var separator = culture.TextInfo.ListSeparator;
             bool first = true;
-            var quote1 = quote.ToString(culture);
+            var quote1 = quote.ToString();
             var quote2 = quote1 + quote1;
             var sb = new StringBuilder();
             foreach (var o in objects)
@@ -156,7 +155,7 @@ namespace Units
                     first = false;
                 }
 
-                if (text.Contains(quote) || text.Contains(separator) || text.Contains('\n'))
+                if (text.Contains(quote1) || text.Contains(separator) || text.Contains("\n"))
                 {
                     text = text.Replace(quote1, quote2);
                     sb.Append(quote1 + text + quote1);
