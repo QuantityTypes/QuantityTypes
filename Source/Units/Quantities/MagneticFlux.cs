@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the magnetic flux quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<MagneticFlux>))]
+#endif
     public partial struct MagneticFlux : IQuantity<MagneticFlux>
     {
         /// <summary>

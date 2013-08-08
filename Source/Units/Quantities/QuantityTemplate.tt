@@ -48,9 +48,11 @@ namespace Units
     /// <summary>
     /// Represents the <#= classname #> quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<<#= ClassName #>>))]
+#endif
     public partial struct <#= ClassName #> : IQuantity<<#= ClassName #>>
     {
 <#

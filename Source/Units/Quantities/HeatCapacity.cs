@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the heat capacity quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<HeatCapacity>))]
+#endif
     public partial struct HeatCapacity : IQuantity<HeatCapacity>
     {
         /// <summary>

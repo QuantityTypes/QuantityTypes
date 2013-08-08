@@ -47,11 +47,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -60,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Units\Units.csproj">
-      <Project>{626A772F-2D08-4C9C-B258-431E40133EF6}</Project>
+      <Project>{e0557c29-6cdc-4060-bb1a-461ed5c1ef19}</Project>
       <Name>Units</Name>
     </ProjectReference>
   </ItemGroup>

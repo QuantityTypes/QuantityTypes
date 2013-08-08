@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the curvature quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Curvature>))]
+#endif
     public partial struct Curvature : IQuantity<Curvature>
     {
         /// <summary>

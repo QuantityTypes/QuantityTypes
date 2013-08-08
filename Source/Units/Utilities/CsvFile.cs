@@ -27,12 +27,13 @@
 //   Represents a Csv file that supports units and reflection of the rows.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Units
 {
     using System;
     using System.Collections.Generic;
+#if !PCL
     using System.ComponentModel;
+#endif
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -82,7 +83,7 @@ namespace Units
         public static CsvFile Load<T>(IEnumerable<T> items, IUnitProvider unitProvider = null)
         {
             var type = typeof(T);
-            var properties = TypeDescriptor.GetProperties(type).Cast<PropertyDescriptor>().OrderBy(CsvColumnAttribute.GetColumn).ToList();
+            var properties = type.GetProperties().OrderBy(CsvColumnAttribute.GetColumn).ToList();
 
             var file = new CsvFile();
             foreach (var p in properties)
@@ -95,29 +96,13 @@ namespace Units
                 var csvRow = new CsvRow(file);
                 for (int i = 0; i < properties.Count; i++)
                 {
-                    csvRow.Values[i] = properties[i].GetValue(item);
+                    csvRow.Values[i] = properties[i].GetValue(item, null);
                 }
 
                 file.Rows.Add(csvRow);
             }
 
             return file;
-        }
-
-        /// <summary>
-        /// Loads from the specified path.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="cultureInfo">The culture info.</param>
-        /// <returns>
-        /// A <see cref="CsvFile" />.
-        /// </returns>
-        public static CsvFile Load(string path, CultureInfo cultureInfo = null)
-        {
-            using (var r = new StreamReader(path))
-            {
-                return Load(r, cultureInfo);
-            }
         }
 
         /// <summary>
@@ -234,6 +219,23 @@ namespace Units
             return QuantityType.IsAssignableFrom(type) ? type : null;
         }
 
+#if !PCL
+        /// <summary>
+        /// Loads from the specified path.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="cultureInfo">The culture info.</param>
+        /// <returns>
+        /// A <see cref="CsvFile" />.
+        /// </returns>
+        public static CsvFile Load(string path, CultureInfo cultureInfo = null)
+        {
+            using (var r = new StreamReader(path))
+            {
+                return Load(r, cultureInfo);
+            }
+        }
+
         /// <summary>
         /// Saves the specified path.
         /// </summary>
@@ -244,6 +246,7 @@ namespace Units
         {
             this.Save(new StreamWriter(path), cultureInfo, unitProvider);
         }
+#endif
 
         /// <summary>
         /// Saves the specified stream.
@@ -464,7 +467,7 @@ namespace Units
                 return input;
             }
         }
-
+#if !PCL
         /// <summary>
         /// Provides a property descriptor for an object in the <see cref="CsvRow" />.
         /// </summary>
@@ -663,11 +666,14 @@ namespace Units
                 return new PropertyDescriptorCollection(result.ToArray());
             }
         }
+#endif
 
         /// <summary>
         /// Represents a row in the <see cref="CsvFile"/>.
         /// </summary>
+#if !PCL
         [TypeDescriptionProvider(typeof(CsvTypeDescriptionProvider))]
+#endif
         public class CsvRow
         {
             /// <summary>

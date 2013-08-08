@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the amount of substance quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<AmountOfSubstance>))]
+#endif
     public partial struct AmountOfSubstance : IQuantity<AmountOfSubstance>
     {
         /// <summary>

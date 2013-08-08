@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the electric dipole quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<ElectricDipole>))]
+#endif
     public partial struct ElectricDipole : IQuantity<ElectricDipole>
     {
         /// <summary>

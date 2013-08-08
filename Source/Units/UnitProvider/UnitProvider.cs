@@ -41,7 +41,7 @@ namespace Units
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
-            @"([0#\sDEFGNPRX]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            @"([0#\sDEFGNPRX]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The parser expression.
@@ -49,7 +49,7 @@ namespace Units
         private static readonly Regex ParserExpression =
             new Regex(
                 @"\s*([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
-                RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The display units.
@@ -397,7 +397,7 @@ namespace Units
         /// </returns>
         public bool TryParse(Type unitType, string input, out IQuantity quantity)
         {
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrEmpty(input))
             {
                 quantity = (IQuantity)Activator.CreateInstance(unitType);
                 return true;

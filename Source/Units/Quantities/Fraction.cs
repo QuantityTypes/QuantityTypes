@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the fraction quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Fraction>))]
+#endif
     public partial struct Fraction : IQuantity<Fraction>
     {
         /// <summary>

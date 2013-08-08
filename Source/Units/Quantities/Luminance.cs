@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the luminance quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Luminance>))]
+#endif
     public partial struct Luminance : IQuantity<Luminance>
     {
         /// <summary>

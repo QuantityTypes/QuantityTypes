@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the radiation exposure quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<RadiationExposure>))]
+#endif
     public partial struct RadiationExposure : IQuantity<RadiationExposure>
     {
         /// <summary>

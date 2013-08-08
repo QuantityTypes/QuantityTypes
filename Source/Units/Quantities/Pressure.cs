@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the pressure quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Pressure>))]
+#endif
     public partial struct Pressure : IQuantity<Pressure>
     {
         /// <summary>

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the frequency quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Frequency>))]
+#endif
     public partial struct Frequency : IQuantity<Frequency>
     {
         /// <summary>

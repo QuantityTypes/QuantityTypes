@@ -3,10 +3,10 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class CsvFormatterTests
+    public class CsvWriterTests
     {
         [Test]
-        public void Format()
+        public void WriteCsvLine()
         {
             using (var w = new MemoryStreamWriter())
             {
@@ -19,7 +19,7 @@
                 w.WriteCsvLine((object)null);
                 w.WriteCsvLine(true, false);
                 var output = w.ToString();
-                var expected = CsvParserTests.TestString1.Replace("\r", string.Empty).Replace("\n", "\r\n");
+                var expected = CsvParserTests.TestString1;
                 Assert.AreEqual(expected, output);
             }
         }

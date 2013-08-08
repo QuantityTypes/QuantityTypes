@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the density quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Density>))]
+#endif
     public partial struct Density : IQuantity<Density>
     {
         /// <summary>

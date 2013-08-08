@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the section modulus quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<SectionModulus>))]
+#endif
     public partial struct SectionModulus : IQuantity<SectionModulus>
     {
         /// <summary>

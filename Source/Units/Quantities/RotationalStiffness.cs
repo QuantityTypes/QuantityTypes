@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the rotational stiffness quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<RotationalStiffness>))]
+#endif
     public partial struct RotationalStiffness : IQuantity<RotationalStiffness>
     {
         /// <summary>

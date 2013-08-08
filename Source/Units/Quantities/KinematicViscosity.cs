@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the kinematic viscosity quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<KinematicViscosity>))]
+#endif
     public partial struct KinematicViscosity : IQuantity<KinematicViscosity>
     {
         /// <summary>

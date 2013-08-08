@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the dynamic viscosity quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<DynamicViscosity>))]
+#endif
     public partial struct DynamicViscosity : IQuantity<DynamicViscosity>
     {
         /// <summary>

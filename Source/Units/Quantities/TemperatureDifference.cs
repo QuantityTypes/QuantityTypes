@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the temperature difference quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<TemperatureDifference>))]
+#endif
     public partial struct TemperatureDifference : IQuantity<TemperatureDifference>
     {
         /// <summary>

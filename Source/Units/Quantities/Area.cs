@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the area quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Area>))]
+#endif
     public partial struct Area : IQuantity<Area>
     {
         /// <summary>

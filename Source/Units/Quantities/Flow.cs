@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the flow quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Flow>))]
+#endif
     public partial struct Flow : IQuantity<Flow>
     {
         /// <summary>

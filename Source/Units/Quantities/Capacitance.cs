@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the capacitance quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Capacitance>))]
+#endif
     public partial struct Capacitance : IQuantity<Capacitance>
     {
         /// <summary>

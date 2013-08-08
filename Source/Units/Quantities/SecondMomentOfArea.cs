@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the second moment of area quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<SecondMomentOfArea>))]
+#endif
     public partial struct SecondMomentOfArea : IQuantity<SecondMomentOfArea>
     {
         /// <summary>

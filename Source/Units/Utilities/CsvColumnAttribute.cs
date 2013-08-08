@@ -30,7 +30,7 @@
 namespace Units
 {
     using System;
-    using System.ComponentModel;
+    using System.Reflection;
 
     /// <summary>
     /// Specifies the column index in a comma separated file file.
@@ -60,16 +60,12 @@ namespace Units
         /// <summary>
         /// Gets the column from the specified property descriptor.
         /// </summary>
-        /// <param name="propertyDescriptor">
-        /// The property descriptor.
-        /// </param>
-        /// <returns>
-        /// The column.
-        /// </returns>
-        public static object GetColumn(PropertyDescriptor propertyDescriptor)
+        /// <param name="propertyInfo">The property info.</param>
+        /// <returns>The column.</returns>
+        public static object GetColumn(PropertyInfo propertyInfo)
         {
-            var a = (CsvColumnAttribute)propertyDescriptor.Attributes[typeof(CsvColumnAttribute)];
-            return a != null ? a.Column : 0;
+            var attributes = propertyInfo.GetCustomAttributes(typeof(CsvColumnAttribute), false);
+            return attributes.Length > 0 ? ((CsvColumnAttribute)attributes[0]).Column : 0;
         }
 
         /// <summary>

@@ -38,9 +38,11 @@ namespace Units
     /// <summary>
     /// Represents the force quantity.
     /// </summary>
-    [Serializable]
     [DataContract]
+#if !PCL
+    [Serializable]
     [TypeConverter(typeof(QuantityTypeConverter<Force>))]
+#endif
     public partial struct Force : IQuantity<Force>
     {
         /// <summary>
