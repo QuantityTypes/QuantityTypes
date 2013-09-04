@@ -43,6 +43,7 @@ _ReSharper*/
 _TeamCity*/
 [Pp]ackages/
 *.dotCover
+*.GhostDoc.xml
 
 [Tt]est[Rr]esult*
 [Bb]uild[Ll]og.*
