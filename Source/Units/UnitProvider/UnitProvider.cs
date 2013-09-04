@@ -96,7 +96,7 @@ namespace Units
             this.Separator = " ";
             if (culture == null)
             {
-                culture = CultureInfo.CurrentUICulture;
+                culture = CultureInfo.CurrentCulture;
             }
 
             this.Culture = culture;
@@ -403,7 +403,8 @@ namespace Units
                 return true;
             }
 
-            input = input.Replace(',', '.');
+            // change decimal separator to invariant culture
+            input = input.Replace(this.Culture.NumberFormat.NumberDecimalSeparator, CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
 
             // remove whitespace
             input = input.Replace(" ", string.Empty);
@@ -428,7 +429,7 @@ namespace Units
             }
             else
             {
-                value = double.Parse(valueString, this);
+                value = double.Parse(valueString, CultureInfo.InvariantCulture);
             }
 
             IQuantity unit;
