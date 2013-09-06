@@ -47,19 +47,12 @@ namespace Units
         /// <summary>
         /// Formats the quantity by the specified format string.
         /// </summary>
-        /// <typeparam name="T">
-        /// The quantity type. 
-        /// </typeparam>
-        /// <param name="format">
-        /// The format string. 
-        /// </param>
-        /// <param name="quantity">
-        /// The quantity. 
-        /// </param>
-        /// <returns>
-        /// The formatted string. 
-        /// </returns>
-        string Format<T>(string format, T quantity) where T : IQuantity<T>;
+        /// <typeparam name="T">The quantity type.</typeparam>
+        /// <param name="format">The format string.</param>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>The formatted string.</returns>
+        string Format<T>(string format, IFormatProvider formatProvider, T quantity) where T : IQuantity<T>;
 
         /// <summary>
         /// Gets the first registered unit (of any quantity type) that matches the specified symbol.
@@ -140,8 +133,9 @@ namespace Units
         /// </summary>
         /// <param name="unitType">Type of the unit.</param>
         /// <param name="input">The input.</param>
+        /// <param name="provider">The numeric format provider.</param>
         /// <param name="quantity">The quantity.</param>
         /// <returns><c>true</c> if the parsing was successful, <c>false</c> otherwise</returns>
-        bool TryParse(Type unitType, string input, out IQuantity quantity);
+        bool TryParse(Type unitType, string input, IFormatProvider provider, out IQuantity quantity);
     }
 }

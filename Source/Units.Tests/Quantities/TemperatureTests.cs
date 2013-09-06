@@ -2,6 +2,7 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
 
     using NUnit.Framework;
     using Units;
@@ -39,7 +40,7 @@
         {
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("100 C"));
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("100 degC"));
-            Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("273.15 K"));
+            Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("273.15 K", CultureInfo.InvariantCulture));
             Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("32 F"));
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("1e2"));
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("1e2C"));
@@ -51,10 +52,10 @@
             var l = 100 * Temperature.DegreeCelsius;
             var l0 = 0 * Temperature.DegreeCelsius;
             Assert.AreEqual("100 °C", l.ToString());
-            Assert.AreEqual("100.00 °C", l.ToString("0.00"));
+            Assert.AreEqual("100.00 °C", l.ToString("0.00", CultureInfo.InvariantCulture));
             Assert.AreEqual("0100 °C", l.ToString("0000"));
-            Assert.AreEqual("100.0 C", l.ToString("0.0 C"));
-            Assert.AreEqual("100.0 C", l.ToString("0.0C"));
+            Assert.AreEqual("100.0 C", l.ToString("0.0 C", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100.0 C", l.ToString("0.0C", CultureInfo.InvariantCulture));
             Assert.AreEqual("32 F", l0.ToString("0.# F"));
             Assert.AreEqual("273 K", l0.ToString("0. K"));
         }

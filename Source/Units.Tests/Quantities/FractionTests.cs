@@ -27,6 +27,7 @@
 namespace Units.Tests
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
 
     using NUnit.Framework;
 
@@ -44,7 +45,7 @@ namespace Units.Tests
         [Test]
         public void ToString_Percent()
         {
-            Assert.AreEqual("100.0 %", Fraction.Frac.ToString("0.0 %"));
+            Assert.AreEqual("100.0 %", Fraction.Frac.ToString("0.0 %", CultureInfo.InvariantCulture));
             Assert.AreEqual("100 %", Fraction.Frac.ToString("%"));
         }
 

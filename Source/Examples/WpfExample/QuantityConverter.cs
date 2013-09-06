@@ -71,7 +71,7 @@
 
                 var s = value.ToString();
                 IQuantity q;
-                if (UnitProvider.Default.TryParse(realType, s, out q))
+                if (UnitProvider.Default.TryParse(realType, s, culture, out q))
                 {
                     return q;
                 }

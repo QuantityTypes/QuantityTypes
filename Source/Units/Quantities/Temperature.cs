@@ -129,15 +129,12 @@ namespace Units
         /// <returns>
         /// The temperature. 
         /// </returns>
-        public static Temperature Parse(string s, IUnitProvider provider = null)
+        public static Temperature Parse(string s, IFormatProvider provider = null)
         {
-            if (provider == null)
-            {
-                provider = UnitProvider.Default;
-            }
+            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
             Temperature value;
-            if (!provider.TryParse(s, out value))
+            if (!unitProvider.TryParse(s, provider, out value))
             {
                 throw new FormatException();
             }
@@ -275,8 +272,8 @@ namespace Units
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var up = formatProvider as IUnitProvider ?? UnitProvider.Default;
-            return up.Format(format, this);
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
+            return unitProvider.Format(format, formatProvider, this);
         }
 
         /// <summary>
