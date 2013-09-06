@@ -48,7 +48,7 @@ namespace Units
         /// </summary>
         private static readonly Regex ParserExpression =
             new Regex(
-                @"\s*([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
+                @"\s*([-+]?[0-9]*(\.?[0-9]+)*([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
                 RegexOptions.IgnoreCase);
 
         /// <summary>
@@ -132,19 +132,12 @@ namespace Units
         /// <summary>
         /// Formats the specified quantity.
         /// </summary>
-        /// <typeparam name="T">
-        /// The quantity type. 
-        /// </typeparam>
-        /// <param name="format">
-        /// The format. 
-        /// </param>
-        /// <param name="quantity">
-        /// The quantity. 
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/> . 
-        /// </returns>
-        public string Format<T>(string format, T quantity) where T : IQuantity<T>
+        /// <typeparam name="T">The quantity type.</typeparam>
+        /// <param name="format">The format.</param>
+        /// <param name="provider">The numeric format provider.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>The <see cref="string" /> .</returns>
+        public string Format<T>(string format, IFormatProvider provider, T quantity) where T : IQuantity<T>
         {
             bool hideUnitSymbol = format != null && format.EndsWith(HideUnitMarker);
             if (hideUnitSymbol)
@@ -176,7 +169,7 @@ namespace Units
                 }
             }
 
-            string s = quantity.ConvertTo(q).ToString(format, this);
+            string s = quantity.ConvertTo(q).ToString(format, provider ?? this);
             if (hideUnitSymbol)
             {
                 return s;
@@ -383,19 +376,12 @@ namespace Units
         /// <summary>
         /// Parses the specified string.
         /// </summary>
-        /// <param name="unitType">
-        /// Type of the unit. 
-        /// </param>
-        /// <param name="input">
-        /// The input. 
-        /// </param>
-        /// <param name="quantity">
-        /// The quantity. 
-        /// </param>
-        /// <returns>
-        /// <c>true</c> if the parsing was successful, <c>false</c> otherwise 
-        /// </returns>
-        public bool TryParse(Type unitType, string input, out IQuantity quantity)
+        /// <param name="unitType">Type of the unit.</param>
+        /// <param name="input">The input.</param>
+        /// <param name="provider">The numeric format provider.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns><c>true</c> if the parsing was successful, <c>false</c> otherwise</returns>
+        public bool TryParse(Type unitType, string input, IFormatProvider provider, out IQuantity quantity)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -404,20 +390,47 @@ namespace Units
             }
 
             // change decimal separator to invariant culture
-            input = input.Replace(this.Culture.NumberFormat.NumberDecimalSeparator, CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
+            // input = input.Replace(this.Culture.NumberFormat.NumberDecimalSeparator, CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
 
             // remove whitespace
             input = input.Replace(" ", string.Empty);
 
-            var m = ParserExpression.Match(input);
-            if (!m.Success)
+            int unitIndex = 0;
+            while (unitIndex < input.Length)
             {
-                quantity = null;
-                return false;
+                var c = input[unitIndex];
+
+                // exponential
+                if (c == 'e' || c == 'E')
+                {
+                    if (unitIndex + 1 < input.Length && char.IsDigit(input[unitIndex + 1]))
+                    {
+                        unitIndex++;
+                        continue;
+                    }
+                }
+
+                if (char.IsLetter(c) || c == '%' || c == '°')
+                {
+                    // unit starts here
+                    break;
+                }
+
+                unitIndex++;
             }
 
-            var valueString = m.Groups[1].Value;
-            var unitString = m.Groups[3].Value;
+            var valueString = input.Substring(0, unitIndex);
+            var unitString = input.Substring(unitIndex);
+
+            //var m = ParserExpression.Match(input);
+            //if (!m.Success)
+            //{
+            //    quantity = null;
+            //    return false;
+            //}
+
+            //var valueString = m.Groups[1].Value;
+            //var unitString = m.Groups[3].Value;
 
             double value = 0;
             if (string.IsNullOrEmpty(valueString))
@@ -429,7 +442,7 @@ namespace Units
             }
             else
             {
-                value = double.Parse(valueString, CultureInfo.InvariantCulture);
+                value = double.Parse(valueString, provider);
             }
 
             IQuantity unit;

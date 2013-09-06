@@ -32,6 +32,7 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
+	using System.Globalization;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
 
@@ -187,12 +188,12 @@ namespace Units
             get
             {
                 // Use round-trip format
-                return this.ToString("R");
+                return this.ToString("R", CultureInfo.InvariantCulture);
             }
 
             set
             {
-                this.value = Parse(value).value;
+                this.value = Parse(value, CultureInfo.InvariantCulture).value;
             }
         }
 
@@ -219,20 +220,29 @@ namespace Units
         /// <returns>
         /// The <see cref="Mass"/> . 
         /// </returns>
-        public static Mass Parse(string input, IUnitProvider provider = null)
+        public static Mass Parse(string input, IFormatProvider provider = null)
         {
-            if (provider == null)
-            {
-                provider = UnitProvider.Default;
-            }
+            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
             Mass value;
-            if (!provider.TryParse(input, out value))
+            if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
             }
 
             return value;
+        }
+
+        /// <summary>
+        /// Parses the specified JSON string.
+        /// </summary>
+        /// <param name="json">The JSON input.</param>
+        /// <returns>
+		/// The <see cref="Mass"/> .
+		/// </returns>
+        public static Mass ParseJson(string json)
+        {
+            return Parse(json, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -585,8 +595,8 @@ namespace Units
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var up = formatProvider as IUnitProvider ?? UnitProvider.Default;
-            return up.Format(format, this);
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
+            return unitProvider.Format(format, formatProvider, this);
         }
     }
 }

@@ -27,6 +27,7 @@
 
 namespace Units
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -117,25 +118,16 @@ namespace Units
         /// <summary>
         /// Parses a string.
         /// </summary>
-        /// <typeparam name="T">
-        /// The type. 
-        /// </typeparam>
-        /// <param name="unitProvider">
-        /// The unit provider. 
-        /// </param>
-        /// <param name="input">
-        /// The input string. 
-        /// </param>
-        /// <param name="unit">
-        /// The unit (output). 
-        /// </param>
-        /// <returns>
-        /// True if the parsing was successful. 
-        /// </returns>
-        public static bool TryParse<T>(this IUnitProvider unitProvider, string input, out T unit)
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="unitProvider">The unit provider.</param>
+        /// <param name="input">The input string.</param>
+        /// <param name="provider">The numeric format provider.</param>
+        /// <param name="unit">The unit (output).</param>
+        /// <returns>True if the parsing was successful.</returns>
+        public static bool TryParse<T>(this IUnitProvider unitProvider, string input, IFormatProvider provider, out T unit)
         {
             IQuantity quantity;
-            if (!unitProvider.TryParse(typeof(T), input, out quantity))
+            if (!unitProvider.TryParse(typeof(T), input, provider, out quantity))
             {
                 unit = default(T);
                 return false;

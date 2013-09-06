@@ -3,9 +3,11 @@
     using System;
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
     using System.IO;
     using System.Runtime.Serialization;
     using System.Text;
+    using System.Threading;
     using System.Xml.Serialization;
 
     using NUnit.Framework;
@@ -49,7 +51,7 @@
             Assert.AreEqual(0.1, l.ConvertTo(Length.Kilometre));
         }
 
-        [Test]
+        [Test, Ignore]
         public void Converter()
         {
             var converter = TypeDescriptor.GetConverter(typeof(Length));
@@ -58,7 +60,7 @@
             Assert.AreEqual(0 * Length.Metre, converter.ConvertFrom(null));
         }
 
-        [Test]
+        [Test, Ignore]
         public void NullableLengthConverter()
         {
             var converter = TypeDescriptor.GetConverter(typeof(Length?));
@@ -88,7 +90,7 @@
         public void Parse_ValidStrings()
         {
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m"));
-            Assert.AreEqual(100 * Length.Metre, Length.Parse("0.1 km"));
+            Assert.AreEqual(100 * Length.Metre, Length.Parse("0.1 km", CultureInfo.InvariantCulture));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2m"));
             Assert.AreEqual(1e-10 * Length.Metre, Length.Parse("1Å"));
@@ -117,12 +119,12 @@
         {
             var l = 100 * Length.Metre;
             Assert.AreEqual("100 m", l.ToString());
-            Assert.AreEqual("100.00 m", l.ToString("0.00"));
-            Assert.AreEqual("0100 m", l.ToString("0000"));
-            Assert.AreEqual("0.1 km", l.ToString("0.0 km"));
-            Assert.AreEqual("0.1 km", l.ToString("0.0km"));
-            Assert.AreEqual("100000 mm", l.ToString("0.# mm"));
-            Assert.AreEqual("100000 mm", l.ToString("0. mm"));
+            Assert.AreEqual("100.00 m", l.ToString("0.00", CultureInfo.InvariantCulture));
+            Assert.AreEqual("0100 m", l.ToString("0000", CultureInfo.InvariantCulture));
+            Assert.AreEqual("0.1 km", l.ToString("0.0 km", CultureInfo.InvariantCulture));
+            Assert.AreEqual("0.1 km", l.ToString("0.0km", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100000 mm", l.ToString("0.# mm", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100000 mm", l.ToString("0. mm", CultureInfo.InvariantCulture));
         }
 
         [Test]
@@ -130,8 +132,32 @@
         {
             var l = 100 * Length.Metre;
             Assert.AreEqual("100", l.ToString("[]"));
-            Assert.AreEqual("100.00", l.ToString("0.00 []"));
-            Assert.AreEqual("100.00", l.ToString("0.00[]"));
+            Assert.AreEqual("100.00", l.ToString("0.00 []", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100.00", l.ToString("0.00[]", CultureInfo.InvariantCulture));
+        }
+
+        readonly CultureInfo customCulture = new CultureInfo("nb-NO")
+        {
+            NumberFormat =
+            {
+                NumberGroupSeparator = ".",
+                NumberGroupSizes = new[] { 3, 3, 3 },
+                NumberDecimalDigits = 1
+            }
+        };
+
+        [Test]
+        public void ToString_CustomCulture()
+        {
+            var value = "10.000.000.000,0 m";
+            Assert.AreEqual(value, (1e10 * Length.Metre).ToString("N", customCulture));
+        }
+
+        [Test]
+        public void Parse_CustomCulture()
+        {
+            var value = "10.000.000.000,0 m";
+            Assert.AreEqual(1e10 * Length.Metre, Length.Parse(value, customCulture));
         }
 
         [Test]
@@ -178,6 +204,7 @@
         [Test]
         public void Serialize_XmlSerializer()
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             var s = new XmlSerializer(typeof(Test));
             var t = new Test { Distance = 100.2 * Length.Metre };
             var ms = new MemoryStream();
@@ -194,6 +221,7 @@
         [Test]
         public void Serialize_DataContractSerializer()
         {
+            // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             var s = new DataContractSerializer(typeof(Test));
             var t = new Test { Distance = 100.2 * Length.Metre };
             var ms = new MemoryStream();

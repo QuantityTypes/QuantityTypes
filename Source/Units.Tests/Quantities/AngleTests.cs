@@ -27,6 +27,8 @@
 namespace Units.Tests
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Threading;
 
     using NUnit.Framework;
 
@@ -40,8 +42,16 @@ namespace Units.Tests
         public void ToString_CheckSpaces()
         {
             var a = 90 * Angle.Degree;
-            Assert.AreEqual("90.0°", a.ToString("0.0 °"));
-            Assert.AreEqual("90°", a.ToString("0°"));
+            Assert.AreEqual("90.0°", a.ToString("0.0 °", CultureInfo.InvariantCulture));
+            Assert.AreEqual("90°", a.ToString("0°", CultureInfo.InvariantCulture));
+        }
+
+        [Test]
+        public void ToString_NorwegianCulture_CheckSpaces()
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("nb-NO");
+            var a = 90 * Angle.Degree;
+            Assert.AreEqual("90,0°", a.ToString("0.0 °"));
         }
     }
 }
