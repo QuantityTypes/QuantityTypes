@@ -20,9 +20,14 @@
     public class LengthTests
     {
         [Test]
-        public void Constructors()
+        public void Constructor_Double()
         {
             Assert.AreEqual(2, new Length(2).Value);
+        }
+
+        [Test]
+        public void Constructor_String()
+        {
             Assert.AreEqual(2, new Length("2m").Value);
         }
 
@@ -89,6 +94,8 @@
         [Test]
         public void Parse_ValidStrings()
         {
+            Assert.AreEqual(1e-2 * Length.Metre, Length.Parse("1e-2m"));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse("m "));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("0.1 km", CultureInfo.InvariantCulture));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2"));
@@ -178,6 +185,7 @@
             var l = 100 * Length.Metre;
             Console.WriteLine(l.ToString("0 Metre"));
         }
+
         [Test]
         public void Compare()
         {

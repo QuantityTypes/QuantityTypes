@@ -68,14 +68,14 @@
     <Compile Include="Utilities\CsvTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Units\Units.csproj">
-      <Project>{626A772F-2D08-4C9C-B258-431E40133EF6}</Project>
-      <Name>Units</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="Utilities\Test1.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Units\Units.csproj">
+      <Project>{e0557c29-6cdc-4060-bb1a-461ed5c1ef19}</Project>
+      <Name>Units</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <UsingTask TaskName="PepitaGet.RestorePackagesTask" AssemblyFile="$(SolutionDir)..\Tools\Pepita\PepitaGet.dll" />

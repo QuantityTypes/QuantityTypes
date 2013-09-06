@@ -38,18 +38,18 @@ namespace Units
     public class UnitProvider : IUnitProvider
     {
         /// <summary>
+        /// The 'hide unit' format string marker.
+        /// </summary>
+        /// <remarks>
+        /// When a format string contains this marker at the end, the unit symbol will not be included in the formatted string.
+        /// </remarks>
+        private const string HideUnitMarker = "[]";
+
+        /// <summary>
         ///   The format expression.
         /// </summary>
         private static readonly Regex FormatExpression = new Regex(
             @"([0#\sDEFGNPRX]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.IgnoreCase);
-
-        /// <summary>
-        ///   The parser expression.
-        /// </summary>
-        private static readonly Regex ParserExpression =
-            new Regex(
-                @"\s*([-+]?[0-9]*(\.?[0-9]+)*([eE][-+]?[0-9]+)?)?\s*([^0-9.\s][^\s]*)?",
-                RegexOptions.IgnoreCase);
 
         /// <summary>
         ///   The display units.
@@ -122,14 +122,6 @@ namespace Units
         public string Separator { get; set; }
 
         /// <summary>
-        /// The 'hide unit' format string marker.
-        /// </summary>
-        /// <remarks>
-        /// When a format string contains this marker at the end, the unit symbol will not be included in the formatted string.
-        /// </remarks>
-        private const string HideUnitMarker = "[]";
-
-        /// <summary>
         /// Formats the specified quantity.
         /// </summary>
         /// <typeparam name="T">The quantity type.</typeparam>
@@ -169,12 +161,17 @@ namespace Units
                 }
             }
 
+            // Convert the value to a string
             string s = quantity.ConvertTo(q).ToString(format, provider ?? this);
+
             if (hideUnitSymbol)
             {
+                // Return the value only
                 return s;
             }
 
+            // Temperatures should have a space before the unit
+            // Angles should not have a space before ° symbol
             var separator = this.Separator;
             var isTemperature = quantity is Temperature;
             if (!isTemperature && (string.IsNullOrEmpty(unit) || unit.StartsWith("°")))
@@ -389,12 +386,10 @@ namespace Units
                 return true;
             }
 
-            // change decimal separator to invariant culture
-            // input = input.Replace(this.Culture.NumberFormat.NumberDecimalSeparator, CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
-
             // remove whitespace
             input = input.Replace(" ", string.Empty);
 
+            // find the index where the unit starts
             int unitIndex = 0;
             while (unitIndex < input.Length)
             {
@@ -403,7 +398,8 @@ namespace Units
                 // exponential
                 if (c == 'e' || c == 'E')
                 {
-                    if (unitIndex + 1 < input.Length && char.IsDigit(input[unitIndex + 1]))
+                    // check if it is followed by a digit or '-', otherwise it might be a unit
+                    if (unitIndex + 1 < input.Length && (char.IsDigit(input[unitIndex + 1]) || input[unitIndex + 1] == '-'))
                     {
                         unitIndex++;
                         continue;
@@ -416,21 +412,12 @@ namespace Units
                     break;
                 }
 
+                // digit or numeric group separator, continue
                 unitIndex++;
             }
 
-            var valueString = input.Substring(0, unitIndex);
-            var unitString = input.Substring(unitIndex);
-
-            //var m = ParserExpression.Match(input);
-            //if (!m.Success)
-            //{
-            //    quantity = null;
-            //    return false;
-            //}
-
-            //var valueString = m.Groups[1].Value;
-            //var unitString = m.Groups[3].Value;
+            var valueString = unitIndex > 0 ? input.Substring(0, unitIndex) : string.Empty;
+            var unitString = unitIndex < input.Length ? input.Substring(unitIndex) : string.Empty;
 
             double value = 0;
             if (string.IsNullOrEmpty(valueString))
