@@ -65,5 +65,13 @@ namespace Units.Tests
             var up = new UnitProvider(typeof(Length).Assembly, new CultureInfo("no"));
             Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(null, up));
         }
+
+        [Test]
+        public void TryParse_InvalidSyntax()
+        {
+            Length q;
+            var result = UnitProvider.Default.TryParse("100+200 m", CultureInfo.InvariantCulture, out q);
+            Assert.IsFalse(result);
+        }
     }
 }

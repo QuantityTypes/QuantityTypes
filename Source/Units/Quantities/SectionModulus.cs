@@ -150,6 +150,19 @@ namespace Units
         }
 
         /// <summary>
+        /// Tries to parse the specified string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="result">The result.</param>
+        /// <param name="provider">The format provider.</param>
+        /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
+        public static bool TryParse(string input, IFormatProvider provider, out SectionModulus result)
+        {
+            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
+            return unitProvider.TryParse(input, provider, out result);
+        }
+		
+		/// <summary>
         /// Parses the specified JSON string.
         /// </summary>
         /// <param name="json">The JSON input.</param>
