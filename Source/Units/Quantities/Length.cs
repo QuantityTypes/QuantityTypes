@@ -32,7 +32,7 @@ namespace Units
 {
     using System;
     using System.ComponentModel;
-    using System.Globalization;
+	using System.Globalization;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
 
@@ -145,117 +145,117 @@ namespace Units
         /// Gets the "m" unit.
         /// </summary>
         [Unit("m", true)]
-        public static Length Metre
-        {
-            get { return MetreField; }
+        public static Length Metre 
+        { 
+            get { return MetreField; } 
         }
 
         /// <summary>
         /// Gets the "dm" unit.
         /// </summary>
         [Unit("dm")]
-        public static Length Decimetre
-        {
-            get { return DecimetreField; }
+        public static Length Decimetre 
+        { 
+            get { return DecimetreField; } 
         }
 
         /// <summary>
         /// Gets the "cm" unit.
         /// </summary>
         [Unit("cm")]
-        public static Length Centimetre
-        {
-            get { return CentimetreField; }
+        public static Length Centimetre 
+        { 
+            get { return CentimetreField; } 
         }
 
         /// <summary>
         /// Gets the "mm" unit.
         /// </summary>
         [Unit("mm")]
-        public static Length Millimetre
-        {
-            get { return MillimetreField; }
+        public static Length Millimetre 
+        { 
+            get { return MillimetreField; } 
         }
 
         /// <summary>
         /// Gets the "km" unit.
         /// </summary>
         [Unit("km")]
-        public static Length Kilometre
-        {
-            get { return KilometreField; }
+        public static Length Kilometre 
+        { 
+            get { return KilometreField; } 
         }
 
         /// <summary>
         /// Gets the "yd" unit.
         /// </summary>
         [Unit("yd")]
-        public static Length Yard
-        {
-            get { return YardField; }
+        public static Length Yard 
+        { 
+            get { return YardField; } 
         }
 
         /// <summary>
         /// Gets the "ft" unit.
         /// </summary>
         [Unit("ft")]
-        public static Length Foot
-        {
-            get { return FootField; }
+        public static Length Foot 
+        { 
+            get { return FootField; } 
         }
 
         /// <summary>
         /// Gets the "in" unit.
         /// </summary>
         [Unit("in")]
-        public static Length Inch
-        {
-            get { return InchField; }
+        public static Length Inch 
+        { 
+            get { return InchField; } 
         }
 
         /// <summary>
         /// Gets the "mi" unit.
         /// </summary>
         [Unit("mi")]
-        public static Length Mile
-        {
-            get { return MileField; }
+        public static Length Mile 
+        { 
+            get { return MileField; } 
         }
 
         /// <summary>
         /// Gets the "nmi" unit.
         /// </summary>
         [Unit("nmi")]
-        public static Length NauticalMile
-        {
-            get { return NauticalMileField; }
+        public static Length NauticalMile 
+        { 
+            get { return NauticalMileField; } 
         }
 
         /// <summary>
         /// Gets the "Å" unit.
         /// </summary>
         [Unit("Å")]
-        public static Length Ångström
-        {
-            get { return ÅngströmField; }
+        public static Length Ångström 
+        { 
+            get { return ÅngströmField; } 
         }
 
         /// <summary>
         /// Gets the "AU" unit.
         /// </summary>
         [Unit("AU")]
-        public static Length AstronomicalUnit
-        {
-            get { return AstronomicalUnitField; }
+        public static Length AstronomicalUnit 
+        { 
+            get { return AstronomicalUnitField; } 
         }
 
         /// <summary>
         /// Gets the "ly" unit.
         /// </summary>
         [Unit("ly")]
-        public static Length LightYear
-        {
-            get { return LightYearField; }
+        public static Length LightYear 
+        { 
+            get { return LightYearField; } 
         }
 
         /// <summary>
@@ -311,19 +311,32 @@ namespace Units
             Length value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
-                throw new FormatException("Invalid format. Could not parse " + input + ".");
+                throw new FormatException("Invalid format.");
             }
 
             return value;
         }
 
         /// <summary>
+        /// Tries to parse the specified string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="result">The result.</param>
+        /// <param name="provider">The format provider.</param>
+        /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
+        public static bool TryParse(string input, IFormatProvider provider, out Length result)
+        {
+            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
+            return unitProvider.TryParse(input, provider, out result);
+        }
+		
+		/// <summary>
         /// Parses the specified JSON string.
         /// </summary>
         /// <param name="json">The JSON input.</param>
         /// <returns>
-        /// The <see cref="Length"/> .
-        /// </returns>
+		/// The <see cref="Length"/> .
+		/// </returns>
         public static Length ParseJson(string json)
         {
             return Parse(json, CultureInfo.InvariantCulture);
@@ -599,7 +612,7 @@ namespace Units
         {
             if (obj is Length)
             {
-                return this.Equals((Length)obj);
+              return this.Equals((Length)obj);
             }
 
             return false;

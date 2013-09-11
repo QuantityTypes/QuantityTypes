@@ -92,6 +92,41 @@
         }
 
         [Test]
+        public void TryParse_ValidSyntax_ReturnsTrue()
+        {
+            Length q;
+            var result = Length.TryParse("100.2 m", CultureInfo.InvariantCulture, out q);
+            Assert.IsTrue(result);
+            Assert.AreEqual(100.2 * Length.Metre, q);
+        }
+
+        [Test]
+        public void TryParse_ValidSyntax2_ReturnsTrue()
+        {
+            Length q;
+            var result = Length.TryParse(" 1.002e2m ", CultureInfo.InvariantCulture, out q);
+            Assert.IsTrue(result);
+            Assert.AreEqual(100.2 * Length.Metre, q);
+        }
+
+        [Test]
+        public void TryParse_InvalidSyntax_ReturnsFalse()
+        {
+            Length q;
+            var result = Length.TryParse("1x00 m", CultureInfo.InvariantCulture, out q);
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TryParse_NumberGroups_ReturnsFalse()
+        {
+            Length q;
+            var result = Length.TryParse("100,200 m", CultureInfo.InvariantCulture, out q);
+            Assert.IsTrue(result);
+            Assert.AreEqual(100200 * Length.Metre, q);
+        }
+
+        [Test]
         public void Parse_ValidStrings()
         {
             Assert.AreEqual(1e-2 * Length.Metre, Length.Parse("1e-2m"));
@@ -147,6 +182,7 @@
         {
             NumberFormat =
             {
+                NumberDecimalSeparator = ",",
                 NumberGroupSeparator = ".",
                 NumberGroupSizes = new[] { 3, 3, 3 },
                 NumberDecimalDigits = 1
@@ -164,6 +200,8 @@
         public void Parse_CustomCulture()
         {
             var value = "10.000.000.000,0 m";
+            double r;
+            double.TryParse("10.000.000.000,0", NumberStyles.Any, customCulture, out r);
             Assert.AreEqual(1e10 * Length.Metre, Length.Parse(value, customCulture));
         }
 

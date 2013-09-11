@@ -429,7 +429,11 @@ namespace Units
             }
             else
             {
-                value = double.Parse(valueString, provider);
+                if (!double.TryParse(valueString, NumberStyles.Any, provider, out value))
+                {
+                    quantity = null;
+                    return false;
+                }
             }
 
             IQuantity unit;
