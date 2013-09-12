@@ -54,5 +54,16 @@ namespace Units
         {
             return new Energy(x.Value * y.Value);
         }
+
+        /// <summary>
+        /// Implements torque divided by length.
+        /// </summary>
+        /// <param name="x">The torque.</param>
+        /// <param name="y">The length.</param>
+        /// <returns>The resulting force.</returns>
+        public static Force operator /(Torque x, Length y)
+        {
+            return new Force(x.Value / y.Value);
+        }
     }
 }
