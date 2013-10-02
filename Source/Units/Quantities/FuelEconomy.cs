@@ -31,8 +31,10 @@
 namespace Units
 {
     using System;
+#if !PCL
     using System.ComponentModel;
-	using System.Globalization;
+#endif
+    using System.Globalization;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
 
@@ -147,12 +149,18 @@ namespace Units
         /// <param name="provider">
         /// The provider. 
         /// </param>
+        /// <param name="unitProvider">
+        /// The unit provider. 
+        /// </param>
         /// <returns>
         /// The <see cref="FuelEconomy"/> . 
         /// </returns>
-        public static FuelEconomy Parse(string input, IFormatProvider provider = null)
+        public static FuelEconomy Parse(string input, IFormatProvider provider = null, IUnitProvider unitProvider = null)
         {
-            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
+            if (unitProvider == null)
+            {
+                unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
+            }
 
             FuelEconomy value;
             if (!unitProvider.TryParse(input, provider, out value))
@@ -167,25 +175,30 @@ namespace Units
         /// Tries to parse the specified string.
         /// </summary>
         /// <param name="input">The input string.</param>
-        /// <param name="result">The result.</param>
         /// <param name="provider">The format provider.</param>
+        /// <param name="unitProvider">The unit provider.</param>
+        /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, out FuelEconomy result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out FuelEconomy result)
         {
-            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
+            if (unitProvider == null)
+            {
+                unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
+            }
+
             return unitProvider.TryParse(input, provider, out result);
         }
-		
-		/// <summary>
+
+        /// <summary>
         /// Parses the specified JSON string.
         /// </summary>
-        /// <param name="json">The JSON input.</param>
+        /// <param name="input">The JSON input.</param>
         /// <returns>
-		/// The <see cref="FuelEconomy"/> .
-		/// </returns>
-        public static FuelEconomy ParseJson(string json)
+        /// The <see cref="FuelEconomy"/> .
+        /// </returns>
+        public static FuelEconomy ParseJson(string input)
         {
-            return Parse(json, CultureInfo.InvariantCulture);
+            return Parse(input, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -538,7 +551,33 @@ namespace Units
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+
+            return this.ToString(format, formatProvider, unitProvider);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// </summary>
+        /// <param name="format">
+        /// The format. 
+        /// </param>
+        /// <param name="formatProvider">
+        /// The format provider. 
+        /// </param>
+        /// <param name="unitProvider">
+        /// The unit provider. 
+        /// </param>
+        /// <returns>
+        /// A <see cref="System.String"/> that represents this instance. 
+        /// </returns>
+        public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
+        {
+            if (unitProvider == null)
+            { 
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            }
+
             return unitProvider.Format(format, formatProvider, this);
         }
     }
