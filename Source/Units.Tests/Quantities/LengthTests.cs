@@ -95,7 +95,19 @@
         public void TryParse_ValidSyntax_ReturnsTrue()
         {
             Length q;
-            var result = Length.TryParse("100.2 m", CultureInfo.InvariantCulture, out q);
+            var result = Length.TryParse("100.2 m", CultureInfo.InvariantCulture, null, out q);
+            Assert.IsTrue(result);
+            Assert.AreEqual(100.2 * Length.Metre, q);
+        }
+
+        [Test]
+        public void TryParse_DifferentProviders_ReturnsCorrectValue()
+        {
+            var c = new CultureInfo("nb-NO");
+            var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+
+            Length q;
+            var result = Length.TryParse("100,2 m", c, up, out q);
             Assert.IsTrue(result);
             Assert.AreEqual(100.2 * Length.Metre, q);
         }
@@ -104,7 +116,7 @@
         public void TryParse_ValidSyntax2_ReturnsTrue()
         {
             Length q;
-            var result = Length.TryParse(" 1.002e2m ", CultureInfo.InvariantCulture, out q);
+            var result = Length.TryParse(" 1.002e2m ", CultureInfo.InvariantCulture, null, out q);
             Assert.IsTrue(result);
             Assert.AreEqual(100.2 * Length.Metre, q);
         }
@@ -113,7 +125,7 @@
         public void TryParse_InvalidSyntax_ReturnsFalse()
         {
             Length q;
-            var result = Length.TryParse("1x00 m", CultureInfo.InvariantCulture, out q);
+            var result = Length.TryParse("1x00 m", CultureInfo.InvariantCulture, null, out q);
             Assert.IsFalse(result);
         }
 
@@ -121,7 +133,7 @@
         public void TryParse_NumberGroups_ReturnsFalse()
         {
             Length q;
-            var result = Length.TryParse("100,200 m", CultureInfo.InvariantCulture, out q);
+            var result = Length.TryParse("100,200 m", CultureInfo.InvariantCulture, null, out q);
             Assert.IsTrue(result);
             Assert.AreEqual(100200 * Length.Metre, q);
         }
@@ -176,6 +188,15 @@
             Assert.AreEqual("100", l.ToString("[]"));
             Assert.AreEqual("100.00", l.ToString("0.00 []", CultureInfo.InvariantCulture));
             Assert.AreEqual("100.00", l.ToString("0.00[]", CultureInfo.InvariantCulture));
+        }
+
+        [Test]
+        public void ToString_DifferentProviders()
+        {
+            var c = new CultureInfo("nb-NO");
+            var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+            var l = 100.1 * Length.Metre;
+            Assert.AreEqual("100,1 m", l.ToString(null, c, up));
         }
 
         readonly CultureInfo customCulture = new CultureInfo("nb-NO")
