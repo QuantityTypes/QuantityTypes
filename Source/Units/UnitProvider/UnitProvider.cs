@@ -386,54 +386,12 @@ namespace Units
                 return true;
             }
 
-            // remove whitespace
-            input = input.Replace(" ", string.Empty);
-
-            // find the index where the unit starts
-            int unitIndex = 0;
-            while (unitIndex < input.Length)
+            string unitString;
+            double value;
+            if (!Utilities.TrySplit(input, provider, out value, out unitString))
             {
-                var c = input[unitIndex];
-
-                // exponential
-                if (c == 'e' || c == 'E')
-                {
-                    // check if it is followed by a digit or '-', otherwise it might be a unit
-                    if (unitIndex + 1 < input.Length && (char.IsDigit(input[unitIndex + 1]) || input[unitIndex + 1] == '-'))
-                    {
-                        unitIndex++;
-                        continue;
-                    }
-                }
-
-                if (char.IsLetter(c) || c == '%' || c == '°')
-                {
-                    // unit starts here
-                    break;
-                }
-
-                // digit or numeric group separator, continue
-                unitIndex++;
-            }
-
-            var valueString = unitIndex > 0 ? input.Substring(0, unitIndex) : string.Empty;
-            var unitString = unitIndex < input.Length ? input.Substring(unitIndex) : string.Empty;
-
-            double value = 0;
-            if (string.IsNullOrEmpty(valueString))
-            {
-                if (!string.IsNullOrEmpty(unitString))
-                {
-                    value = 1;
-                }
-            }
-            else
-            {
-                if (!double.TryParse(valueString, NumberStyles.Any, provider, out value))
-                {
-                    quantity = null;
-                    return false;
-                }
+                quantity = null;
+                return false;
             }
 
             IQuantity unit;
