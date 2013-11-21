@@ -85,6 +85,17 @@
         }
 
         [Test]
+        public void Parse_E()
+        {
+            Assert.AreEqual(1E2 * Length.Metre, Length.Parse("1E2 m"));
+            Assert.AreEqual(1e2 * Length.Metre, Length.Parse("1e2 m"));
+            Assert.AreEqual(1E+2 * Length.Metre, Length.Parse("1E+2 m"));
+            Assert.AreEqual(1e+2 * Length.Metre, Length.Parse("1e+2 m"));
+            Assert.AreEqual(1E-2 * Length.Metre, Length.Parse("1E-2 m"));
+            Assert.AreEqual(1e-2 * Length.Metre, Length.Parse("1e-2 m"));
+        }
+
+        [Test]
         [ExpectedException(typeof(FormatException))]
         public void Parse_InvalidUnit()
         {

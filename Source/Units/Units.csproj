@@ -49,6 +49,7 @@
     <Compile Include="Core\IQuantity.cs" />
     <Compile Include="Core\IQuantity{T}.cs" />
     <Compile Include="Core\Mathematics.cs" />
+    <Compile Include="Core\Utilities.cs" />
     <Compile Include="Extensions\QuantityExtensions.cs" />
     <Compile Include="Operators\MassMomentOfInertia.cs" />
     <Compile Include="Operators\TypographicLength.cs" />
