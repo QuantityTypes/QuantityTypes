@@ -70,7 +70,6 @@ namespace Units
             ms.Position = 0;
             var r = new StreamReader(ms, this.Encoding);
             return r.ReadToEnd();
-            // return this.Encoding.GetString(ms.ToArray(), 0, (int)ms.Length);
         }
     }
 }

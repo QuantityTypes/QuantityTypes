@@ -249,10 +249,10 @@ namespace Units
 #endif
 
         /// <summary>
-        /// Saves the specified stream.
+        /// Saves the csv file to the specified <see cref="Stream"/>.
         /// </summary>
-        /// <param name="stream">The stream.</param>
-        /// <param name="cultureInfo">The culture info.</param>
+        /// <param name="stream">The output <see cref="Stream"/>.</param>
+        /// <param name="cultureInfo">The output culture.</param>
         /// <param name="unitProvider">The unit provider.</param>
         public void Save(Stream stream, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
@@ -262,10 +262,10 @@ namespace Units
         }
 
         /// <summary>
-        /// Saves the file to the specified writer.
+        /// Saves the csv file to the specified <see cref="StreamWriter"/>.
         /// </summary>
-        /// <param name="streamWriter">The writer.</param>
-        /// <param name="cultureInfo">The culture info.</param>
+        /// <param name="streamWriter">The output <see cref="StreamWriter"/>.</param>
+        /// <param name="cultureInfo">The output culture.</param>
         /// <param name="unitProvider">The unit provider.</param>
         public void Save(StreamWriter streamWriter, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
         {
@@ -698,6 +698,9 @@ namespace Units
             /// Gets the values.
             /// </summary>
             /// <value>The values.</value>
+            /// <remarks>
+            /// The indices corresponds to the columns in the parent <see cref="CsvFile"/>.
+            /// </remarks>
             public object[] Values { get; private set; }
         }
 
@@ -707,13 +710,13 @@ namespace Units
         private class ValueList : List<string>
         {
             /// <summary>
-            /// Gets the type of the smallest common.
+            /// Gets the smallest common type (<see cref="int"/>, <see cref="double"/> or <see cref="string"/>).
             /// </summary>
             /// <param name="provider">
-            /// The provider.
+            /// The format provider.
             /// </param>
             /// <returns>
-            /// The smallest type.
+            /// The smallest type (<see cref="int"/>, <see cref="double"/> or <see cref="string"/>) of the list.
             /// </returns>
             public Type GetSmallestCommonType(IFormatProvider provider)
             {

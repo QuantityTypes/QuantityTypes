@@ -10,6 +10,7 @@ namespace PerformanceTest
     using System.Runtime.InteropServices;
 
     using Units;
+    using Units.Dynamic;
 
     class Program
     {
@@ -23,6 +24,7 @@ namespace PerformanceTest
             var results = new Dictionary<string, IList<long>>();
             results.Add("double", TestDouble(N).ToList());
             results.Add("Units.NET", TestUnits(N).ToList());
+            results.Add("Units.NET (dynamic)", TestUnitsDynamic(N).ToList());
             results.Add("TypedUnits", TestTypedUnits(N).ToList());
 
             var tests = new[]
@@ -233,6 +235,91 @@ namespace PerformanceTest
             Console.WriteLine();
         }
 
+        static IEnumerable<long> TestUnitsDynamic(int N)
+        {
+            Console.WriteLine("=== Units .NET (dynamic) ===");
+
+            var length = Marshal.SizeOf(typeof(DynamicQuantity));
+            Console.WriteLine("Length = {0} bytes", length);
+            yield return length;
+
+            var a1 = new DynamicQuantity[N];
+            var a2 = new DynamicQuantity[N];
+
+            using (var timer = new Timer("Assign"))
+            {
+                for (int i = 0; i < N; i++) a1[i] = SI.Metre;
+            }
+
+            using (var timer = new Timer("Assign (multiplication)"))
+            {
+                for (int i = 0; i < N; i++) a1[i] = i * SI.Metre;
+                yield return timer.Stop();
+            }
+
+            using (var timer = new Timer("Assign (ctor)"))
+            {
+                for (int i = 0; i < N; i++) a1[i] = new DynamicQuantity(i, new Dimensions(0, 1, 0));
+                yield return timer.Stop();
+            }
+
+            using (var timer = new Timer("Add (operator)"))
+            {
+                for (int i = 0; i < N; i++) a1[i] = a1[i] + a1[0];
+                yield return timer.Stop();
+            }
+
+            using (var timer = new Timer("Add (property)"))
+            {
+                for (int i = 0; i < N; i++) a1[i] = new DynamicQuantity(a1[i].Value + a1[0].Value, new Dimensions(0, 1, 0));
+                yield return timer.Stop();
+            }
+
+            var s = "10";
+            using (var timer = new Timer("Parse"))
+            {
+             //   for (int i = 0; i < N; i++) a1[i] = DynamicQuantity.Parse(s);
+                yield return timer.Stop();
+            }
+
+            s = "10 m";
+            using (var timer = new Timer("Parse with unit"))
+            {
+                for (int i = 0; i < N; i++) a1[i] = DynamicQuantity.Parse(s);
+                yield return timer.Stop();
+            }
+
+            using (var timer = new Timer("Multiply"))
+            {
+                for (int i = 0; i < N; i++) a2[i] = a1[i] * a1[i];
+                yield return timer.Stop();
+            }
+
+            using (var timer = new Timer("Multiply (property, ctor)"))
+            {
+                for (int i = 0; i < N; i++) a2[i] = new DynamicQuantity(a1[i].Value * a1[i].Value, new Dimensions(0, 2, 0));
+                yield return timer.Stop();
+            }
+
+            double sum1;
+            using (var timer = new Timer("Sum (operator)"))
+            {
+                var sum = new DynamicQuantity();
+                for (int i = 0; i < N; i++) sum += a2[i];
+                sum1 = sum.ConvertTo(SI.SquareMetre);
+                yield return timer.Stop();
+            }
+
+            double sum3 = 0;
+            using (var timer = new Timer("Sum (property)"))
+            {
+                for (int i = 0; i < N; i++) sum3 += a2[i].Value;
+                yield return timer.Stop();
+            }
+
+            Console.WriteLine();
+        }
+
         static IEnumerable<long> TestTypedUnits(int N)
         {
             // http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
@@ -283,7 +370,7 @@ namespace PerformanceTest
                 yield return timer.Stop();
             }
 
-            var s = "10";
+            // var s = "10 m";
             using (var timer = new Timer("Parse"))
             {
                 // TODO:
@@ -292,7 +379,6 @@ namespace PerformanceTest
                 yield return -1;
             }
 
-            s = "10 m";
             using (var timer = new Timer("Parse with unit"))
             {
                 // TODO
