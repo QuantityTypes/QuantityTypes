@@ -50,6 +50,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Dynamic\DynamicQuantityTests.cs" />
     <Compile Include="JsonTests\NewtonSoftJsonTests.cs" />
     <Compile Include="JsonTests\QuantityJsonConverter.cs" />
     <Compile Include="Quantities\AngleTests.cs" />
