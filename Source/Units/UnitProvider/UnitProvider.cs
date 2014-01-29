@@ -52,6 +52,11 @@ namespace Units
             @"([0#\sDEFGNPRX]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.IgnoreCase);
 
         /// <summary>
+        /// The string representing NaN.
+        /// </summary>
+        private static readonly string NotANumberString = double.NaN.ToString();
+
+        /// <summary>
         ///   The display units.
         /// </summary>
         private readonly Dictionary<Type, UnitDefinition> displayUnits;
@@ -131,6 +136,11 @@ namespace Units
         /// <returns>The <see cref="string" /> .</returns>
         public string Format<T>(string format, IFormatProvider provider, T quantity) where T : IQuantity<T>
         {
+            if (double.IsNaN(quantity.Value))
+            {
+                return NotANumberString;
+            }
+
             bool hideUnitSymbol = format != null && format.EndsWith(HideUnitMarker);
             if (hideUnitSymbol)
             {
@@ -379,10 +389,18 @@ namespace Units
         /// <param name="quantity">The quantity.</param>
         /// <returns><c>true</c> if the parsing was successful, <c>false</c> otherwise</returns>
         public bool TryParse(Type unitType, string input, IFormatProvider provider, out IQuantity quantity)
-        {
+        {            
+            unitType = Nullable.GetUnderlyingType(unitType) ?? unitType;
+
             if (string.IsNullOrEmpty(input))
             {
                 quantity = (IQuantity)Activator.CreateInstance(unitType);
+                return true;
+            }
+
+            if (string.Equals(input, NotANumberString))
+            {
+                quantity = (IQuantity)Activator.CreateInstance(unitType, double.NaN);
                 return true;
             }
 
