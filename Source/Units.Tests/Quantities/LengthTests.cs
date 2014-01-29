@@ -103,6 +103,18 @@
         }
 
         [Test]
+        public void Parse_NaN()
+        {
+            Assert.IsTrue(double.IsNaN(Length.Parse("NaN").Value));
+        }
+
+        [Test]
+        public void ToString_NaN()
+        {
+            Assert.AreEqual("NaN", new Length(double.NaN).ToString());
+        }
+
+        [Test]
         public void TryParse_ValidSyntax_ReturnsTrue()
         {
             Length q;
