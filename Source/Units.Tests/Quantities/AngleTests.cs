@@ -26,6 +26,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Units.Tests
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Threading;
@@ -51,6 +52,8 @@ namespace Units.Tests
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("nb-NO");
             var a = 90 * Angle.Degree;
+            Assert.AreEqual("nb-NO", Thread.CurrentThread.CurrentCulture.Name, "Wrong culture name");
+            Assert.AreEqual(",", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator, "Wrong decimal separator");
             Assert.AreEqual("90,0°", a.ToString("0.0 °"));
         }
     }
