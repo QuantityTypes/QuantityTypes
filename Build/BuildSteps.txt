@@ -1,0 +1,75 @@
+Units for .NET build system
+===========================================
+
+Running in a VirtualBox virtual machine on Windows 8.1.
+
+=== Installed software
+
+- TeamCity 8.0.5
+- Visual Studio 2013
+- Mercurial
+
+=== Build parameters
+
+Defined under "Parameters" in the TeamCity project.
+
+Environment variables:
+EnableNuGetPackageRestore = true
+NUGET_ACCESS_KEY = ####
+YEAR = 2014
+
+Units :: Build Configuration
+-------------------------------------------
+
+Build number format: 
+%env.YEAR%.1.%build.counter%.1
+
+Artifact paths:
+build/**/*.* => Output.zip!/build/
+output/**/*.zip => Output.zip!/output/
+packages/**/*.* => Output.zip!/packages/
+tools/**/*.* => Output.zip!/tools/
+
+VCS
+Pull changes from:
+https://hg.codeplex.com/units
+Automatically on agent
+Clean all files before build
+
+Build steps
+
+Update version number
+Tools\Lynx
+VersionUpdater.exe
+/Version=%build.number% /Directory=..\..
+
+Create changeset ID file
+mkdir Output
+echo %build.vcs.number%> Output\changeset.id
+hg log > Output\changesets.log
+
+Build solution
+Source\Units.sln
+
+Run unit tests
+NUnit runner: 
+NUnit 2.6.3
+.NET Runtime: 
+Version v4.0
+Run tests from:
+**/Release/**/*.Tests.dll
+.NET Coverage tool: JetBrains dotCover
+Filters:
++:Units*
+-:*.Tests*
+
+Pack NuGet
+build
+pack.cmd
+
+Push NuGet
+build
+push.cmd
+
+Build triggers: 
+VCS Trigger
