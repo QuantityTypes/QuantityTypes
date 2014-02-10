@@ -294,24 +294,25 @@
         [Test]
         public void Serialize_XmlSerializer()
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            var s = new XmlSerializer(typeof(Test));
-            var t = new Test { Distance = 100.2 * Length.Metre };
-            var ms = new MemoryStream();
-            s.Serialize(ms, t);
-            var xml = Encoding.UTF8.GetString(ms.ToArray());
-            Assert.IsTrue(xml.Contains(@"<Distance>100.2 m</Distance>"));
+            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
+            {
+                var s = new XmlSerializer(typeof(Test));
+                var t = new Test { Distance = 100.2 * Length.Metre };
+                var ms = new MemoryStream();
+                s.Serialize(ms, t);
+                var xml = Encoding.UTF8.GetString(ms.ToArray());
+                Assert.IsTrue(xml.Contains(@"<Distance>100.2 m</Distance>"));
 
-            // Deserialize
-            var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
-            var t2 = (Test)s.Deserialize(ms2);
-            Assert.AreEqual(t2.Distance, t.Distance);
+                // Deserialize
+                var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+                var t2 = (Test)s.Deserialize(ms2);
+                Assert.AreEqual(t2.Distance, t.Distance);
+            }
         }
 
         [Test]
         public void Serialize_DataContractSerializer()
         {
-            // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             var s = new DataContractSerializer(typeof(Test));
             var t = new Test { Distance = 100.2 * Length.Metre };
             var ms = new MemoryStream();
