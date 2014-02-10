@@ -40,7 +40,7 @@ Build steps
 
 Update version number
 Tools\Lynx
-VersionUpdater.exe
+UpdateVersionNumbers.exe
 /Version=%build.number% /Directory=..\..
 
 Create changeset ID file
