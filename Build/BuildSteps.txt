@@ -26,7 +26,7 @@ Build number format:
 
 Artifact paths:
 build/**/*.* => Output.zip!/build/
-output/**/*.zip => Output.zip!/output/
+output/**/*.* => Output.zip!/output/
 packages/**/*.* => Output.zip!/packages/
 tools/**/*.* => Output.zip!/tools/
 
@@ -57,7 +57,7 @@ NUnit 2.6.3
 .NET Runtime: 
 Version v4.0
 Run tests from:
-**/Release/**/*.Tests.dll
+**/bin/Release/**/*.Tests.dll
 .NET Coverage tool: JetBrains dotCover
 Filters:
 +:Units*
