@@ -1,9 +1,5 @@
 namespace Units.Tests
 {
-    using System;
-    using System.Globalization;
-    using System.Threading;
-
     using NUnit.Framework;
 
     using ServiceStack.Text;
@@ -29,13 +25,15 @@ namespace Units.Tests
         {
             var obj = new TestObject { Distance = 1.23 * Length.Metre, Time = null };
 
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("nb-NO");
-            Assert.AreEqual("1,23 m", obj.Distance.ToString());
+            using (CurrentCulture.TemporaryChangeTo("nb-NO"))
+            {
+                Assert.AreEqual("1,23 m", obj.Distance.ToString());
 
-            JsConfig.IncludeNullValues = true;
-            // JsConfig<Length>.SerializeFn = q => q.ToString(null, CultureInfo.InvariantCulture);
-            var json = JsonSerializer.SerializeToString(obj);
-            Assert.AreEqual("{\"Distance\":\"1.23 m\",\"Time\":null,\"Quantities\":[]}", json);
+                JsConfig.IncludeNullValues = true;
+                // JsConfig<Length>.SerializeFn = q => q.ToString(null, CultureInfo.InvariantCulture);
+                var json = JsonSerializer.SerializeToString(obj);
+                Assert.AreEqual("{\"Distance\":\"1.23 m\",\"Time\":null,\"Quantities\":[]}", json);
+            }
         }
 
         [Test]
