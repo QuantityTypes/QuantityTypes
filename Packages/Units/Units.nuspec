@@ -10,6 +10,6 @@
     <iconUrl>http://www.objo.net/codeplex/icons/units.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Strongly typed physical quantities and unit conversion.</description>
-    <tags>units unit quantities</tags>
+    <tags>physical quantities unit conversion units of measurement</tags>
   </metadata>
 </package>
