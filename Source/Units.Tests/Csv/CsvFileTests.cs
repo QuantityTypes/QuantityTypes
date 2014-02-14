@@ -1,6 +1,5 @@
-﻿namespace Units.Tests.Utilities
+﻿namespace Units.Tests
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
@@ -8,6 +7,8 @@
     using System.Text;
 
     using NUnit.Framework;
+
+    using Units.Csv;
 
     [TestFixture]
     public class CsvFileTests

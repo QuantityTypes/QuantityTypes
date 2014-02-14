@@ -1,8 +1,10 @@
-﻿namespace Units.Tests.Utilities
+﻿namespace Units.Tests
 {
     using System.Linq;
 
     using NUnit.Framework;
+
+    using Units.Csv;
 
     [TestFixture]
     public class CsvParserTests

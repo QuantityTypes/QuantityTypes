@@ -27,7 +27,7 @@
 //   Represents a Csv file that supports units and reflection of the rows.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Units
+namespace Units.Csv
 {
     using System;
     using System.Collections.Generic;

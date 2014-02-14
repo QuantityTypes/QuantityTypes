@@ -1,6 +1,8 @@
-﻿namespace Units.Tests.Utilities
+﻿namespace Units.Tests
 {
     using NUnit.Framework;
+
+    using Units.Csv;
 
     [TestFixture]
     public class CsvWriterTests

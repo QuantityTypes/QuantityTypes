@@ -27,7 +27,7 @@
 //   Specifies the column index in a csv file of the decorated property.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Units
+namespace Units.Csv
 {
     using System;
     using System.Reflection;

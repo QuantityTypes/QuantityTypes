@@ -27,7 +27,7 @@
 //   Specifies that a property should be ignored in comma separated file output.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Units
+namespace Units.Csv
 {
     using System;
     using System.Reflection;

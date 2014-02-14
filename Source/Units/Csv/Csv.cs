@@ -24,7 +24,7 @@
 //   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Units
+namespace Units.Csv
 {
     using System;
     using System.Collections.Generic;

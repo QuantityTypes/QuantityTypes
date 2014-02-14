@@ -64,20 +64,23 @@
     <Compile Include="Example.cs" />
     <Compile Include="JsonTests\ServiceStackJsonTests.cs" />
     <Compile Include="JsonTests\TestObject.cs" />
-    <Compile Include="Utilities\CsvFileTests.cs" />
-    <Compile Include="Utilities\CsvWriterTests.cs" />
-    <Compile Include="Utilities\CsvParserTests.cs" />
-    <Compile Include="Utilities\CsvTests.cs" />
+    <Compile Include="Csv\CsvFileTests.cs" />
+    <Compile Include="Csv\CsvWriterTests.cs" />
+    <Compile Include="Csv\CsvParserTests.cs" />
+    <Compile Include="Csv\CsvTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Utilities\Test1.csv" />
+    <None Include="Csv\Test1.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Units\Units.csproj">
       <Project>{e0557c29-6cdc-4060-bb1a-461ed5c1ef19}</Project>
       <Name>Units</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <UsingTask TaskName="PepitaGet.RestorePackagesTask" AssemblyFile="$(ProjectDir)..\..\Tools\Pepita\PepitaGet.dll" />
