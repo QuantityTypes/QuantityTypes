@@ -28,7 +28,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Units
+namespace Units.Csv
 {
     using System.Collections.Generic;
     using System.Globalization;

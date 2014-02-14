@@ -183,7 +183,9 @@ namespace Units
             // Temperatures should have a space before the unit
             // Angles should not have a space before ° symbol
             var separator = this.Separator;
+            // ReSharper disable once CSharpWarnings::CS0184
             var isTemperature = quantity is Temperature;
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (!isTemperature && (string.IsNullOrEmpty(unit) || unit.StartsWith("°")))
             {
                 separator = string.Empty;
