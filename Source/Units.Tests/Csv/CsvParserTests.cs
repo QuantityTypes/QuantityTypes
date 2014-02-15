@@ -1,5 +1,6 @@
 ﻿namespace Units.Tests
 {
+    using System.Globalization;
     using System.Linq;
 
     using NUnit.Framework;
@@ -20,10 +21,12 @@ ghi"";""3,14
 
 True;False
 ";
+
         [Test]
         public void Parse()
         {
-            var records = CsvParser.Parse(TestString1).ToList();
+            var culture = new CultureInfo("nb-NO");
+            var records = CsvParser.Parse(TestString1, culture).ToList();
             Assert.AreEqual(8, records.Count);
             Assert.AreEqual("a b c", records[0][0]);
             Assert.AreEqual("3,14", records[0][1]);

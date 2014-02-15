@@ -1,13 +1,41 @@
-﻿namespace Units.Tests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="LengthTests.cs" company="Units.NET">
+//   The MIT License (MIT)
+//   
+//   Copyright (c) 2012 Oystein Bjorke
+//   
+//   Permission is hereby granted, free of charge, to any person obtaining a
+//   copy of this software and associated documentation files (the
+//   "Software"), to deal in the Software without restriction, including
+//   without limitation the rights to use, copy, modify, merge, publish,
+//   distribute, sublicense, and/or sell copies of the Software, and to
+//   permit persons to whom the Software is furnished to do so, subject to
+//   the following conditions:
+//   
+//   The above copyright notice and this permission notice shall be included
+//   in all copies or substantial portions of the Software.
+//   
+//   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+//   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+//   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+//   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+//   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+//   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+//   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// </copyright>
+// <summary>
+//   Unit tests for the <see cref="Length"/> type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Units.Tests
 {
     using System;
-    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
     using System.Runtime.Serialization;
     using System.Text;
-    using System.Threading;
     using System.Xml.Serialization;
 
     using NUnit.Framework;
@@ -19,6 +47,17 @@
     // ReSharper disable InconsistentNaming
     public class LengthTests
     {
+        private readonly CultureInfo customCulture = new CultureInfo("nb-NO")
+        {
+            NumberFormat =
+            {
+                NumberDecimalSeparator = ",",
+                NumberGroupSeparator = ".",
+                NumberGroupSizes = new[] { 3, 3, 3 },
+                NumberDecimalDigits = 1
+            }
+        };
+
         [Test]
         public void Constructor_Double()
         {
@@ -56,7 +95,8 @@
             Assert.AreEqual(0.1, l.ConvertTo(Length.Kilometre));
         }
 
-        [Test, Ignore]
+#if NET40
+        [Test]
         public void Converter()
         {
             var converter = TypeDescriptor.GetConverter(typeof(Length));
@@ -65,7 +105,7 @@
             Assert.AreEqual(0 * Length.Metre, converter.ConvertFrom(null));
         }
 
-        [Test, Ignore]
+        [Test]
         public void NullableLengthConverter()
         {
             var converter = TypeDescriptor.GetConverter(typeof(Length?));
@@ -75,6 +115,7 @@
             Assert.AreEqual(null, converter.ConvertFrom(nullString));
             Assert.AreEqual(null, converter.ConvertFrom(string.Empty));
         }
+#endif
 
         [Test]
         public void SetFromString()
@@ -222,22 +263,11 @@
             Assert.AreEqual("100,1 m", l.ToString(null, c, up));
         }
 
-        readonly CultureInfo customCulture = new CultureInfo("nb-NO")
-        {
-            NumberFormat =
-            {
-                NumberDecimalSeparator = ",",
-                NumberGroupSeparator = ".",
-                NumberGroupSizes = new[] { 3, 3, 3 },
-                NumberDecimalDigits = 1
-            }
-        };
-
         [Test]
         public void ToString_CustomCulture()
         {
             var value = "10.000.000.000,0 m";
-            Assert.AreEqual(value, (1e10 * Length.Metre).ToString("N", customCulture));
+            Assert.AreEqual(value, (1e10 * Length.Metre).ToString("N", this.customCulture));
         }
 
         [Test]
@@ -245,8 +275,8 @@
         {
             var value = "10.000.000.000,0 m";
             double r;
-            double.TryParse("10.000.000.000,0", NumberStyles.Any, customCulture, out r);
-            Assert.AreEqual(1e10 * Length.Metre, Length.Parse(value, customCulture));
+            double.TryParse("10.000.000.000,0", NumberStyles.Any, this.customCulture, out r);
+            Assert.AreEqual(1e10 * Length.Metre, Length.Parse(value, this.customCulture));
         }
 
         [Test]
@@ -256,7 +286,6 @@
             Assert.AreEqual("1 000 000 m", l.ToString("# ### ###"));
             Assert.AreEqual("1 000 km", l.ToString("# ### km"));
             var l2 = 1 * Length.Metre;
-            // Assert.AreEqual("1", 1.ToString("# ### ###"));
             Assert.AreEqual("1 m", l2.ToString("# ### ###"));
         }
 

@@ -21,16 +21,13 @@ namespace Units.Tests
         }
 
         [Test]
-        public void Serialize_NorwegianCulture()
+        public void Serialize_NorwegianCulture_ShouldBeSerializedToInvariantCulture()
         {
             var obj = new TestObject { Distance = 1.23 * Length.Metre, Time = null };
 
             using (CurrentCulture.TemporaryChangeTo("nb-NO"))
             {
-                Assert.AreEqual("1,23 m", obj.Distance.ToString());
-
                 JsConfig.IncludeNullValues = true;
-                // JsConfig<Length>.SerializeFn = q => q.ToString(null, CultureInfo.InvariantCulture);
                 var json = JsonSerializer.SerializeToString(obj);
                 Assert.AreEqual("{\"Distance\":\"1.23 m\",\"Time\":null,\"Quantities\":[]}", json);
             }
