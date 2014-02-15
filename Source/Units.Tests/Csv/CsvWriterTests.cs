@@ -1,5 +1,7 @@
 ﻿namespace Units.Tests
 {
+    using System.Globalization;
+
     using NUnit.Framework;
 
     using Units.Csv;
@@ -12,14 +14,15 @@
         {
             using (var w = new MemoryStreamWriter())
             {
-                w.WriteCsvLine("a b c", 3.14);
-                w.WriteCsvLine("def\r\nghi", "3,14\r\n2.5");
-                w.WriteCsvLine("a \"b\" c", "a ;b c");
-                w.WriteCsvLine("\"abc\"", ";");
-                w.WriteCsvLine(string.Empty, string.Empty);
-                w.WriteCsvLine((object)null, null);
-                w.WriteCsvLine((object)null);
-                w.WriteCsvLine(true, false);
+                var culture = new CultureInfo("nb-NO");
+                w.WriteCsvLine(culture, "a b c", 3.14);
+                w.WriteCsvLine(culture, "def\r\nghi", "3,14\r\n2.5");
+                w.WriteCsvLine(culture, "a \"b\" c", "a ;b c");
+                w.WriteCsvLine(culture, "\"abc\"", ";");
+                w.WriteCsvLine(culture, string.Empty, string.Empty);
+                w.WriteCsvLine(culture, (object)null, null);
+                w.WriteCsvLine(culture, (object)null);
+                w.WriteCsvLine(culture, true, false);
                 var output = w.ToString();
                 var expected = CsvParserTests.TestString1;
                 Assert.AreEqual(expected, output);
