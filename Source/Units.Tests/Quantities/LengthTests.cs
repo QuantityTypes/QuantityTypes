@@ -36,6 +36,7 @@ namespace Units.Tests
     using System.IO;
     using System.Runtime.Serialization;
     using System.Text;
+    using System.Threading;
     using System.Xml.Serialization;
 
     using NUnit.Framework;
@@ -137,16 +138,59 @@ namespace Units.Tests
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
         public void Parse_InvalidUnit()
         {
-            Length.Parse("100 Metre");
+            Assert.Throws<FormatException>(() => Length.Parse("100 Metre"));
         }
 
         [Test]
         public void Parse_NaN()
         {
             Assert.IsTrue(double.IsNaN(Length.Parse("NaN").Value));
+        }
+
+        [Test]
+        public void Parse_InvariantCulture()
+        {
+            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
+            {
+                var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+                unitProvider.RegisterUnits(typeof(Length));
+                using (DefaultUnitProvider.TemporaryChangeTo(unitProvider))
+                {
+                    Assert.AreEqual(1.2 * Length.Metre, Length.Parse("1.2 m"));
+                }
+            }
+        }
+
+        [Test]
+        public void Parse_CustomCulture2()
+        {
+            using (CurrentCulture.TemporaryChangeTo(this.customCulture))
+            {
+                var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+                unitProvider.RegisterUnits(typeof(Length));
+                using (DefaultUnitProvider.TemporaryChangeTo(unitProvider))
+                {
+                    Assert.AreEqual(1.2 * Length.Metre, Length.Parse("1,2 m"));
+                }
+            }
+        }
+
+        [Test]
+        public void ParseWithUnitProvider()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnits(typeof(Length));
+            Assert.AreEqual(1.2 * Length.Metre, Length.Parse("1.2 m", unitProvider));
+        }
+
+        [Test]
+        public void ParseWithDifferentFormatProvider()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnits(typeof(Length));
+            Assert.AreEqual(1.2 * Length.Metre, Length.Parse("1,2 m", this.customCulture, unitProvider));
         }
 
         [Test]
