@@ -26,6 +26,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Units.Tests
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
 
@@ -50,6 +51,150 @@ namespace Units.Tests
             // Revert
             Assert.IsTrue(unitProvider.TrySetDisplayUnit<Length>(unitSymbol));
             Assert.AreEqual("1 m", Length.Metre.ToString(null, unitProvider));
+        }
+
+        [Test]
+        public void RegisterUnit_ParseRegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            Assert.AreEqual(5 * Length.Metre, Length.Parse("5 m", unitProvider));
+        }
+
+        [Test]
+        public void RegisterUnit_ParseUnregisteredUnit_ThrowsException()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            Assert.Throws<FormatException>(() => Length.Parse("5 cm", unitProvider));
+        }
+
+        [Test]
+        public void RegisterUnitsByType_ParseUnregisteredUnit_ThrowsException()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnits(typeof(Length));
+            Assert.Throws<FormatException>(() => Mass.Parse("5 kg", unitProvider));
+        }
+
+        [Test]
+        public void RegisterUnitsByType_AndParseRegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnits(typeof(Length));
+            Assert.AreEqual(5 * Length.Kilometre, Length.Parse("5 km", unitProvider));
+        }
+
+        [Test]
+        public void RegisterUnitsByAssembly_AndParseRegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnits(typeof(Length).Assembly);
+            Assert.AreEqual(5 * Length.Kilometre, Length.Parse("5 km", unitProvider));
+        }
+
+        [Test]
+        public void GetUnit_NotUniqueUnit_GetsFirstRegistered()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            unitProvider.RegisterUnit(TypographicLength.Metre, "m");
+            Assert.AreEqual(Length.Metre, unitProvider.GetUnit("m"));
+        }
+
+        [Test]
+        public void TryGetUnit_NotUniqueUnit_GetsFirstRegistered()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            unitProvider.RegisterUnit(TypographicLength.Metre, "m");
+            Length unit;
+            Assert.IsTrue(unitProvider.TryGetUnit("m", out unit));
+            Assert.AreEqual(Length.Metre, unit);
+        }
+
+        [Test]
+        public void TryGetUnit_GenericOutputAndNotUniqueUnit_GetsFirstRegistered()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            unitProvider.RegisterUnit(TypographicLength.Metre, "m");
+            IQuantity unit;
+            Assert.IsTrue(unitProvider.TryGetUnit(typeof(Length), "m", out unit));
+            Assert.AreEqual(Length.Metre, unit);
+        }
+
+        [Test]
+        public void GetUnits_NotUniqueUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            unitProvider.RegisterUnit(TypographicLength.Metre, "m");
+            var units = unitProvider.GetUnits(typeof(Length));
+            Assert.AreEqual(1, units.Count);
+            Assert.AreEqual(Length.Metre, units["m"]);
+        }
+
+        [Test]
+        public void TrySetDisplayUnit_RegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            Assert.IsTrue(unitProvider.TrySetDisplayUnit<Length>("m"));
+        }
+
+        [Test]
+        public void TrySetDisplayUnit_NotRegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            Assert.IsFalse(unitProvider.TrySetDisplayUnit<Length>("km"));
+        }
+
+        [Test]
+        public void TryGetDisplayUnit_RegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            unitProvider.TrySetDisplayUnit<Length>("m");
+            Length unit;
+            string symbol;
+            Assert.IsTrue(unitProvider.TryGetDisplayUnit(out unit, out symbol));
+            Assert.AreEqual(Length.Metre, unit);
+            Assert.AreEqual("m", symbol);
+        }
+
+        [Test]
+        public void TryGetDisplayUnit_UnregisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(TypographicLength.Metre, "m");
+            unitProvider.TrySetDisplayUnit<TypographicLength>("m");
+            Length unit;
+            string symbol;
+            Assert.IsFalse(unitProvider.TryGetDisplayUnit(out unit, out symbol));
+        }
+
+        [Test]
+        public void GetDisplayUnit_RegisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "m");
+            unitProvider.TrySetDisplayUnit<Length>("m");
+            Assert.AreEqual("m", unitProvider.GetDisplayUnit(typeof(Length)));
+            string symbol;
+            Assert.AreEqual(Length.Metre, unitProvider.GetDisplayUnit(typeof(Length), out symbol));
+        }
+
+        [Test]
+        public void GetDisplayUnit_UnregisteredUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(TypographicLength.Metre, "m");
+            unitProvider.TrySetDisplayUnit<TypographicLength>("m");
+            Assert.Throws<InvalidOperationException>(() => unitProvider.GetDisplayUnit(typeof(Length)));
+            string symbol;
+            Assert.Throws<InvalidOperationException>(() => unitProvider.GetDisplayUnit(typeof(Length), out symbol));
         }
 
         [Test]

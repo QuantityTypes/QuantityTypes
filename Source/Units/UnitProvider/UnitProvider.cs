@@ -208,7 +208,7 @@ namespace Units
             UnitDefinition ud;
             if (!this.displayUnits.TryGetValue(type, out ud))
             {
-                return null;
+                throw new InvalidOperationException("No display unit defined for " + type);
             }
 
             return ud.Name;
