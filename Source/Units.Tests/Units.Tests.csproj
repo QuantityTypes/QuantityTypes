@@ -69,6 +69,8 @@
     <Compile Include="Csv\CsvWriterTests.cs" />
     <Compile Include="Csv\CsvParserTests.cs" />
     <Compile Include="Csv\CsvTests.cs" />
+    <Compile Include="Quantities\TimeTests.cs" />
+    <Compile Include="Quantities\VelocityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
