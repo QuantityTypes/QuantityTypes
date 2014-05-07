@@ -91,6 +91,17 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the / operator for the product of <see cref="Acceleration" /> and <see cref="TimeSquared" />.
+        /// </summary>
+        /// <param name="x">The x.</param>
+        /// <param name="y">The y.</param>
+        /// <returns>The result of the operator.</returns>
+        public static Acceleration operator /(Length x, TimeSquared y)
+        {
+            return new Acceleration(x.Value / y.Value);
+        }
+
+        /// <summary>
         ///     Cubes this length.
         /// </summary>
         /// <returns> The volume. </returns>

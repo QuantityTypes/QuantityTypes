@@ -44,7 +44,7 @@ namespace Units
         {
             return new Density(m.Value / v.Value);
         }
-    
+
         /// <summary>
         ///     Implements the operator /.
         /// </summary>
@@ -76,6 +76,17 @@ namespace Units
         public static Force operator *(Mass m, Acceleration a)
         {
             return new Force(m.Value * a.Value);
+        }
+
+        /// <summary>
+        /// Implements the operator * for the product of <see cref="Mass" /> and <see cref="VelocitySquared" />.
+        /// </summary>
+        /// <param name="m">The mass.</param>
+        /// <param name="v2">The velocity squared.</param>
+        /// <returns>The energy.</returns>
+        public static Energy operator *(Mass m, VelocitySquared v2)
+        {
+            return new Energy(m.Value * v2.Value);
         }
     }
 }

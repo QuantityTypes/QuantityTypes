@@ -139,7 +139,7 @@ namespace Units
         }
 
         /// <summary>
-        /// Returns the square root of a specified quantity.
+        /// Returns the square root of a specified area.
         /// </summary>
         /// <param name="a">
         /// The area.
@@ -150,6 +150,34 @@ namespace Units
         public static Length Sqrt(Area a)
         {
             return Math.Sqrt(a.ConvertTo(Area.SquareMetre)) * Length.Metre;
+        }
+
+        /// <summary>
+        /// Returns the square root of a specified time squared.
+        /// </summary>
+        /// <param name="a">
+        /// The squared time.
+        /// </param>
+        /// <returns>
+        /// The positive square root of the time squared.
+        /// </returns>
+        public static Time Sqrt(TimeSquared a)
+        {
+            return Math.Sqrt(a.ConvertTo(TimeSquared.SecondSquared)) * Time.Second;
+        }
+
+        /// <summary>
+        /// Returns the square root of a specified time squared.
+        /// </summary>
+        /// <param name="a">
+        /// The squared velocity.
+        /// </param>
+        /// <returns>
+        /// The positive square root of the area.
+        /// </returns>
+        public static Velocity Sqrt(VelocitySquared a)
+        {
+            return Math.Sqrt(a.ConvertTo(VelocitySquared.MetreSquaredPerSecondSquared)) * Velocity.MetrePerSecond;
         }
 
         /// <summary>

@@ -29,6 +29,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Units
 {
+    using System;
+
     /// <summary>
     ///     Provides operators related to velocity.
     /// </summary>
@@ -65,6 +67,33 @@ namespace Units
         public static Length operator *(Velocity x, Time y)
         {
             return new Length(x.Value * y.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator ^.
+        /// </summary>
+        /// <param name="x"> The x. </param>
+        /// <param name="exp"> The exponent. </param>
+        /// <returns> The result of the operator. </returns>
+        public static VelocitySquared operator ^(Velocity x, int exp)
+        {
+            if (exp == 2)
+            {
+                return new VelocitySquared(x.Value * x.Value);
+            }
+
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Implements the operator * for the product of <see cref="Velocity" /> and <see cref="Velocity" />.
+        /// </summary>
+        /// <param name="x">The first velocity.</param>
+        /// <param name="y">The second velocity.</param>
+        /// <returns>The result of the operator.</returns>
+        public static VelocitySquared operator *(Velocity x, Velocity y)
+        {
+            return new VelocitySquared(x.Value * y.Value);
         }
     }
 }

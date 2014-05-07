@@ -235,3 +235,10 @@ TypographicLength,Metre,m,1.0
 TypographicLength,Inch,in,0.0254
 
 TypographicResolution,DotsPerInch,dpi,1/0.0245
+
+
+// TimeSquared - to allow "m/(s*s)""
+TimeSquared,SecondSquared,s^2,1
+
+// VelocitySquared - to allow "(m/s)^2"
+VelocitySquared,MetreSquaredPerSecondSquared,m^2/s^2,1
