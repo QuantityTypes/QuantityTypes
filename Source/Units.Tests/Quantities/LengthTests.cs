@@ -282,10 +282,20 @@ namespace Units.Tests
             Assert.AreEqual("100 m", l.ToString());
             Assert.AreEqual("100.00 m", l.ToString("0.00", CultureInfo.InvariantCulture));
             Assert.AreEqual("0100 m", l.ToString("0000", CultureInfo.InvariantCulture));
-            Assert.AreEqual("0.1 km", l.ToString("0.0 km", CultureInfo.InvariantCulture));
-            Assert.AreEqual("0.1 km", l.ToString("0.0km", CultureInfo.InvariantCulture));
-            Assert.AreEqual("100000 mm", l.ToString("0.# mm", CultureInfo.InvariantCulture));
-            Assert.AreEqual("100000 mm", l.ToString("0. mm", CultureInfo.InvariantCulture));
+            Assert.AreEqual("0.1 km", l.ToString("0.0 [km]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("0.1 km", l.ToString("0.0[km]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100000 mm", l.ToString("0.# [mm]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100000 mm", l.ToString("0. [mm]", CultureInfo.InvariantCulture));
+        }
+
+        [Test]
+        public void ToString_ExponentialValues()
+        {
+            var l = 1.234e-8 * Length.Metre;
+            Assert.AreEqual("1.234E-08 m", l.ToString("", CultureInfo.InvariantCulture), "E1");
+            Assert.AreEqual("0.0 m", l.ToString("0.0", CultureInfo.InvariantCulture), "0.0");
+            Assert.AreEqual("1.2E-8 m", l.ToString("0.0E-0", CultureInfo.InvariantCulture), "0.0E-0");
+            Assert.AreEqual("1.23e-8 m", l.ToString("0.00e-0", CultureInfo.InvariantCulture), "0.00e-0");
         }
 
         [Test]
@@ -295,6 +305,13 @@ namespace Units.Tests
             Assert.AreEqual("100", l.ToString("[]"));
             Assert.AreEqual("100.00", l.ToString("0.00 []", CultureInfo.InvariantCulture));
             Assert.AreEqual("100.00", l.ToString("0.00[]", CultureInfo.InvariantCulture));
+        }
+
+        [Test]
+        public void ToString_Unmatched_InvalidFormatString()
+        {
+            var l = 100 * Length.Metre;
+            Assert.Throws<FormatException>(() => l.ToString("[", CultureInfo.InvariantCulture));
         }
 
         [Test]
@@ -327,7 +344,7 @@ namespace Units.Tests
         {
             var l = 1000 * Length.Kilometre;
             Assert.AreEqual("1 000 000 m", l.ToString("# ### ###"));
-            Assert.AreEqual("1 000 km", l.ToString("# ### km"));
+            Assert.AreEqual("1 000 km", l.ToString("# ### [km]"));
             var l2 = 1 * Length.Metre;
             Assert.AreEqual("1 m", l2.ToString("# ### ###"));
         }
@@ -337,7 +354,7 @@ namespace Units.Tests
         public void ToString_InvalidFormatString()
         {
             var l = 100 * Length.Metre;
-            Console.WriteLine(l.ToString("0 Metre"));
+            Console.WriteLine(l.ToString("0 [Metre]"));
         }
 
         [Test]
