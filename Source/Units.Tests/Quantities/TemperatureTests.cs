@@ -55,10 +55,10 @@
             Assert.AreEqual("100", l.ToString("[]"));
             Assert.AreEqual("100.00 °C", l.ToString("0.00", CultureInfo.InvariantCulture));
             Assert.AreEqual("0100 °C", l.ToString("0000"));
-            Assert.AreEqual("100.0 C", l.ToString("0.0 C", CultureInfo.InvariantCulture));
-            Assert.AreEqual("100.0 C", l.ToString("0.0C", CultureInfo.InvariantCulture));
-            Assert.AreEqual("32 F", l0.ToString("0.# F"));
-            Assert.AreEqual("273 K", l0.ToString("0. K"));
+            Assert.AreEqual("100.0 C", l.ToString("0.0 [C]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100.0 C", l.ToString("0.0[C]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("32 F", l0.ToString("0.# [F]"));
+            Assert.AreEqual("273 K", l0.ToString("0. [K]"));
         }
 
         [Test]
@@ -66,7 +66,7 @@
         public void ToString_InvalidFormatString()
         {
             var l = 100 * Temperature.DegreeCelsius;
-            Console.WriteLine(l.ToString("0 m"));
+            Console.WriteLine(l.ToString("0 [m]"));
         }
     }
 }

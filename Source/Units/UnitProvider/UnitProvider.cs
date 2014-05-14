@@ -38,20 +38,6 @@ namespace Units
     public class UnitProvider : IUnitProvider
     {
         /// <summary>
-        /// The 'hide unit' format string marker.
-        /// </summary>
-        /// <remarks>
-        /// When a format string contains this marker at the end, the unit symbol will not be included in the formatted string.
-        /// </remarks>
-        private const string HideUnitMarker = "[]";
-
-        /// <summary>
-        ///   The format expression.
-        /// </summary>
-        private static readonly Regex FormatExpression = new Regex(
-            @"([0#\sDEFGNPRX]*\.?[0#\s]*)\s*([a-z\*\/%°]*)", RegexOptions.IgnoreCase);
-
-        /// <summary>
         /// The string representing NaN.
         /// </summary>
         private static readonly string NotANumberString = double.NaN.ToString();
@@ -141,24 +127,30 @@ namespace Units
                 return NotANumberString;
             }
 
-            bool hideUnitSymbol = format != null && format.EndsWith(HideUnitMarker);
-            if (hideUnitSymbol)
-            {
-                format = format.Remove(format.Length - HideUnitMarker.Length);
-            }
-
-            T q;
             var unit = default(string);
             if (!string.IsNullOrEmpty(format))
             {
-                var m = FormatExpression.Match(format);
-                if (m.Success)
+                var unitStart = format.IndexOf('[');
+                if (unitStart >= 0)
                 {
-                    format = m.Groups[1].Value.Trim();
-                    unit = m.Groups[2].Value;
+                    var unitEnd = format.IndexOf(']', unitStart + 1);
+                    if (unitEnd < 0)
+                    {
+                        throw new FormatException("Unmatched [ in format string.");
+                    }
+
+                    unit = format.Substring(unitStart + 1, unitEnd - unitStart - 1);
+                    format = format.Remove(unitStart, unitEnd - unitStart + 1).Trim();
                 }
             }
+            
+            // unit=null: convert to display unit, show display unit
+            // unit=empty: convert to display unit, but do not show
+            // otherwise: convert to specified unit, show specified unit
+            var showUnit = unit != string.Empty;
 
+            // find the conversion unit
+            T q;
             if (!string.IsNullOrEmpty(unit))
             {
                 q = this.GetUnit<T>(unit);
@@ -174,7 +166,7 @@ namespace Units
             // Convert the value to a string
             string s = quantity.ConvertTo(q).ToString(format, provider ?? this);
 
-            if (hideUnitSymbol)
+            if (!showUnit)
             {
                 // Return the value only
                 return s;
@@ -191,7 +183,7 @@ namespace Units
                 separator = string.Empty;
             }
 
-            return string.Format("{0}{1}{2}", s, separator, unit).Trim();
+            return string.Concat(s, separator, unit).Trim();
         }
 
         /// <summary>
@@ -391,7 +383,7 @@ namespace Units
         /// <param name="quantity">The quantity.</param>
         /// <returns><c>true</c> if the parsing was successful, <c>false</c> otherwise</returns>
         public bool TryParse(Type unitType, string input, IFormatProvider provider, out IQuantity quantity)
-        {            
+        {
             unitType = Nullable.GetUnderlyingType(unitType) ?? unitType;
 
             if (string.IsNullOrEmpty(input))

@@ -45,8 +45,8 @@ namespace Units.Tests
         [Test]
         public void ToString_Percent()
         {
-            Assert.AreEqual("100.0 %", Fraction.Frac.ToString("0.0 %", CultureInfo.InvariantCulture));
-            Assert.AreEqual("100 %", Fraction.Frac.ToString("%"));
+            Assert.AreEqual("100.0 %", Fraction.Frac.ToString("0.0 [%]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("100 %", Fraction.Frac.ToString("[%]"));
         }
 
         [Test]
