@@ -427,6 +427,34 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the unary plus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static LuminousIntensity operator +(LuminousIntensity x)
+        {
+            return new LuminousIntensity(x.value);
+        }
+
+        /// <summary>
+        /// Implements the unary minus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static LuminousIntensity operator -(LuminousIntensity x)
+        {
+            return new LuminousIntensity(-x.value);
+        }
+
+        /// <summary>
         /// Compares this instance to the specified <see cref="LuminousIntensity"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">

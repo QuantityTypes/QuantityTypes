@@ -427,6 +427,34 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the unary plus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static SecondMomentOfArea operator +(SecondMomentOfArea x)
+        {
+            return new SecondMomentOfArea(x.value);
+        }
+
+        /// <summary>
+        /// Implements the unary minus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static SecondMomentOfArea operator -(SecondMomentOfArea x)
+        {
+            return new SecondMomentOfArea(-x.value);
+        }
+
+        /// <summary>
         /// Compares this instance to the specified <see cref="SecondMomentOfArea"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">

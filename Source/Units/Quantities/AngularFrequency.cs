@@ -427,6 +427,34 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the unary plus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static AngularFrequency operator +(AngularFrequency x)
+        {
+            return new AngularFrequency(x.value);
+        }
+
+        /// <summary>
+        /// Implements the unary minus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static AngularFrequency operator -(AngularFrequency x)
+        {
+            return new AngularFrequency(-x.value);
+        }
+
+        /// <summary>
         /// Compares this instance to the specified <see cref="AngularFrequency"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
