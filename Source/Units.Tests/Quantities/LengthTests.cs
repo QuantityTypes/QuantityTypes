@@ -292,7 +292,7 @@ namespace Units.Tests
         public void ToString_ExponentialValues()
         {
             var l = 1.234e-8 * Length.Metre;
-            Assert.AreEqual("1.234E-08 m", l.ToString("", CultureInfo.InvariantCulture), "E1");
+            Assert.AreEqual("1.234E-08 m", l.ToString(string.Empty, CultureInfo.InvariantCulture), "E1");
             Assert.AreEqual("0.0 m", l.ToString("0.0", CultureInfo.InvariantCulture), "0.0");
             Assert.AreEqual("1.2E-8 m", l.ToString("0.0E-0", CultureInfo.InvariantCulture), "0.0E-0");
             Assert.AreEqual("1.23e-8 m", l.ToString("0.00e-0", CultureInfo.InvariantCulture), "0.00e-0");
@@ -311,6 +311,7 @@ namespace Units.Tests
         public void ToString_Unmatched_InvalidFormatString()
         {
             var l = 100 * Length.Metre;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Assert.Throws<FormatException>(() => l.ToString("[", CultureInfo.InvariantCulture));
         }
 
@@ -326,8 +327,7 @@ namespace Units.Tests
         [Test]
         public void ToString_CustomCulture()
         {
-            var value = "10.000.000.000,0 m";
-            Assert.AreEqual(value, (1e10 * Length.Metre).ToString("N", this.customCulture));
+            Assert.AreEqual("10.000.000.000,0 m", (1e10 * Length.Metre).ToString("N", this.customCulture));
         }
 
         [Test]
@@ -424,6 +424,13 @@ namespace Units.Tests
 
             var distance = (speed * reactionTime) + (speed * (speed / (2.0 * deceleration)));
             Assert.AreEqual(92, distance.Value, 1);
+        }
+
+        [Test]
+        public void PowerOperator()
+        {
+            Assert.AreEqual(Area.SquareMetre, Length.Metre ^ 2);
+            Assert.AreEqual(2 * Area.SquareMetre, 2 * (Area)(Length.Metre ^ 2));
         }
 
         public class Test
