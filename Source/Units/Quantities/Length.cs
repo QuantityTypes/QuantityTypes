@@ -595,6 +595,34 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the unary plus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static Length operator +(Length x)
+        {
+            return new Length(x.value);
+        }
+
+        /// <summary>
+        /// Implements the unary minus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static Length operator -(Length x)
+        {
+            return new Length(-x.value);
+        }
+
+        /// <summary>
         /// Compares this instance to the specified <see cref="Length"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">

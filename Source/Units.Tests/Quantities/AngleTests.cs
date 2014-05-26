@@ -38,6 +38,26 @@ namespace Units.Tests
     public class AngleTests
     {
         [Test]
+        public void UnaryPlusOperator()
+        {
+            Assert.AreEqual(90 * Angle.Degree, +(90 * Angle.Degree));
+        }
+
+        [Test]
+        public void UnaryMinusOperator()
+        {
+            Assert.AreEqual(-90 * Angle.Degree, -(90 * Angle.Degree));
+        }
+
+        [Test]
+        public void AdditionAssignmentOperator()
+        {
+            var a = 0 * Angle.Degree;
+            a += 90 * Angle.Degree;
+            Assert.AreEqual(90 * Angle.Degree, a);
+        }
+
+        [Test]
         public void ToString_CheckSpaces()
         {
             var a = 90 * Angle.Degree;

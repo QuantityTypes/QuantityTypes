@@ -427,6 +427,34 @@ namespace Units
         }
 
         /// <summary>
+        /// Implements the unary plus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static SolidAngle operator +(SolidAngle x)
+        {
+            return new SolidAngle(x.value);
+        }
+
+        /// <summary>
+        /// Implements the unary minus operator.
+        /// </summary>
+        /// <param name="x">
+        /// The x. 
+        /// </param>
+        /// <returns>
+        /// The result of the operator. 
+        /// </returns>
+        public static SolidAngle operator -(SolidAngle x)
+        {
+            return new SolidAngle(-x.value);
+        }
+
+        /// <summary>
         /// Compares this instance to the specified <see cref="SolidAngle"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
