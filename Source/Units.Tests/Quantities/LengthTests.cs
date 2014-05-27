@@ -433,6 +433,23 @@ namespace Units.Tests
             Assert.AreEqual(2 * Area.SquareMetre, 2 * (Area)(Length.Metre ^ 2));
         }
 
+        [Test]
+        public void TypographicLengthToLengthImplicitConversion()
+        {
+            Length length = 10 * TypographicLength.Centimetre;
+            Assert.AreEqual(10 * Length.Centimetre, length);
+            Assert.AreNotEqual(10 * Length.Centimetre, 10 * TypographicLength.Centimetre);
+        }
+
+        [Test]
+        public void LengthToTypographicLengthImplicitConversion()
+        {
+            TypographicLength length = 10 * Length.Centimetre;
+            Assert.AreEqual(10 * TypographicLength.Centimetre, length);
+            Assert.AreNotEqual(10 * Length.Centimetre, 10 * TypographicLength.Centimetre);
+        }
+
+
         public class Test
         {
             public Length Distance { get; set; }
