@@ -102,6 +102,26 @@ namespace Units
         }
 
         /// <summary>
+        /// Performs an implicit conversion from <see cref="TypographicLength"/> to <see cref="Length"/>.
+        /// </summary>
+        /// <param name="x">The quantity to convert.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator Length(TypographicLength x)
+        {
+            return x.ConvertTo(TypographicLength.Centimetre) * Centimetre;
+        }
+
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="Length"/> to <see cref="TypographicLength"/>.
+        /// </summary>
+        /// <param name="x">The quantity to convert.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator TypographicLength(Length x)
+        {
+            return x.ConvertTo(Centimetre) * TypographicLength.Centimetre;
+        }
+
+        /// <summary>
         ///     Cubes this length.
         /// </summary>
         /// <returns> The volume. </returns>
