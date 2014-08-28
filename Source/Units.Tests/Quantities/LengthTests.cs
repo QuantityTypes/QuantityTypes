@@ -431,6 +431,26 @@ namespace Units.Tests
         {
             Assert.AreEqual(Area.SquareMetre, Length.Metre ^ 2);
             Assert.AreEqual(2 * Area.SquareMetre, 2 * (Area)(Length.Metre ^ 2));
+            Assert.AreEqual(8 * Volume.CubicMetre, (Volume)((2 * Length.Metre) ^ 3));
+            Assert.Throws<NotSupportedException>(() => { var x = Length.Metre ^ 4; });
+        }
+
+        [Test]
+        public void MultiplicationOperator()
+        {
+            Assert.AreEqual(Volume.CubicMetre, Length.Metre * Area.SquareMetre);
+        }
+
+        [Test]
+        public void Cubed()
+        {
+            Assert.AreEqual(8 * Volume.CubicMetre, (2 * Length.Metre).Cubed());
+        }
+
+        [Test]
+        public void Squared()
+        {
+            Assert.AreEqual(4 * Area.SquareMetre, (2 * Length.Metre).Squared());
         }
 
         [Test]
