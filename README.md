@@ -19,7 +19,7 @@ the question of why computers cannot help more when working with physical quanti
 - Unit conversion
 - Extendable (create more quantity types, add units)
 - Configurable (set default units for parsing and formatting)
-- [NuGet package](https://www.nuget.org/packages/Units)
+- [NuGet package](https://www.nuget.org/packages/QuantityTypes)
 
 ### Examples
 ``` csharp
