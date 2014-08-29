@@ -1,5 +1,3 @@
-Strongly typed physical quantities.
-
 [![Build status](https://ci.appveyor.com/api/projects/status/0l0beneke0syjt47)](https://ci.appveyor.com/project/objorke/quantitytypes)
 
 ```
