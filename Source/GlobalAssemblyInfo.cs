@@ -1,15 +1,15 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Units for .NET">
-//     Copyright © Units for .NET. All rights reserved.
+// <copyright file="AssemblyInfo.cs" company="QuantityTypes">
+//     Copyright © QuantityTypes. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 using System.Reflection;
 
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Units for .NET")]
+[assembly: AssemblyCompany("QuantityTypes")]
 
-[assembly: AssemblyCopyright("Copyright © Units for .NET 2012-2014")]
+[assembly: AssemblyCopyright("Copyright © QuantityTypes 2012-2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

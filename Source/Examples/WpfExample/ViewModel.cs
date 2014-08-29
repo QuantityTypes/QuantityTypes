@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ViewModel.cs" company="Units.NET">
+// <copyright file="ViewModel.cs" company="QuantityTypes">
 //   Copyright (c) 2012 Oystein Bjorke
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -8,7 +8,7 @@ namespace WpfExample
 {
     using System.ComponentModel;
 
-    using Units;
+    using QuantityTypes;
 
     /// <summary>
     /// Represents the main window's view model.

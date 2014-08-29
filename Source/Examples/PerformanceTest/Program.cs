@@ -9,8 +9,8 @@ namespace PerformanceTest
     using System.IO;
     using System.Runtime.InteropServices;
 
-    using Units;
-    using Units.Dynamic;
+    using QuantityTypes;
+    using QuantityTypes.Dynamic;
 
     class Program
     {
@@ -23,8 +23,8 @@ namespace PerformanceTest
 
             var results = new Dictionary<string, IList<long>>();
             results.Add("double", TestDouble(N).ToList());
-            results.Add("Units.NET", TestUnits(N).ToList());
-            results.Add("Units.NET (dynamic)", TestUnitsDynamic(N).ToList());
+            results.Add("QuantityTypes", TestQuantityTypes(N).ToList());
+            results.Add("QuantityTypes (dynamic)", TestQuantityTypesDynamic(N).ToList());
             results.Add("TypedUnits", TestTypedUnits(N).ToList());
 
             var tests = new[]
@@ -112,9 +112,9 @@ namespace PerformanceTest
             return new Timer(message);
         }
 
-        static IEnumerable<long> TestUnits(int N)
+        static IEnumerable<long> TestQuantityTypes(int N)
         {
-            Console.WriteLine("=== Units .NET ===");
+            Console.WriteLine("=== QuantityTypes ===");
 
             var length = Marshal.SizeOf(typeof(Length));
             Console.WriteLine("Length = {0} bytes", length);
@@ -235,9 +235,9 @@ namespace PerformanceTest
             Console.WriteLine();
         }
 
-        static IEnumerable<long> TestUnitsDynamic(int N)
+        static IEnumerable<long> TestQuantityTypesDynamic(int N)
         {
-            Console.WriteLine("=== Units .NET (dynamic) ===");
+            Console.WriteLine("=== QuantityTypes (dynamic) ===");
 
             var length = Marshal.SizeOf(typeof(DynamicQuantity));
             Console.WriteLine("Length = {0} bytes", length);
