@@ -23,14 +23,14 @@ the question of why computers cannot help more when working with physical quanti
 
 ### Examples
 ``` csharp
-Length s = 100 - Length.Metre;
-Time t = 9.58 - Time.Second;
+Length s = 100 * Length.Metre;
+Time t = 9.58 * Time.Second;
 Velocity v = s / t;
 Console.WriteLine(v); 
 Console.WriteLine(v.ToString("0.00 km/h")); 
 Mass m = Mass.Parse("92 kg");
 double massInPounds = m.ConvertTo(Mass.Pound);
-Temperature temp = 100 - Temperature.Celsius;
+Temperature temp = 100 * Temperature.Celsius;
 double tempInFahrenheit = temp.ConvertTo(Temperature.Fahrenheit);
 ```
 
