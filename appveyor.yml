@@ -1,0 +1,29 @@
+version: 1.0.{build}
+
+environment:
+  nuget_api_key:
+    secure: kM3Kse+ivuuE5RVoe6dPdw+aguWx56K2YeXujGa9tMPQTms3lv7QxNpTLFMALYNa
+      
+install:
+  - cinst stylecop
+
+platform: Any CPU
+
+configuration: Release
+
+build:
+  project: Source/QuantityTypes.sln
+  verbosity: normal
+
+before_build:
+  - cmd: Tools\Lynx\UpdateVersionNumbers.exe /Version=%APPVEYOR_BUILD_VERSION% /Dependency=HelixToolkit /ReleaseNotesFile=release-notes.txt /Directory=Source
+  
+deploy_script:
+  - cmd: mkdir Packages
+  - cmd: NuGet.exe pack Source\QuantityTypes\QuantityTypes.nuspec -OutputDirectory Packages
+  - cmd: for %%G in (Packages\*.nupkg) do NuGet.exe push %%G %nuget_api_key%
+artifacts:
+  - path: Output
+    name: 'QuantityTypes'
+    type: zip
+  - path: Packages\*.nupkg
