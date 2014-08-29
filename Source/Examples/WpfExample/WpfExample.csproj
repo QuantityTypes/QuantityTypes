@@ -107,7 +107,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.csproj">
       <Project>{e0557c29-6cdc-4060-bb1a-461ed5c1ef19}</Project>
-      <Name>Units</Name>
+      <Name>QuantityTypes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
