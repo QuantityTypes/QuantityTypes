@@ -7,9 +7,9 @@
     <authors>objo</authors>
     <description>Strongly typed physical quantities.</description>
     <releaseNotes></releaseNotes>
-    <licenseUrl>https://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</licenseUrl>
+    <licenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</licenseUrl>
     <projectUrl>http://github.com/objorke/QuantityTypes</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/icon.png</iconUrl>
+    <iconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>physical quantities unit conversion units of measurement</tags>
   </metadata>
