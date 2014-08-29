@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>QuantityTypes</id>
+    <version>1.0</version>
+    <title>QuantityTypes</title>
+    <authors>objo</authors>
+    <licenseUrl>https://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/objorke/QuantityTypes</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Strongly typed physical quantities.</description>
+    <tags>physical quantities unit conversion units of measurement</tags>
+  </metadata>
+  <files>
+    <file src="..\..\Output\QuantityTypes.???" target="lib\portable-net4+sl4+wp71+win8" />
+    <file src="..\..\LICENSE" />
+    <file src="..\..\README.md" />
+  </files>
+</package>

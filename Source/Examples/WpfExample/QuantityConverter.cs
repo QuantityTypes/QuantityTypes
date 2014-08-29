@@ -4,7 +4,7 @@
     using System.Globalization;
     using System.Windows.Data;
 
-    using Units;
+    using QuantityTypes;
 
     /// <summary>
     /// Converts <see cref="IQuantity"/> instances to <see cref="String"/> instances.
