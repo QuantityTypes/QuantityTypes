@@ -1,8 +1,5 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/0l0beneke0syjt47)](https://ci.appveyor.com/project/objorke/quantitytypes)
-
 ```
 License:       The MIT License (MIT)
-Copyright:     Copyright (c) 2012 Oystein Bjorke
 Project page:  https://github.com/objorke/QuantityTypes
 ```
 
@@ -11,7 +8,10 @@ will be best remembered for the simple error that started everything: the value 
 in imperial, rather than SI units. That such a trivial mistake could ultimately bring about a mission failure is astonishing. It begs 
 the question of why computers cannot help more when working with physical quantities?_ [Ref. 1]
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0l0beneke0syjt47)](https://ci.appveyor.com/project/objorke/quantitytypes)
+
 ### Features
+
 - [Strongly typed](http://en.wikipedia.org/wiki/Strong_typing) arithmetics of [physical quantities](http://en.wikipedia.org/wiki/Physical_quantity)
 - Implemented as [value types](http://msdn.microsoft.com/en-us/library/s1ax56ch.aspx)
 - Parsing from strings
@@ -22,6 +22,7 @@ the question of why computers cannot help more when working with physical quanti
 - [NuGet package](https://www.nuget.org/packages/QuantityTypes)
 
 ### Examples
+
 ``` csharp
 Length s = 100 * Length.Metre;
 Time t = 9.58 * Time.Second;
@@ -42,6 +43,7 @@ double tempInFahrenheit = temp.ConvertTo(Temperature.Fahrenheit);
 4. Brown. [Applied Template Metaprogramming in SIUNITS](http://www.oonumerics.org/tmpw01/brown.pdf)
 
 ### Links
+
 - [Physical quantity](http://en.wikipedia.org/wiki/Physical_quantities)
 - [Unit of measurement](http://en.wikipedia.org/wiki/Unit_of_measurement)
 - [Conversion of units](http://en.wikipedia.org/wiki/Conversion_of_units)
@@ -51,7 +53,10 @@ double tempInFahrenheit = temp.ConvertTo(Temperature.Fahrenheit);
 - [Package siunitx: A comprehensive (SI) units package.](http://ctan.org/pkg/siunitx)
 - [Writing SI units and symbols](http://www.poynton.com/PDFs/Writing_SI_units_(USL).pdf)
 
-### .NET libraries
+### Other similar libraries
+
+#### .NET
+
 - [NGenericDimensions™](https://ngenericdimensions.codeplex.com/)
 - [quantities.net](http://sourceforge.net/projects/quantitiesnet/)
 - [unitcon](http://sourceforge.net/projects/unitcon/)
@@ -62,13 +67,15 @@ double tempInFahrenheit = temp.ConvertTo(Temperature.Fahrenheit);
 - [Working with Units and Amounts](http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts)
 - [Units.NET](https://github.com/InitialForce/UnitsNet)
 
-### Java libraries
+#### Java
+
 - [JScience](http://jscience.org/)
 - [JConvert](http://sourceforge.net/projects/jconvert/)
 - [JSR-108](http://jsr-108.sourceforge.net) 
 - [jcp](http://www.jcp.org/en/jsr/detail?id=108)
 
-### Python libraries
+#### Python
+
 - [sympy](http://sympy.org/en/index.html)
 - [unum](http://home.scarlet.be/be052320/Unum.html)
 - [quantities](http://packages.python.org/quantities/)
