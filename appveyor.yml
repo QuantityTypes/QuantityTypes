@@ -12,13 +12,13 @@ platform: Any CPU
 
 configuration: Release
 
-build:
-  project: Source/QuantityTypes.sln
-  verbosity: normal
-
 before_build:
   - cmd: UpdateVersionNumbers /Version=%APPVEYOR_BUILD_VERSION% /Dependency=QuantityTypes /ReleaseNotesFile=release-notes.txt /Directory=Source
   
+build:
+  project: Source/QuantityTypes.sln
+  verbosity: minimal
+
 deploy_script:
   - cmd: mkdir Packages
   - cmd: NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -OutputDirectory Packages
