@@ -1,4 +1,10 @@
-﻿namespace QuantityTypes.Tests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TemperatureTests.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace QuantityTypes.Tests
 {
     using System;
     using System.Diagnostics.CodeAnalysis;

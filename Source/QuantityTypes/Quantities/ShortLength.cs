@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ShortLength.cs" company="Forte">
-//   http://forte.codeplex.com, license: Ms-PL
+// <copyright file="ShortLength.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
 //   Represents a ShortLength.

@@ -1,4 +1,13 @@
-﻿namespace QuantityTypes
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TypographicLength.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// <summary>
+//   Implements the operator /.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace QuantityTypes
 {
     public partial struct TypographicLength
     {

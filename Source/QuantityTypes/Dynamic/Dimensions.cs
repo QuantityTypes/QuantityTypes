@@ -1,4 +1,13 @@
-﻿namespace QuantityTypes.Dynamic
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Dimensions.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// <summary>
+//   Represents the dimensions of a quantity.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace QuantityTypes.Dynamic
 {
     using System;
     using System.Text;

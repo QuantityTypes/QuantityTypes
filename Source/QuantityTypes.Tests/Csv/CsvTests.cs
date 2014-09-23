@@ -1,4 +1,10 @@
-﻿namespace QuantityTypes.Tests
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CsvTests.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace QuantityTypes.Tests
 {
     using System.Collections.Generic;
     using System.Globalization;

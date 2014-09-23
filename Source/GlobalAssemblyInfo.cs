@@ -1,15 +1,15 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="QuantityTypes">
-//     Copyright © QuantityTypes. All rights reserved.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GlobalAssemblyInfo.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
-//-----------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 
 using System.Reflection;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("QuantityTypes")]
 
-[assembly: AssemblyCopyright("Copyright © QuantityTypes 2012-2014")]
+[assembly: AssemblyCopyright("Copyright (c) 2014 QuantityTypes contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

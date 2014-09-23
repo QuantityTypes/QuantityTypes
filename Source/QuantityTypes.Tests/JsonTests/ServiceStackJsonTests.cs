@@ -1,3 +1,9 @@
+ï»¿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ServiceStackJsonTests.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace QuantityTypes.Tests
 {
     using NUnit.Framework;
@@ -17,7 +23,7 @@ namespace QuantityTypes.Tests
             JsConfig.IncludeNullValues = true;
             // JsConfig<IQuantity>.SerializeFn = q => q.ToString(null, CultureInfo.InvariantCulture);
             var json = JsonSerializer.SerializeToString(obj);
-            Assert.AreEqual("{\"Distance\":\"1.23 m\",\"Time\":null,\"Quantities\":[\"10 °C\",\"25 kg\"]}", json);
+            Assert.AreEqual("{\"Distance\":\"1.23 m\",\"Time\":null,\"Quantities\":[\"10 ï¿½C\",\"25 kg\"]}", json);
         }
 
         [Test]

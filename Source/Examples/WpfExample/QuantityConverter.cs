@@ -1,4 +1,13 @@
-﻿namespace WpfExample
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="QuantityConverter.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// <summary>
+//   Converts IQuantity instances to String instances.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace WpfExample
 {
     using System;
     using System.Globalization;

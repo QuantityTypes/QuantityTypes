@@ -1,7 +1,10 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ViewModel.cs" company="QuantityTypes">
-//   Copyright (c) 2012 Oystein Bjorke
+//   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
+// <summary>
+//   Represents the main window's view model.
+// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WpfExample

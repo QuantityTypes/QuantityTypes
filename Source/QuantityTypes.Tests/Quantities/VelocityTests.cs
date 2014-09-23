@@ -1,3 +1,12 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VelocityTests.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// <summary>
+//   Provides unit test for the Velocity class.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace QuantityTypes.Tests
 {
     using NUnit.Framework;

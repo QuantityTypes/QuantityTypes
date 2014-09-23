@@ -1,3 +1,9 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TestObject.cs" company="QuantityTypes">
+//   Copyright (c) 2014 QuantityTypes contributors
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace QuantityTypes.Tests
 {
     using System.Runtime.Serialization;
