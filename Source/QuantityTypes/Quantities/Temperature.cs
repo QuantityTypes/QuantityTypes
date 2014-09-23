@@ -50,7 +50,7 @@ namespace QuantityTypes
         /// <summary>
         ///   Gets the DegreeCelsius unit.
         /// </summary>
-        [Unit("�C", true)]
+        [Unit("°C", true)]
         [Unit("C")]
         [Unit("degC")]
         public static Temperature DegreeCelsius
@@ -64,7 +64,7 @@ namespace QuantityTypes
         /// <summary>
         ///   Gets the DegreeFahrenheit unit.
         /// </summary>
-        [Unit("�F")]
+        [Unit("°F")]
         [Unit("F")]
         [Unit("degF")]
         public static Temperature DegreeFahrenheit
