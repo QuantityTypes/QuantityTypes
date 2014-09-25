@@ -4,7 +4,7 @@
 //
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
-// </auto-generated> 
+// </auto-generated>
 // <copyright file="Radiation.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
