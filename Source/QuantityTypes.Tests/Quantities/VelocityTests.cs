@@ -9,6 +9,8 @@
 
 namespace QuantityTypes.Tests
 {
+    using System.Globalization;
+
     using NUnit.Framework;
 
     /// <summary>
@@ -57,9 +59,11 @@ namespace QuantityTypes.Tests
         public void VelocityMultipliedByVelocity()
         {
             var mySpeed = 100 * Velocity.KilometrePerHour;
-            Assert.That(mySpeed * Velocity.KilometrePerHour, Is.EqualTo(100 / 3.6 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
+            Assert.That((mySpeed * Velocity.KilometrePerHour).ToString("0.00", CultureInfo.InvariantCulture), Is.EqualTo("7.72 m^2/s^2"));
+            Assert.That(mySpeed * Velocity.KilometrePerHour, QuantityIs.EqualTo(100 / 3.6 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
             mySpeed = 100 * Velocity.MetrePerSecond;
-            Assert.That(mySpeed * Velocity.KilometrePerHour, Is.EqualTo(100 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
+            Assert.That(mySpeed * Velocity.KilometrePerHour, QuantityIs.EqualTo(100 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
+            Assert.That((mySpeed * Velocity.KilometrePerHour).ToString("0.00", CultureInfo.InvariantCulture), Is.EqualTo("27.78 m^2/s^2"));
         }
     }
 }
