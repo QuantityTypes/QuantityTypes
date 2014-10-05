@@ -63,6 +63,8 @@
     <Compile Include="Core\UnitProviderTests.cs" />
     <Compile Include="Quantities\DensityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Constraints\Is.cs" />
+    <Compile Include="Constraints\EqualConstraint.cs" />
     <Compile Include="Quantities\TemperatureTests.cs" />
     <Compile Include="Quantities\LengthTests.cs" />
     <Compile Include="Example.cs" />
