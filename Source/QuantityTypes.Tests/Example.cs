@@ -6,12 +6,15 @@
 
 namespace QuantityTypes.Tests
 {
+    using System;
+
     using NUnit.Framework;
 
     using QuantityTypes;
 
     public class Example
     {
+        [Test, Ignore]
         public void Example1()
         {
             var v = 100 * Length.Metre / (9 * Time.Second);
@@ -48,6 +51,21 @@ namespace QuantityTypes.Tests
 
             var ul = UnitProvider.Default.GetUnits(typeof(Length));
             var ux = UnitProvider.Default.GetUnit("m");
+        }
+
+        [Test, Ignore]
+        public void ReadMeExample()
+        {
+            Length s = 100 * Length.Metre;
+            Time t = 9.58 * Time.Second;
+            Velocity v = s / t;
+            Console.WriteLine(v);
+            Console.WriteLine(v.ToString("0.00 [km/h]"));
+            Console.WriteLine("Speed: {0:0.00 [km/h]}", v);
+            Mass m = Mass.Parse("92 kg");
+            double massInPounds = m.ConvertTo(Mass.Pound);
+            Temperature temp = 100 * Temperature.DegreeCelsius;
+            double tempInFahrenheit = temp.ConvertTo(Temperature.DegreeFahrenheit);
         }
     }
 }

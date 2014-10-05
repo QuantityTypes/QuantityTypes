@@ -265,6 +265,15 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void StringFormat()
+        {
+            var l = 100 * Length.Metre;
+            Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0}", l), Is.EqualTo("100 m"));
+            Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.00 [km]}", l), Is.EqualTo("0.10 km"));
+            Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.00 []}", l), Is.EqualTo("100.00"));
+        }
+
+        [Test]
         public void ToString_ExponentialValues()
         {
             var l = 1.234e-8 * Length.Metre;
