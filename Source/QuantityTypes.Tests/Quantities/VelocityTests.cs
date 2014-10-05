@@ -49,5 +49,17 @@ namespace QuantityTypes.Tests
             var v2 = Mathematics.Sqrt(vf2);
             Assert.AreEqual(10 * Velocity.MetrePerSecond, v2);
         }
+
+        /// <summary>
+        /// Tests multiplying velocity by velocity.
+        /// </summary>
+        [Test]
+        public void VelocityMultipliedByVelocity()
+        {
+            var mySpeed = 100 * Velocity.KilometrePerHour;
+            Assert.That(mySpeed * Velocity.KilometrePerHour, Is.EqualTo(100 / 3.6 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
+            mySpeed = 100 * Velocity.MetrePerSecond;
+            Assert.That(mySpeed * Velocity.KilometrePerHour, Is.EqualTo(100 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
+        }
     }
 }
