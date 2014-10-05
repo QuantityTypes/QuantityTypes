@@ -241,6 +241,22 @@ namespace QuantityTypes
             return x * this;
         }
 
+
+        /// <summary>
+        /// Adds the specified quantity.
+        /// </summary>
+        /// <param name="x">The quantity to add.</param>
+        /// <returns>The sum.</returns>
+        public IQuantity Add(IQuantity x)
+        {
+            if (!(x is Temperature))
+            {
+                throw new InvalidOperationException("Can only add quantities of the same types.");
+            }
+
+            return new Temperature(this.value + x.Value);
+        }
+
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>

@@ -596,6 +596,21 @@ namespace QuantityTypes
         }
 
         /// <summary>
+        /// Adds the specified quantity.
+        /// </summary>
+        /// <param name="x">The quantity to add.</param>
+        /// <returns>The sum.</returns>
+        public IQuantity Add(IQuantity x)
+        {
+            if (!(x is TypographicLength))
+            {
+                throw new InvalidOperationException("Can only add quantities of the same types.");
+            }
+
+            return new TypographicLength(this.value + x.Value);
+        }
+
+        /// <summary>
         /// Sets the value from the specified string.
         /// </summary>
         /// <param name="s">

@@ -35,5 +35,12 @@ namespace QuantityTypes
         /// <param name="x">The number.</param>
         /// <returns>The new quantity.</returns>
         IQuantity MultiplyBy(double x);
+
+        /// <summary>
+        /// Adds the specified quantity.
+        /// </summary>
+        /// <param name="x">The quantity to add.</param>
+        /// <returns>The sum.</returns>
+        IQuantity Add(IQuantity x);
     }
 }
