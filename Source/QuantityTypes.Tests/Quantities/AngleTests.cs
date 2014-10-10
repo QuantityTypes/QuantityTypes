@@ -4,6 +4,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Globalization;
+
 namespace QuantityTypes.Tests
 {
     using System.Diagnostics.CodeAnalysis;
@@ -49,7 +52,7 @@ namespace QuantityTypes.Tests
         public void ToString_NorwegianCulture_CheckSpaces()
         {
             var a = 90 * Angle.Degree;
-            Assert.AreEqual("90,0°", a.ToString("0.0 [°]", new CultureInfo("nb-NO")));
+            Assert.AreEqual("90,0°", a.ToString("0.0 [°]", CultureInfos.Norwegian));
         }
     }
 }

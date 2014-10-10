@@ -186,11 +186,10 @@ namespace QuantityTypes.Tests
         [Test]
         public void TryParse_DifferentProviders_ReturnsCorrectValue()
         {
-            var c = new CultureInfo("nb-NO");
             var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
 
             Length q;
-            var result = Length.TryParse("100,2 m", c, up, out q);
+            var result = Length.TryParse("100,2 m", CultureInfos.Norwegian, up, out q);
             Assert.IsTrue(result);
             Assert.AreEqual(100.2 * Length.Metre, q);
         }
@@ -303,10 +302,9 @@ namespace QuantityTypes.Tests
         [Test]
         public void ToString_DifferentProviders()
         {
-            var c = new CultureInfo("nb-NO");
             var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
             var l = 100.1 * Length.Metre;
-            Assert.AreEqual("100,1 m", l.ToString(null, c, up));
+            Assert.AreEqual("100,1 m", l.ToString(null, CultureInfos.Norwegian, up));
         }
 
         [Test]

@@ -20,7 +20,7 @@ namespace QuantityTypes.Tests
         {
             using (var w = new MemoryStreamWriter())
             {
-                var culture = new CultureInfo("nb-NO");
+                var culture = CultureInfos.Norwegian;
                 w.WriteCsvLine(culture, "a b c", 3.14);
                 w.WriteCsvLine(culture, "def\r\nghi", "3,14\r\n2.5");
                 w.WriteCsvLine(culture, "a \"b\" c", "a ;b c");
