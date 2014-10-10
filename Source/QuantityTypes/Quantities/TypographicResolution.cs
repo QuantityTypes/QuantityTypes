@@ -36,7 +36,7 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="DotsPerInch" /> property.
         /// </summary>
-        private static readonly TypographicResolution DotsPerInchField = new TypographicResolution(1/0.0245);
+        private static readonly TypographicResolution DotsPerInchField = new TypographicResolution(1 / 0.0254);
 
         /// <summary>
         /// The value.

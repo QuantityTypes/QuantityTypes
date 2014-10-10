@@ -41,7 +41,7 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="Point" /> property.
         /// </summary>
-        private static readonly TypographicLength PointField = new TypographicLength(0.0254/72);
+        private static readonly TypographicLength PointField = new TypographicLength(0.0254 / 72);
 
         /// <summary>
         /// The backing field for the <see cref="Millimetre" /> property.

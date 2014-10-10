@@ -229,12 +229,12 @@ FuelEconomy,KilometrePerLitre,km/l,1e6
 FuelEconomy,MilesPerGallon,mpg,425143.7074
 
 TypographicLength,Centimetre,cm,0.01
-TypographicLength,Point,pt,0.0254/72
+TypographicLength,Point,pt,0.0254 / 72
 TypographicLength,Millimetre,mm,0.001
 TypographicLength,Metre,m,1.0
 TypographicLength,Inch,in,0.0254
 
-TypographicResolution,DotsPerInch,dpi,1/0.0245
+TypographicResolution,DotsPerInch,dpi,1 / 0.0254
 
 
 // TimeSquared - to allow "m/(s*s)""
