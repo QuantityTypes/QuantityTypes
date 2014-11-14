@@ -44,9 +44,9 @@ namespace QuantityTypes
         private static readonly Density KilogramPerCubicDecimetreField = new Density(1000);
 
         /// <summary>
-        /// The backing field for the <see cref="GramPerCubicCentietre" /> property.
+        /// The backing field for the <see cref="GramPerCubicCentimetre" /> property.
         /// </summary>
-        private static readonly Density GramPerCubicCentietreField = new Density(1000);
+        private static readonly Density GramPerCubicCentimetreField = new Density(1000);
 
         /// <summary>
         /// The backing field for the <see cref="KilogramPerLitre" /> property.
@@ -125,9 +125,9 @@ namespace QuantityTypes
         /// Gets the "g/cm^3" unit.
         /// </summary>
         [Unit("g/cm^3")]
-        public static Density GramPerCubicCentietre 
+        public static Density GramPerCubicCentimetre 
         { 
-            get { return GramPerCubicCentietreField; } 
+            get { return GramPerCubicCentimetreField; } 
         }
 
         /// <summary>
