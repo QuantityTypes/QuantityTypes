@@ -66,6 +66,7 @@ double tempInFahrenheit = temp.ConvertTo(Temperature.DegreeFahrenheit);
 - [Units of Measure Validator for C#](http://www.codeproject.com/Articles/413750/Units-of-Measure-Validator-for-Csharp)
 - [Working with Units and Amounts](http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts)
 - [Units.NET](https://github.com/InitialForce/UnitsNet)
+- [Gu.units](https://github.com/JohanLarsson/Gu.Units)
 
 #### Java
 
