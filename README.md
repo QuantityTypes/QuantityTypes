@@ -12,6 +12,8 @@ the question of why computers cannot help more when working with physical quanti
 
 ### Features
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/objorke/QuantityTypes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 - [Strongly typed](http://en.wikipedia.org/wiki/Strong_typing) arithmetics of [physical quantities](http://en.wikipedia.org/wiki/Physical_quantity)
 - Implemented as [value types](http://msdn.microsoft.com/en-us/library/s1ax56ch.aspx)
 - Parsing from strings
