@@ -8,11 +8,9 @@ will be best remembered for the simple error that started everything: the value 
 in imperial, rather than SI units. That such a trivial mistake could ultimately bring about a mission failure is astonishing. It begs 
 the question of why computers cannot help more when working with physical quantities?_ [Ref. 1]
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0l0beneke0syjt47)](https://ci.appveyor.com/project/objorke/quantitytypes)
+[![Build status](https://ci.appveyor.com/api/projects/status/0l0beneke0syjt47)](https://ci.appveyor.com/project/objorke/quantitytypes) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/objorke/QuantityTypes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Features
-
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/objorke/QuantityTypes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 - [Strongly typed](http://en.wikipedia.org/wiki/Strong_typing) arithmetics of [physical quantities](http://en.wikipedia.org/wiki/Physical_quantity)
 - Implemented as [value types](http://msdn.microsoft.com/en-us/library/s1ax56ch.aspx)
