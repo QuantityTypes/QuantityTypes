@@ -125,6 +125,13 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void Parse_Infinity()
+        {
+            Assert.IsTrue(double.IsPositiveInfinity(Length.Parse("INF").Value));
+            Assert.IsTrue(double.IsNegativeInfinity(Length.Parse("-INF").Value));
+        }
+
+        [Test]
         public void Parse_InvariantCulture()
         {
             using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
@@ -171,7 +178,15 @@ namespace QuantityTypes.Tests
         [Test]
         public void ToString_NaN()
         {
+            Console.WriteLine(double.NaN.ToString());
             Assert.AreEqual("NaN", new Length(double.NaN).ToString());
+        }
+
+        [Test]
+        public void ToString_Inf()
+        {
+            Assert.AreEqual("INF", new Length(double.PositiveInfinity).ToString());
+            Assert.AreEqual("-INF", new Length(double.NegativeInfinity).ToString());
         }
 
         [Test]
@@ -451,7 +466,6 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(10 * TypographicLength.Centimetre, length);
             Assert.AreNotEqual(10 * Length.Centimetre, 10 * TypographicLength.Centimetre);
         }
-
 
         public class Test
         {

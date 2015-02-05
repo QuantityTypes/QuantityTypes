@@ -25,6 +25,16 @@ namespace QuantityTypes
         private static readonly string NotANumberString = double.NaN.ToString();
 
         /// <summary>
+        /// The string representing positive infinity.
+        /// </summary>
+        private static readonly string PositiveInfinityString = double.PositiveInfinity.ToString();
+
+        /// <summary>
+        /// The string representing negative infinity.
+        /// </summary>
+        private static readonly string NegativeInfinityString = double.NegativeInfinity.ToString();
+
+        /// <summary>
         ///   The display units.
         /// </summary>
         private readonly Dictionary<Type, UnitDefinition> displayUnits;
@@ -107,6 +117,16 @@ namespace QuantityTypes
             if (double.IsNaN(quantity.Value))
             {
                 return NotANumberString;
+            }
+            
+            if (double.IsPositiveInfinity(quantity.Value))
+            {
+                return PositiveInfinityString;
+            }
+
+            if (double.IsNegativeInfinity(quantity.Value))
+            {
+                return NegativeInfinityString;
             }
 
             var unit = default(string);
@@ -380,6 +400,18 @@ namespace QuantityTypes
                 return true;
             }
 
+            if (string.Equals(input, PositiveInfinityString))
+            {
+                quantity = (IQuantity)Activator.CreateInstance(unitType, double.PositiveInfinity);
+                return true;
+            }
+
+            if (string.Equals(input, NegativeInfinityString))
+            {
+                quantity = (IQuantity)Activator.CreateInstance(unitType, double.NegativeInfinity);
+                return true;
+            }
+            
             string unitString;
             double value;
             if (!Utilities.TrySplit(input, provider, out value, out unitString))
