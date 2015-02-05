@@ -20,21 +20,6 @@ namespace QuantityTypes
     public class UnitProvider : IUnitProvider
     {
         /// <summary>
-        /// The string representing NaN.
-        /// </summary>
-        private static readonly string NotANumberString = double.NaN.ToString();
-
-        /// <summary>
-        /// The string representing positive infinity.
-        /// </summary>
-        private static readonly string PositiveInfinityString = double.PositiveInfinity.ToString();
-
-        /// <summary>
-        /// The string representing negative infinity.
-        /// </summary>
-        private static readonly string NegativeInfinityString = double.NegativeInfinity.ToString();
-
-        /// <summary>
         ///   The display units.
         /// </summary>
         private readonly Dictionary<Type, UnitDefinition> displayUnits;
@@ -116,17 +101,17 @@ namespace QuantityTypes
         {
             if (double.IsNaN(quantity.Value))
             {
-                return NotANumberString;
+                return double.NaN.ToString(provider);
             }
             
             if (double.IsPositiveInfinity(quantity.Value))
             {
-                return PositiveInfinityString;
+                return double.PositiveInfinity.ToString(provider);
             }
 
             if (double.IsNegativeInfinity(quantity.Value))
             {
-                return NegativeInfinityString;
+                return double.NegativeInfinity.ToString(provider);
             }
 
             var unit = default(string);
@@ -394,19 +379,19 @@ namespace QuantityTypes
                 return true;
             }
 
-            if (string.Equals(input, NotANumberString))
+            if (string.Equals(input, double.NaN.ToString(provider)))
             {
                 quantity = (IQuantity)Activator.CreateInstance(unitType, double.NaN);
                 return true;
             }
 
-            if (string.Equals(input, PositiveInfinityString))
+            if (string.Equals(input, double.PositiveInfinity.ToString(provider)))
             {
                 quantity = (IQuantity)Activator.CreateInstance(unitType, double.PositiveInfinity);
                 return true;
             }
 
-            if (string.Equals(input, NegativeInfinityString))
+            if (string.Equals(input, double.NegativeInfinity.ToString(provider)))
             {
                 quantity = (IQuantity)Activator.CreateInstance(unitType, double.NegativeInfinity);
                 return true;

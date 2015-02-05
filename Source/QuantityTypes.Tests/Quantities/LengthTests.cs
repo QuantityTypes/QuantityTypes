@@ -121,14 +121,14 @@ namespace QuantityTypes.Tests
         [Test]
         public void Parse_NaN()
         {
-            Assert.IsTrue(double.IsNaN(Length.Parse("NaN").Value));
+            Assert.IsTrue(double.IsNaN(Length.Parse("NaN", CultureInfo.InvariantCulture).Value));
         }
 
         [Test]
         public void Parse_Infinity()
         {
-            Assert.IsTrue(double.IsPositiveInfinity(Length.Parse("INF").Value));
-            Assert.IsTrue(double.IsNegativeInfinity(Length.Parse("-INF").Value));
+            Assert.IsTrue(double.IsPositiveInfinity(Length.Parse("Infinity", CultureInfo.InvariantCulture).Value));
+            Assert.IsTrue(double.IsNegativeInfinity(Length.Parse("-Infinity", CultureInfo.InvariantCulture).Value));
         }
 
         [Test]
@@ -178,15 +178,14 @@ namespace QuantityTypes.Tests
         [Test]
         public void ToString_NaN()
         {
-            Console.WriteLine(double.NaN.ToString());
-            Assert.AreEqual("NaN", new Length(double.NaN).ToString());
+            Assert.AreEqual("NaN", new Length(double.NaN).ToString(null, CultureInfo.InvariantCulture));
         }
 
         [Test]
         public void ToString_Inf()
         {
-            Assert.AreEqual("INF", new Length(double.PositiveInfinity).ToString());
-            Assert.AreEqual("-INF", new Length(double.NegativeInfinity).ToString());
+            Assert.AreEqual("Infinity", new Length(double.PositiveInfinity).ToString(null, CultureInfo.InvariantCulture));
+            Assert.AreEqual("-Infinity", new Length(double.NegativeInfinity).ToString(null, CultureInfo.InvariantCulture));
         }
 
         [Test]
