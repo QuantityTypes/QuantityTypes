@@ -596,6 +596,22 @@ namespace QuantityTypes
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
+        /// <param name="formatProvider">
+        /// The format provider. 
+        /// </param>
+        /// <returns>
+        /// A <see cref="System.String"/> that represents this instance. 
+        /// </returns>
+        public string ToString(IFormatProvider formatProvider)
+        {
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
+
+            return this.ToString(null, formatProvider, unitProvider);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// </summary>
         /// <param name="format">
         /// The format. 
         /// </param>
