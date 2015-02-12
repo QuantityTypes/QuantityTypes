@@ -178,14 +178,14 @@ namespace QuantityTypes.Tests
         [Test]
         public void ToString_NaN()
         {
-            Assert.AreEqual("NaN", new Length(double.NaN).ToString(null, CultureInfo.InvariantCulture));
+            Assert.AreEqual("NaN", new Length(double.NaN).ToString(CultureInfo.InvariantCulture));
         }
 
         [Test]
         public void ToString_Inf()
         {
-            Assert.AreEqual("Infinity", new Length(double.PositiveInfinity).ToString(null, CultureInfo.InvariantCulture));
-            Assert.AreEqual("-Infinity", new Length(double.NegativeInfinity).ToString(null, CultureInfo.InvariantCulture));
+            Assert.AreEqual("Infinity", new Length(double.PositiveInfinity).ToString(CultureInfo.InvariantCulture));
+            Assert.AreEqual("-Infinity", new Length(double.NegativeInfinity).ToString(CultureInfo.InvariantCulture));
         }
 
         [Test]

@@ -24,12 +24,12 @@ namespace QuantityTypes.Tests
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value == null)
+            var q = value as IQuantity;
+            if (q == null)
             {
                 serializer.Serialize(writer, null);
             }
 
-            var q = value as IQuantity;
             serializer.Serialize(writer, q.ToString(null, CultureInfo.InvariantCulture));
         }
 
@@ -42,7 +42,7 @@ namespace QuantityTypes.Tests
             }
 
             IQuantity q;
-            if (unitProvider.TryParse(objectType, value, CultureInfo.InvariantCulture, out q))
+            if (this.unitProvider.TryParse(objectType, value, CultureInfo.InvariantCulture, out q))
             {
                 return q;
             }

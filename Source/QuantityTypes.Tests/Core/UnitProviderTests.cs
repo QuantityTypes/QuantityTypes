@@ -26,11 +26,11 @@ namespace QuantityTypes.Tests
             // Change the display unit
             unitProvider.RegisterUnit(627.48 * Length.Millimetre, "alen");
             unitProvider.TrySetDisplayUnit<Length>("alen");
-            Assert.AreEqual("1 alen", (0.62748 * Length.Metre).ToString(null, unitProvider));
+            Assert.AreEqual("1 alen", (0.62748 * Length.Metre).ToString(unitProvider));
 
             // Revert
             Assert.IsTrue(unitProvider.TrySetDisplayUnit<Length>(unitSymbol));
-            Assert.AreEqual("1 m", Length.Metre.ToString(null, unitProvider));
+            Assert.AreEqual("1 m", Length.Metre.ToString(unitProvider));
         }
 
         [Test]
@@ -181,14 +181,14 @@ namespace QuantityTypes.Tests
         public void InvariantCulture()
         {
             var up = new UnitProvider(typeof(Length).Assembly, CultureInfo.InvariantCulture);
-            Assert.AreEqual("1.2 m", (1.2 * Length.Metre).ToString(null, up));
+            Assert.AreEqual("1.2 m", (1.2 * Length.Metre).ToString(up));
         }
 
         [Test]
         public void LocalCulture()
         {
             var up = new UnitProvider(typeof(Length).Assembly, new CultureInfo("no"));
-            Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(null, up));
+            Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(up));
         }
 
         [Test]
