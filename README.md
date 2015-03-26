@@ -67,6 +67,7 @@ double tempInFahrenheit = temp.ConvertTo(Temperature.DegreeFahrenheit);
 - [Working with Units and Amounts](http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts)
 - [Units.NET](https://github.com/InitialForce/UnitsNet)
 - [Gu.Units](https://github.com/JohanLarsson/Gu.Units)
+- [Unit Class Library](https://bitbucket.org/Clearspan/unit-class-library/wiki/Home)
 
 #### Java
 
