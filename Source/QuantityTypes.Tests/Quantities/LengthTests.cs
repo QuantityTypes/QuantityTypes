@@ -53,6 +53,7 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(1 * Length.Metre, (2 * Length.Metre) - Length.Metre);
             Assert.AreEqual(1 * Length.Metre, (2 * Length.Metre) / 2);
             Assert.AreEqual(100 * Area.SquareMetre, (10 * Length.Metre) * (10 * Length.Metre));
+            Assert.AreEqual(960, (10 * Length.Inch) * (96 * TypographicResolution.DotsPerInch));
 
             Length s = 100 * Length.Metre;
             Time t = 9.58 * Time.Second;
