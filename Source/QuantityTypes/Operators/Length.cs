@@ -65,17 +65,6 @@ namespace QuantityTypes
         /// <param name="x"> The x. </param>
         /// <param name="y"> The y. </param>
         /// <returns> The result of the operator. </returns>
-        public static double operator *(Length x, TypographicResolution y)
-        {
-            return x.Value * y.Value;
-        }
-
-        /// <summary>
-        ///     Implements the operator *.
-        /// </summary>
-        /// <param name="x"> The x. </param>
-        /// <param name="y"> The y. </param>
-        /// <returns> The result of the operator. </returns>
         public static Volume operator *(Length x, Area y)
         {
             return new Volume(x.Value * y.Value);
