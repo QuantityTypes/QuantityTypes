@@ -54,5 +54,15 @@ namespace QuantityTypes.Tests
             var a = 90 * Angle.Degree;
             Assert.AreEqual("90,0°", a.ToString("0.0 [°]", CultureInfos.Norwegian));
         }
+
+        [Test]
+        public void ParseStringToAngleType()
+        {
+            const string Value = "50";
+            var parseMethod = typeof(Angle).GetMethod("Parse", new[] { Value.GetType(), typeof(IFormatProvider) });
+            Assert.IsNotNull(parseMethod);
+            var convertedValue = parseMethod.Invoke(null, new object[] { Value, CultureInfo.CurrentCulture });
+            Assert.AreEqual(50, (convertedValue is Angle ? (Angle)convertedValue : new Angle()).ConvertTo(Angle.Radian));
+        }
     }
 }

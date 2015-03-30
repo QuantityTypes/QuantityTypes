@@ -71,6 +71,17 @@ namespace QuantityTypes
         }
 
         /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="x"> The x. </param>
+        /// <param name="y"> The y. </param>
+        /// <returns> The result of the operator. </returns>
+        public static double operator *(Length x, TypographicResolution y) 
+        { 
+            return x.Value * y.Value; 
+        } 
+        
+        /// <summary>
         /// Implements the / operator for the product of <see cref="Acceleration" /> and <see cref="TimeSquared" />.
         /// </summary>
         /// <param name="x">The x.</param>

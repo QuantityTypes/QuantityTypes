@@ -126,12 +126,37 @@ namespace QuantityTypes
         /// <returns>
         /// A <see cref="FuelConsumption"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static FuelConsumption Parse(string input, IFormatProvider provider = null, IUnitProvider unitProvider = null)
+        public static FuelConsumption Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
+
+            FuelConsumption value;
+            if (!unitProvider.TryParse(input, provider, out value))
+            {
+                throw new FormatException("Invalid format.");
+            }
+
+            return value;
+        }
+
+		/// <summary>
+        /// Converts a string representation of a quantity in a specific culture-specific format.
+        /// </summary>
+        /// <param name="input">
+        /// A string that contains the quantity to convert. 
+        /// </param>
+        /// <param name="provider">
+        /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
+        /// </param>
+        /// <returns>
+        /// A <see cref="FuelConsumption"/> that represents the quantity in <paramref name="input" />. 
+        /// </returns>
+        public static FuelConsumption Parse(string input, IFormatProvider provider = null)
+        {
+            var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
             FuelConsumption value;
             if (!unitProvider.TryParse(input, provider, out value))
