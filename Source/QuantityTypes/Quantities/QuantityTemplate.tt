@@ -109,9 +109,9 @@ namespace QuantityTypes
         /// Gets the "<#= symbol #>" unit.
         /// </summary>
         [Unit("<#= symbol #>"<#= displayUnit #>)]
-        public static <#= ClassName #> <#= name #> 
-        { 
-            get { return <#= fieldName #>; } 
+        public static <#= ClassName #> <#= name #>
+        {
+            get { return <#= fieldName #>; }
         }
 
 <#
@@ -563,7 +563,7 @@ namespace QuantityTypes
         {
             if (obj is <#= ClassName #>)
             {
-              return this.Equals((<#= ClassName #>)obj);
+                return this.Equals((<#= ClassName #>)obj);
             }
 
             return false;
@@ -674,7 +674,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -697,8 +697,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);
