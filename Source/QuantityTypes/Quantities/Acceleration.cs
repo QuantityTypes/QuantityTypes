@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "m/s^2" unit.
         /// </summary>
         [Unit("m/s^2", true)]
-        public static Acceleration MetrePerSecondSquared 
-        { 
-            get { return MetrePerSecondSquaredField; } 
+        public static Acceleration MetrePerSecondSquared
+        {
+            get { return MetrePerSecondSquaredField; }
         }
 
         /// <summary>
         /// Gets the "g" unit.
         /// </summary>
         [Unit("g")]
-        public static Acceleration StandardGravity 
-        { 
-            get { return StandardGravityField; } 
+        public static Acceleration StandardGravity
+        {
+            get { return StandardGravityField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is Acceleration)
             {
-              return this.Equals((Acceleration)obj);
+                return this.Equals((Acceleration)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

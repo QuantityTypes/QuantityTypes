@@ -72,9 +72,9 @@ namespace QuantityTypes
         /// Gets the "N*m" unit.
         /// </summary>
         [Unit("N*m", true)]
-        public static Torque NewtonMetre 
-        { 
-            get { return NewtonMetreField; } 
+        public static Torque NewtonMetre
+        {
+            get { return NewtonMetreField; }
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace QuantityTypes
         {
             if (obj is Torque)
             {
-              return this.Equals((Torque)obj);
+                return this.Equals((Torque)obj);
             }
 
             return false;
@@ -634,7 +634,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -657,8 +657,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

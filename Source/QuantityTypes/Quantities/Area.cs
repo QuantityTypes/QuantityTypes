@@ -92,45 +92,45 @@ namespace QuantityTypes
         /// Gets the "m^2" unit.
         /// </summary>
         [Unit("m^2", true)]
-        public static Area SquareMetre 
-        { 
-            get { return SquareMetreField; } 
+        public static Area SquareMetre
+        {
+            get { return SquareMetreField; }
         }
 
         /// <summary>
         /// Gets the "ac" unit.
         /// </summary>
         [Unit("ac")]
-        public static Area Acre 
-        { 
-            get { return AcreField; } 
+        public static Area Acre
+        {
+            get { return AcreField; }
         }
 
         /// <summary>
         /// Gets the "ha" unit.
         /// </summary>
         [Unit("ha")]
-        public static Area Hectare 
-        { 
-            get { return HectareField; } 
+        public static Area Hectare
+        {
+            get { return HectareField; }
         }
 
         /// <summary>
         /// Gets the "ft^2" unit.
         /// </summary>
         [Unit("ft^2")]
-        public static Area SquareFoot 
-        { 
-            get { return SquareFootField; } 
+        public static Area SquareFoot
+        {
+            get { return SquareFootField; }
         }
 
         /// <summary>
         /// Gets the "km^2" unit.
         /// </summary>
         [Unit("km^2")]
-        public static Area SquareKilometre 
-        { 
-            get { return SquareKilometreField; } 
+        public static Area SquareKilometre
+        {
+            get { return SquareKilometreField; }
         }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace QuantityTypes
         {
             if (obj is Area)
             {
-              return this.Equals((Area)obj);
+                return this.Equals((Area)obj);
             }
 
             return false;
@@ -690,7 +690,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -713,8 +713,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

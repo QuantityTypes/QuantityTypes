@@ -82,27 +82,27 @@ namespace QuantityTypes
         /// Gets the "J" unit.
         /// </summary>
         [Unit("J", true)]
-        public static Energy Joule 
-        { 
-            get { return JouleField; } 
+        public static Energy Joule
+        {
+            get { return JouleField; }
         }
 
         /// <summary>
         /// Gets the "cal" unit.
         /// </summary>
         [Unit("cal")]
-        public static Energy Calorie 
-        { 
-            get { return CalorieField; } 
+        public static Energy Calorie
+        {
+            get { return CalorieField; }
         }
 
         /// <summary>
         /// Gets the "N*m*rad" unit.
         /// </summary>
         [Unit("N*m*rad")]
-        public static Energy NewtonMetreRadian 
-        { 
-            get { return NewtonMetreRadianField; } 
+        public static Energy NewtonMetreRadian
+        {
+            get { return NewtonMetreRadianField; }
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace QuantityTypes
         {
             if (obj is Energy)
             {
-              return this.Equals((Energy)obj);
+                return this.Equals((Energy)obj);
             }
 
             return false;
@@ -662,7 +662,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -685,8 +685,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "Pa*s" unit.
         /// </summary>
         [Unit("Pa*s", true)]
-        public static DynamicViscosity PascalSecond 
-        { 
-            get { return PascalSecondField; } 
+        public static DynamicViscosity PascalSecond
+        {
+            get { return PascalSecondField; }
         }
 
         /// <summary>
         /// Gets the "N*s" unit.
         /// </summary>
         [Unit("N*s")]
-        public static DynamicViscosity NewtonSecond 
-        { 
-            get { return NewtonSecondField; } 
+        public static DynamicViscosity NewtonSecond
+        {
+            get { return NewtonSecondField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is DynamicViscosity)
             {
-              return this.Equals((DynamicViscosity)obj);
+                return this.Equals((DynamicViscosity)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

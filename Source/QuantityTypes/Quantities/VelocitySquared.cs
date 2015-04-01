@@ -72,9 +72,9 @@ namespace QuantityTypes
         /// Gets the "m^2/s^2" unit.
         /// </summary>
         [Unit("m^2/s^2", true)]
-        public static VelocitySquared MetreSquaredPerSecondSquared 
-        { 
-            get { return MetreSquaredPerSecondSquaredField; } 
+        public static VelocitySquared MetreSquaredPerSecondSquared
+        {
+            get { return MetreSquaredPerSecondSquaredField; }
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace QuantityTypes
         {
             if (obj is VelocitySquared)
             {
-              return this.Equals((VelocitySquared)obj);
+                return this.Equals((VelocitySquared)obj);
             }
 
             return false;
@@ -634,7 +634,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -657,8 +657,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -107,72 +107,72 @@ namespace QuantityTypes
         /// Gets the "kg/m^3" unit.
         /// </summary>
         [Unit("kg/m^3", true)]
-        public static Density KilogramPerCubicMetre 
-        { 
-            get { return KilogramPerCubicMetreField; } 
+        public static Density KilogramPerCubicMetre
+        {
+            get { return KilogramPerCubicMetreField; }
         }
 
         /// <summary>
         /// Gets the "kg/dm^3" unit.
         /// </summary>
         [Unit("kg/dm^3")]
-        public static Density KilogramPerCubicDecimetre 
-        { 
-            get { return KilogramPerCubicDecimetreField; } 
+        public static Density KilogramPerCubicDecimetre
+        {
+            get { return KilogramPerCubicDecimetreField; }
         }
 
         /// <summary>
         /// Gets the "g/cm^3" unit.
         /// </summary>
         [Unit("g/cm^3")]
-        public static Density GramPerCubicCentietre 
-        { 
-            get { return GramPerCubicCentietreField; } 
+        public static Density GramPerCubicCentietre
+        {
+            get { return GramPerCubicCentietreField; }
         }
 
         /// <summary>
         /// Gets the "kg/L" unit.
         /// </summary>
         [Unit("kg/L")]
-        public static Density KilogramPerLitre 
-        { 
-            get { return KilogramPerLitreField; } 
+        public static Density KilogramPerLitre
+        {
+            get { return KilogramPerLitreField; }
         }
 
         /// <summary>
         /// Gets the "g/mL" unit.
         /// </summary>
         [Unit("g/mL")]
-        public static Density GramPerMillilitre 
-        { 
-            get { return GramPerMillilitreField; } 
+        public static Density GramPerMillilitre
+        {
+            get { return GramPerMillilitreField; }
         }
 
         /// <summary>
         /// Gets the "lb/ft^3" unit.
         /// </summary>
         [Unit("lb/ft^3")]
-        public static Density PoundPerCubicFoot 
-        { 
-            get { return PoundPerCubicFootField; } 
+        public static Density PoundPerCubicFoot
+        {
+            get { return PoundPerCubicFootField; }
         }
 
         /// <summary>
         /// Gets the "lb/in^3" unit.
         /// </summary>
         [Unit("lb/in^3")]
-        public static Density PoundPerCubicInch 
-        { 
-            get { return PoundPerCubicInchField; } 
+        public static Density PoundPerCubicInch
+        {
+            get { return PoundPerCubicInchField; }
         }
 
         /// <summary>
         /// Gets the "lb/gal" unit.
         /// </summary>
         [Unit("lb/gal")]
-        public static Density PoundPerGallon 
-        { 
-            get { return PoundPerGallonField; } 
+        public static Density PoundPerGallon
+        {
+            get { return PoundPerGallonField; }
         }
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace QuantityTypes
         {
             if (obj is Density)
             {
-              return this.Equals((Density)obj);
+                return this.Equals((Density)obj);
             }
 
             return false;
@@ -732,7 +732,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -755,8 +755,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

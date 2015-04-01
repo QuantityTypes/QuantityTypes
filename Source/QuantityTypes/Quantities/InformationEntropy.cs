@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "J/K" unit.
         /// </summary>
         [Unit("J/K", true)]
-        public static InformationEntropy JoulePerKelvin 
-        { 
-            get { return JoulePerKelvinField; } 
+        public static InformationEntropy JoulePerKelvin
+        {
+            get { return JoulePerKelvinField; }
         }
 
         /// <summary>
         /// Gets the "B" unit.
         /// </summary>
         [Unit("B")]
-        public static InformationEntropy Byte 
-        { 
-            get { return ByteField; } 
+        public static InformationEntropy Byte
+        {
+            get { return ByteField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is InformationEntropy)
             {
-              return this.Equals((InformationEntropy)obj);
+                return this.Equals((InformationEntropy)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

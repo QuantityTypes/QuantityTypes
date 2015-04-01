@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "Hz" unit.
         /// </summary>
         [Unit("Hz", true)]
-        public static Frequency Hertz 
-        { 
-            get { return HertzField; } 
+        public static Frequency Hertz
+        {
+            get { return HertzField; }
         }
 
         /// <summary>
         /// Gets the "rpm" unit.
         /// </summary>
         [Unit("rpm")]
-        public static Frequency RevolutionsPerMinute 
-        { 
-            get { return RevolutionsPerMinuteField; } 
+        public static Frequency RevolutionsPerMinute
+        {
+            get { return RevolutionsPerMinuteField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is Frequency)
             {
-              return this.Equals((Frequency)obj);
+                return this.Equals((Frequency)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

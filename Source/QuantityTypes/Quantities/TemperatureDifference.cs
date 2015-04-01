@@ -82,27 +82,27 @@ namespace QuantityTypes
         /// Gets the "K" unit.
         /// </summary>
         [Unit("K", true)]
-        public static TemperatureDifference DegreeKelvin 
-        { 
-            get { return DegreeKelvinField; } 
+        public static TemperatureDifference DegreeKelvin
+        {
+            get { return DegreeKelvinField; }
         }
 
         /// <summary>
         /// Gets the "C" unit.
         /// </summary>
         [Unit("C")]
-        public static TemperatureDifference DegreeCelsius 
-        { 
-            get { return DegreeCelsiusField; } 
+        public static TemperatureDifference DegreeCelsius
+        {
+            get { return DegreeCelsiusField; }
         }
 
         /// <summary>
         /// Gets the "F" unit.
         /// </summary>
         [Unit("F")]
-        public static TemperatureDifference DegreeFahrenheit 
-        { 
-            get { return DegreeFahrenheitField; } 
+        public static TemperatureDifference DegreeFahrenheit
+        {
+            get { return DegreeFahrenheitField; }
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace QuantityTypes
         {
             if (obj is TemperatureDifference)
             {
-              return this.Equals((TemperatureDifference)obj);
+                return this.Equals((TemperatureDifference)obj);
             }
 
             return false;
@@ -662,7 +662,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -685,8 +685,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

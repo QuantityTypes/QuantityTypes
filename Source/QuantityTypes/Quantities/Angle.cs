@@ -92,45 +92,45 @@ namespace QuantityTypes
         /// Gets the "rad" unit.
         /// </summary>
         [Unit("rad", true)]
-        public static Angle Radian 
-        { 
-            get { return RadianField; } 
+        public static Angle Radian
+        {
+            get { return RadianField; }
         }
 
         /// <summary>
         /// Gets the "deg" unit.
         /// </summary>
         [Unit("deg")]
-        public static Angle Degree 
-        { 
-            get { return DegreeField; } 
+        public static Angle Degree
+        {
+            get { return DegreeField; }
         }
 
         /// <summary>
         /// Gets the "°" unit.
         /// </summary>
         [Unit("°")]
-        public static Angle DegreeSymbol 
-        { 
-            get { return DegreeSymbolField; } 
+        public static Angle DegreeSymbol
+        {
+            get { return DegreeSymbolField; }
         }
 
         /// <summary>
         /// Gets the "grad" unit.
         /// </summary>
         [Unit("grad")]
-        public static Angle Grad 
-        { 
-            get { return GradField; } 
+        public static Angle Grad
+        {
+            get { return GradField; }
         }
 
         /// <summary>
         /// Gets the "gon" unit.
         /// </summary>
         [Unit("gon")]
-        public static Angle Gon 
-        { 
-            get { return GonField; } 
+        public static Angle Gon
+        {
+            get { return GonField; }
         }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace QuantityTypes
         {
             if (obj is Angle)
             {
-              return this.Equals((Angle)obj);
+                return this.Equals((Angle)obj);
             }
 
             return false;
@@ -690,7 +690,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -713,8 +713,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -72,9 +72,9 @@ namespace QuantityTypes
         /// Gets the "J/K" unit.
         /// </summary>
         [Unit("J/K", true)]
-        public static HeatCapacity JoulePerKelvin 
-        { 
-            get { return JoulePerKelvinField; } 
+        public static HeatCapacity JoulePerKelvin
+        {
+            get { return JoulePerKelvinField; }
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace QuantityTypes
         {
             if (obj is HeatCapacity)
             {
-              return this.Equals((HeatCapacity)obj);
+                return this.Equals((HeatCapacity)obj);
             }
 
             return false;
@@ -634,7 +634,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -657,8 +657,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

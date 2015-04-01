@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "C*m" unit.
         /// </summary>
         [Unit("C*m", true)]
-        public static ElectricDipole CoulombMetre 
-        { 
-            get { return CoulombMetreField; } 
+        public static ElectricDipole CoulombMetre
+        {
+            get { return CoulombMetreField; }
         }
 
         /// <summary>
         /// Gets the "D" unit.
         /// </summary>
         [Unit("D")]
-        public static ElectricDipole Debye 
-        { 
-            get { return DebyeField; } 
+        public static ElectricDipole Debye
+        {
+            get { return DebyeField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is ElectricDipole)
             {
-              return this.Equals((ElectricDipole)obj);
+                return this.Equals((ElectricDipole)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

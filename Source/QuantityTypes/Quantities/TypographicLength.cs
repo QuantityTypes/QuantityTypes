@@ -92,45 +92,45 @@ namespace QuantityTypes
         /// Gets the "cm" unit.
         /// </summary>
         [Unit("cm", true)]
-        public static TypographicLength Centimetre 
-        { 
-            get { return CentimetreField; } 
+        public static TypographicLength Centimetre
+        {
+            get { return CentimetreField; }
         }
 
         /// <summary>
         /// Gets the "pt" unit.
         /// </summary>
         [Unit("pt")]
-        public static TypographicLength Point 
-        { 
-            get { return PointField; } 
+        public static TypographicLength Point
+        {
+            get { return PointField; }
         }
 
         /// <summary>
         /// Gets the "mm" unit.
         /// </summary>
         [Unit("mm")]
-        public static TypographicLength Millimetre 
-        { 
-            get { return MillimetreField; } 
+        public static TypographicLength Millimetre
+        {
+            get { return MillimetreField; }
         }
 
         /// <summary>
         /// Gets the "m" unit.
         /// </summary>
         [Unit("m")]
-        public static TypographicLength Metre 
-        { 
-            get { return MetreField; } 
+        public static TypographicLength Metre
+        {
+            get { return MetreField; }
         }
 
         /// <summary>
         /// Gets the "in" unit.
         /// </summary>
         [Unit("in")]
-        public static TypographicLength Inch 
-        { 
-            get { return InchField; } 
+        public static TypographicLength Inch
+        {
+            get { return InchField; }
         }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace QuantityTypes
         {
             if (obj is TypographicLength)
             {
-              return this.Equals((TypographicLength)obj);
+                return this.Equals((TypographicLength)obj);
             }
 
             return false;
@@ -690,7 +690,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -713,8 +713,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

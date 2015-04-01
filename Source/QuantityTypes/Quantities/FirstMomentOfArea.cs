@@ -72,9 +72,9 @@ namespace QuantityTypes
         /// Gets the "m^3" unit.
         /// </summary>
         [Unit("m^3", true)]
-        public static FirstMomentOfArea MetreCubed 
-        { 
-            get { return MetreCubedField; } 
+        public static FirstMomentOfArea MetreCubed
+        {
+            get { return MetreCubedField; }
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace QuantityTypes
         {
             if (obj is FirstMomentOfArea)
             {
-              return this.Equals((FirstMomentOfArea)obj);
+                return this.Equals((FirstMomentOfArea)obj);
             }
 
             return false;
@@ -634,7 +634,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -657,8 +657,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

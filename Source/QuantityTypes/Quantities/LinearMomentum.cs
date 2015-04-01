@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "kg*m/s" unit.
         /// </summary>
         [Unit("kg*m/s", true)]
-        public static LinearMomentum KilogramMeterPerSecond 
-        { 
-            get { return KilogramMeterPerSecondField; } 
+        public static LinearMomentum KilogramMeterPerSecond
+        {
+            get { return KilogramMeterPerSecondField; }
         }
 
         /// <summary>
         /// Gets the "N*s" unit.
         /// </summary>
         [Unit("N*s")]
-        public static LinearMomentum NewtonSecond 
-        { 
-            get { return NewtonSecondField; } 
+        public static LinearMomentum NewtonSecond
+        {
+            get { return NewtonSecondField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is LinearMomentum)
             {
-              return this.Equals((LinearMomentum)obj);
+                return this.Equals((LinearMomentum)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -82,27 +82,27 @@ namespace QuantityTypes
         /// Gets the "m^3" unit.
         /// </summary>
         [Unit("m^3", true)]
-        public static Volume CubicMetre 
-        { 
-            get { return CubicMetreField; } 
+        public static Volume CubicMetre
+        {
+            get { return CubicMetreField; }
         }
 
         /// <summary>
         /// Gets the "L" unit.
         /// </summary>
         [Unit("L")]
-        public static Volume Litre 
-        { 
-            get { return LitreField; } 
+        public static Volume Litre
+        {
+            get { return LitreField; }
         }
 
         /// <summary>
         /// Gets the "gal" unit.
         /// </summary>
         [Unit("gal")]
-        public static Volume Gallon 
-        { 
-            get { return GallonField; } 
+        public static Volume Gallon
+        {
+            get { return GallonField; }
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace QuantityTypes
         {
             if (obj is Volume)
             {
-              return this.Equals((Volume)obj);
+                return this.Equals((Volume)obj);
             }
 
             return false;
@@ -662,7 +662,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -685,8 +685,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -87,36 +87,36 @@ namespace QuantityTypes
         /// Gets the "" unit.
         /// </summary>
         [Unit("", true)]
-        public static Fraction Frac 
-        { 
-            get { return FracField; } 
+        public static Fraction Frac
+        {
+            get { return FracField; }
         }
 
         /// <summary>
         /// Gets the "%" unit.
         /// </summary>
         [Unit("%")]
-        public static Fraction Percent 
-        { 
-            get { return PercentField; } 
+        public static Fraction Percent
+        {
+            get { return PercentField; }
         }
 
         /// <summary>
         /// Gets the "‰" unit.
         /// </summary>
         [Unit("‰")]
-        public static Fraction Permil 
-        { 
-            get { return PermilField; } 
+        public static Fraction Permil
+        {
+            get { return PermilField; }
         }
 
         /// <summary>
         /// Gets the "ppm" unit.
         /// </summary>
         [Unit("ppm")]
-        public static Fraction PartPerMillion 
-        { 
-            get { return PartPerMillionField; } 
+        public static Fraction PartPerMillion
+        {
+            get { return PartPerMillionField; }
         }
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace QuantityTypes
         {
             if (obj is Fraction)
             {
-              return this.Equals((Fraction)obj);
+                return this.Equals((Fraction)obj);
             }
 
             return false;
@@ -676,7 +676,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -699,8 +699,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

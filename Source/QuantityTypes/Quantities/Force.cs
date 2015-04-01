@@ -82,27 +82,27 @@ namespace QuantityTypes
         /// Gets the "N" unit.
         /// </summary>
         [Unit("N", true)]
-        public static Force Newton 
-        { 
-            get { return NewtonField; } 
+        public static Force Newton
+        {
+            get { return NewtonField; }
         }
 
         /// <summary>
         /// Gets the "kgf" unit.
         /// </summary>
         [Unit("kgf")]
-        public static Force KilogramForce 
-        { 
-            get { return KilogramForceField; } 
+        public static Force KilogramForce
+        {
+            get { return KilogramForceField; }
         }
 
         /// <summary>
         /// Gets the "kipf" unit.
         /// </summary>
         [Unit("kipf")]
-        public static Force KipForce 
-        { 
-            get { return KipForceField; } 
+        public static Force KipForce
+        {
+            get { return KipForceField; }
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace QuantityTypes
         {
             if (obj is Force)
             {
-              return this.Equals((Force)obj);
+                return this.Equals((Force)obj);
             }
 
             return false;
@@ -662,7 +662,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -685,8 +685,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

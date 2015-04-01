@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "cd/m^2" unit.
         /// </summary>
         [Unit("cd/m^2", true)]
-        public static Luminance CandelaPerSquareMetre 
-        { 
-            get { return CandelaPerSquareMetreField; } 
+        public static Luminance CandelaPerSquareMetre
+        {
+            get { return CandelaPerSquareMetreField; }
         }
 
         /// <summary>
         /// Gets the "L" unit.
         /// </summary>
         [Unit("L")]
-        public static Luminance Lambert 
-        { 
-            get { return LambertField; } 
+        public static Luminance Lambert
+        {
+            get { return LambertField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is Luminance)
             {
-              return this.Equals((Luminance)obj);
+                return this.Equals((Luminance)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

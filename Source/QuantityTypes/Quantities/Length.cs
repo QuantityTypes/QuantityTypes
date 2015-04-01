@@ -132,117 +132,117 @@ namespace QuantityTypes
         /// Gets the "m" unit.
         /// </summary>
         [Unit("m", true)]
-        public static Length Metre 
-        { 
-            get { return MetreField; } 
+        public static Length Metre
+        {
+            get { return MetreField; }
         }
 
         /// <summary>
         /// Gets the "dm" unit.
         /// </summary>
         [Unit("dm")]
-        public static Length Decimetre 
-        { 
-            get { return DecimetreField; } 
+        public static Length Decimetre
+        {
+            get { return DecimetreField; }
         }
 
         /// <summary>
         /// Gets the "cm" unit.
         /// </summary>
         [Unit("cm")]
-        public static Length Centimetre 
-        { 
-            get { return CentimetreField; } 
+        public static Length Centimetre
+        {
+            get { return CentimetreField; }
         }
 
         /// <summary>
         /// Gets the "mm" unit.
         /// </summary>
         [Unit("mm")]
-        public static Length Millimetre 
-        { 
-            get { return MillimetreField; } 
+        public static Length Millimetre
+        {
+            get { return MillimetreField; }
         }
 
         /// <summary>
         /// Gets the "km" unit.
         /// </summary>
         [Unit("km")]
-        public static Length Kilometre 
-        { 
-            get { return KilometreField; } 
+        public static Length Kilometre
+        {
+            get { return KilometreField; }
         }
 
         /// <summary>
         /// Gets the "yd" unit.
         /// </summary>
         [Unit("yd")]
-        public static Length Yard 
-        { 
-            get { return YardField; } 
+        public static Length Yard
+        {
+            get { return YardField; }
         }
 
         /// <summary>
         /// Gets the "ft" unit.
         /// </summary>
         [Unit("ft")]
-        public static Length Foot 
-        { 
-            get { return FootField; } 
+        public static Length Foot
+        {
+            get { return FootField; }
         }
 
         /// <summary>
         /// Gets the "in" unit.
         /// </summary>
         [Unit("in")]
-        public static Length Inch 
-        { 
-            get { return InchField; } 
+        public static Length Inch
+        {
+            get { return InchField; }
         }
 
         /// <summary>
         /// Gets the "mi" unit.
         /// </summary>
         [Unit("mi")]
-        public static Length Mile 
-        { 
-            get { return MileField; } 
+        public static Length Mile
+        {
+            get { return MileField; }
         }
 
         /// <summary>
         /// Gets the "nmi" unit.
         /// </summary>
         [Unit("nmi")]
-        public static Length NauticalMile 
-        { 
-            get { return NauticalMileField; } 
+        public static Length NauticalMile
+        {
+            get { return NauticalMileField; }
         }
 
         /// <summary>
         /// Gets the "Å" unit.
         /// </summary>
         [Unit("Å")]
-        public static Length Ångström 
-        { 
-            get { return ÅngströmField; } 
+        public static Length Ångström
+        {
+            get { return ÅngströmField; }
         }
 
         /// <summary>
         /// Gets the "AU" unit.
         /// </summary>
         [Unit("AU")]
-        public static Length AstronomicalUnit 
-        { 
-            get { return AstronomicalUnitField; } 
+        public static Length AstronomicalUnit
+        {
+            get { return AstronomicalUnitField; }
         }
 
         /// <summary>
         /// Gets the "ly" unit.
         /// </summary>
         [Unit("ly")]
-        public static Length LightYear 
-        { 
-            get { return LightYearField; } 
+        public static Length LightYear
+        {
+            get { return LightYearField; }
         }
 
         /// <summary>
@@ -691,7 +691,7 @@ namespace QuantityTypes
         {
             if (obj is Length)
             {
-              return this.Equals((Length)obj);
+                return this.Equals((Length)obj);
             }
 
             return false;
@@ -802,7 +802,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -825,8 +825,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -87,36 +87,36 @@ namespace QuantityTypes
         /// Gets the "kg*m^2" unit.
         /// </summary>
         [Unit("kg*m^2", true)]
-        public static MassMomentOfInertia KilogramMetreSquared 
-        { 
-            get { return KilogramMetreSquaredField; } 
+        public static MassMomentOfInertia KilogramMetreSquared
+        {
+            get { return KilogramMetreSquaredField; }
         }
 
         /// <summary>
         /// Gets the "lb*in^2" unit.
         /// </summary>
         [Unit("lb*in^2")]
-        public static MassMomentOfInertia PoundInchSquared 
-        { 
-            get { return PoundInchSquaredField; } 
+        public static MassMomentOfInertia PoundInchSquared
+        {
+            get { return PoundInchSquaredField; }
         }
 
         /// <summary>
         /// Gets the "lb*ft^2" unit.
         /// </summary>
         [Unit("lb*ft^2")]
-        public static MassMomentOfInertia PoundFootSquared 
-        { 
-            get { return PoundFootSquaredField; } 
+        public static MassMomentOfInertia PoundFootSquared
+        {
+            get { return PoundFootSquaredField; }
         }
 
         /// <summary>
         /// Gets the "lbf*in*s^2" unit.
         /// </summary>
         [Unit("lbf*in*s^2")]
-        public static MassMomentOfInertia PoundforceInchSecondSquared 
-        { 
-            get { return PoundforceInchSecondSquaredField; } 
+        public static MassMomentOfInertia PoundforceInchSecondSquared
+        {
+            get { return PoundforceInchSecondSquaredField; }
         }
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace QuantityTypes
         {
             if (obj is MassMomentOfInertia)
             {
-              return this.Equals((MassMomentOfInertia)obj);
+                return this.Equals((MassMomentOfInertia)obj);
             }
 
             return false;
@@ -676,7 +676,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -699,8 +699,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "m^2/s" unit.
         /// </summary>
         [Unit("m^2/s", true)]
-        public static KinematicViscosity SquareMetrePerSecond 
-        { 
-            get { return SquareMetrePerSecondField; } 
+        public static KinematicViscosity SquareMetrePerSecond
+        {
+            get { return SquareMetrePerSecondField; }
         }
 
         /// <summary>
         /// Gets the "mm^2/s" unit.
         /// </summary>
         [Unit("mm^2/s")]
-        public static KinematicViscosity SquareMillimetrePerSecond 
-        { 
-            get { return SquareMillimetrePerSecondField; } 
+        public static KinematicViscosity SquareMillimetrePerSecond
+        {
+            get { return SquareMillimetrePerSecondField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is KinematicViscosity)
             {
-              return this.Equals((KinematicViscosity)obj);
+                return this.Equals((KinematicViscosity)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

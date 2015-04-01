@@ -107,72 +107,72 @@ namespace QuantityTypes
         /// Gets the "Pa" unit.
         /// </summary>
         [Unit("Pa", true)]
-        public static Pressure Pascal 
-        { 
-            get { return PascalField; } 
+        public static Pressure Pascal
+        {
+            get { return PascalField; }
         }
 
         /// <summary>
         /// Gets the "kPa" unit.
         /// </summary>
         [Unit("kPa")]
-        public static Pressure Kilopascal 
-        { 
-            get { return KilopascalField; } 
+        public static Pressure Kilopascal
+        {
+            get { return KilopascalField; }
         }
 
         /// <summary>
         /// Gets the "psi" unit.
         /// </summary>
         [Unit("psi")]
-        public static Pressure PoundPerSquareInch 
-        { 
-            get { return PoundPerSquareInchField; } 
+        public static Pressure PoundPerSquareInch
+        {
+            get { return PoundPerSquareInchField; }
         }
 
         /// <summary>
         /// Gets the "ksi" unit.
         /// </summary>
         [Unit("ksi")]
-        public static Pressure KilopoundPerSquareInch 
-        { 
-            get { return KilopoundPerSquareInchField; } 
+        public static Pressure KilopoundPerSquareInch
+        {
+            get { return KilopoundPerSquareInchField; }
         }
 
         /// <summary>
         /// Gets the "mmHg" unit.
         /// </summary>
         [Unit("mmHg")]
-        public static Pressure MillimetreOfMercury 
-        { 
-            get { return MillimetreOfMercuryField; } 
+        public static Pressure MillimetreOfMercury
+        {
+            get { return MillimetreOfMercuryField; }
         }
 
         /// <summary>
         /// Gets the "bar" unit.
         /// </summary>
         [Unit("bar")]
-        public static Pressure Bar 
-        { 
-            get { return BarField; } 
+        public static Pressure Bar
+        {
+            get { return BarField; }
         }
 
         /// <summary>
         /// Gets the "Megapascal" unit.
         /// </summary>
         [Unit("Megapascal")]
-        public static Pressure Megapascal 
-        { 
-            get { return MegapascalField; } 
+        public static Pressure Megapascal
+        {
+            get { return MegapascalField; }
         }
 
         /// <summary>
         /// Gets the "atm" unit.
         /// </summary>
         [Unit("atm")]
-        public static Pressure Atmosphere 
-        { 
-            get { return AtmosphereField; } 
+        public static Pressure Atmosphere
+        {
+            get { return AtmosphereField; }
         }
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace QuantityTypes
         {
             if (obj is Pressure)
             {
-              return this.Equals((Pressure)obj);
+                return this.Equals((Pressure)obj);
             }
 
             return false;
@@ -732,7 +732,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -755,8 +755,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

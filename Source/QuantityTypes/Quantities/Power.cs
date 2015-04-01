@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "W" unit.
         /// </summary>
         [Unit("W", true)]
-        public static Power Watt 
-        { 
-            get { return WattField; } 
+        public static Power Watt
+        {
+            get { return WattField; }
         }
 
         /// <summary>
         /// Gets the "hp" unit.
         /// </summary>
         [Unit("hp")]
-        public static Power HorsePower 
-        { 
-            get { return HorsePowerField; } 
+        public static Power HorsePower
+        {
+            get { return HorsePowerField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is Power)
             {
-              return this.Equals((Power)obj);
+                return this.Equals((Power)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

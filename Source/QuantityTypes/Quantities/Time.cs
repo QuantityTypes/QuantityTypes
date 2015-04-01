@@ -97,54 +97,54 @@ namespace QuantityTypes
         /// Gets the "s" unit.
         /// </summary>
         [Unit("s", true)]
-        public static Time Second 
-        { 
-            get { return SecondField; } 
+        public static Time Second
+        {
+            get { return SecondField; }
         }
 
         /// <summary>
         /// Gets the "min" unit.
         /// </summary>
         [Unit("min")]
-        public static Time Minute 
-        { 
-            get { return MinuteField; } 
+        public static Time Minute
+        {
+            get { return MinuteField; }
         }
 
         /// <summary>
         /// Gets the "h" unit.
         /// </summary>
         [Unit("h")]
-        public static Time Hour 
-        { 
-            get { return HourField; } 
+        public static Time Hour
+        {
+            get { return HourField; }
         }
 
         /// <summary>
         /// Gets the "d" unit.
         /// </summary>
         [Unit("d")]
-        public static Time Day 
-        { 
-            get { return DayField; } 
+        public static Time Day
+        {
+            get { return DayField; }
         }
 
         /// <summary>
         /// Gets the "wk" unit.
         /// </summary>
         [Unit("wk")]
-        public static Time Week 
-        { 
-            get { return WeekField; } 
+        public static Time Week
+        {
+            get { return WeekField; }
         }
 
         /// <summary>
         /// Gets the "ms" unit.
         /// </summary>
         [Unit("ms")]
-        public static Time Millisecond 
-        { 
-            get { return MillisecondField; } 
+        public static Time Millisecond
+        {
+            get { return MillisecondField; }
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace QuantityTypes
         {
             if (obj is Time)
             {
-              return this.Equals((Time)obj);
+                return this.Equals((Time)obj);
             }
 
             return false;
@@ -704,7 +704,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -727,8 +727,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

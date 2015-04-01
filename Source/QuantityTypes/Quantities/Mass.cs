@@ -102,63 +102,63 @@ namespace QuantityTypes
         /// Gets the "kg" unit.
         /// </summary>
         [Unit("kg", true)]
-        public static Mass Kilogram 
-        { 
-            get { return KilogramField; } 
+        public static Mass Kilogram
+        {
+            get { return KilogramField; }
         }
 
         /// <summary>
         /// Gets the "g" unit.
         /// </summary>
         [Unit("g")]
-        public static Mass Gram 
-        { 
-            get { return GramField; } 
+        public static Mass Gram
+        {
+            get { return GramField; }
         }
 
         /// <summary>
         /// Gets the "t" unit.
         /// </summary>
         [Unit("t")]
-        public static Mass Tonne 
-        { 
-            get { return TonneField; } 
+        public static Mass Tonne
+        {
+            get { return TonneField; }
         }
 
         /// <summary>
         /// Gets the "kips" unit.
         /// </summary>
         [Unit("kips")]
-        public static Mass Kips 
-        { 
-            get { return KipsField; } 
+        public static Mass Kips
+        {
+            get { return KipsField; }
         }
 
         /// <summary>
         /// Gets the "lb" unit.
         /// </summary>
         [Unit("lb")]
-        public static Mass Pound 
-        { 
-            get { return PoundField; } 
+        public static Mass Pound
+        {
+            get { return PoundField; }
         }
 
         /// <summary>
         /// Gets the "slug" unit.
         /// </summary>
         [Unit("slug")]
-        public static Mass Slug 
-        { 
-            get { return SlugField; } 
+        public static Mass Slug
+        {
+            get { return SlugField; }
         }
 
         /// <summary>
         /// Gets the "ton" unit.
         /// </summary>
         [Unit("ton")]
-        public static Mass Ton 
-        { 
-            get { return TonField; } 
+        public static Mass Ton
+        {
+            get { return TonField; }
         }
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace QuantityTypes
         {
             if (obj is Mass)
             {
-              return this.Equals((Mass)obj);
+                return this.Equals((Mass)obj);
             }
 
             return false;
@@ -718,7 +718,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -741,8 +741,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

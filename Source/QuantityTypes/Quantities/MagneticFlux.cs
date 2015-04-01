@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "Wb" unit.
         /// </summary>
         [Unit("Wb", true)]
-        public static MagneticFlux Weber 
-        { 
-            get { return WeberField; } 
+        public static MagneticFlux Weber
+        {
+            get { return WeberField; }
         }
 
         /// <summary>
         /// Gets the "Mx" unit.
         /// </summary>
         [Unit("Mx")]
-        public static MagneticFlux Maxwell 
-        { 
-            get { return MaxwellField; } 
+        public static MagneticFlux Maxwell
+        {
+            get { return MaxwellField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is MagneticFlux)
             {
-              return this.Equals((MagneticFlux)obj);
+                return this.Equals((MagneticFlux)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

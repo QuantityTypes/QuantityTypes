@@ -82,27 +82,27 @@ namespace QuantityTypes
         /// Gets the "m/s" unit.
         /// </summary>
         [Unit("m/s", true)]
-        public static Velocity MetrePerSecond 
-        { 
-            get { return MetrePerSecondField; } 
+        public static Velocity MetrePerSecond
+        {
+            get { return MetrePerSecondField; }
         }
 
         /// <summary>
         /// Gets the "km/h" unit.
         /// </summary>
         [Unit("km/h")]
-        public static Velocity KilometrePerHour 
-        { 
-            get { return KilometrePerHourField; } 
+        public static Velocity KilometrePerHour
+        {
+            get { return KilometrePerHourField; }
         }
 
         /// <summary>
         /// Gets the "knot" unit.
         /// </summary>
         [Unit("knot")]
-        public static Velocity Knot 
-        { 
-            get { return KnotField; } 
+        public static Velocity Knot
+        {
+            get { return KnotField; }
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace QuantityTypes
         {
             if (obj is Velocity)
             {
-              return this.Equals((Velocity)obj);
+                return this.Equals((Velocity)obj);
             }
 
             return false;
@@ -662,7 +662,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -685,8 +685,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);

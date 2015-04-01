@@ -77,18 +77,18 @@ namespace QuantityTypes
         /// Gets the "km/l" unit.
         /// </summary>
         [Unit("km/l", true)]
-        public static FuelEconomy KilometrePerLitre 
-        { 
-            get { return KilometrePerLitreField; } 
+        public static FuelEconomy KilometrePerLitre
+        {
+            get { return KilometrePerLitreField; }
         }
 
         /// <summary>
         /// Gets the "mpg" unit.
         /// </summary>
         [Unit("mpg")]
-        public static FuelEconomy MilesPerGallon 
-        { 
-            get { return MilesPerGallonField; } 
+        public static FuelEconomy MilesPerGallon
+        {
+            get { return MilesPerGallonField; }
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace QuantityTypes
         {
             if (obj is FuelEconomy)
             {
-              return this.Equals((FuelEconomy)obj);
+                return this.Equals((FuelEconomy)obj);
             }
 
             return false;
@@ -648,7 +648,7 @@ namespace QuantityTypes
         /// </returns>
         public string ToString(string format, IFormatProvider formatProvider = null)
         {
-            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            var unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
 
             return this.ToString(format, formatProvider, unitProvider);
         }
@@ -671,8 +671,8 @@ namespace QuantityTypes
         public string ToString(string format, IFormatProvider formatProvider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
-            { 
-                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default; 
+            {
+                unitProvider = formatProvider as IUnitProvider ?? UnitProvider.Default;
             }
 
             return unitProvider.Format(format, formatProvider, this);
