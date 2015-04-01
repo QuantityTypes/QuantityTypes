@@ -184,7 +184,7 @@ namespace QuantityTypes
             return value;
         }
 
-		/// <summary>
+        /// <summary>
         /// Converts a string representation of a quantity in a specific culture-specific format.
         /// </summary>
         /// <param name="input">
