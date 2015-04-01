@@ -46,7 +46,7 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="DegreeFahrenheit" /> property.
         /// </summary>
-        private static readonly TemperatureDifference DegreeFahrenheitField = new TemperatureDifference(9.0 / 5);
+        private static readonly TemperatureDifference DegreeFahrenheitField = new TemperatureDifference(5.0 / 9.0);
 
         /// <summary>
         /// The value.
@@ -170,7 +170,7 @@ namespace QuantityTypes
             return value;
         }
 
-		/// <summary>
+	/// <summary>
         /// Converts a string representation of a quantity in a specific culture-specific format.
         /// </summary>
         /// <param name="input">
