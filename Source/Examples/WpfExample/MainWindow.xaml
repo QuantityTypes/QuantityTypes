@@ -21,7 +21,7 @@
             <Label Content="Velocity:"/>
             <TextBox Text="{Binding Velocity, Converter={StaticResource QuantityConverter}, Mode=OneWay, ConverterParameter='0.00'}"/>
             <Label Content=""/>
-            <TextBox Text="{Binding Velocity, Converter={StaticResource QuantityConverter}, Mode=OneWay, ConverterParameter='0.00 km/h'}"/>
+            <TextBox Text="{Binding Velocity, Converter={StaticResource QuantityConverter}, Mode=OneWay, ConverterParameter='0.00 [km/h]'}"/>
             <Label Content="Mass:" ToolTip="This is a nullable property, and the target will be set to null when the textbox is empty"/>
             <TextBox Text="{Binding Mass, Converter={StaticResource QuantityConverter}, TargetNullValue={x:Static sys:String.Empty}}"/>
         </UniformGrid>
