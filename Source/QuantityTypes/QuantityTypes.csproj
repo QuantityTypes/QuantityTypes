@@ -59,6 +59,9 @@
     <Compile Include="Dynamic\Customary.cs" />
     <Compile Include="Dynamic\Dimensions.cs" />
     <Compile Include="Extensions\QuantityExtensions.cs" />
+    <Compile Include="Operators\Capacitance.cs" />
+    <Compile Include="Operators\Power.cs" />
+    <Compile Include="Operators\ElectricCharge.cs" />
     <Compile Include="Operators\MassMomentOfInertia.cs" />
     <Compile Include="Operators\TypographicLength.cs" />
     <Compile Include="Operators\TypographicResolution.cs" />

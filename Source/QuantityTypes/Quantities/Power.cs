@@ -39,6 +39,16 @@ namespace QuantityTypes
         private static readonly Power WattField = new Power(1);
 
         /// <summary>
+        /// The backing field for the <see cref="Milliwatt" /> property.
+        /// </summary>
+        private static readonly Power MilliwattField = new Power(1e-3);
+
+        /// <summary>
+        /// The backing field for the <see cref="KiloWatt" /> property.
+        /// </summary>
+        private static readonly Power KiloWattField = new Power(1e3);
+
+        /// <summary>
         /// The backing field for the <see cref="HorsePower" /> property.
         /// </summary>
         private static readonly Power HorsePowerField = new Power(735.49875);
@@ -80,6 +90,24 @@ namespace QuantityTypes
         public static Power Watt
         {
             get { return WattField; }
+        }
+
+        /// <summary>
+        /// Gets the "mW" unit.
+        /// </summary>
+        [Unit("mW")]
+        public static Power Milliwatt
+        {
+            get { return MilliwattField; }
+        }
+
+        /// <summary>
+        /// Gets the "kW" unit.
+        /// </summary>
+        [Unit("kW")]
+        public static Power KiloWatt
+        {
+            get { return KiloWattField; }
         }
 
         /// <summary>

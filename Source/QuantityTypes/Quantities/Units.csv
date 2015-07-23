@@ -111,9 +111,16 @@ Torque,NewtonMetre,N*m,1
 Energy,Joule,J,1
 Energy,Calorie,cal,4.1868
 Energy,NewtonMetreRadian,N*m*rad,1
+Energy,WattSecond,W*s,1
+Energy,WattHour,W*h,3600
+Energy,MilliwattHour,mW*h,3.6
+Energy,KilowattHour,kW*h,3600000
+
 
 // Power or heat flow rate
 Power,Watt,W,1
+Power,Milliwatt,mW,1e-3
+Power,KiloWatt,kW,1e3
 Power,HorsePower,hp,735.49875
 
 // Action
@@ -129,11 +136,17 @@ KinematicViscosity,SquareMillimetrePerSecond,mm^2/s,1e-6
 
 // Electric current
 ElectricCurrent,Ampere,A,1
+ElectricCurrent,Milliampere,mA,1e-3
+ElectricCurrent,Microampere,µA,1e-6
 
 // Electric charge
 ElectricCharge,Coulomb,C,1
 ElectricCharge,Faraday,F,96485.3383
 ElectricCharge,AtomicUnitOfCharge,au,1.602176462e-19
+ElectricCharge,AmpereSecond,A*s,1
+ElectricCharge,AmpereHour,A*h,3600
+ElectricCharge,MilliampereHour,mA*h,3.6
+
 
 // Electric dipole
 ElectricDipole,CoulombMetre,C*m,1
@@ -141,9 +154,14 @@ ElectricDipole,Debye,D,3.33564095e-30
 
 // Electromotive force, electric potential difference
 ElectricVoltage,Volt,V,1
+ElectricVoltage,Millivolt,mV,1e-3
+ElectricVoltage,Microvolt,µV,1e-6
 
 // Electric resistance
 ElectricResistance,Ohm,Ω,1
+ElectricResistance,Milliohm,mΩ,1e-3
+ElectricResistance,Killoohm,kΩ,1e3
+//ElectricResistance,Megaohm,MΩ,1e6//does not work:unit is case insensitive
 
 // Capacitance
 Capacitance,Farad,F,1

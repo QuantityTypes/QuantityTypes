@@ -62,5 +62,17 @@ namespace QuantityTypes
         {
             return new Frequency(1 / this.value);
         }
+
+		/// <summary>
+		/// Implements the * operator for the product of <see cref="Time" /> and <see cref="Time" />.
+		/// </summary>
+		/// <param name="x">The x.</param>
+		/// <param name="y">The y.</param>
+		/// <returns>The result of the operator.</returns>
+		public static ElectricCharge operator *(Time x, ElectricCurrent y)
+		{
+			return new ElectricCharge(x.value * y.Value);
+		}
+
     }
 }

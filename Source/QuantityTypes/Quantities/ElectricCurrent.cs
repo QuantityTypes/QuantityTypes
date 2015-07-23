@@ -39,6 +39,16 @@ namespace QuantityTypes
         private static readonly ElectricCurrent AmpereField = new ElectricCurrent(1);
 
         /// <summary>
+        /// The backing field for the <see cref="Milliampere" /> property.
+        /// </summary>
+        private static readonly ElectricCurrent MilliampereField = new ElectricCurrent(1e-3);
+
+        /// <summary>
+        /// The backing field for the <see cref="Microampere" /> property.
+        /// </summary>
+        private static readonly ElectricCurrent MicroampereField = new ElectricCurrent(1e-6);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -75,6 +85,24 @@ namespace QuantityTypes
         public static ElectricCurrent Ampere
         {
             get { return AmpereField; }
+        }
+
+        /// <summary>
+        /// Gets the "mA" unit.
+        /// </summary>
+        [Unit("mA")]
+        public static ElectricCurrent Milliampere
+        {
+            get { return MilliampereField; }
+        }
+
+        /// <summary>
+        /// Gets the "µA" unit.
+        /// </summary>
+        [Unit("µA")]
+        public static ElectricCurrent Microampere
+        {
+            get { return MicroampereField; }
         }
 
         /// <summary>
