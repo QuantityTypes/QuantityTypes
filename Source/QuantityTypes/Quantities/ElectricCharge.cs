@@ -49,6 +49,21 @@ namespace QuantityTypes
         private static readonly ElectricCharge AtomicUnitOfChargeField = new ElectricCharge(1.602176462e-19);
 
         /// <summary>
+        /// The backing field for the <see cref="AmpereSecond" /> property.
+        /// </summary>
+        private static readonly ElectricCharge AmpereSecondField = new ElectricCharge(1);
+
+        /// <summary>
+        /// The backing field for the <see cref="AmpereHour" /> property.
+        /// </summary>
+        private static readonly ElectricCharge AmpereHourField = new ElectricCharge(3600);
+
+        /// <summary>
+        /// The backing field for the <see cref="MilliampereHour" /> property.
+        /// </summary>
+        private static readonly ElectricCharge MilliampereHourField = new ElectricCharge(3.6);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -103,6 +118,33 @@ namespace QuantityTypes
         public static ElectricCharge AtomicUnitOfCharge
         {
             get { return AtomicUnitOfChargeField; }
+        }
+
+        /// <summary>
+        /// Gets the "A*s" unit.
+        /// </summary>
+        [Unit("A*s")]
+        public static ElectricCharge AmpereSecond
+        {
+            get { return AmpereSecondField; }
+        }
+
+        /// <summary>
+        /// Gets the "A*h" unit.
+        /// </summary>
+        [Unit("A*h")]
+        public static ElectricCharge AmpereHour
+        {
+            get { return AmpereHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "mA*h" unit.
+        /// </summary>
+        [Unit("mA*h")]
+        public static ElectricCharge MilliampereHour
+        {
+            get { return MilliampereHourField; }
         }
 
         /// <summary>

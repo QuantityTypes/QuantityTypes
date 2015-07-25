@@ -39,6 +39,16 @@ namespace QuantityTypes
         private static readonly ElectricVoltage VoltField = new ElectricVoltage(1);
 
         /// <summary>
+        /// The backing field for the <see cref="Millivolt" /> property.
+        /// </summary>
+        private static readonly ElectricVoltage MillivoltField = new ElectricVoltage(1e-3);
+
+        /// <summary>
+        /// The backing field for the <see cref="Microvolt" /> property.
+        /// </summary>
+        private static readonly ElectricVoltage MicrovoltField = new ElectricVoltage(1e-6);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -75,6 +85,24 @@ namespace QuantityTypes
         public static ElectricVoltage Volt
         {
             get { return VoltField; }
+        }
+
+        /// <summary>
+        /// Gets the "mV" unit.
+        /// </summary>
+        [Unit("mV")]
+        public static ElectricVoltage Millivolt
+        {
+            get { return MillivoltField; }
+        }
+
+        /// <summary>
+        /// Gets the "µV" unit.
+        /// </summary>
+        [Unit("µV")]
+        public static ElectricVoltage Microvolt
+        {
+            get { return MicrovoltField; }
         }
 
         /// <summary>

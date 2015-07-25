@@ -49,6 +49,26 @@ namespace QuantityTypes
         private static readonly Energy NewtonMetreRadianField = new Energy(1);
 
         /// <summary>
+        /// The backing field for the <see cref="WattSecond" /> property.
+        /// </summary>
+        private static readonly Energy WattSecondField = new Energy(1);
+
+        /// <summary>
+        /// The backing field for the <see cref="WattHour" /> property.
+        /// </summary>
+        private static readonly Energy WattHourField = new Energy(3600);
+
+        /// <summary>
+        /// The backing field for the <see cref="MilliwattHour" /> property.
+        /// </summary>
+        private static readonly Energy MilliwattHourField = new Energy(3.6);
+
+        /// <summary>
+        /// The backing field for the <see cref="KilowattHour" /> property.
+        /// </summary>
+        private static readonly Energy KilowattHourField = new Energy(3600000);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -103,6 +123,42 @@ namespace QuantityTypes
         public static Energy NewtonMetreRadian
         {
             get { return NewtonMetreRadianField; }
+        }
+
+        /// <summary>
+        /// Gets the "W*s" unit.
+        /// </summary>
+        [Unit("W*s")]
+        public static Energy WattSecond
+        {
+            get { return WattSecondField; }
+        }
+
+        /// <summary>
+        /// Gets the "W*h" unit.
+        /// </summary>
+        [Unit("W*h")]
+        public static Energy WattHour
+        {
+            get { return WattHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "mW*h" unit.
+        /// </summary>
+        [Unit("mW*h")]
+        public static Energy MilliwattHour
+        {
+            get { return MilliwattHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "kW*h" unit.
+        /// </summary>
+        [Unit("kW*h")]
+        public static Energy KilowattHour
+        {
+            get { return KilowattHourField; }
         }
 
         /// <summary>
