@@ -5,6 +5,7 @@
 // http://en.wikipedia.org/wiki/Quantity
 // http://en.wikipedia.org/wiki/Physical_quantities
 // http://en.wikipedia.org/wiki/Phenomenon
+// http://en.wikipedia.org/wiki/Unit_prefix
 
 // Length
 Length,Metre,m,1
@@ -72,6 +73,9 @@ Time,Millisecond,ms,1e-3
 
 // Frequency
 Frequency,Hertz,Hz,1
+Frequency,Kilohertz,kHz,1e3
+Frequency,Megahertz,MHz,1e6
+Frequency,Gigahertz,GHz,1e9
 Frequency,RevolutionsPerMinute,rpm,1.0 / 60
 
 AngularFrequency,RadiansPerSecond,rad/s,1
@@ -120,7 +124,8 @@ Energy,KilowattHour,kW*h,3600000
 // Power or heat flow rate
 Power,Watt,W,1
 Power,Milliwatt,mW,1e-3
-Power,KiloWatt,kW,1e3
+Power,Kilowatt,kW,1e3
+Power,Megawatt,MW,1e6
 Power,HorsePower,hp,735.49875
 
 // Action
@@ -160,8 +165,8 @@ ElectricVoltage,Microvolt,µV,1e-6
 // Electric resistance
 ElectricResistance,Ohm,Ω,1
 ElectricResistance,Milliohm,mΩ,1e-3
-ElectricResistance,Killoohm,kΩ,1e3
-//ElectricResistance,Megaohm,MΩ,1e6//does not work:unit is case insensitive
+ElectricResistance,Kiloohm,kΩ,1e3
+ElectricResistance,Megaohm,MΩ,1e6
 
 // Capacitance
 Capacitance,Farad,F,1
@@ -175,6 +180,7 @@ MagneticFluxDensity,Tesla,T,1
 
 // Inductance
 Inductance,Henry,H,1
+Inductance,Millihenry,mH,1e-3
 
 // Temperature (special case)
 
