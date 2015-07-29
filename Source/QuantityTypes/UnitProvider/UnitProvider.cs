@@ -285,7 +285,7 @@ namespace QuantityTypes
             var type = unit.GetType();
             if (!this.units.ContainsKey(type))
             {
-                this.units.Add(type, new Dictionary<string, IQuantity>(StringComparer.OrdinalIgnoreCase));
+                this.units.Add(type, new Dictionary<string, IQuantity>());
             }
 
             if (this.units[type].ContainsKey(name))

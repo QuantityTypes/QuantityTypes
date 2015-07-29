@@ -21,7 +21,7 @@ namespace QuantityTypes.Tests
         public void Constructors()
         {
             Assert.AreEqual(2, new Density(2).Value);
-            Assert.AreEqual(2, new Density("2Kg/M^3").Value);
+            Assert.AreEqual(2, new Density("2kg/m^3").Value);
         }
 
         [Test]
@@ -39,10 +39,23 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        [ExpectedException(typeof(FormatException))]
+        public void Parse_InvalidUnitPrefixCaseString()
+        {
+            Assert.AreEqual(2, Density.Parse("2Kg/m^3").Value, "wrong case in unit prefix");
+        }
+
+        [Test]
+        [ExpectedException(typeof(FormatException))]
+        public void Parse_InvalidUnitCaseString()
+        {
+            Assert.AreEqual(2, Density.Parse("2kg/M^3").Value, "wrong case");
+        }
+
+        [Test]
         public void Parse_ValidStrings()
         {
             Assert.AreEqual(2, Density.Parse("2kg/m^3").Value, "correct unit");
-            Assert.AreEqual(2, Density.Parse("2Kg/M^3").Value, "wrong case");
             Assert.AreEqual(2, Density.Parse("2").Value, "no unit");
         }
 
