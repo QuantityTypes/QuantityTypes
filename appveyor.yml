@@ -13,7 +13,8 @@ configuration: Release
 
 before_build:
   - cmd: UpdateVersionNumbers /Version=%APPVEYOR_BUILD_VERSION% /Dependency=QuantityTypes /ExtractReleaseNotes=CHANGELOG.md /Directory=Source
-  
+  - nuget restore
+
 build:
   project: Source/QuantityTypes.sln
   verbosity: minimal
