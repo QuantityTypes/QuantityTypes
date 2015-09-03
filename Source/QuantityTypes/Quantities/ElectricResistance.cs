@@ -44,9 +44,14 @@ namespace QuantityTypes
         private static readonly ElectricResistance MilliohmField = new ElectricResistance(1e-3);
 
         /// <summary>
-        /// The backing field for the <see cref="Killoohm" /> property.
+        /// The backing field for the <see cref="Kiloohm" /> property.
         /// </summary>
-        private static readonly ElectricResistance KilloohmField = new ElectricResistance(1e3);
+        private static readonly ElectricResistance KiloohmField = new ElectricResistance(1e3);
+
+        /// <summary>
+        /// The backing field for the <see cref="Megaohm" /> property.
+        /// </summary>
+        private static readonly ElectricResistance MegaohmField = new ElectricResistance(1e6);
 
         /// <summary>
         /// The value.
@@ -100,9 +105,18 @@ namespace QuantityTypes
         /// Gets the "kΩ" unit.
         /// </summary>
         [Unit("kΩ")]
-        public static ElectricResistance Killoohm
+        public static ElectricResistance Kiloohm
         {
-            get { return KilloohmField; }
+            get { return KiloohmField; }
+        }
+
+        /// <summary>
+        /// Gets the "MΩ" unit.
+        /// </summary>
+        [Unit("MΩ")]
+        public static ElectricResistance Megaohm
+        {
+            get { return MegaohmField; }
         }
 
         /// <summary>

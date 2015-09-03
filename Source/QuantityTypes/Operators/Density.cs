@@ -24,5 +24,16 @@ namespace QuantityTypes
         {
             return new Mass(x.Value * y.Value);
         }
+
+        /// <summary>
+        ///     Performs an implicit conversion from <see cref="Density" /> to <see cref="MassConcentration" />.
+        /// </summary>
+        /// <param name="d"> The density. </param>
+        /// <returns> MassConcentration. </returns>
+        public static implicit operator MassConcentration(Density d)
+        {
+            return new MassConcentration(d.Value);
+        }
+
     }
 }

@@ -54,6 +54,11 @@ namespace QuantityTypes
         private static readonly Area SquareFootField = new Area(9.290304e-2);
 
         /// <summary>
+        /// The backing field for the <see cref="SquareMile" /> property.
+        /// </summary>
+        private static readonly Area SquareMileField = new Area(2.589988110336e6);
+
+        /// <summary>
         /// The backing field for the <see cref="SquareKilometre" /> property.
         /// </summary>
         private static readonly Area SquareKilometreField = new Area(1e6);
@@ -122,6 +127,15 @@ namespace QuantityTypes
         public static Area SquareFoot
         {
             get { return SquareFootField; }
+        }
+
+        /// <summary>
+        /// Gets the "mi^2" unit.
+        /// </summary>
+        [Unit("mi^2")]
+        public static Area SquareMile
+        {
+            get { return SquareMileField; }
         }
 
         /// <summary>

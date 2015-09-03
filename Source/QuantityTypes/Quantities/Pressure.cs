@@ -74,6 +74,21 @@ namespace QuantityTypes
         private static readonly Pressure AtmosphereField = new Pressure(101325);
 
         /// <summary>
+        /// The backing field for the <see cref="InchOfMercury" /> property.
+        /// </summary>
+        private static readonly Pressure InchOfMercuryField = new Pressure(3.386389e3);
+
+        /// <summary>
+        /// The backing field for the <see cref="FootOfWater" /> property.
+        /// </summary>
+        private static readonly Pressure FootOfWaterField = new Pressure(0.433527501928);
+
+        /// <summary>
+        /// The backing field for the <see cref="InchOfWater" /> property.
+        /// </summary>
+        private static readonly Pressure InchOfWaterField = new Pressure(0.0361272918274);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -173,6 +188,33 @@ namespace QuantityTypes
         public static Pressure Atmosphere
         {
             get { return AtmosphereField; }
+        }
+
+        /// <summary>
+        /// Gets the "inHg" unit.
+        /// </summary>
+        [Unit("inHg")]
+        public static Pressure InchOfMercury
+        {
+            get { return InchOfMercuryField; }
+        }
+
+        /// <summary>
+        /// Gets the "ftH20" unit.
+        /// </summary>
+        [Unit("ftH20")]
+        public static Pressure FootOfWater
+        {
+            get { return FootOfWaterField; }
+        }
+
+        /// <summary>
+        /// Gets the "inH20" unit.
+        /// </summary>
+        [Unit("inH20")]
+        public static Pressure InchOfWater
+        {
+            get { return InchOfWaterField; }
         }
 
         /// <summary>

@@ -39,6 +39,21 @@ namespace QuantityTypes
         private static readonly Frequency HertzField = new Frequency(1);
 
         /// <summary>
+        /// The backing field for the <see cref="Kilohertz" /> property.
+        /// </summary>
+        private static readonly Frequency KilohertzField = new Frequency(1e3);
+
+        /// <summary>
+        /// The backing field for the <see cref="Megahertz" /> property.
+        /// </summary>
+        private static readonly Frequency MegahertzField = new Frequency(1e6);
+
+        /// <summary>
+        /// The backing field for the <see cref="Gigahertz" /> property.
+        /// </summary>
+        private static readonly Frequency GigahertzField = new Frequency(1e9);
+
+        /// <summary>
         /// The backing field for the <see cref="RevolutionsPerMinute" /> property.
         /// </summary>
         private static readonly Frequency RevolutionsPerMinuteField = new Frequency(1.0 / 60);
@@ -80,6 +95,33 @@ namespace QuantityTypes
         public static Frequency Hertz
         {
             get { return HertzField; }
+        }
+
+        /// <summary>
+        /// Gets the "kHz" unit.
+        /// </summary>
+        [Unit("kHz")]
+        public static Frequency Kilohertz
+        {
+            get { return KilohertzField; }
+        }
+
+        /// <summary>
+        /// Gets the "MHz" unit.
+        /// </summary>
+        [Unit("MHz")]
+        public static Frequency Megahertz
+        {
+            get { return MegahertzField; }
+        }
+
+        /// <summary>
+        /// Gets the "GHz" unit.
+        /// </summary>
+        [Unit("GHz")]
+        public static Frequency Gigahertz
+        {
+            get { return GigahertzField; }
         }
 
         /// <summary>

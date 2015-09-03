@@ -59,6 +59,7 @@
     <Compile Include="JsonTests\QuantityJsonConverter.cs" />
     <Compile Include="Quantities\AngleTests.cs" />
     <Compile Include="CultureInfos.cs" />
+    <Compile Include="Quantities\MassConcentrationTests.cs" />
     <Compile Include="Quantities\FractionTests.cs" />
     <Compile Include="Core\UnitProviderTests.cs" />
     <Compile Include="Quantities\DensityTests.cs" />
@@ -94,4 +95,3 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-
