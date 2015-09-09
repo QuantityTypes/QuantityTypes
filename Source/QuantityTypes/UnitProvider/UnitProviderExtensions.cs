@@ -11,6 +11,7 @@ namespace QuantityTypes
 {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
 
     /// <summary>
     /// Provides extension methods for UnitProvider.
@@ -138,5 +139,52 @@ namespace QuantityTypes
         {
             return unitProvider.TrySetDisplayUnit(typeof(T), symbol);
         }
+
+        /// <summary>
+        /// Registers the units in the specified assembly.
+        /// </summary>
+        /// <param name="unitProvider">
+        /// The unit provider. 
+        /// </param>
+        /// <param name="assembly">
+        /// The assembly. 
+        /// </param>
+        public static void RegisterUnits(this IUnitProvider unitProvider, Assembly assembly)
+        {
+            foreach (var t in assembly.GetTypes())
+            {
+                if (typeof(IQuantity).IsAssignableFrom(t))
+                {
+                    unitProvider.RegisterUnits(t);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Registers the unit properties in the specified type.
+        /// </summary>
+        /// <param name="unitProvider">
+        /// The unit provider. 
+        /// </param>
+        /// <param name="type">
+        /// The type. 
+        /// </param>
+        public static void RegisterUnits(this IUnitProvider unitProvider, Type type)
+        {
+            foreach (var property in type.GetProperties(BindingFlags.Static | BindingFlags.Public))
+            {
+                foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
+                {
+                    unitProvider.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Symbol);
+
+                    if (ua.IsDefaultDisplayUnit)
+                    {
+                        var unit = (IQuantity)property.GetValue(null, null);
+                        unitProvider.TrySetDisplayUnit(unit.GetType(), ua.Symbol);
+                    }
+                }
+            }
+        }
+
     }
 }

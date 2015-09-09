@@ -9,9 +9,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Case sensitive unit prefixes
 - Switch PCL project to profile 328
+- Refactor UnitProvider.RegisterUnits to extension methods (#6)
 
 ### Removed
--
+- 
 
 ### Fixed
 - Support parsing of "'" units (#20)
