@@ -3,10 +3,11 @@ version: 1.0.{build}
 environment:
   nuget_api_key:
     secure: kM3Kse+ivuuE5RVoe6dPdw+aguWx56K2YeXujGa9tMPQTms3lv7QxNpTLFMALYNa
-      
+
 install:
   - cinst LynxToolkit
-  
+  - cinst gitlink -Pre -y
+
 platform: Any CPU
 
 configuration: Release
@@ -19,10 +20,14 @@ build:
   project: Source/QuantityTypes.sln
   verbosity: minimal
 
+after_build:
+    cmd: gitlink c:\projects\QuantityTypes -u https://github.com/objorke/QuantityTypes -b master -f Source/QuantityTypes.sln
+
 deploy_script:
   - cmd: mkdir Packages
   - cmd: NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -OutputDirectory Packages
   - cmd: for %%G in (Packages\*.nupkg) do NuGet push %%G %nuget_api_key%
+
 artifacts:
   - path: Output
     name: QuantityTypes-$(APPVEYOR_BUILD_VERSION)
