@@ -13,4 +13,4 @@ All notable changes to this project will be documented in this file.
 -
 
 ### Fixed
-- 
+- Support parsing of "'" units (#20)

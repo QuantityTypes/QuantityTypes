@@ -32,7 +32,22 @@ namespace QuantityTypes
             s = s.Replace(" ", string.Empty);
 
             // find the index where the unit starts
-            int unitIndex = 0;
+            var unitIndex = 0;
+            Func<char, bool> isDecimalSeparator = c => false;
+            Func<char, bool> isGroupSeparator = c => false;
+            var ci = provider as CultureInfo ?? CultureInfo.CurrentCulture;
+            var ngs = ci.NumberFormat.NumberGroupSeparator;
+            if (ngs != null)
+            {
+                isGroupSeparator = c => ngs.Contains(c.ToString());
+            }
+
+            var nds = ci.NumberFormat.NumberDecimalSeparator;
+            if (nds != null)
+            {
+                isDecimalSeparator = c => nds.Contains(c.ToString());
+            }
+
             while (unitIndex < s.Length)
             {
                 var c = s[unitIndex];
@@ -43,19 +58,20 @@ namespace QuantityTypes
                     // check if it is followed by a digit or '-'/'+', otherwise it might be a unit
                     if (unitIndex + 1 < s.Length && (char.IsDigit(s[unitIndex + 1]) || s[unitIndex + 1] == '-' || s[unitIndex + 1] == '+'))
                     {
-                        unitIndex++;
+                        unitIndex += 2;
                         continue;
                     }
                 }
 
-                if (char.IsLetter(c) || c == '%' || c == '°')
+                if (char.IsDigit(c) || char.IsWhiteSpace(c) || c == '+' || c == '-' || isDecimalSeparator(c) || isGroupSeparator(c))
                 {
-                    // unit starts here
-                    break;
+                    // digit, decimal or numeric group separator, continue
+                    unitIndex++;
+                    continue;
                 }
 
-                // digit or numeric group separator, continue
-                unitIndex++;
+                // unit starts here
+                break;
             }
 
             var valueString = unitIndex > 0 ? s.Substring(0, unitIndex) : string.Empty;
