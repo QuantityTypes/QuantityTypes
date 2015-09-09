@@ -200,18 +200,18 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "ftH20" unit.
+        /// Gets the "ftH2O" unit.
         /// </summary>
-        [Unit("ftH20")]
+        [Unit("ftH2O")]
         public static Pressure FootOfWater
         {
             get { return FootOfWaterField; }
         }
 
         /// <summary>
-        /// Gets the "inH20" unit.
+        /// Gets the "inH2O" unit.
         /// </summary>
-        [Unit("inH20")]
+        [Unit("inH2O")]
         public static Pressure InchOfWater
         {
             get { return InchOfWaterField; }

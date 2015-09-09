@@ -126,8 +126,8 @@ Pressure,Bar,bar,1e5
 Pressure,Megapascal,Megapascal,1000000
 Pressure,Atmosphere,atm,101325
 Pressure,InchOfMercury,inHg,3.386389e3
-Pressure,FootOfWater,ftH20,0.433527501928
-Pressure,InchOfWater,inH20,0.0361272918274
+Pressure,FootOfWater,ftH2O,0.433527501928
+Pressure,InchOfWater,inH2O,0.0361272918274
 
 // Torque or moment of force
 Torque,NewtonMetre,N*m,1
