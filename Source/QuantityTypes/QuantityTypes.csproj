@@ -61,6 +61,9 @@
     <Compile Include="Extensions\QuantityExtensions.cs" />
     <Compile Include="Operators\Capacitance.cs" />
     <Compile Include="Operators\ElectricConductance.cs" />
+    <Compile Include="Operators\Fraction.cs" />
+    <Compile Include="Operators\VolumetricWaterContent.cs" />
+    <Compile Include="Operators\MassConcentrationInWater.cs" />
     <Compile Include="Operators\MassConcentration.cs" />
     <Compile Include="Operators\Power.cs" />
     <Compile Include="Operators\ElectricCharge.cs" />
@@ -81,6 +84,15 @@
     <Compile Include="Quantities\MassConcentration.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Quantities\MassConcentrationInWater.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantities\PrecipitationIntensity.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantities\TemperatureChange.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Quantities\TimeSquared.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
@@ -91,6 +103,9 @@
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\VelocitySquared.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantities\VolumetricWaterContent.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitProvider\IUnitProvider.cs" />
