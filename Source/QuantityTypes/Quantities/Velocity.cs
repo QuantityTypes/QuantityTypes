@@ -49,6 +49,16 @@ namespace QuantityTypes
         private static readonly Velocity KnotField = new Velocity(0.514444444444444);
 
         /// <summary>
+        /// The backing field for the <see cref="FootPerSecond" /> property.
+        /// </summary>
+        private static readonly Velocity FootPerSecondField = new Velocity(0.3048);
+
+        /// <summary>
+        /// The backing field for the <see cref="MilePerHour" /> property.
+        /// </summary>
+        private static readonly Velocity MilePerHourField = new Velocity(0.44704);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -103,6 +113,24 @@ namespace QuantityTypes
         public static Velocity Knot
         {
             get { return KnotField; }
+        }
+
+        /// <summary>
+        /// Gets the "ft/s" unit.
+        /// </summary>
+        [Unit("ft/s")]
+        public static Velocity FootPerSecond
+        {
+            get { return FootPerSecondField; }
+        }
+
+        /// <summary>
+        /// Gets the "mph" unit.
+        /// </summary>
+        [Unit("mph")]
+        public static Velocity MilePerHour
+        {
+            get { return MilePerHourField; }
         }
 
         /// <summary>

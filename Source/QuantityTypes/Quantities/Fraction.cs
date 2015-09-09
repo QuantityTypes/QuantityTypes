@@ -54,6 +54,11 @@ namespace QuantityTypes
         private static readonly Fraction PartPerMillionField = new Fraction(1E-06);
 
         /// <summary>
+        /// The backing field for the <see cref="PartPerBillion" /> property.
+        /// </summary>
+        private static readonly Fraction PartPerBillionField = new Fraction(1E-09);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -117,6 +122,15 @@ namespace QuantityTypes
         public static Fraction PartPerMillion
         {
             get { return PartPerMillionField; }
+        }
+
+        /// <summary>
+        /// Gets the "ppb" unit.
+        /// </summary>
+        [Unit("ppb")]
+        public static Fraction PartPerBillion
+        {
+            get { return PartPerBillionField; }
         }
 
         /// <summary>

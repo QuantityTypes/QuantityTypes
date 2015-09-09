@@ -44,6 +44,11 @@ namespace QuantityTypes
         private static readonly Acceleration StandardGravityField = new Acceleration(9.80665);
 
         /// <summary>
+        /// The backing field for the <see cref="FootPerSecondSquared" /> property.
+        /// </summary>
+        private static readonly Acceleration FootPerSecondSquaredField = new Acceleration(0.3048);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -89,6 +94,15 @@ namespace QuantityTypes
         public static Acceleration StandardGravity
         {
             get { return StandardGravityField; }
+        }
+
+        /// <summary>
+        /// Gets the "ft/s^2" unit.
+        /// </summary>
+        [Unit("ft/s^2")]
+        public static Acceleration FootPerSecondSquared
+        {
+            get { return FootPerSecondSquaredField; }
         }
 
         /// <summary>
