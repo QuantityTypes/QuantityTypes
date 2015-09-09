@@ -21,7 +21,7 @@ build:
   verbosity: minimal
 
 after_build:
-    cmd: gitlink c:\projects\QuantityTypes -u https://github.com/objorke/QuantityTypes -b master -f Source/QuantityTypes.sln
+    cmd: gitlink c:\projects\QuantityTypes -u https://github.com/objorke/QuantityTypes -b master -f Source/QuantityTypes.sln -ignore QuantityTypes.Tests,WpfExample,PerformanceTest
 
 deploy_script:
   - cmd: mkdir Packages
