@@ -34,9 +34,9 @@ namespace QuantityTypes
     public partial struct TemperatureChange : IQuantity<TemperatureChange>
     {
         /// <summary>
-        /// The backing field for the <see cref="DegreeKelvinPerSecond" /> property.
+        /// The backing field for the <see cref="KelvinPerSecond" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeKelvinPerSecondField = new TemperatureChange(1);
+        private static readonly TemperatureChange KelvinPerSecondField = new TemperatureChange(1);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsiusPerSecond" /> property.
@@ -49,9 +49,9 @@ namespace QuantityTypes
         private static readonly TemperatureChange DegreeFahrenheitPerSecondField = new TemperatureChange(5.0 / 9.0);
 
         /// <summary>
-        /// The backing field for the <see cref="DegreeKelvinPerHour" /> property.
+        /// The backing field for the <see cref="KelvinPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeKelvinPerHourField = new TemperatureChange(1.0 / 60.0);
+        private static readonly TemperatureChange KelvinPerHourField = new TemperatureChange(1.0 / 60.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsiusPerHour" /> property.
@@ -97,9 +97,9 @@ namespace QuantityTypes
         /// Gets the "K/s" unit.
         /// </summary>
         [Unit("K/s", true)]
-        public static TemperatureChange DegreeKelvinPerSecond
+        public static TemperatureChange KelvinPerSecond
         {
-            get { return DegreeKelvinPerSecondField; }
+            get { return KelvinPerSecondField; }
         }
 
         /// <summary>
@@ -124,9 +124,9 @@ namespace QuantityTypes
         /// Gets the "K/hr" unit.
         /// </summary>
         [Unit("K/hr")]
-        public static TemperatureChange DegreeKelvinPerHour
+        public static TemperatureChange KelvinPerHour
         {
-            get { return DegreeKelvinPerHourField; }
+            get { return KelvinPerHourField; }
         }
 
         /// <summary>
