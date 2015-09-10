@@ -41,7 +41,7 @@ namespace QuantityTypes.Tests
             var t2 = Temperature.Parse("300K");
             var t3 = 0 * Temperature.DegreeFahrenheit;
             var t4 = Temperature.Parse("300C");
-            var b5 = (0 * Temperature.DegreeCelsius).Equals(273.15 * Temperature.DegreeKelvin);
+            var b5 = (0 * Temperature.DegreeCelsius).Equals(273.15 * Temperature.Kelvin);
             UnitProvider.Default.TrySetDisplayUnit<Temperature>("F");
 
             var mf = Force.Newton * Length.Metre;

@@ -31,7 +31,7 @@ namespace QuantityTypes.Tests
         {
             Assert.AreEqual(100, (37.7777778 * Temperature.DegreeCelsius).ConvertTo(Temperature.DegreeFahrenheit), 1e-4);
             Assert.AreEqual(0, (32 * Temperature.DegreeFahrenheit).ConvertTo(Temperature.DegreeCelsius));
-            Assert.AreEqual(273.15, (0 * Temperature.DegreeCelsius).ConvertTo(Temperature.DegreeKelvin));
+            Assert.AreEqual(273.15, (0 * Temperature.DegreeCelsius).ConvertTo(Temperature.Kelvin));
         }
 
         [Test]
@@ -45,9 +45,12 @@ namespace QuantityTypes.Tests
         public void Parse_ValidStrings()
         {
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("100 C"));
+            Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("100 °C"));
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("100 degC"));
             Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("273.15 K", CultureInfo.InvariantCulture));
             Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("32 F"));
+            Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("32 °F"));
+            Assert.AreEqual(0 * Temperature.DegreeCelsius, Temperature.Parse("32 degF"));
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("1e2"));
             Assert.AreEqual(100 * Temperature.DegreeCelsius, Temperature.Parse("1e2C"));
         }
