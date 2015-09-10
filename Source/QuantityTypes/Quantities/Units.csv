@@ -112,7 +112,7 @@ Velocity,MilePerHour,mph,0.44704
 Flow,CubicMetrePerSecond,m^3/s,1
 Flow,LitrePerMinute,L/min,1.6e-5
 Flow,CubicFootPerSecond,ft^3/s,2.8316846592e-2
-Flow,GallonPerMinute,gpm,6.309019640e5
+Flow,GallonPerMinute,gpm,6.309019640e-5
 Flow,MillionGallonPerDay,MGD,4.381263639e-2
 
 // Precipitation Intensity
