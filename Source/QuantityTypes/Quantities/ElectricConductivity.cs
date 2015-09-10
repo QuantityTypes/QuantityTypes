@@ -111,9 +111,9 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "uS" unit.
+        /// Gets the "uS/cm" unit.
         /// </summary>
-        [Unit("uS")]
+        [Unit("uS/cm")]
         public static ElectricConductivity MicrosiemensPerCentimeter
         {
             get { return MicrosiemensPerCentimeterField; }

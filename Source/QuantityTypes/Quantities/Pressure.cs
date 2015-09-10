@@ -81,12 +81,12 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="FootOfWater" /> property.
         /// </summary>
-        private static readonly Pressure FootOfWaterField = new Pressure(0.433527501928);
+        private static readonly Pressure FootOfWaterField = new Pressure(2.98898e3);
 
         /// <summary>
         /// The backing field for the <see cref="InchOfWater" /> property.
         /// </summary>
-        private static readonly Pressure InchOfWaterField = new Pressure(0.0361272918274);
+        private static readonly Pressure InchOfWaterField = new Pressure(2.49082e2);
 
         /// <summary>
         /// The value.

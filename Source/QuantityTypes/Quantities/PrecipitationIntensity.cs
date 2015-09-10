@@ -44,9 +44,14 @@ namespace QuantityTypes
         private static readonly PrecipitationIntensity MillimetresPerMinuteField = new PrecipitationIntensity(60);
 
         /// <summary>
+        /// The backing field for the <see cref="MillimetresPerSecond" /> property.
+        /// </summary>
+        private static readonly PrecipitationIntensity MillimetresPerSecondField = new PrecipitationIntensity(3600);
+
+        /// <summary>
         /// The backing field for the <see cref="MillimetresPerDay" /> property.
         /// </summary>
-        private static readonly PrecipitationIntensity MillimetresPerDayField = new PrecipitationIntensity(1 / 24);
+        private static readonly PrecipitationIntensity MillimetresPerDayField = new PrecipitationIntensity(1.0 / 24);
 
         /// <summary>
         /// The backing field for the <see cref="InchesPerHour" /> property.
@@ -57,6 +62,11 @@ namespace QuantityTypes
         /// The backing field for the <see cref="InchesPerMinute" /> property.
         /// </summary>
         private static readonly PrecipitationIntensity InchesPerMinuteField = new PrecipitationIntensity(1524);
+
+        /// <summary>
+        /// The backing field for the <see cref="InchesPerSecond" /> property.
+        /// </summary>
+        private static readonly PrecipitationIntensity InchesPerSecondField = new PrecipitationIntensity(9.1440e4);
 
         /// <summary>
         /// The backing field for the <see cref="InchesPerDay" /> property.
@@ -103,12 +113,21 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "mm/m" unit.
+        /// Gets the "mm/min" unit.
         /// </summary>
-        [Unit("mm/m")]
+        [Unit("mm/min")]
         public static PrecipitationIntensity MillimetresPerMinute
         {
             get { return MillimetresPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "mm/s" unit.
+        /// </summary>
+        [Unit("mm/s")]
+        public static PrecipitationIntensity MillimetresPerSecond
+        {
+            get { return MillimetresPerSecondField; }
         }
 
         /// <summary>
@@ -130,12 +149,21 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "in/m" unit.
+        /// Gets the "in/min" unit.
         /// </summary>
-        [Unit("in/m")]
+        [Unit("in/min")]
         public static PrecipitationIntensity InchesPerMinute
         {
             get { return InchesPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "in/s" unit.
+        /// </summary>
+        [Unit("in/s")]
+        public static PrecipitationIntensity InchesPerSecond
+        {
+            get { return InchesPerSecondField; }
         }
 
         /// <summary>

@@ -117,10 +117,12 @@ Flow,MillionGallonPerDay,MGD,4.381263639e-2
 
 // Precipitation Intensity
 PrecipitationIntensity,MillimetresPerHour,mm/h,1
-PrecipitationIntensity,MillimetresPerMinute,mm/m,60
-PrecipitationIntensity,MillimetresPerDay,mm/d,1 / 24
+PrecipitationIntensity,MillimetresPerMinute,mm/min,60
+PrecipitationIntensity,MillimetresPerSecond,mm/s,3600
+PrecipitationIntensity,MillimetresPerDay,mm/d,1.0 / 24
 PrecipitationIntensity,InchesPerHour,in/h,25.4
-PrecipitationIntensity,InchesPerMinute,in/m,1524
+PrecipitationIntensity,InchesPerMinute,in/min,1524
+PrecipitationIntensity,InchesPerSecond,in/s,9.1440e4
 PrecipitationIntensity,InchesPerDay,in/d,25.4 / 24
 
 // Acceleration
@@ -143,8 +145,8 @@ Pressure,Bar,bar,1e5
 Pressure,Megapascal,Megapascal,1000000
 Pressure,Atmosphere,atm,101325
 Pressure,InchOfMercury,inHg,3.386389e3
-Pressure,FootOfWater,ftH2O,0.433527501928
-Pressure,InchOfWater,inH2O,0.0361272918274
+Pressure,FootOfWater,ftH2O,2.98898e3
+Pressure,InchOfWater,inH2O,2.49082e2
 
 // Torque or moment of force
 Torque,NewtonMetre,N*m,1
@@ -217,7 +219,7 @@ ElectricConductance,Megasiemens,MS,1e6
 ElectricConductivity,SiemensPerMetre,S/m,1
 ElectricConductivity,SiemensPerCentimeter,S/cm,1e2
 ElectricConductivity,MillisiemensPerCentimeter,mS/cm,1e-1
-ElectricConductivity,MicrosiemensPerCentimeter,uS,1e-4
+ElectricConductivity,MicrosiemensPerCentimeter,uS/cm,1e-4
 
 // Capacitance
 Capacitance,Farad,F,1
