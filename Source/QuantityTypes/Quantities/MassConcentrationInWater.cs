@@ -5,11 +5,11 @@
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
 // </auto-generated>
-// <copyright file="ElectricConductivity.cs" company="QuantityTypes">
+// <copyright file="MassConcentrationInWater.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Represents the electric conductivity quantity.
+//   Represents the mass concentration in water quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,34 +24,29 @@ namespace QuantityTypes
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents the electric conductivity quantity.
+    /// Represents the mass concentration in water quantity.
     /// </summary>
     [DataContract]
 #if !PCL
     [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<ElectricConductivity>))]
+    [TypeConverter(typeof(QuantityTypeConverter<MassConcentrationInWater>))]
 #endif
-    public partial struct ElectricConductivity : IQuantity<ElectricConductivity>
+    public partial struct MassConcentrationInWater : IQuantity<MassConcentrationInWater>
     {
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerMetre" /> property.
+        /// The backing field for the <see cref="KilogramPerCubicMetre" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerMetreField = new ElectricConductivity(1);
+        private static readonly MassConcentrationInWater KilogramPerCubicMetreField = new MassConcentrationInWater(1);
 
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="MilligramPerLitre" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerCentimeterField = new ElectricConductivity(1e2);
+        private static readonly MassConcentrationInWater MilligramPerLitreField = new MassConcentrationInWater(1e-3);
 
         /// <summary>
-        /// The backing field for the <see cref="MillisiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="MicrogramPerLitre" /> property.
         /// </summary>
-        private static readonly ElectricConductivity MillisiemensPerCentimeterField = new ElectricConductivity(1e-1);
-
-        /// <summary>
-        /// The backing field for the <see cref="MicrosiemensPerCentimeter" /> property.
-        /// </summary>
-        private static readonly ElectricConductivity MicrosiemensPerCentimeterField = new ElectricConductivity(1e-4);
+        private static readonly MassConcentrationInWater MicrogramPerLitreField = new MassConcentrationInWater(1e-6);
 
         /// <summary>
         /// The value.
@@ -59,18 +54,18 @@ namespace QuantityTypes
         private double value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="MassConcentrationInWater"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
         /// </param>
-        public ElectricConductivity(double value)
+        public MassConcentrationInWater(double value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="MassConcentrationInWater"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
@@ -78,49 +73,40 @@ namespace QuantityTypes
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        public ElectricConductivity(string value, IUnitProvider unitProvider = null)
+        public MassConcentrationInWater(string value, IUnitProvider unitProvider = null)
         {
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
         /// <summary>
-        /// Gets the "S/m" unit.
+        /// Gets the "kg/m^3" unit.
         /// </summary>
-        [Unit("S/m", true)]
-        public static ElectricConductivity SiemensPerMetre
+        [Unit("kg/m^3", true)]
+        public static MassConcentrationInWater KilogramPerCubicMetre
         {
-            get { return SiemensPerMetreField; }
+            get { return KilogramPerCubicMetreField; }
         }
 
         /// <summary>
-        /// Gets the "S/cm" unit.
+        /// Gets the "mg/L" unit.
         /// </summary>
-        [Unit("S/cm")]
-        public static ElectricConductivity SiemensPerCentimeter
+        [Unit("mg/L")]
+        public static MassConcentrationInWater MilligramPerLitre
         {
-            get { return SiemensPerCentimeterField; }
+            get { return MilligramPerLitreField; }
         }
 
         /// <summary>
-        /// Gets the "mS/cm" unit.
+        /// Gets the "ug/L" unit.
         /// </summary>
-        [Unit("mS/cm")]
-        public static ElectricConductivity MillisiemensPerCentimeter
+        [Unit("ug/L")]
+        public static MassConcentrationInWater MicrogramPerLitre
         {
-            get { return MillisiemensPerCentimeterField; }
+            get { return MicrogramPerLitreField; }
         }
 
         /// <summary>
-        /// Gets the "uS/cm" unit.
-        /// </summary>
-        [Unit("uS/cm")]
-        public static ElectricConductivity MicrosiemensPerCentimeter
-        {
-            get { return MicrosiemensPerCentimeterField; }
-        }
-
-        /// <summary>
-        /// Gets or sets the electric conductivity as a string.
+        /// Gets or sets the mass concentration in water as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -143,7 +129,7 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the value of the electric conductivity in the base unit.
+        /// Gets the value of the mass concentration in water in the base unit.
         /// </summary>
         public double Value
         {
@@ -166,16 +152,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="MassConcentrationInWater"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
+        public static MassConcentrationInWater Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            MassConcentrationInWater value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -194,13 +180,13 @@ namespace QuantityTypes
         /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="MassConcentrationInWater"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider = null)
+        public static MassConcentrationInWater Parse(string input, IFormatProvider provider = null)
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            ElectricConductivity value;
+            MassConcentrationInWater value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -219,16 +205,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="MassConcentrationInWater"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IUnitProvider unitProvider)
+        public static MassConcentrationInWater Parse(string input, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            MassConcentrationInWater value;
             if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -245,7 +231,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">The unit provider.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out ElectricConductivity result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out MassConcentrationInWater result)
         {
             if (unitProvider == null)
             {
@@ -260,9 +246,9 @@ namespace QuantityTypes
         /// </summary>
         /// <param name="input">The JSON input.</param>
         /// <returns>
-        /// The <see cref="ElectricConductivity"/> .
+        /// The <see cref="MassConcentrationInWater"/> .
         /// </returns>
-        public static ElectricConductivity ParseJson(string input)
+        public static MassConcentrationInWater ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
         }
@@ -279,9 +265,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x, ElectricConductivity y)
+        public static MassConcentrationInWater operator +(MassConcentrationInWater x, MassConcentrationInWater y)
         {
-            return new ElectricConductivity(x.value + y.value);
+            return new MassConcentrationInWater(x.value + y.value);
         }
 
         /// <summary>
@@ -296,9 +282,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator /(ElectricConductivity x, double y)
+        public static MassConcentrationInWater operator /(MassConcentrationInWater x, double y)
         {
-            return new ElectricConductivity(x.value / y);
+            return new MassConcentrationInWater(x.value / y);
         }
 
         /// <summary>
@@ -313,7 +299,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static double operator /(ElectricConductivity x, ElectricConductivity y)
+        public static double operator /(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return x.value / y.value;
         }
@@ -330,7 +316,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator ==(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator ==(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return x.value.Equals(y.value);
         }
@@ -347,7 +333,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return x.value > y.value;
         }
@@ -364,7 +350,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >=(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return x.value >= y.value;
         }
@@ -381,7 +367,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator !=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator !=(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return !x.value.Equals(y.value);
         }
@@ -398,7 +384,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return x.value < y.value;
         }
@@ -415,7 +401,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <=(MassConcentrationInWater x, MassConcentrationInWater y)
         {
             return x.value <= y.value;
         }
@@ -432,9 +418,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(double x, ElectricConductivity y)
+        public static MassConcentrationInWater operator *(double x, MassConcentrationInWater y)
         {
-            return new ElectricConductivity(x * y.value);
+            return new MassConcentrationInWater(x * y.value);
         }
 
         /// <summary>
@@ -449,9 +435,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(ElectricConductivity x, double y)
+        public static MassConcentrationInWater operator *(MassConcentrationInWater x, double y)
         {
-            return new ElectricConductivity(x.value * y);
+            return new MassConcentrationInWater(x.value * y);
         }
 
         /// <summary>
@@ -466,9 +452,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x, ElectricConductivity y)
+        public static MassConcentrationInWater operator -(MassConcentrationInWater x, MassConcentrationInWater y)
         {
-            return new ElectricConductivity(x.value - y.value);
+            return new MassConcentrationInWater(x.value - y.value);
         }
 
         /// <summary>
@@ -480,9 +466,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x)
+        public static MassConcentrationInWater operator +(MassConcentrationInWater x)
         {
-            return new ElectricConductivity(x.value);
+            return new MassConcentrationInWater(x.value);
         }
 
         /// <summary>
@@ -494,21 +480,21 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x)
+        public static MassConcentrationInWater operator -(MassConcentrationInWater x)
         {
-            return new ElectricConductivity(-x.value);
+            return new MassConcentrationInWater(-x.value);
         }
 
         /// <summary>
-        /// Compares this instance to the specified <see cref="ElectricConductivity"/> and returns an indication of their relative values.
+        /// Compares this instance to the specified <see cref="MassConcentrationInWater"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="MassConcentrationInWater"/> . 
         /// </param>
         /// <returns>
         /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
-        public int CompareTo(ElectricConductivity other)
+        public int CompareTo(MassConcentrationInWater other)
         {
             return this.value.CompareTo(other.value);
         }
@@ -525,7 +511,7 @@ namespace QuantityTypes
         /// </returns>
         public int CompareTo(object obj)
         {
-            return this.CompareTo((ElectricConductivity)obj);
+            return this.CompareTo((MassConcentrationInWater)obj);
         }
 
         /// <summary>
@@ -535,7 +521,7 @@ namespace QuantityTypes
         /// <returns>The amount of the specified unit.</returns>
         double IQuantity.ConvertTo(IQuantity unit)
         {
-            return this.ConvertTo((ElectricConductivity)unit);
+            return this.ConvertTo((MassConcentrationInWater)unit);
         }
 
         /// <summary>
@@ -547,7 +533,7 @@ namespace QuantityTypes
         /// <returns>
         /// The value in the specified unit. 
         /// </returns>
-        public double ConvertTo(ElectricConductivity unit)
+        public double ConvertTo(MassConcentrationInWater unit)
         {
             return this.value / unit.Value;
         }
@@ -563,24 +549,24 @@ namespace QuantityTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is ElectricConductivity)
+            if (obj is MassConcentrationInWater)
             {
-                return this.Equals((ElectricConductivity)obj);
+                return this.Equals((MassConcentrationInWater)obj);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Determines if the specified <see cref="ElectricConductivity"/> is equal to this instance.
+        /// Determines if the specified <see cref="MassConcentrationInWater"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="MassConcentrationInWater"/> . 
         /// </param>
         /// <returns>
         /// True if the values are equal. 
         /// </returns>
-        public bool Equals(ElectricConductivity other)
+        public bool Equals(MassConcentrationInWater other)
         {
             return this.value.Equals(other.value);
         }
@@ -613,12 +599,12 @@ namespace QuantityTypes
         /// <returns>The sum.</returns>
         public IQuantity Add(IQuantity x)
         {
-            if (!(x is ElectricConductivity))
+            if (!(x is MassConcentrationInWater))
             {
                 throw new InvalidOperationException("Can only add quantities of the same types.");
             }
 
-            return new ElectricConductivity(this.value + x.Value);
+            return new MassConcentrationInWater(this.value + x.Value);
         }
 
         /// <summary>

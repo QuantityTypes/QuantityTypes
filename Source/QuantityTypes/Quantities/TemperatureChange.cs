@@ -5,11 +5,11 @@
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
 // </auto-generated>
-// <copyright file="ElectricConductivity.cs" company="QuantityTypes">
+// <copyright file="TemperatureChange.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Represents the electric conductivity quantity.
+//   Represents the temperature change quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,34 +24,44 @@ namespace QuantityTypes
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents the electric conductivity quantity.
+    /// Represents the temperature change quantity.
     /// </summary>
     [DataContract]
 #if !PCL
     [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<ElectricConductivity>))]
+    [TypeConverter(typeof(QuantityTypeConverter<TemperatureChange>))]
 #endif
-    public partial struct ElectricConductivity : IQuantity<ElectricConductivity>
+    public partial struct TemperatureChange : IQuantity<TemperatureChange>
     {
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerMetre" /> property.
+        /// The backing field for the <see cref="KelvinPerSecond" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerMetreField = new ElectricConductivity(1);
+        private static readonly TemperatureChange KelvinPerSecondField = new TemperatureChange(1);
 
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="DegreeCelsiusPerSecond" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerCentimeterField = new ElectricConductivity(1e2);
+        private static readonly TemperatureChange DegreeCelsiusPerSecondField = new TemperatureChange(1);
 
         /// <summary>
-        /// The backing field for the <see cref="MillisiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="DegreeFahrenheitPerSecond" /> property.
         /// </summary>
-        private static readonly ElectricConductivity MillisiemensPerCentimeterField = new ElectricConductivity(1e-1);
+        private static readonly TemperatureChange DegreeFahrenheitPerSecondField = new TemperatureChange(5.0 / 9.0);
 
         /// <summary>
-        /// The backing field for the <see cref="MicrosiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="KelvinPerHour" /> property.
         /// </summary>
-        private static readonly ElectricConductivity MicrosiemensPerCentimeterField = new ElectricConductivity(1e-4);
+        private static readonly TemperatureChange KelvinPerHourField = new TemperatureChange(1.0 / 60.0);
+
+        /// <summary>
+        /// The backing field for the <see cref="DegreeCelsiusPerHour" /> property.
+        /// </summary>
+        private static readonly TemperatureChange DegreeCelsiusPerHourField = new TemperatureChange(1.0 / 60.0);
+
+        /// <summary>
+        /// The backing field for the <see cref="DegreeFahrenheitPerHour" /> property.
+        /// </summary>
+        private static readonly TemperatureChange DegreeFahrenheitPerHourField = new TemperatureChange(5.0 / 540.0);
 
         /// <summary>
         /// The value.
@@ -59,18 +69,18 @@ namespace QuantityTypes
         private double value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="TemperatureChange"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
         /// </param>
-        public ElectricConductivity(double value)
+        public TemperatureChange(double value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="TemperatureChange"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
@@ -78,49 +88,67 @@ namespace QuantityTypes
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        public ElectricConductivity(string value, IUnitProvider unitProvider = null)
+        public TemperatureChange(string value, IUnitProvider unitProvider = null)
         {
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
         /// <summary>
-        /// Gets the "S/m" unit.
+        /// Gets the "K/s" unit.
         /// </summary>
-        [Unit("S/m", true)]
-        public static ElectricConductivity SiemensPerMetre
+        [Unit("K/s", true)]
+        public static TemperatureChange KelvinPerSecond
         {
-            get { return SiemensPerMetreField; }
+            get { return KelvinPerSecondField; }
         }
 
         /// <summary>
-        /// Gets the "S/cm" unit.
+        /// Gets the "C/s" unit.
         /// </summary>
-        [Unit("S/cm")]
-        public static ElectricConductivity SiemensPerCentimeter
+        [Unit("C/s")]
+        public static TemperatureChange DegreeCelsiusPerSecond
         {
-            get { return SiemensPerCentimeterField; }
+            get { return DegreeCelsiusPerSecondField; }
         }
 
         /// <summary>
-        /// Gets the "mS/cm" unit.
+        /// Gets the "F/s" unit.
         /// </summary>
-        [Unit("mS/cm")]
-        public static ElectricConductivity MillisiemensPerCentimeter
+        [Unit("F/s")]
+        public static TemperatureChange DegreeFahrenheitPerSecond
         {
-            get { return MillisiemensPerCentimeterField; }
+            get { return DegreeFahrenheitPerSecondField; }
         }
 
         /// <summary>
-        /// Gets the "uS/cm" unit.
+        /// Gets the "K/hr" unit.
         /// </summary>
-        [Unit("uS/cm")]
-        public static ElectricConductivity MicrosiemensPerCentimeter
+        [Unit("K/hr")]
+        public static TemperatureChange KelvinPerHour
         {
-            get { return MicrosiemensPerCentimeterField; }
+            get { return KelvinPerHourField; }
         }
 
         /// <summary>
-        /// Gets or sets the electric conductivity as a string.
+        /// Gets the "C/hr" unit.
+        /// </summary>
+        [Unit("C/hr")]
+        public static TemperatureChange DegreeCelsiusPerHour
+        {
+            get { return DegreeCelsiusPerHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "F/hr" unit.
+        /// </summary>
+        [Unit("F/hr")]
+        public static TemperatureChange DegreeFahrenheitPerHour
+        {
+            get { return DegreeFahrenheitPerHourField; }
+        }
+
+        /// <summary>
+        /// Gets or sets the temperature change as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -143,7 +171,7 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the value of the electric conductivity in the base unit.
+        /// Gets the value of the temperature change in the base unit.
         /// </summary>
         public double Value
         {
@@ -166,16 +194,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
+        public static TemperatureChange Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            TemperatureChange value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -194,13 +222,13 @@ namespace QuantityTypes
         /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider = null)
+        public static TemperatureChange Parse(string input, IFormatProvider provider = null)
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            ElectricConductivity value;
+            TemperatureChange value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -219,16 +247,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IUnitProvider unitProvider)
+        public static TemperatureChange Parse(string input, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            TemperatureChange value;
             if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -245,7 +273,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">The unit provider.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out ElectricConductivity result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out TemperatureChange result)
         {
             if (unitProvider == null)
             {
@@ -260,9 +288,9 @@ namespace QuantityTypes
         /// </summary>
         /// <param name="input">The JSON input.</param>
         /// <returns>
-        /// The <see cref="ElectricConductivity"/> .
+        /// The <see cref="TemperatureChange"/> .
         /// </returns>
-        public static ElectricConductivity ParseJson(string input)
+        public static TemperatureChange ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
         }
@@ -279,9 +307,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x, ElectricConductivity y)
+        public static TemperatureChange operator +(TemperatureChange x, TemperatureChange y)
         {
-            return new ElectricConductivity(x.value + y.value);
+            return new TemperatureChange(x.value + y.value);
         }
 
         /// <summary>
@@ -296,9 +324,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator /(ElectricConductivity x, double y)
+        public static TemperatureChange operator /(TemperatureChange x, double y)
         {
-            return new ElectricConductivity(x.value / y);
+            return new TemperatureChange(x.value / y);
         }
 
         /// <summary>
@@ -313,7 +341,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static double operator /(ElectricConductivity x, ElectricConductivity y)
+        public static double operator /(TemperatureChange x, TemperatureChange y)
         {
             return x.value / y.value;
         }
@@ -330,7 +358,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator ==(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator ==(TemperatureChange x, TemperatureChange y)
         {
             return x.value.Equals(y.value);
         }
@@ -347,7 +375,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >(TemperatureChange x, TemperatureChange y)
         {
             return x.value > y.value;
         }
@@ -364,7 +392,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >=(TemperatureChange x, TemperatureChange y)
         {
             return x.value >= y.value;
         }
@@ -381,7 +409,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator !=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator !=(TemperatureChange x, TemperatureChange y)
         {
             return !x.value.Equals(y.value);
         }
@@ -398,7 +426,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <(TemperatureChange x, TemperatureChange y)
         {
             return x.value < y.value;
         }
@@ -415,7 +443,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <=(TemperatureChange x, TemperatureChange y)
         {
             return x.value <= y.value;
         }
@@ -432,9 +460,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(double x, ElectricConductivity y)
+        public static TemperatureChange operator *(double x, TemperatureChange y)
         {
-            return new ElectricConductivity(x * y.value);
+            return new TemperatureChange(x * y.value);
         }
 
         /// <summary>
@@ -449,9 +477,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(ElectricConductivity x, double y)
+        public static TemperatureChange operator *(TemperatureChange x, double y)
         {
-            return new ElectricConductivity(x.value * y);
+            return new TemperatureChange(x.value * y);
         }
 
         /// <summary>
@@ -466,9 +494,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x, ElectricConductivity y)
+        public static TemperatureChange operator -(TemperatureChange x, TemperatureChange y)
         {
-            return new ElectricConductivity(x.value - y.value);
+            return new TemperatureChange(x.value - y.value);
         }
 
         /// <summary>
@@ -480,9 +508,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x)
+        public static TemperatureChange operator +(TemperatureChange x)
         {
-            return new ElectricConductivity(x.value);
+            return new TemperatureChange(x.value);
         }
 
         /// <summary>
@@ -494,21 +522,21 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x)
+        public static TemperatureChange operator -(TemperatureChange x)
         {
-            return new ElectricConductivity(-x.value);
+            return new TemperatureChange(-x.value);
         }
 
         /// <summary>
-        /// Compares this instance to the specified <see cref="ElectricConductivity"/> and returns an indication of their relative values.
+        /// Compares this instance to the specified <see cref="TemperatureChange"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="TemperatureChange"/> . 
         /// </param>
         /// <returns>
         /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
-        public int CompareTo(ElectricConductivity other)
+        public int CompareTo(TemperatureChange other)
         {
             return this.value.CompareTo(other.value);
         }
@@ -525,7 +553,7 @@ namespace QuantityTypes
         /// </returns>
         public int CompareTo(object obj)
         {
-            return this.CompareTo((ElectricConductivity)obj);
+            return this.CompareTo((TemperatureChange)obj);
         }
 
         /// <summary>
@@ -535,7 +563,7 @@ namespace QuantityTypes
         /// <returns>The amount of the specified unit.</returns>
         double IQuantity.ConvertTo(IQuantity unit)
         {
-            return this.ConvertTo((ElectricConductivity)unit);
+            return this.ConvertTo((TemperatureChange)unit);
         }
 
         /// <summary>
@@ -547,7 +575,7 @@ namespace QuantityTypes
         /// <returns>
         /// The value in the specified unit. 
         /// </returns>
-        public double ConvertTo(ElectricConductivity unit)
+        public double ConvertTo(TemperatureChange unit)
         {
             return this.value / unit.Value;
         }
@@ -563,24 +591,24 @@ namespace QuantityTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is ElectricConductivity)
+            if (obj is TemperatureChange)
             {
-                return this.Equals((ElectricConductivity)obj);
+                return this.Equals((TemperatureChange)obj);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Determines if the specified <see cref="ElectricConductivity"/> is equal to this instance.
+        /// Determines if the specified <see cref="TemperatureChange"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="TemperatureChange"/> . 
         /// </param>
         /// <returns>
         /// True if the values are equal. 
         /// </returns>
-        public bool Equals(ElectricConductivity other)
+        public bool Equals(TemperatureChange other)
         {
             return this.value.Equals(other.value);
         }
@@ -613,12 +641,12 @@ namespace QuantityTypes
         /// <returns>The sum.</returns>
         public IQuantity Add(IQuantity x)
         {
-            if (!(x is ElectricConductivity))
+            if (!(x is TemperatureChange))
             {
                 throw new InvalidOperationException("Can only add quantities of the same types.");
             }
 
-            return new ElectricConductivity(this.value + x.Value);
+            return new TemperatureChange(this.value + x.Value);
         }
 
         /// <summary>

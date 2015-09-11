@@ -51,7 +51,7 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="GallonPerMinute" /> property.
         /// </summary>
-        private static readonly Flow GallonPerMinuteField = new Flow(6.309019640e5);
+        private static readonly Flow GallonPerMinuteField = new Flow(6.309019640e-5);
 
         /// <summary>
         /// The backing field for the <see cref="MillionGallonPerDay" /> property.

@@ -5,11 +5,11 @@
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
 // </auto-generated>
-// <copyright file="ElectricConductivity.cs" company="QuantityTypes">
+// <copyright file="VolumetricWaterContent.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Represents the electric conductivity quantity.
+//   Represents the volumetric water content quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,34 +24,19 @@ namespace QuantityTypes
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents the electric conductivity quantity.
+    /// Represents the volumetric water content quantity.
     /// </summary>
     [DataContract]
 #if !PCL
     [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<ElectricConductivity>))]
+    [TypeConverter(typeof(QuantityTypeConverter<VolumetricWaterContent>))]
 #endif
-    public partial struct ElectricConductivity : IQuantity<ElectricConductivity>
+    public partial struct VolumetricWaterContent : IQuantity<VolumetricWaterContent>
     {
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerMetre" /> property.
+        /// The backing field for the <see cref="CubicMetrePerCubicMetre" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerMetreField = new ElectricConductivity(1);
-
-        /// <summary>
-        /// The backing field for the <see cref="SiemensPerCentimeter" /> property.
-        /// </summary>
-        private static readonly ElectricConductivity SiemensPerCentimeterField = new ElectricConductivity(1e2);
-
-        /// <summary>
-        /// The backing field for the <see cref="MillisiemensPerCentimeter" /> property.
-        /// </summary>
-        private static readonly ElectricConductivity MillisiemensPerCentimeterField = new ElectricConductivity(1e-1);
-
-        /// <summary>
-        /// The backing field for the <see cref="MicrosiemensPerCentimeter" /> property.
-        /// </summary>
-        private static readonly ElectricConductivity MicrosiemensPerCentimeterField = new ElectricConductivity(1e-4);
+        private static readonly VolumetricWaterContent CubicMetrePerCubicMetreField = new VolumetricWaterContent(1);
 
         /// <summary>
         /// The value.
@@ -59,18 +44,18 @@ namespace QuantityTypes
         private double value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="VolumetricWaterContent"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
         /// </param>
-        public ElectricConductivity(double value)
+        public VolumetricWaterContent(double value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="VolumetricWaterContent"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
@@ -78,49 +63,22 @@ namespace QuantityTypes
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        public ElectricConductivity(string value, IUnitProvider unitProvider = null)
+        public VolumetricWaterContent(string value, IUnitProvider unitProvider = null)
         {
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
         /// <summary>
-        /// Gets the "S/m" unit.
+        /// Gets the "m^3/m^3" unit.
         /// </summary>
-        [Unit("S/m", true)]
-        public static ElectricConductivity SiemensPerMetre
+        [Unit("m^3/m^3", true)]
+        public static VolumetricWaterContent CubicMetrePerCubicMetre
         {
-            get { return SiemensPerMetreField; }
+            get { return CubicMetrePerCubicMetreField; }
         }
 
         /// <summary>
-        /// Gets the "S/cm" unit.
-        /// </summary>
-        [Unit("S/cm")]
-        public static ElectricConductivity SiemensPerCentimeter
-        {
-            get { return SiemensPerCentimeterField; }
-        }
-
-        /// <summary>
-        /// Gets the "mS/cm" unit.
-        /// </summary>
-        [Unit("mS/cm")]
-        public static ElectricConductivity MillisiemensPerCentimeter
-        {
-            get { return MillisiemensPerCentimeterField; }
-        }
-
-        /// <summary>
-        /// Gets the "uS/cm" unit.
-        /// </summary>
-        [Unit("uS/cm")]
-        public static ElectricConductivity MicrosiemensPerCentimeter
-        {
-            get { return MicrosiemensPerCentimeterField; }
-        }
-
-        /// <summary>
-        /// Gets or sets the electric conductivity as a string.
+        /// Gets or sets the volumetric water content as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -143,7 +101,7 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the value of the electric conductivity in the base unit.
+        /// Gets the value of the volumetric water content in the base unit.
         /// </summary>
         public double Value
         {
@@ -166,16 +124,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="VolumetricWaterContent"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
+        public static VolumetricWaterContent Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            VolumetricWaterContent value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -194,13 +152,13 @@ namespace QuantityTypes
         /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="VolumetricWaterContent"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider = null)
+        public static VolumetricWaterContent Parse(string input, IFormatProvider provider = null)
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            ElectricConductivity value;
+            VolumetricWaterContent value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -219,16 +177,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="VolumetricWaterContent"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IUnitProvider unitProvider)
+        public static VolumetricWaterContent Parse(string input, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            VolumetricWaterContent value;
             if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -245,7 +203,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">The unit provider.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out ElectricConductivity result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out VolumetricWaterContent result)
         {
             if (unitProvider == null)
             {
@@ -260,9 +218,9 @@ namespace QuantityTypes
         /// </summary>
         /// <param name="input">The JSON input.</param>
         /// <returns>
-        /// The <see cref="ElectricConductivity"/> .
+        /// The <see cref="VolumetricWaterContent"/> .
         /// </returns>
-        public static ElectricConductivity ParseJson(string input)
+        public static VolumetricWaterContent ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
         }
@@ -279,9 +237,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x, ElectricConductivity y)
+        public static VolumetricWaterContent operator +(VolumetricWaterContent x, VolumetricWaterContent y)
         {
-            return new ElectricConductivity(x.value + y.value);
+            return new VolumetricWaterContent(x.value + y.value);
         }
 
         /// <summary>
@@ -296,9 +254,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator /(ElectricConductivity x, double y)
+        public static VolumetricWaterContent operator /(VolumetricWaterContent x, double y)
         {
-            return new ElectricConductivity(x.value / y);
+            return new VolumetricWaterContent(x.value / y);
         }
 
         /// <summary>
@@ -313,7 +271,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static double operator /(ElectricConductivity x, ElectricConductivity y)
+        public static double operator /(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return x.value / y.value;
         }
@@ -330,7 +288,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator ==(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator ==(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return x.value.Equals(y.value);
         }
@@ -347,7 +305,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return x.value > y.value;
         }
@@ -364,7 +322,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >=(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return x.value >= y.value;
         }
@@ -381,7 +339,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator !=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator !=(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return !x.value.Equals(y.value);
         }
@@ -398,7 +356,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return x.value < y.value;
         }
@@ -415,7 +373,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <=(VolumetricWaterContent x, VolumetricWaterContent y)
         {
             return x.value <= y.value;
         }
@@ -432,9 +390,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(double x, ElectricConductivity y)
+        public static VolumetricWaterContent operator *(double x, VolumetricWaterContent y)
         {
-            return new ElectricConductivity(x * y.value);
+            return new VolumetricWaterContent(x * y.value);
         }
 
         /// <summary>
@@ -449,9 +407,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(ElectricConductivity x, double y)
+        public static VolumetricWaterContent operator *(VolumetricWaterContent x, double y)
         {
-            return new ElectricConductivity(x.value * y);
+            return new VolumetricWaterContent(x.value * y);
         }
 
         /// <summary>
@@ -466,9 +424,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x, ElectricConductivity y)
+        public static VolumetricWaterContent operator -(VolumetricWaterContent x, VolumetricWaterContent y)
         {
-            return new ElectricConductivity(x.value - y.value);
+            return new VolumetricWaterContent(x.value - y.value);
         }
 
         /// <summary>
@@ -480,9 +438,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x)
+        public static VolumetricWaterContent operator +(VolumetricWaterContent x)
         {
-            return new ElectricConductivity(x.value);
+            return new VolumetricWaterContent(x.value);
         }
 
         /// <summary>
@@ -494,21 +452,21 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x)
+        public static VolumetricWaterContent operator -(VolumetricWaterContent x)
         {
-            return new ElectricConductivity(-x.value);
+            return new VolumetricWaterContent(-x.value);
         }
 
         /// <summary>
-        /// Compares this instance to the specified <see cref="ElectricConductivity"/> and returns an indication of their relative values.
+        /// Compares this instance to the specified <see cref="VolumetricWaterContent"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="VolumetricWaterContent"/> . 
         /// </param>
         /// <returns>
         /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
-        public int CompareTo(ElectricConductivity other)
+        public int CompareTo(VolumetricWaterContent other)
         {
             return this.value.CompareTo(other.value);
         }
@@ -525,7 +483,7 @@ namespace QuantityTypes
         /// </returns>
         public int CompareTo(object obj)
         {
-            return this.CompareTo((ElectricConductivity)obj);
+            return this.CompareTo((VolumetricWaterContent)obj);
         }
 
         /// <summary>
@@ -535,7 +493,7 @@ namespace QuantityTypes
         /// <returns>The amount of the specified unit.</returns>
         double IQuantity.ConvertTo(IQuantity unit)
         {
-            return this.ConvertTo((ElectricConductivity)unit);
+            return this.ConvertTo((VolumetricWaterContent)unit);
         }
 
         /// <summary>
@@ -547,7 +505,7 @@ namespace QuantityTypes
         /// <returns>
         /// The value in the specified unit. 
         /// </returns>
-        public double ConvertTo(ElectricConductivity unit)
+        public double ConvertTo(VolumetricWaterContent unit)
         {
             return this.value / unit.Value;
         }
@@ -563,24 +521,24 @@ namespace QuantityTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is ElectricConductivity)
+            if (obj is VolumetricWaterContent)
             {
-                return this.Equals((ElectricConductivity)obj);
+                return this.Equals((VolumetricWaterContent)obj);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Determines if the specified <see cref="ElectricConductivity"/> is equal to this instance.
+        /// Determines if the specified <see cref="VolumetricWaterContent"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="VolumetricWaterContent"/> . 
         /// </param>
         /// <returns>
         /// True if the values are equal. 
         /// </returns>
-        public bool Equals(ElectricConductivity other)
+        public bool Equals(VolumetricWaterContent other)
         {
             return this.value.Equals(other.value);
         }
@@ -613,12 +571,12 @@ namespace QuantityTypes
         /// <returns>The sum.</returns>
         public IQuantity Add(IQuantity x)
         {
-            if (!(x is ElectricConductivity))
+            if (!(x is VolumetricWaterContent))
             {
                 throw new InvalidOperationException("Can only add quantities of the same types.");
             }
 
-            return new ElectricConductivity(this.value + x.Value);
+            return new VolumetricWaterContent(this.value + x.Value);
         }
 
         /// <summary>

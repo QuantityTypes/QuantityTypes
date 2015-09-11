@@ -5,11 +5,11 @@
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
 // </auto-generated>
-// <copyright file="ElectricConductivity.cs" company="QuantityTypes">
+// <copyright file="PrecipitationIntensity.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Represents the electric conductivity quantity.
+//   Represents the precipitation intensity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,34 +24,54 @@ namespace QuantityTypes
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents the electric conductivity quantity.
+    /// Represents the precipitation intensity quantity.
     /// </summary>
     [DataContract]
 #if !PCL
     [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<ElectricConductivity>))]
+    [TypeConverter(typeof(QuantityTypeConverter<PrecipitationIntensity>))]
 #endif
-    public partial struct ElectricConductivity : IQuantity<ElectricConductivity>
+    public partial struct PrecipitationIntensity : IQuantity<PrecipitationIntensity>
     {
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerMetre" /> property.
+        /// The backing field for the <see cref="MillimetresPerHour" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerMetreField = new ElectricConductivity(1);
+        private static readonly PrecipitationIntensity MillimetresPerHourField = new PrecipitationIntensity(1);
 
         /// <summary>
-        /// The backing field for the <see cref="SiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="MillimetresPerMinute" /> property.
         /// </summary>
-        private static readonly ElectricConductivity SiemensPerCentimeterField = new ElectricConductivity(1e2);
+        private static readonly PrecipitationIntensity MillimetresPerMinuteField = new PrecipitationIntensity(60);
 
         /// <summary>
-        /// The backing field for the <see cref="MillisiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="MillimetresPerSecond" /> property.
         /// </summary>
-        private static readonly ElectricConductivity MillisiemensPerCentimeterField = new ElectricConductivity(1e-1);
+        private static readonly PrecipitationIntensity MillimetresPerSecondField = new PrecipitationIntensity(3600);
 
         /// <summary>
-        /// The backing field for the <see cref="MicrosiemensPerCentimeter" /> property.
+        /// The backing field for the <see cref="MillimetresPerDay" /> property.
         /// </summary>
-        private static readonly ElectricConductivity MicrosiemensPerCentimeterField = new ElectricConductivity(1e-4);
+        private static readonly PrecipitationIntensity MillimetresPerDayField = new PrecipitationIntensity(1.0 / 24);
+
+        /// <summary>
+        /// The backing field for the <see cref="InchesPerHour" /> property.
+        /// </summary>
+        private static readonly PrecipitationIntensity InchesPerHourField = new PrecipitationIntensity(25.4);
+
+        /// <summary>
+        /// The backing field for the <see cref="InchesPerMinute" /> property.
+        /// </summary>
+        private static readonly PrecipitationIntensity InchesPerMinuteField = new PrecipitationIntensity(1524);
+
+        /// <summary>
+        /// The backing field for the <see cref="InchesPerSecond" /> property.
+        /// </summary>
+        private static readonly PrecipitationIntensity InchesPerSecondField = new PrecipitationIntensity(9.1440e4);
+
+        /// <summary>
+        /// The backing field for the <see cref="InchesPerDay" /> property.
+        /// </summary>
+        private static readonly PrecipitationIntensity InchesPerDayField = new PrecipitationIntensity(25.4 / 24);
 
         /// <summary>
         /// The value.
@@ -59,18 +79,18 @@ namespace QuantityTypes
         private double value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="PrecipitationIntensity"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
         /// </param>
-        public ElectricConductivity(double value)
+        public PrecipitationIntensity(double value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElectricConductivity"/> struct.
+        /// Initializes a new instance of the <see cref="PrecipitationIntensity"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
@@ -78,49 +98,85 @@ namespace QuantityTypes
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        public ElectricConductivity(string value, IUnitProvider unitProvider = null)
+        public PrecipitationIntensity(string value, IUnitProvider unitProvider = null)
         {
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
         /// <summary>
-        /// Gets the "S/m" unit.
+        /// Gets the "mm/h" unit.
         /// </summary>
-        [Unit("S/m", true)]
-        public static ElectricConductivity SiemensPerMetre
+        [Unit("mm/h", true)]
+        public static PrecipitationIntensity MillimetresPerHour
         {
-            get { return SiemensPerMetreField; }
+            get { return MillimetresPerHourField; }
         }
 
         /// <summary>
-        /// Gets the "S/cm" unit.
+        /// Gets the "mm/min" unit.
         /// </summary>
-        [Unit("S/cm")]
-        public static ElectricConductivity SiemensPerCentimeter
+        [Unit("mm/min")]
+        public static PrecipitationIntensity MillimetresPerMinute
         {
-            get { return SiemensPerCentimeterField; }
+            get { return MillimetresPerMinuteField; }
         }
 
         /// <summary>
-        /// Gets the "mS/cm" unit.
+        /// Gets the "mm/s" unit.
         /// </summary>
-        [Unit("mS/cm")]
-        public static ElectricConductivity MillisiemensPerCentimeter
+        [Unit("mm/s")]
+        public static PrecipitationIntensity MillimetresPerSecond
         {
-            get { return MillisiemensPerCentimeterField; }
+            get { return MillimetresPerSecondField; }
         }
 
         /// <summary>
-        /// Gets the "uS/cm" unit.
+        /// Gets the "mm/d" unit.
         /// </summary>
-        [Unit("uS/cm")]
-        public static ElectricConductivity MicrosiemensPerCentimeter
+        [Unit("mm/d")]
+        public static PrecipitationIntensity MillimetresPerDay
         {
-            get { return MicrosiemensPerCentimeterField; }
+            get { return MillimetresPerDayField; }
         }
 
         /// <summary>
-        /// Gets or sets the electric conductivity as a string.
+        /// Gets the "in/h" unit.
+        /// </summary>
+        [Unit("in/h")]
+        public static PrecipitationIntensity InchesPerHour
+        {
+            get { return InchesPerHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "in/min" unit.
+        /// </summary>
+        [Unit("in/min")]
+        public static PrecipitationIntensity InchesPerMinute
+        {
+            get { return InchesPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "in/s" unit.
+        /// </summary>
+        [Unit("in/s")]
+        public static PrecipitationIntensity InchesPerSecond
+        {
+            get { return InchesPerSecondField; }
+        }
+
+        /// <summary>
+        /// Gets the "in/d" unit.
+        /// </summary>
+        [Unit("in/d")]
+        public static PrecipitationIntensity InchesPerDay
+        {
+            get { return InchesPerDayField; }
+        }
+
+        /// <summary>
+        /// Gets or sets the precipitation intensity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -143,7 +199,7 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the value of the electric conductivity in the base unit.
+        /// Gets the value of the precipitation intensity in the base unit.
         /// </summary>
         public double Value
         {
@@ -166,16 +222,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="PrecipitationIntensity"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
+        public static PrecipitationIntensity Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            PrecipitationIntensity value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -194,13 +250,13 @@ namespace QuantityTypes
         /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="PrecipitationIntensity"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IFormatProvider provider = null)
+        public static PrecipitationIntensity Parse(string input, IFormatProvider provider = null)
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            ElectricConductivity value;
+            PrecipitationIntensity value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -219,16 +275,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="ElectricConductivity"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="PrecipitationIntensity"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static ElectricConductivity Parse(string input, IUnitProvider unitProvider)
+        public static PrecipitationIntensity Parse(string input, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;
             }
 
-            ElectricConductivity value;
+            PrecipitationIntensity value;
             if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -245,7 +301,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">The unit provider.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out ElectricConductivity result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out PrecipitationIntensity result)
         {
             if (unitProvider == null)
             {
@@ -260,9 +316,9 @@ namespace QuantityTypes
         /// </summary>
         /// <param name="input">The JSON input.</param>
         /// <returns>
-        /// The <see cref="ElectricConductivity"/> .
+        /// The <see cref="PrecipitationIntensity"/> .
         /// </returns>
-        public static ElectricConductivity ParseJson(string input)
+        public static PrecipitationIntensity ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
         }
@@ -279,9 +335,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x, ElectricConductivity y)
+        public static PrecipitationIntensity operator +(PrecipitationIntensity x, PrecipitationIntensity y)
         {
-            return new ElectricConductivity(x.value + y.value);
+            return new PrecipitationIntensity(x.value + y.value);
         }
 
         /// <summary>
@@ -296,9 +352,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator /(ElectricConductivity x, double y)
+        public static PrecipitationIntensity operator /(PrecipitationIntensity x, double y)
         {
-            return new ElectricConductivity(x.value / y);
+            return new PrecipitationIntensity(x.value / y);
         }
 
         /// <summary>
@@ -313,7 +369,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static double operator /(ElectricConductivity x, ElectricConductivity y)
+        public static double operator /(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return x.value / y.value;
         }
@@ -330,7 +386,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator ==(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator ==(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return x.value.Equals(y.value);
         }
@@ -347,7 +403,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return x.value > y.value;
         }
@@ -364,7 +420,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator >=(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return x.value >= y.value;
         }
@@ -381,7 +437,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator !=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator !=(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return !x.value.Equals(y.value);
         }
@@ -398,7 +454,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return x.value < y.value;
         }
@@ -415,7 +471,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <=(ElectricConductivity x, ElectricConductivity y)
+        public static bool operator <=(PrecipitationIntensity x, PrecipitationIntensity y)
         {
             return x.value <= y.value;
         }
@@ -432,9 +488,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(double x, ElectricConductivity y)
+        public static PrecipitationIntensity operator *(double x, PrecipitationIntensity y)
         {
-            return new ElectricConductivity(x * y.value);
+            return new PrecipitationIntensity(x * y.value);
         }
 
         /// <summary>
@@ -449,9 +505,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator *(ElectricConductivity x, double y)
+        public static PrecipitationIntensity operator *(PrecipitationIntensity x, double y)
         {
-            return new ElectricConductivity(x.value * y);
+            return new PrecipitationIntensity(x.value * y);
         }
 
         /// <summary>
@@ -466,9 +522,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x, ElectricConductivity y)
+        public static PrecipitationIntensity operator -(PrecipitationIntensity x, PrecipitationIntensity y)
         {
-            return new ElectricConductivity(x.value - y.value);
+            return new PrecipitationIntensity(x.value - y.value);
         }
 
         /// <summary>
@@ -480,9 +536,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator +(ElectricConductivity x)
+        public static PrecipitationIntensity operator +(PrecipitationIntensity x)
         {
-            return new ElectricConductivity(x.value);
+            return new PrecipitationIntensity(x.value);
         }
 
         /// <summary>
@@ -494,21 +550,21 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static ElectricConductivity operator -(ElectricConductivity x)
+        public static PrecipitationIntensity operator -(PrecipitationIntensity x)
         {
-            return new ElectricConductivity(-x.value);
+            return new PrecipitationIntensity(-x.value);
         }
 
         /// <summary>
-        /// Compares this instance to the specified <see cref="ElectricConductivity"/> and returns an indication of their relative values.
+        /// Compares this instance to the specified <see cref="PrecipitationIntensity"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="PrecipitationIntensity"/> . 
         /// </param>
         /// <returns>
         /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
-        public int CompareTo(ElectricConductivity other)
+        public int CompareTo(PrecipitationIntensity other)
         {
             return this.value.CompareTo(other.value);
         }
@@ -525,7 +581,7 @@ namespace QuantityTypes
         /// </returns>
         public int CompareTo(object obj)
         {
-            return this.CompareTo((ElectricConductivity)obj);
+            return this.CompareTo((PrecipitationIntensity)obj);
         }
 
         /// <summary>
@@ -535,7 +591,7 @@ namespace QuantityTypes
         /// <returns>The amount of the specified unit.</returns>
         double IQuantity.ConvertTo(IQuantity unit)
         {
-            return this.ConvertTo((ElectricConductivity)unit);
+            return this.ConvertTo((PrecipitationIntensity)unit);
         }
 
         /// <summary>
@@ -547,7 +603,7 @@ namespace QuantityTypes
         /// <returns>
         /// The value in the specified unit. 
         /// </returns>
-        public double ConvertTo(ElectricConductivity unit)
+        public double ConvertTo(PrecipitationIntensity unit)
         {
             return this.value / unit.Value;
         }
@@ -563,24 +619,24 @@ namespace QuantityTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is ElectricConductivity)
+            if (obj is PrecipitationIntensity)
             {
-                return this.Equals((ElectricConductivity)obj);
+                return this.Equals((PrecipitationIntensity)obj);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Determines if the specified <see cref="ElectricConductivity"/> is equal to this instance.
+        /// Determines if the specified <see cref="PrecipitationIntensity"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="ElectricConductivity"/> . 
+        /// The other <see cref="PrecipitationIntensity"/> . 
         /// </param>
         /// <returns>
         /// True if the values are equal. 
         /// </returns>
-        public bool Equals(ElectricConductivity other)
+        public bool Equals(PrecipitationIntensity other)
         {
             return this.value.Equals(other.value);
         }
@@ -613,12 +669,12 @@ namespace QuantityTypes
         /// <returns>The sum.</returns>
         public IQuantity Add(IQuantity x)
         {
-            if (!(x is ElectricConductivity))
+            if (!(x is PrecipitationIntensity))
             {
                 throw new InvalidOperationException("Can only add quantities of the same types.");
             }
 
-            return new ElectricConductivity(this.value + x.Value);
+            return new PrecipitationIntensity(this.value + x.Value);
         }
 
         /// <summary>
