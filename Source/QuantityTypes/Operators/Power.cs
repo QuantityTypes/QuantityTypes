@@ -36,6 +36,16 @@ namespace QuantityTypes
             return new ElectricCurrent(x.Value / y.Value);
         }
 
-	
+        /// <summary>
+        ///     Implements the operator /.
+        /// </summary>
+        /// <param name="x"> The x. </param>
+        /// <param name="y"> The y. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Energy operator *(Power x, Time dt)
+        {
+            return new Energy(x.Value * dt.Value);
+        }
+
     }
 }
