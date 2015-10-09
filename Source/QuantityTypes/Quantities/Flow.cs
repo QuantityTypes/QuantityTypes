@@ -44,6 +44,21 @@ namespace QuantityTypes
         private static readonly Flow LitrePerMinuteField = new Flow(1.6e-5);
 
         /// <summary>
+        /// The backing field for the <see cref="CubicFootPerSecond" /> property.
+        /// </summary>
+        private static readonly Flow CubicFootPerSecondField = new Flow(2.8316846592e-2);
+
+        /// <summary>
+        /// The backing field for the <see cref="GallonPerMinute" /> property.
+        /// </summary>
+        private static readonly Flow GallonPerMinuteField = new Flow(6.309019640e-5);
+
+        /// <summary>
+        /// The backing field for the <see cref="MillionGallonPerDay" /> property.
+        /// </summary>
+        private static readonly Flow MillionGallonPerDayField = new Flow(4.381263639e-2);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -89,6 +104,33 @@ namespace QuantityTypes
         public static Flow LitrePerMinute
         {
             get { return LitrePerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "ft^3/s" unit.
+        /// </summary>
+        [Unit("ft^3/s")]
+        public static Flow CubicFootPerSecond
+        {
+            get { return CubicFootPerSecondField; }
+        }
+
+        /// <summary>
+        /// Gets the "gpm" unit.
+        /// </summary>
+        [Unit("gpm")]
+        public static Flow GallonPerMinute
+        {
+            get { return GallonPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "MGD" unit.
+        /// </summary>
+        [Unit("MGD")]
+        public static Flow MillionGallonPerDay
+        {
+            get { return MillionGallonPerDayField; }
         }
 
         /// <summary>

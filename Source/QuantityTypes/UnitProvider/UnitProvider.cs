@@ -455,46 +455,6 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Registers the units in the specified assembly.
-        /// </summary>
-        /// <param name="assembly">
-        /// The assembly. 
-        /// </param>
-        public void RegisterUnits(Assembly assembly)
-        {
-            foreach (var t in assembly.GetTypes())
-            {
-                if (typeof(IQuantity).IsAssignableFrom(t))
-                {
-                    this.RegisterUnits(t);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Registers the unit properties in the specified type.
-        /// </summary>
-        /// <param name="type">
-        /// The type. 
-        /// </param>
-        public void RegisterUnits(Type type)
-        {
-            foreach (var property in type.GetProperties(BindingFlags.Static | BindingFlags.Public))
-            {
-                foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
-                {
-                    this.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Symbol);
-
-                    if (ua.IsDefaultDisplayUnit)
-                    {
-                        var unit = (IQuantity)property.GetValue(null, null);
-                        this.TrySetDisplayUnit(unit.GetType(), ua.Symbol);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Gets the unit of the specified name and type.
         /// </summary>
         /// <param name="name">

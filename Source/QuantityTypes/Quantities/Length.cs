@@ -74,6 +74,11 @@ namespace QuantityTypes
         private static readonly Length InchField = new Length(0.0254);
 
         /// <summary>
+        /// The backing field for the <see cref="HundredthInch" /> property.
+        /// </summary>
+        private static readonly Length HundredthInchField = new Length(2.54e-4);
+
+        /// <summary>
         /// The backing field for the <see cref="Mile" /> property.
         /// </summary>
         private static readonly Length MileField = new Length(1609.344);
@@ -198,6 +203,15 @@ namespace QuantityTypes
         public static Length Inch
         {
             get { return InchField; }
+        }
+
+        /// <summary>
+        /// Gets the "" unit.
+        /// </summary>
+        [Unit("")]
+        public static Length HundredthInch
+        {
+            get { return HundredthInchField; }
         }
 
         /// <summary>

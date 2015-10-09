@@ -16,6 +16,7 @@ Length,Kilometre,km,1e3
 Length,Yard,yd,0.9144
 Length,Foot,ft,0.3048
 Length,Inch,in,0.0254
+Length,HundredthInch,,2.54e-4
 Length,Mile,mi,1609.344
 Length,NauticalMile,nmi,1852
 Length,Ångström,Å,1e-10
@@ -27,12 +28,16 @@ Area,SquareMetre,m^2,1
 Area,Acre,ac,4046.8564224
 Area,Hectare,ha,1e4
 Area,SquareFoot,ft^2,9.290304e-2
+Area,SquareMile,mi^2,2.589988110336e6
 Area,SquareKilometre,km^2,1e6
 
 // Volume
 Volume,CubicMetre,m^3,1
 Volume,Litre,L,1e-3
 Volume,Gallon,gal,3.785411784e-3
+Volume,MillionGallon,MG,3.785411784e3
+Volume,CubicFoot,ft^3,2.8316846592e-2
+Volume,AcreFoot,ac-ft,1233.4892384681
 
 // Plane angle
 Angle,Radian,rad,1
@@ -56,12 +61,28 @@ Mass,Ton,ton,1016.0469088
 // Density
 Density,KilogramPerCubicMetre,kg/m^3,1
 Density,KilogramPerCubicDecimetre,kg/dm^3,1000
-Density,GramPerCubicCentietre,g/cm^3,1000
+Density,GramPerCubicCentimetre,g/cm^3,1000
 Density,KilogramPerLitre,kg/L,1000
 Density,GramPerMillilitre,g/mL,1000
 Density,PoundPerCubicFoot,lb/ft^3,16.01846337396
 Density,PoundPerCubicInch,lb/in^3,27679.9047102031
 Density,PoundPerGallon,lb/gal,99.7763287677
+
+// Mass Concentration
+MassConcentration,KilogramPerCubicMetre,kg/m^3,1
+MassConcentration,GramPerCubicCentimetre,g/cm^3,1e3
+MassConcentration,KilogramPerLitre,kg/L,1e3
+MassConcentration,MilligramPerLitre,mg/L,1e-3
+MassConcentration,MicrogramPerLitre,ug/L,1e-6
+MassConcentration,GramPerMillilitre,g/mL,1e3
+
+// Mass Concentration In Water
+MassConcentrationInWater,KilogramPerCubicMetre,kg/m^3,1
+MassConcentrationInWater,MilligramPerLitre,mg/L,1e-3
+MassConcentrationInWater,MicrogramPerLitre,ug/L,1e-6
+
+// Volumetric Water Content (e.g. soil moisture)
+VolumetricWaterContent,CubicMetrePerCubicMetre,m^3/m^3,1
 
 // Time
 Time,Second,s,1
@@ -84,14 +105,30 @@ AngularFrequency,RadiansPerSecond,rad/s,1
 Velocity,MetrePerSecond,m/s,1
 Velocity,KilometrePerHour,km/h,1/3.6
 Velocity,Knot,knot,0.514444444444444
+Velocity,FootPerSecond,ft/s,0.3048
+Velocity,MilePerHour,mph,0.44704
 
 // Flow (volume)
 Flow,CubicMetrePerSecond,m^3/s,1
 Flow,LitrePerMinute,L/min,1.6e-5
+Flow,CubicFootPerSecond,ft^3/s,2.8316846592e-2
+Flow,GallonPerMinute,gpm,6.309019640e-5
+Flow,MillionGallonPerDay,MGD,4.381263639e-2
+
+// Precipitation Intensity
+PrecipitationIntensity,MillimetresPerHour,mm/h,1
+PrecipitationIntensity,MillimetresPerMinute,mm/min,60
+PrecipitationIntensity,MillimetresPerSecond,mm/s,3600
+PrecipitationIntensity,MillimetresPerDay,mm/d,1.0 / 24
+PrecipitationIntensity,InchesPerHour,in/h,25.4
+PrecipitationIntensity,InchesPerMinute,in/min,1524
+PrecipitationIntensity,InchesPerSecond,in/s,9.1440e4
+PrecipitationIntensity,InchesPerDay,in/d,25.4 / 24
 
 // Acceleration
 Acceleration,MetrePerSecondSquared,m/s^2,1
 Acceleration,StandardGravity,g,9.80665
+Acceleration,FootPerSecondSquared,ft/s^2,0.3048
 
 // Force
 Force,Newton,N,1
@@ -107,6 +144,9 @@ Pressure,MillimetreOfMercury,mmHg,133.3224
 Pressure,Bar,bar,1e5
 Pressure,Megapascal,Megapascal,1000000
 Pressure,Atmosphere,atm,101325
+Pressure,InchOfMercury,inHg,3.386389e3
+Pressure,FootOfWater,ftH2O,2.98898e3
+Pressure,InchOfWater,inH2O,2.49082e2
 
 // Torque or moment of force
 Torque,NewtonMetre,N*m,1
@@ -168,6 +208,19 @@ ElectricResistance,Milliohm,mΩ,1e-3
 ElectricResistance,Kiloohm,kΩ,1e3
 ElectricResistance,Megaohm,MΩ,1e6
 
+// Electric conductance
+ElectricConductance,Siemens,S,1
+ElectricConductance,Millisiemens,mS,1e-3
+ElectricConductance,Microsiemens,uS,1e-6
+ElectricConductance,Kilosiemens,kS,1e3
+ElectricConductance,Megasiemens,MS,1e6
+
+// Electric conductivity
+ElectricConductivity,SiemensPerMetre,S/m,1
+ElectricConductivity,SiemensPerCentimeter,S/cm,1e2
+ElectricConductivity,MillisiemensPerCentimeter,mS/cm,1e-1
+ElectricConductivity,MicrosiemensPerCentimeter,uS/cm,1e-4
+
 // Capacitance
 Capacitance,Farad,F,1
 
@@ -219,6 +272,7 @@ Fraction,Frac,,1
 Fraction,Percent,%,0.01
 Fraction,Permil,‰,0.001
 Fraction,PartPerMillion,ppm,1E-06
+Fraction,PartPerBillion,ppb,1E-09
 
 AmountOfSubstance,Mole,mol,1
 
@@ -227,9 +281,17 @@ RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
 
 HeatCapacity,JoulePerKelvin,J/K,1
 
-TemperatureDifference,DegreeKelvin,K,1
+TemperatureDifference,Kelvin,K,1
 TemperatureDifference,DegreeCelsius,C,1
 TemperatureDifference,DegreeFahrenheit,F,5.0 / 9.0
+
+// Temperature change over time
+TemperatureChange,KelvinPerSecond,K/s,1
+TemperatureChange,DegreeCelsiusPerSecond,C/s,1
+TemperatureChange,DegreeFahrenheitPerSecond,F/s,5.0 / 9.0
+TemperatureChange,KelvinPerHour,K/hr,1.0 / 60.0
+TemperatureChange,DegreeCelsiusPerHour,C/hr,1.0 / 60.0
+TemperatureChange,DegreeFahrenheitPerHour,F/hr,5.0 / 540.0
 
 LinearMomentum,KilogramMeterPerSecond,kg*m/s,1
 LinearMomentum,NewtonSecond,N*s,1

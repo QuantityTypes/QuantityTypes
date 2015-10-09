@@ -39,6 +39,11 @@ namespace QuantityTypes
         private static readonly Inductance HenryField = new Inductance(1);
 
         /// <summary>
+        /// The backing field for the <see cref="Millihenry" /> property.
+        /// </summary>
+        private static readonly Inductance MillihenryField = new Inductance(1e-3);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -75,6 +80,15 @@ namespace QuantityTypes
         public static Inductance Henry
         {
             get { return HenryField; }
+        }
+
+        /// <summary>
+        /// Gets the "mH" unit.
+        /// </summary>
+        [Unit("mH")]
+        public static Inductance Millihenry
+        {
+            get { return MillihenryField; }
         }
 
         /// <summary>

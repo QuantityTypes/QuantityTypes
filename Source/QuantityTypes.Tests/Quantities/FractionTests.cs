@@ -45,5 +45,14 @@ namespace QuantityTypes.Tests
             object f2 = 0.5 * Fraction.Frac;
             Assert.AreEqual(1, f1.CompareTo(f2));
         }
+
+        [Test]
+        public void OperatorMassConcentrationInWater()
+        {
+           MassConcentrationInWater expected = new MassConcentrationInWater("0.1kg/m^3");
+           MassConcentrationInWater actual = (MassConcentrationInWater)new Fraction("100ppm");
+           Assert.AreEqual(expected, actual);
+        }
+
     }
 }

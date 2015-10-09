@@ -24,14 +24,14 @@ namespace QuantityTypes.Tests
         {
             Assert.AreEqual(100 * TemperatureDifference.DegreeCelsius, 100 * Temperature.DegreeCelsius - 0 * Temperature.DegreeCelsius);
             Assert.AreEqual(180 * TemperatureDifference.DegreeFahrenheit, 212 * Temperature.DegreeFahrenheit - 32 * Temperature.DegreeFahrenheit);
-            Assert.AreEqual(100 * TemperatureDifference.DegreeKelvin, 100 * Temperature.DegreeKelvin - 0 * Temperature.DegreeKelvin);
+            Assert.AreEqual(100 * TemperatureDifference.Kelvin, 100 * Temperature.Kelvin - 0 * Temperature.Kelvin);
         }
 
         [Test]
         public void ConvertTo()
         {
             Assert.AreEqual((100 * TemperatureDifference.DegreeCelsius).ConvertTo(TemperatureDifference.DegreeFahrenheit), 180);
-            Assert.AreEqual((100 * TemperatureDifference.DegreeCelsius).ConvertTo(TemperatureDifference.DegreeKelvin), 100);
+            Assert.AreEqual((100 * TemperatureDifference.DegreeCelsius).ConvertTo(TemperatureDifference.Kelvin), 100);
         }
     }
 }

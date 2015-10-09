@@ -34,9 +34,9 @@ namespace QuantityTypes
     public partial struct TemperatureDifference : IQuantity<TemperatureDifference>
     {
         /// <summary>
-        /// The backing field for the <see cref="DegreeKelvin" /> property.
+        /// The backing field for the <see cref="Kelvin" /> property.
         /// </summary>
-        private static readonly TemperatureDifference DegreeKelvinField = new TemperatureDifference(1);
+        private static readonly TemperatureDifference KelvinField = new TemperatureDifference(1);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsius" /> property.
@@ -82,9 +82,9 @@ namespace QuantityTypes
         /// Gets the "K" unit.
         /// </summary>
         [Unit("K", true)]
-        public static TemperatureDifference DegreeKelvin
+        public static TemperatureDifference Kelvin
         {
-            get { return DegreeKelvinField; }
+            get { return KelvinField; }
         }
 
         /// <summary>

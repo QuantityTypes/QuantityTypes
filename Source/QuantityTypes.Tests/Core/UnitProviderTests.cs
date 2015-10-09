@@ -198,5 +198,24 @@ namespace QuantityTypes.Tests
             var result = UnitProvider.Default.TryParse("100+200 m", CultureInfo.InvariantCulture, out q);
             Assert.IsFalse(result);
         }
+
+        [Test]
+        public void CustomFootUnit()
+        {
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Foot, "'");
+            Assert.That(Length.Parse("3'", unitProvider).ConvertTo(Length.Foot), Is.EqualTo(3));
+        }
+
+        [Test]
+        public void NumberGroup()
+        {
+            var culture = new CultureInfo(1);
+            culture.NumberFormat.NumberDecimalSeparator = ".";
+            culture.NumberFormat.NumberGroupSeparator = ",";
+            var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
+            unitProvider.RegisterUnit(Length.Metre, "metre");
+            Assert.That(Length.Parse("300,000.00 metre", unitProvider).ConvertTo(Length.Metre), Is.EqualTo(300000));
+        }
     }
 }

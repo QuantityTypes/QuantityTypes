@@ -49,6 +49,21 @@ namespace QuantityTypes
         private static readonly Volume GallonField = new Volume(3.785411784e-3);
 
         /// <summary>
+        /// The backing field for the <see cref="MillionGallon" /> property.
+        /// </summary>
+        private static readonly Volume MillionGallonField = new Volume(3.785411784e3);
+
+        /// <summary>
+        /// The backing field for the <see cref="CubicFoot" /> property.
+        /// </summary>
+        private static readonly Volume CubicFootField = new Volume(2.8316846592e-2);
+
+        /// <summary>
+        /// The backing field for the <see cref="AcreFoot" /> property.
+        /// </summary>
+        private static readonly Volume AcreFootField = new Volume(1233.4892384681);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -103,6 +118,33 @@ namespace QuantityTypes
         public static Volume Gallon
         {
             get { return GallonField; }
+        }
+
+        /// <summary>
+        /// Gets the "MG" unit.
+        /// </summary>
+        [Unit("MG")]
+        public static Volume MillionGallon
+        {
+            get { return MillionGallonField; }
+        }
+
+        /// <summary>
+        /// Gets the "ft^3" unit.
+        /// </summary>
+        [Unit("ft^3")]
+        public static Volume CubicFoot
+        {
+            get { return CubicFootField; }
+        }
+
+        /// <summary>
+        /// Gets the "ac-ft" unit.
+        /// </summary>
+        [Unit("ac-ft")]
+        public static Volume AcreFoot
+        {
+            get { return AcreFootField; }
         }
 
         /// <summary>

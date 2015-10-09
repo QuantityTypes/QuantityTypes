@@ -27,9 +27,9 @@ namespace QuantityTypes
         private static readonly Temperature DegreeFahrenheitField = new Temperature(-3);
 
         /// <summary>
-        ///   The Kelvin degree backing field.
+        ///   The Kelvin backing field.
         /// </summary>
-        private static readonly Temperature DegreeKelvinField = new Temperature(-1);
+        private static readonly Temperature KelvinField = new Temperature(-1);
 
         /// <summary>
         ///   The value backing field.
@@ -76,15 +76,14 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        ///   Gets the DegreeKelvin unit.
+        ///   Gets the Kelvin unit.
         /// </summary>
         [Unit("K")]
-        [Unit("degK")]
-        public static Temperature DegreeKelvin
+        public static Temperature Kelvin
         {
             get
             {
-                return DegreeKelvinField;
+                return KelvinField;
             }
         }
 
@@ -133,7 +132,7 @@ namespace QuantityTypes
         /// <returns> The result of the operator. </returns>
         public static Temperature operator *(double x, Temperature unit)
         {
-            if (unit.Equals(DegreeKelvin))
+            if (unit.Equals(Kelvin))
             {
                 return new Temperature(x);
             }
@@ -191,7 +190,7 @@ namespace QuantityTypes
         /// </returns>
         public double ConvertTo(Temperature unit)
         {
-            if (unit.Equals(DegreeKelvin))
+            if (unit.Equals(Kelvin))
             {
                 return this.value;
             }
