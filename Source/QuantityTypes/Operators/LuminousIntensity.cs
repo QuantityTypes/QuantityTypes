@@ -3,7 +3,7 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to area.
+//   Provides operators related to luminous intensity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
