@@ -62,6 +62,9 @@
     <Compile Include="Operators\Capacitance.cs" />
     <Compile Include="Operators\ElectricConductance.cs" />
     <Compile Include="Operators\Fraction.cs" />
+    <Compile Include="Operators\Illuminance.cs" />
+    <Compile Include="Operators\LuminousFlux.cs" />
+    <Compile Include="Operators\LuminousIntensity.cs" />
     <Compile Include="Operators\VolumetricWaterContent.cs" />
     <Compile Include="Operators\MassConcentrationInWater.cs" />
     <Compile Include="Operators\MassConcentration.cs" />
