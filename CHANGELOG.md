@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 - Unit prefixes and operator overloads for electrical units
 - Use GitHub as source server (#12)
 - Lighting calculations
+- Torque units: N*cm, N*mm (#8)
 
 ### Changed
 - Rename DegreeKelvin to Kelvin and delete "degK" unit (#30)

@@ -39,6 +39,16 @@ namespace QuantityTypes
         private static readonly Torque NewtonMetreField = new Torque(1);
 
         /// <summary>
+        /// The backing field for the <see cref="NewtonCentimetre" /> property.
+        /// </summary>
+        private static readonly Torque NewtonCentimetreField = new Torque(0.01);
+
+        /// <summary>
+        /// The backing field for the <see cref="NewtonMillimetre" /> property.
+        /// </summary>
+        private static readonly Torque NewtonMillimetreField = new Torque(0.001);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -75,6 +85,24 @@ namespace QuantityTypes
         public static Torque NewtonMetre
         {
             get { return NewtonMetreField; }
+        }
+
+        /// <summary>
+        /// Gets the "N*cm" unit.
+        /// </summary>
+        [Unit("N*cm")]
+        public static Torque NewtonCentimetre
+        {
+            get { return NewtonCentimetreField; }
+        }
+
+        /// <summary>
+        /// Gets the "N*mm" unit.
+        /// </summary>
+        [Unit("N*mm")]
+        public static Torque NewtonMillimetre
+        {
+            get { return NewtonMillimetreField; }
         }
 
         /// <summary>
