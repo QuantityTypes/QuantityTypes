@@ -150,6 +150,8 @@ Pressure,InchOfWater,inH2O,2.49082e2
 
 // Torque or moment of force
 Torque,NewtonMetre,N*m,1
+Torque,NewtonCentimetre,N*cm,0.01
+Torque,NewtonMillimetre,N*mm,0.001
 
 // Energy
 Energy,Joule,J,1
