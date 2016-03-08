@@ -22,8 +22,30 @@ namespace QuantityTypes.Tests
         [Test]
         public void Operators()
         {
-            Assert.AreEqual(100 * Temperature.DegreeCelsius, 0 * Temperature.DegreeCelsius + 100 * TemperatureDifference.DegreeCelsius);
-            Assert.AreEqual(20 * TemperatureDifference.DegreeCelsius, 30 * Temperature.DegreeCelsius - 10 * Temperature.DegreeCelsius);
+            Temperature a = 0*Temperature.DegreeCelsius;
+            Temperature b = 100*Temperature.DegreeCelsius;
+            TemperatureDifference delta = 100*TemperatureDifference.DegreeCelsius;
+            Assert.AreEqual(b, a + delta);
+            Assert.AreEqual(a, b - delta);
+            Assert.AreEqual(delta, b - a);
+        }
+
+        [Test]
+        public void Comparisons()
+        {
+            Temperature a = 0 * Temperature.DegreeFahrenheit;
+            Temperature b = 0 * Temperature.DegreeCelsius;
+            Temperature c = 273.15*Temperature.Kelvin;
+            Assert.True(a != b);
+            Assert.True(b == c);
+            Assert.True(b.Equals(c));
+            Assert.True(b.CompareTo(c) == 0);
+            Assert.True(a <= b);
+            Assert.True(a < b);
+            Assert.True(a.CompareTo(b) == -1);
+            Assert.True(b >= a);
+            Assert.True(b > a);
+            Assert.True(b.CompareTo(a) == 1);
         }
 
         [Test]
