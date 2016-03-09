@@ -84,6 +84,9 @@
     <Compile Include="Quantities\ElectricConductivity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Quantities\HeatFluxDensity.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Quantities\MassConcentration.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>

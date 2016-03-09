@@ -168,13 +168,16 @@ Energy,WattHour,W*h,3600
 Energy,MilliwattHour,mW*h,3.6
 Energy,KilowattHour,kW*h,3600000
 
-
 // Power or heat flow rate
 Power,Watt,W,1
 Power,Milliwatt,mW,1e-3
 Power,Kilowatt,kW,1e3
 Power,Megawatt,MW,1e6
 Power,HorsePower,hp,735.49875
+
+// Heat flux density (https://en.wikipedia.org/wiki/Heat_flux)
+HeatFluxDensity,WattPerSquareMetre,W/m^2,1
+HeatFluxDensity,KilowattPerSquareMetre,kW/m^2,1e3
 
 // Action
 Action,AtomicUnitOfAction,au,1.05457168e-34
