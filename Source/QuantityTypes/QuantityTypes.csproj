@@ -90,6 +90,9 @@
     <Compile Include="Quantities\MassConcentrationInWater.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Quantities\MassFlowRate.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Quantities\PrecipitationIntensity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>

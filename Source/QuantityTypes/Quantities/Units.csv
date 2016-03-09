@@ -116,6 +116,11 @@ Flow,CubicFootPerSecond,ft^3/s,2.8316846592e-2
 Flow,GallonPerMinute,gpm,6.309019640e-5
 Flow,MillionGallonPerDay,MGD,4.381263639e-2
 
+// Mass Flow Rate (https://en.wikipedia.org/wiki/Mass_flow_rate)
+MassFlowRate,KilogramPerSecond,kg/s,1
+MassFlowRate,PoundPerHour,lb/h,0.0001259978805556
+MassFlowRate,KilopoundPerHour,KPPH,0.1259978805556
+
 // Precipitation Intensity
 PrecipitationIntensity,MillimetresPerHour,mm/h,1
 PrecipitationIntensity,MillimetresPerMinute,mm/min,60
