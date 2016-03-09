@@ -298,6 +298,10 @@ RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
 
 HeatCapacity,JoulePerKelvin,J/K,1
 
+// Specific Heat Capacity (https://en.wikipedia.org/wiki/Heat_capacity)
+SpecificHeatCapacity,JoulePerKilogramPerKelvin,J/(kg*K),1
+SpecificHeatCapacity,JoulePerGramPerKelvin,J/(g*K),1e3
+
 TemperatureDifference,Kelvin,K,1
 TemperatureDifference,DegreeCelsius,C,1
 TemperatureDifference,DegreeFahrenheit,F,5.0 / 9.0
