@@ -49,19 +49,34 @@ namespace QuantityTypes
         private static readonly TemperatureChange DegreeFahrenheitPerSecondField = new TemperatureChange(5.0 / 9.0);
 
         /// <summary>
+        /// The backing field for the <see cref="KelvinPerMinute" /> property.
+        /// </summary>
+        private static readonly TemperatureChange KelvinPerMinuteField = new TemperatureChange(1 / 60.0);
+
+        /// <summary>
+        /// The backing field for the <see cref="DegreeCelsiusPerMinute" /> property.
+        /// </summary>
+        private static readonly TemperatureChange DegreeCelsiusPerMinuteField = new TemperatureChange(1 / 60.0);
+
+        /// <summary>
+        /// The backing field for the <see cref="DegreeFahrenheitPerMinute" /> property.
+        /// </summary>
+        private static readonly TemperatureChange DegreeFahrenheitPerMinuteField = new TemperatureChange(5.0 / 540.0);
+
+        /// <summary>
         /// The backing field for the <see cref="KelvinPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange KelvinPerHourField = new TemperatureChange(1.0 / 60.0);
+        private static readonly TemperatureChange KelvinPerHourField = new TemperatureChange(1.0 / 3600.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsiusPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerHourField = new TemperatureChange(1.0 / 60.0);
+        private static readonly TemperatureChange DegreeCelsiusPerHourField = new TemperatureChange(1.0 / 3600.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeFahrenheitPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerHourField = new TemperatureChange(5.0 / 540.0);
+        private static readonly TemperatureChange DegreeFahrenheitPerHourField = new TemperatureChange(5.0 / 32400.0);
 
         /// <summary>
         /// The value.
@@ -121,27 +136,54 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "K/hr" unit.
+        /// Gets the "K/min" unit.
         /// </summary>
-        [Unit("K/hr")]
+        [Unit("K/min")]
+        public static TemperatureChange KelvinPerMinute
+        {
+            get { return KelvinPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "C/min" unit.
+        /// </summary>
+        [Unit("C/min")]
+        public static TemperatureChange DegreeCelsiusPerMinute
+        {
+            get { return DegreeCelsiusPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "F/min" unit.
+        /// </summary>
+        [Unit("F/min")]
+        public static TemperatureChange DegreeFahrenheitPerMinute
+        {
+            get { return DegreeFahrenheitPerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "K/h" unit.
+        /// </summary>
+        [Unit("K/h")]
         public static TemperatureChange KelvinPerHour
         {
             get { return KelvinPerHourField; }
         }
 
         /// <summary>
-        /// Gets the "C/hr" unit.
+        /// Gets the "C/h" unit.
         /// </summary>
-        [Unit("C/hr")]
+        [Unit("C/h")]
         public static TemperatureChange DegreeCelsiusPerHour
         {
             get { return DegreeCelsiusPerHourField; }
         }
 
         /// <summary>
-        /// Gets the "F/hr" unit.
+        /// Gets the "F/h" unit.
         /// </summary>
-        [Unit("F/hr")]
+        [Unit("F/h")]
         public static TemperatureChange DegreeFahrenheitPerHour
         {
             get { return DegreeFahrenheitPerHourField; }
