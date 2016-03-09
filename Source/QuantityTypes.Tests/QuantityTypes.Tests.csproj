@@ -59,6 +59,7 @@
     <Compile Include="JsonTests\QuantityJsonConverter.cs" />
     <Compile Include="Quantities\AngleTests.cs" />
     <Compile Include="CultureInfos.cs" />
+    <Compile Include="Quantities\FlowTests.cs" />
     <Compile Include="Quantities\MassConcentrationInWaterTests.cs" />
     <Compile Include="Quantities\MassConcentrationTests.cs" />
     <Compile Include="Quantities\FractionTests.cs" />

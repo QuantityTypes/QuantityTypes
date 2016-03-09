@@ -41,7 +41,12 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="LitrePerMinute" /> property.
         /// </summary>
-        private static readonly Flow LitrePerMinuteField = new Flow(1.6e-5);
+        private static readonly Flow LitrePerMinuteField = new Flow(1e-3 / 60);
+
+        /// <summary>
+        /// The backing field for the <see cref="CubicMetrePerHour" /> property.
+        /// </summary>
+        private static readonly Flow CubicMetrePerHourField = new Flow(1.0 / 3600);
 
         /// <summary>
         /// The backing field for the <see cref="CubicFootPerSecond" /> property.
@@ -104,6 +109,15 @@ namespace QuantityTypes
         public static Flow LitrePerMinute
         {
             get { return LitrePerMinuteField; }
+        }
+
+        /// <summary>
+        /// Gets the "m^3/h" unit.
+        /// </summary>
+        [Unit("m^3/h")]
+        public static Flow CubicMetrePerHour
+        {
+            get { return CubicMetrePerHourField; }
         }
 
         /// <summary>
