@@ -159,14 +159,18 @@ Torque,NewtonMetre,N*m,1
 Torque,NewtonCentimetre,N*cm,0.01
 Torque,NewtonMillimetre,N*mm,0.001
 
-// Energy
+// Energy (note that Calorie and Btu are according to the International Table)
 Energy,Joule,J,1
+Energy,Kilojoule,kJ,1e3
 Energy,Calorie,cal,4.1868
 Energy,NewtonMetreRadian,N*m*rad,1
 Energy,WattSecond,W*s,1
 Energy,WattHour,W*h,3600
 Energy,MilliwattHour,mW*h,3.6
-Energy,KilowattHour,kW*h,3600000
+Energy,KilowattHour,kW*h,3.6e6
+Energy,MegawattHour,MW*h,3.6e9
+Energy,BritishThermalUnit,Btu,1.05505585262e3
+Energy,MillionBtu,MMBtu,1.05505585262e9
 
 // Power or heat flow rate
 Power,Watt,W,1
@@ -174,6 +178,8 @@ Power,Milliwatt,mW,1e-3
 Power,Kilowatt,kW,1e3
 Power,Megawatt,MW,1e6
 Power,HorsePower,hp,735.49875
+Power,BtuPerHour,Btu/h,1.05505585262 / 3.6
+Power,MillionBtuPerHour,MMBtu/h,1.05505585262e6 / 3.6
 
 // Heat flux density (https://en.wikipedia.org/wiki/Heat_flux)
 HeatFluxDensity,WattPerSquareMetre,W/m^2,1
