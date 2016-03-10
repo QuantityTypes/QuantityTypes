@@ -110,10 +110,16 @@ Velocity,MilePerHour,mph,0.44704
 
 // Flow (volume)
 Flow,CubicMetrePerSecond,m^3/s,1
-Flow,LitrePerMinute,L/min,1.6e-5
+Flow,LitrePerMinute,L/min,1e-3 / 60
+Flow,CubicMetrePerHour,m^3/h,1.0 / 3600
 Flow,CubicFootPerSecond,ft^3/s,2.8316846592e-2
 Flow,GallonPerMinute,gpm,6.309019640e-5
 Flow,MillionGallonPerDay,MGD,4.381263639e-2
+
+// Mass Flow Rate (https://en.wikipedia.org/wiki/Mass_flow_rate)
+MassFlowRate,KilogramPerSecond,kg/s,1
+MassFlowRate,PoundPerHour,lb/h,0.0001259978805556
+MassFlowRate,KilopoundPerHour,KPPH,0.1259978805556
 
 // Precipitation Intensity
 PrecipitationIntensity,MillimetresPerHour,mm/h,1
@@ -153,15 +159,18 @@ Torque,NewtonMetre,N*m,1
 Torque,NewtonCentimetre,N*cm,0.01
 Torque,NewtonMillimetre,N*mm,0.001
 
-// Energy
+// Energy (note that Calorie and Btu are according to the International Table)
 Energy,Joule,J,1
+Energy,Kilojoule,kJ,1e3
 Energy,Calorie,cal,4.1868
 Energy,NewtonMetreRadian,N*m*rad,1
 Energy,WattSecond,W*s,1
 Energy,WattHour,W*h,3600
 Energy,MilliwattHour,mW*h,3.6
-Energy,KilowattHour,kW*h,3600000
-
+Energy,KilowattHour,kW*h,3.6e6
+Energy,MegawattHour,MW*h,3.6e9
+Energy,BritishThermalUnit,Btu,1.05505585262e3
+Energy,MillionBtu,MMBtu,1.05505585262e9
 
 // Power or heat flow rate
 Power,Watt,W,1
@@ -169,6 +178,12 @@ Power,Milliwatt,mW,1e-3
 Power,Kilowatt,kW,1e3
 Power,Megawatt,MW,1e6
 Power,HorsePower,hp,735.49875
+Power,BtuPerHour,Btu/h,1.05505585262 / 3.6
+Power,MillionBtuPerHour,MMBtu/h,1.05505585262e6 / 3.6
+
+// Heat flux density (https://en.wikipedia.org/wiki/Heat_flux)
+HeatFluxDensity,WattPerSquareMetre,W/m^2,1
+HeatFluxDensity,KilowattPerSquareMetre,kW/m^2,1e3
 
 // Action
 Action,AtomicUnitOfAction,au,1.05457168e-34
@@ -283,6 +298,10 @@ RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
 
 HeatCapacity,JoulePerKelvin,J/K,1
 
+// Specific Heat Capacity (https://en.wikipedia.org/wiki/Heat_capacity)
+SpecificHeatCapacity,JoulePerKilogramPerKelvin,J/(kg*K),1
+SpecificHeatCapacity,JoulePerGramPerKelvin,J/(g*K),1e3
+
 TemperatureDifference,Kelvin,K,1
 TemperatureDifference,DegreeCelsius,C,1
 TemperatureDifference,DegreeFahrenheit,F,5.0 / 9.0
@@ -291,9 +310,12 @@ TemperatureDifference,DegreeFahrenheit,F,5.0 / 9.0
 TemperatureChange,KelvinPerSecond,K/s,1
 TemperatureChange,DegreeCelsiusPerSecond,C/s,1
 TemperatureChange,DegreeFahrenheitPerSecond,F/s,5.0 / 9.0
-TemperatureChange,KelvinPerHour,K/hr,1.0 / 60.0
-TemperatureChange,DegreeCelsiusPerHour,C/hr,1.0 / 60.0
-TemperatureChange,DegreeFahrenheitPerHour,F/hr,5.0 / 540.0
+TemperatureChange,KelvinPerMinute,K/min,1 / 60.0
+TemperatureChange,DegreeCelsiusPerMinute,C/min,1 / 60.0
+TemperatureChange,DegreeFahrenheitPerMinute,F/min,5.0 / 540.0
+TemperatureChange,KelvinPerHour,K/h,1.0 / 3600.0
+TemperatureChange,DegreeCelsiusPerHour,C/h,1.0 / 3600.0
+TemperatureChange,DegreeFahrenheitPerHour,F/h,5.0 / 32400.0
 
 LinearMomentum,KilogramMeterPerSecond,kg*m/s,1
 LinearMomentum,NewtonSecond,N*s,1

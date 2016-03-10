@@ -39,6 +39,11 @@ namespace QuantityTypes
         private static readonly Energy JouleField = new Energy(1);
 
         /// <summary>
+        /// The backing field for the <see cref="Kilojoule" /> property.
+        /// </summary>
+        private static readonly Energy KilojouleField = new Energy(1e3);
+
+        /// <summary>
         /// The backing field for the <see cref="Calorie" /> property.
         /// </summary>
         private static readonly Energy CalorieField = new Energy(4.1868);
@@ -66,7 +71,22 @@ namespace QuantityTypes
         /// <summary>
         /// The backing field for the <see cref="KilowattHour" /> property.
         /// </summary>
-        private static readonly Energy KilowattHourField = new Energy(3600000);
+        private static readonly Energy KilowattHourField = new Energy(3.6e6);
+
+        /// <summary>
+        /// The backing field for the <see cref="MegawattHour" /> property.
+        /// </summary>
+        private static readonly Energy MegawattHourField = new Energy(3.6e9);
+
+        /// <summary>
+        /// The backing field for the <see cref="BritishThermalUnit" /> property.
+        /// </summary>
+        private static readonly Energy BritishThermalUnitField = new Energy(1.05505585262e3);
+
+        /// <summary>
+        /// The backing field for the <see cref="MillionBtu" /> property.
+        /// </summary>
+        private static readonly Energy MillionBtuField = new Energy(1.05505585262e9);
 
         /// <summary>
         /// The value.
@@ -105,6 +125,15 @@ namespace QuantityTypes
         public static Energy Joule
         {
             get { return JouleField; }
+        }
+
+        /// <summary>
+        /// Gets the "kJ" unit.
+        /// </summary>
+        [Unit("kJ")]
+        public static Energy Kilojoule
+        {
+            get { return KilojouleField; }
         }
 
         /// <summary>
@@ -159,6 +188,33 @@ namespace QuantityTypes
         public static Energy KilowattHour
         {
             get { return KilowattHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "MW*h" unit.
+        /// </summary>
+        [Unit("MW*h")]
+        public static Energy MegawattHour
+        {
+            get { return MegawattHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "Btu" unit.
+        /// </summary>
+        [Unit("Btu")]
+        public static Energy BritishThermalUnit
+        {
+            get { return BritishThermalUnitField; }
+        }
+
+        /// <summary>
+        /// Gets the "MMBtu" unit.
+        /// </summary>
+        [Unit("MMBtu")]
+        public static Energy MillionBtu
+        {
+            get { return MillionBtuField; }
         }
 
         /// <summary>

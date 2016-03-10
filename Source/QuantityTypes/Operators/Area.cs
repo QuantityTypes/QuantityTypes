@@ -19,15 +19,15 @@ namespace QuantityTypes
         /// <summary>
         /// Calculates the square root of the specified area.
         /// </summary>
-        /// <param name="l">
+        /// <param name="a">
         /// The area. 
         /// </param>
         /// <returns>
         /// The length. 
         /// </returns>
-        public static Length Sqrt(Area l)
+        public static Length Sqrt(Area a)
         {
-            return new Length(System.Math.Sqrt(l.value));
+            return new Length(System.Math.Sqrt(a.value));
         }
 
         /// <summary>
@@ -61,6 +61,17 @@ namespace QuantityTypes
         public static SecondMomentOfArea operator *(Area a1, Area a2)
         {
             return new SecondMomentOfArea(a1.value * a2.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="a"> The area. </param>
+        /// <param name="f"> The heat flux density. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Power operator *(Area a, HeatFluxDensity f)
+        {
+            return new Power(a.value * f.Value);
         }
     }
 }

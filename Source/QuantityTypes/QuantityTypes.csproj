@@ -65,6 +65,9 @@
     <Compile Include="Operators\Illuminance.cs" />
     <Compile Include="Operators\LuminousFlux.cs" />
     <Compile Include="Operators\LuminousIntensity.cs" />
+    <Compile Include="Operators\SpecificHeatCapacity.cs" />
+    <Compile Include="Operators\TemperatureChange.cs" />
+    <Compile Include="Operators\TemperatureDifference.cs" />
     <Compile Include="Operators\VolumetricWaterContent.cs" />
     <Compile Include="Operators\MassConcentrationInWater.cs" />
     <Compile Include="Operators\MassConcentration.cs" />
@@ -84,13 +87,22 @@
     <Compile Include="Quantities\ElectricConductivity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Quantities\HeatFluxDensity.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Quantities\MassConcentration.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\MassConcentrationInWater.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Quantities\MassFlowRate.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Quantities\PrecipitationIntensity.cs">
+      <DependentUpon>CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantities\SpecificHeatCapacity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\TemperatureChange.cs">

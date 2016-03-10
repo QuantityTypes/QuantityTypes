@@ -5,11 +5,11 @@
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
 // </auto-generated>
-// <copyright file="TemperatureChange.cs" company="QuantityTypes">
+// <copyright file="SpecificHeatCapacity.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Represents the temperature change quantity.
+//   Represents the specific heat capacity quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,59 +24,24 @@ namespace QuantityTypes
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents the temperature change quantity.
+    /// Represents the specific heat capacity quantity.
     /// </summary>
     [DataContract]
 #if !PCL
     [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<TemperatureChange>))]
+    [TypeConverter(typeof(QuantityTypeConverter<SpecificHeatCapacity>))]
 #endif
-    public partial struct TemperatureChange : IQuantity<TemperatureChange>
+    public partial struct SpecificHeatCapacity : IQuantity<SpecificHeatCapacity>
     {
         /// <summary>
-        /// The backing field for the <see cref="KelvinPerSecond" /> property.
+        /// The backing field for the <see cref="JoulePerKilogramPerKelvin" /> property.
         /// </summary>
-        private static readonly TemperatureChange KelvinPerSecondField = new TemperatureChange(1);
+        private static readonly SpecificHeatCapacity JoulePerKilogramPerKelvinField = new SpecificHeatCapacity(1);
 
         /// <summary>
-        /// The backing field for the <see cref="DegreeCelsiusPerSecond" /> property.
+        /// The backing field for the <see cref="JoulePerGramPerKelvin" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerSecondField = new TemperatureChange(1);
-
-        /// <summary>
-        /// The backing field for the <see cref="DegreeFahrenheitPerSecond" /> property.
-        /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerSecondField = new TemperatureChange(5.0 / 9.0);
-
-        /// <summary>
-        /// The backing field for the <see cref="KelvinPerMinute" /> property.
-        /// </summary>
-        private static readonly TemperatureChange KelvinPerMinuteField = new TemperatureChange(1 / 60.0);
-
-        /// <summary>
-        /// The backing field for the <see cref="DegreeCelsiusPerMinute" /> property.
-        /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerMinuteField = new TemperatureChange(1 / 60.0);
-
-        /// <summary>
-        /// The backing field for the <see cref="DegreeFahrenheitPerMinute" /> property.
-        /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerMinuteField = new TemperatureChange(5.0 / 540.0);
-
-        /// <summary>
-        /// The backing field for the <see cref="KelvinPerHour" /> property.
-        /// </summary>
-        private static readonly TemperatureChange KelvinPerHourField = new TemperatureChange(1.0 / 3600.0);
-
-        /// <summary>
-        /// The backing field for the <see cref="DegreeCelsiusPerHour" /> property.
-        /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerHourField = new TemperatureChange(1.0 / 3600.0);
-
-        /// <summary>
-        /// The backing field for the <see cref="DegreeFahrenheitPerHour" /> property.
-        /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerHourField = new TemperatureChange(5.0 / 32400.0);
+        private static readonly SpecificHeatCapacity JoulePerGramPerKelvinField = new SpecificHeatCapacity(1e3);
 
         /// <summary>
         /// The value.
@@ -84,18 +49,18 @@ namespace QuantityTypes
         private double value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TemperatureChange"/> struct.
+        /// Initializes a new instance of the <see cref="SpecificHeatCapacity"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
         /// </param>
-        public TemperatureChange(double value)
+        public SpecificHeatCapacity(double value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TemperatureChange"/> struct.
+        /// Initializes a new instance of the <see cref="SpecificHeatCapacity"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
@@ -103,94 +68,31 @@ namespace QuantityTypes
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        public TemperatureChange(string value, IUnitProvider unitProvider = null)
+        public SpecificHeatCapacity(string value, IUnitProvider unitProvider = null)
         {
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
 
         /// <summary>
-        /// Gets the "K/s" unit.
+        /// Gets the "J/(kg*K)" unit.
         /// </summary>
-        [Unit("K/s", true)]
-        public static TemperatureChange KelvinPerSecond
+        [Unit("J/(kg*K)", true)]
+        public static SpecificHeatCapacity JoulePerKilogramPerKelvin
         {
-            get { return KelvinPerSecondField; }
+            get { return JoulePerKilogramPerKelvinField; }
         }
 
         /// <summary>
-        /// Gets the "C/s" unit.
+        /// Gets the "J/(g*K)" unit.
         /// </summary>
-        [Unit("C/s")]
-        public static TemperatureChange DegreeCelsiusPerSecond
+        [Unit("J/(g*K)")]
+        public static SpecificHeatCapacity JoulePerGramPerKelvin
         {
-            get { return DegreeCelsiusPerSecondField; }
+            get { return JoulePerGramPerKelvinField; }
         }
 
         /// <summary>
-        /// Gets the "F/s" unit.
-        /// </summary>
-        [Unit("F/s")]
-        public static TemperatureChange DegreeFahrenheitPerSecond
-        {
-            get { return DegreeFahrenheitPerSecondField; }
-        }
-
-        /// <summary>
-        /// Gets the "K/min" unit.
-        /// </summary>
-        [Unit("K/min")]
-        public static TemperatureChange KelvinPerMinute
-        {
-            get { return KelvinPerMinuteField; }
-        }
-
-        /// <summary>
-        /// Gets the "C/min" unit.
-        /// </summary>
-        [Unit("C/min")]
-        public static TemperatureChange DegreeCelsiusPerMinute
-        {
-            get { return DegreeCelsiusPerMinuteField; }
-        }
-
-        /// <summary>
-        /// Gets the "F/min" unit.
-        /// </summary>
-        [Unit("F/min")]
-        public static TemperatureChange DegreeFahrenheitPerMinute
-        {
-            get { return DegreeFahrenheitPerMinuteField; }
-        }
-
-        /// <summary>
-        /// Gets the "K/h" unit.
-        /// </summary>
-        [Unit("K/h")]
-        public static TemperatureChange KelvinPerHour
-        {
-            get { return KelvinPerHourField; }
-        }
-
-        /// <summary>
-        /// Gets the "C/h" unit.
-        /// </summary>
-        [Unit("C/h")]
-        public static TemperatureChange DegreeCelsiusPerHour
-        {
-            get { return DegreeCelsiusPerHourField; }
-        }
-
-        /// <summary>
-        /// Gets the "F/h" unit.
-        /// </summary>
-        [Unit("F/h")]
-        public static TemperatureChange DegreeFahrenheitPerHour
-        {
-            get { return DegreeFahrenheitPerHourField; }
-        }
-
-        /// <summary>
-        /// Gets or sets the temperature change as a string.
+        /// Gets or sets the specific heat capacity as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -213,7 +115,7 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the value of the temperature change in the base unit.
+        /// Gets the value of the specific heat capacity in the base unit.
         /// </summary>
         public double Value
         {
@@ -236,16 +138,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="SpecificHeatCapacity"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static TemperatureChange Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
+        public static SpecificHeatCapacity Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            TemperatureChange value;
+            SpecificHeatCapacity value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -264,13 +166,13 @@ namespace QuantityTypes
         /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
         /// </param>
         /// <returns>
-        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="SpecificHeatCapacity"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static TemperatureChange Parse(string input, IFormatProvider provider = null)
+        public static SpecificHeatCapacity Parse(string input, IFormatProvider provider = null)
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            TemperatureChange value;
+            SpecificHeatCapacity value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -289,16 +191,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="SpecificHeatCapacity"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static TemperatureChange Parse(string input, IUnitProvider unitProvider)
+        public static SpecificHeatCapacity Parse(string input, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;
             }
 
-            TemperatureChange value;
+            SpecificHeatCapacity value;
             if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -315,7 +217,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">The unit provider.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out TemperatureChange result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out SpecificHeatCapacity result)
         {
             if (unitProvider == null)
             {
@@ -330,9 +232,9 @@ namespace QuantityTypes
         /// </summary>
         /// <param name="input">The JSON input.</param>
         /// <returns>
-        /// The <see cref="TemperatureChange"/> .
+        /// The <see cref="SpecificHeatCapacity"/> .
         /// </returns>
-        public static TemperatureChange ParseJson(string input)
+        public static SpecificHeatCapacity ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
         }
@@ -349,9 +251,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator +(TemperatureChange x, TemperatureChange y)
+        public static SpecificHeatCapacity operator +(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
-            return new TemperatureChange(x.value + y.value);
+            return new SpecificHeatCapacity(x.value + y.value);
         }
 
         /// <summary>
@@ -366,9 +268,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator /(TemperatureChange x, double y)
+        public static SpecificHeatCapacity operator /(SpecificHeatCapacity x, double y)
         {
-            return new TemperatureChange(x.value / y);
+            return new SpecificHeatCapacity(x.value / y);
         }
 
         /// <summary>
@@ -383,7 +285,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static double operator /(TemperatureChange x, TemperatureChange y)
+        public static double operator /(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return x.value / y.value;
         }
@@ -400,7 +302,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator ==(TemperatureChange x, TemperatureChange y)
+        public static bool operator ==(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return x.value.Equals(y.value);
         }
@@ -417,7 +319,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >(TemperatureChange x, TemperatureChange y)
+        public static bool operator >(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return x.value > y.value;
         }
@@ -434,7 +336,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >=(TemperatureChange x, TemperatureChange y)
+        public static bool operator >=(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return x.value >= y.value;
         }
@@ -451,7 +353,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator !=(TemperatureChange x, TemperatureChange y)
+        public static bool operator !=(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return !x.value.Equals(y.value);
         }
@@ -468,7 +370,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <(TemperatureChange x, TemperatureChange y)
+        public static bool operator <(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return x.value < y.value;
         }
@@ -485,7 +387,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <=(TemperatureChange x, TemperatureChange y)
+        public static bool operator <=(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
             return x.value <= y.value;
         }
@@ -502,9 +404,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator *(double x, TemperatureChange y)
+        public static SpecificHeatCapacity operator *(double x, SpecificHeatCapacity y)
         {
-            return new TemperatureChange(x * y.value);
+            return new SpecificHeatCapacity(x * y.value);
         }
 
         /// <summary>
@@ -519,9 +421,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator *(TemperatureChange x, double y)
+        public static SpecificHeatCapacity operator *(SpecificHeatCapacity x, double y)
         {
-            return new TemperatureChange(x.value * y);
+            return new SpecificHeatCapacity(x.value * y);
         }
 
         /// <summary>
@@ -536,9 +438,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator -(TemperatureChange x, TemperatureChange y)
+        public static SpecificHeatCapacity operator -(SpecificHeatCapacity x, SpecificHeatCapacity y)
         {
-            return new TemperatureChange(x.value - y.value);
+            return new SpecificHeatCapacity(x.value - y.value);
         }
 
         /// <summary>
@@ -550,9 +452,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator +(TemperatureChange x)
+        public static SpecificHeatCapacity operator +(SpecificHeatCapacity x)
         {
-            return new TemperatureChange(x.value);
+            return new SpecificHeatCapacity(x.value);
         }
 
         /// <summary>
@@ -564,21 +466,21 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator -(TemperatureChange x)
+        public static SpecificHeatCapacity operator -(SpecificHeatCapacity x)
         {
-            return new TemperatureChange(-x.value);
+            return new SpecificHeatCapacity(-x.value);
         }
 
         /// <summary>
-        /// Compares this instance to the specified <see cref="TemperatureChange"/> and returns an indication of their relative values.
+        /// Compares this instance to the specified <see cref="SpecificHeatCapacity"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="TemperatureChange"/> . 
+        /// The other <see cref="SpecificHeatCapacity"/> . 
         /// </param>
         /// <returns>
         /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
-        public int CompareTo(TemperatureChange other)
+        public int CompareTo(SpecificHeatCapacity other)
         {
             return this.value.CompareTo(other.value);
         }
@@ -595,7 +497,7 @@ namespace QuantityTypes
         /// </returns>
         public int CompareTo(object obj)
         {
-            return this.CompareTo((TemperatureChange)obj);
+            return this.CompareTo((SpecificHeatCapacity)obj);
         }
 
         /// <summary>
@@ -605,7 +507,7 @@ namespace QuantityTypes
         /// <returns>The amount of the specified unit.</returns>
         double IQuantity.ConvertTo(IQuantity unit)
         {
-            return this.ConvertTo((TemperatureChange)unit);
+            return this.ConvertTo((SpecificHeatCapacity)unit);
         }
 
         /// <summary>
@@ -617,7 +519,7 @@ namespace QuantityTypes
         /// <returns>
         /// The value in the specified unit. 
         /// </returns>
-        public double ConvertTo(TemperatureChange unit)
+        public double ConvertTo(SpecificHeatCapacity unit)
         {
             return this.value / unit.Value;
         }
@@ -633,24 +535,24 @@ namespace QuantityTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is TemperatureChange)
+            if (obj is SpecificHeatCapacity)
             {
-                return this.Equals((TemperatureChange)obj);
+                return this.Equals((SpecificHeatCapacity)obj);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Determines if the specified <see cref="TemperatureChange"/> is equal to this instance.
+        /// Determines if the specified <see cref="SpecificHeatCapacity"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="TemperatureChange"/> . 
+        /// The other <see cref="SpecificHeatCapacity"/> . 
         /// </param>
         /// <returns>
         /// True if the values are equal. 
         /// </returns>
-        public bool Equals(TemperatureChange other)
+        public bool Equals(SpecificHeatCapacity other)
         {
             return this.value.Equals(other.value);
         }
@@ -683,12 +585,12 @@ namespace QuantityTypes
         /// <returns>The sum.</returns>
         public IQuantity Add(IQuantity x)
         {
-            if (!(x is TemperatureChange))
+            if (!(x is SpecificHeatCapacity))
             {
                 throw new InvalidOperationException("Can only add quantities of the same types.");
             }
 
-            return new TemperatureChange(this.value + x.Value);
+            return new SpecificHeatCapacity(this.value + x.Value);
         }
 
         /// <summary>

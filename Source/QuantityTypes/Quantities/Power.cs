@@ -59,6 +59,16 @@ namespace QuantityTypes
         private static readonly Power HorsePowerField = new Power(735.49875);
 
         /// <summary>
+        /// The backing field for the <see cref="BtuPerHour" /> property.
+        /// </summary>
+        private static readonly Power BtuPerHourField = new Power(1.05505585262 / 3.6);
+
+        /// <summary>
+        /// The backing field for the <see cref="MillionBtuPerHour" /> property.
+        /// </summary>
+        private static readonly Power MillionBtuPerHourField = new Power(1.05505585262e6 / 3.6);
+
+        /// <summary>
         /// The value.
         /// </summary>
         private double value;
@@ -131,6 +141,24 @@ namespace QuantityTypes
         public static Power HorsePower
         {
             get { return HorsePowerField; }
+        }
+
+        /// <summary>
+        /// Gets the "Btu/h" unit.
+        /// </summary>
+        [Unit("Btu/h")]
+        public static Power BtuPerHour
+        {
+            get { return BtuPerHourField; }
+        }
+
+        /// <summary>
+        /// Gets the "MMBtu/h" unit.
+        /// </summary>
+        [Unit("MMBtu/h")]
+        public static Power MillionBtuPerHour
+        {
+            get { return MillionBtuPerHourField; }
         }
 
         /// <summary>
