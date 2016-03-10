@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to specific heat capacity.
+//   Implements operators related to specific heat capacity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    /// Provides operators related to specific heat capacity.
+    /// Implements operators related to specific heat capacity.
     /// </summary>
     public partial struct SpecificHeatCapacity
     {

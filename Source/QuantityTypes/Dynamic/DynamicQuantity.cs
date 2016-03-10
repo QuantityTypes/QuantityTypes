@@ -209,7 +209,7 @@ namespace QuantityTypes.Dynamic
         /// </summary>
         /// <param name="s">The string to parse.</param>
         /// <param name="provider">The provider.</param>
-        /// <returns>DynamicQuantity.</returns>
+        /// <returns>A DynamicQuantity.</returns>
         /// <exception cref="System.FormatException">Could not parse  + s</exception>
         public static DynamicQuantity Parse(string s, IFormatProvider provider = null)
         {

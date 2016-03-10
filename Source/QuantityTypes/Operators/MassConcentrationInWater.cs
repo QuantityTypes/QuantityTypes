@@ -3,16 +3,14 @@
 //   Copyright (c) 2015 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to volume.
+//   Implements operators related to volume.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-using System;
 
 namespace QuantityTypes
 {
     /// <summary>
-   ///     Provides operators related to MassConcentrationInWater.
+   ///     Implements operators related to MassConcentrationInWater.
     /// </summary>
     public partial struct MassConcentrationInWater
     {

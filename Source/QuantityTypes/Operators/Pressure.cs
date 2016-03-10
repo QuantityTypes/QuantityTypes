@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to pressure.
+//   Implements operators related to pressure.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to pressure.
+    ///     Implements operators related to pressure.
     /// </summary>
     public partial struct Pressure
     {

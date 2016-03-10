@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to force.
+//   Implements operators related to force.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to force.
+    ///     Implements operators related to force.
     /// </summary>
     public partial struct Force
     {

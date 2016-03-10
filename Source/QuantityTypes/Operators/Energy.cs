@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to energy.
+//   Implements operators related to energy.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to energy.
+    ///     Implements operators related to energy.
     /// </summary>
     public partial struct Energy
     {

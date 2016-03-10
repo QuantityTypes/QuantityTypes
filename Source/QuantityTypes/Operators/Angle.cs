@@ -3,7 +3,7 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to angle.
+//   Implements operators related to angle.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ namespace QuantityTypes
     using System;
 
     /// <summary>
-    ///     Provides operators related to angle.
+    ///     Implements operators related to angle.
     /// </summary>
     public partial struct Angle
     {

@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to electric resistance.
+//   Implements operators related to electric resistance.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to electric resistance.
+    ///     Implements operators related to electric resistance.
     /// </summary>
     public partial struct ElectricResistance
     {

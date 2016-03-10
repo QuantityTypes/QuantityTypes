@@ -3,12 +3,15 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Implements the operator /.
+//   Implements operators related to TypographicResolution.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
+    /// <summary>
+    /// Implements operators related to TypographicResolution.
+    /// </summary>
     public partial struct TypographicResolution
     {
         /// <summary>

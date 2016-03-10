@@ -3,7 +3,7 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to velocity.
+//   Implements operators related to velocity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ namespace QuantityTypes
     using System;
 
     /// <summary>
-    ///     Provides operators related to velocity.
+    ///     Implements operators related to velocity.
     /// </summary>
     public partial struct Velocity
     {

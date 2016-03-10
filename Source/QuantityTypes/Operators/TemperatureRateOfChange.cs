@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to temperature rate of change.
+//   Implements operators related to temperature rate of change.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to temperature rate of change.
+    ///     Implements operators related to temperature rate of change.
     /// </summary>
     public partial struct TemperatureRateOfChange
     {

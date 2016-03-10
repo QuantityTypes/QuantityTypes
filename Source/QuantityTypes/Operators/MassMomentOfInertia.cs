@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to mass moment of inertia.
+//   Implements operators related to mass moment of inertia.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    /// Provides operators related to mass moment of inertia.
+    /// Implements operators related to mass moment of inertia.
     /// </summary>
     public partial struct MassMomentOfInertia
     {

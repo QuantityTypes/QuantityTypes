@@ -3,16 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to luminous flux.
+//   Implements operators related to luminous flux.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
-    using System;
-
     /// <summary>
-    ///     Provides operators related to luminous flux.
+    ///     Implements operators related to luminous flux.
     /// </summary>
     public partial struct LuminousFlux
     {

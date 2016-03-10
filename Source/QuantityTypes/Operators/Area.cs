@@ -3,16 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to area.
+//   Implements operators related to area.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
-    using System;
-
     /// <summary>
-    ///     Provides operators related to area.
+    ///     Implements operators related to area.
     /// </summary>
     public partial struct Area
     {

@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to linear momentum.
+//   Implements operators related to linear momentum.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to linear momentum.
+    ///     Implements operators related to linear momentum.
     /// </summary>
     public partial struct LinearMomentum
     {

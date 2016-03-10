@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to acceleration.
+//   Implements operators related to acceleration.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to acceleration.
+    ///     Implements operators related to acceleration.
     /// </summary>
     public partial struct Acceleration
     {

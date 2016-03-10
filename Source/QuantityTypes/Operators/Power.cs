@@ -1,16 +1,16 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ElectricVoltage.cs" company="QuantityTypes">
+// <copyright file="Power.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to power.
+//   Implements operators related to power.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to power.
+    ///     Implements operators related to power.
     /// </summary>
     public partial struct Power
     {

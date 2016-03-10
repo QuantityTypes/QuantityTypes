@@ -1,16 +1,16 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MassConcentration.cs" company="QuantityTypes">
-//   Copyright (c) 2015 QuantityTypes contributors
+//   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to volume.
+//   Implements operators related to volume.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to volume.
+    ///     Implements operators related to volume.
     /// </summary>
     public partial struct MassConcentration
     {

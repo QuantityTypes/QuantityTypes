@@ -3,12 +3,15 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Implements operators for TypographicLength.
+//   Implements operators related to TypographicLength.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
+    /// <summary>
+    /// Implements operators related to TypographicLength.
+    /// </summary>
     public partial struct TypographicLength
     {
         /// <summary>

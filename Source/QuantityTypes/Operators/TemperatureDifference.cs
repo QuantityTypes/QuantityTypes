@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to temperature difference.
+//   Implements operators related to temperature difference.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to temperature difference.
+    ///     Implements operators related to temperature difference.
     /// </summary>
     public partial struct TemperatureDifference
     {

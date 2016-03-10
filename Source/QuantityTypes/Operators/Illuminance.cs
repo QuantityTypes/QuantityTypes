@@ -3,16 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to illuminance.
+//   Implements operators related to illuminance.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
-    using System;
-
     /// <summary>
-    ///     Provides operators related to illuminance.
+    ///     Implements operators related to illuminance.
     /// </summary>
     public partial struct Illuminance
     {

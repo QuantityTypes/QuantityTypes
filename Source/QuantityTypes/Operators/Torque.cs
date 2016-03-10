@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to torque.
+//   Implements operators related to torque.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    /// Provides operators related to torque.
+    /// Implements operators related to torque.
     /// </summary>
     public partial struct Torque
     {

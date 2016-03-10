@@ -3,16 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to luminous intensity.
+//   Implements operators related to luminous intensity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
-    using System;
-
     /// <summary>
-    ///     Provides operators related to luminous intensity.
+    ///     Implements operators related to luminous intensity.
     /// </summary>
     public partial struct LuminousIntensity
     {

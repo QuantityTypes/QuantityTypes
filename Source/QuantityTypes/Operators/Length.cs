@@ -3,7 +3,7 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to length.
+//   Implements operators related to length.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ namespace QuantityTypes
     using System;
 
     /// <summary>
-    ///     Provides operators related to length.
+    ///     Implements operators related to length.
     /// </summary>
     public partial struct Length
     {

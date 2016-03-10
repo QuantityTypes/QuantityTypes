@@ -3,14 +3,14 @@
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to mass.
+//   Implements operators related to mass.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    /// Provides operators related to mass.
+    /// Implements operators related to mass.
     /// </summary>
     public partial struct Mass
     {
