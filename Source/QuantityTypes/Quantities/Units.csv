@@ -306,16 +306,16 @@ TemperatureDifference,Kelvin,K,1
 TemperatureDifference,DegreeCelsius,C,1
 TemperatureDifference,DegreeFahrenheit,F,5.0 / 9.0
 
-// Temperature change over time
-TemperatureChange,KelvinPerSecond,K/s,1
-TemperatureChange,DegreeCelsiusPerSecond,C/s,1
-TemperatureChange,DegreeFahrenheitPerSecond,F/s,5.0 / 9.0
-TemperatureChange,KelvinPerMinute,K/min,1 / 60.0
-TemperatureChange,DegreeCelsiusPerMinute,C/min,1 / 60.0
-TemperatureChange,DegreeFahrenheitPerMinute,F/min,5.0 / 540.0
-TemperatureChange,KelvinPerHour,K/h,1.0 / 3600.0
-TemperatureChange,DegreeCelsiusPerHour,C/h,1.0 / 3600.0
-TemperatureChange,DegreeFahrenheitPerHour,F/h,5.0 / 32400.0
+// Temperature rate of change per unit of time
+TemperatureRateOfChange,KelvinPerSecond,K/s,1
+TemperatureRateOfChange,DegreeCelsiusPerSecond,C/s,1
+TemperatureRateOfChange,DegreeFahrenheitPerSecond,F/s,5.0 / 9.0
+TemperatureRateOfChange,KelvinPerMinute,K/min,1 / 60.0
+TemperatureRateOfChange,DegreeCelsiusPerMinute,C/min,1 / 60.0
+TemperatureRateOfChange,DegreeFahrenheitPerMinute,F/min,5.0 / 540.0
+TemperatureRateOfChange,KelvinPerHour,K/h,1.0 / 3600.0
+TemperatureRateOfChange,DegreeCelsiusPerHour,C/h,1.0 / 3600.0
+TemperatureRateOfChange,DegreeFahrenheitPerHour,F/h,5.0 / 32400.0
 
 LinearMomentum,KilogramMeterPerSecond,kg*m/s,1
 LinearMomentum,NewtonSecond,N*s,1

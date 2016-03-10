@@ -20,9 +20,9 @@ namespace QuantityTypes
         /// <param name="dT"> The temperature difference. </param>
         /// <param name="dt"> The time duration. </param>
         /// <returns> The result of the operator. </returns>
-        public static TemperatureChange operator /(TemperatureDifference dT, Time dt)
+        public static TemperatureRateOfChange operator /(TemperatureDifference dT, Time dt)
         {
-            return new TemperatureChange(dT.value / dt.Value);
+            return new TemperatureRateOfChange(dT.value / dt.Value);
         }
     }
 }

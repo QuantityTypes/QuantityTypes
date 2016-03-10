@@ -66,7 +66,7 @@
     <Compile Include="Operators\LuminousFlux.cs" />
     <Compile Include="Operators\LuminousIntensity.cs" />
     <Compile Include="Operators\SpecificHeatCapacity.cs" />
-    <Compile Include="Operators\TemperatureChange.cs" />
+    <Compile Include="Operators\TemperatureRateOfChange.cs" />
     <Compile Include="Operators\TemperatureDifference.cs" />
     <Compile Include="Operators\VolumetricWaterContent.cs" />
     <Compile Include="Operators\MassConcentrationInWater.cs" />
@@ -105,7 +105,7 @@
     <Compile Include="Quantities\SpecificHeatCapacity.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Quantities\TemperatureChange.cs">
+    <Compile Include="Quantities\TemperatureRateOfChange.cs">
       <DependentUpon>CodeGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Quantities\TimeSquared.cs">
