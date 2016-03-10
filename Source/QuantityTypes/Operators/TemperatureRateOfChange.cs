@@ -1,26 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TemperatureChange.cs" company="QuantityTypes">
+// <copyright file="TemperatureRateOfChange.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Provides operators related to temperature change.
+//   Provides operators related to temperature rate of change.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace QuantityTypes
 {
     /// <summary>
-    ///     Provides operators related to temperature change.
+    ///     Provides operators related to temperature rate of change.
     /// </summary>
-    public partial struct TemperatureChange
+    public partial struct TemperatureRateOfChange
     {
         /// <summary>
         ///     Implements the operator *.
         /// </summary>
-        /// <param name="x"> The temperature change. </param>
+        /// <param name="x"> The temperature rate of change. </param>
         /// <param name="dt"> The time duration. </param>
         /// <returns> The result of the operator. </returns>
-        public static TemperatureDifference operator *(TemperatureChange x, Time dt)
+        public static TemperatureDifference operator *(TemperatureRateOfChange x, Time dt)
         {
             return new TemperatureDifference(x.value * dt.Value);
         }

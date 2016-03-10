@@ -69,6 +69,7 @@
     <Compile Include="Constraints\QuantityIs.cs" />
     <Compile Include="Constraints\EqualConstraint.cs" />
     <Compile Include="Quantities\TemperatureDifferenceTests.cs" />
+    <Compile Include="Quantities\TemperatureRateOfChangeTests.cs" />
     <Compile Include="Quantities\TemperatureTests.cs" />
     <Compile Include="Quantities\LengthTests.cs" />
     <Compile Include="Example.cs" />

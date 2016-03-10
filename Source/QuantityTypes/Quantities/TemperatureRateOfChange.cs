@@ -5,11 +5,11 @@
 //   Changes to this file may cause incorrect behavior and will be lost if 
 //   the code is regenerated. 
 // </auto-generated>
-// <copyright file="TemperatureChange.cs" company="QuantityTypes">
+// <copyright file="TemperatureRateOfChange.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
-//   Represents the temperature change quantity.
+//   Represents the temperature rate of change quantity.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,59 +24,59 @@ namespace QuantityTypes
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Represents the temperature change quantity.
+    /// Represents the temperature rate of change quantity.
     /// </summary>
     [DataContract]
 #if !PCL
     [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<TemperatureChange>))]
+    [TypeConverter(typeof(QuantityTypeConverter<TemperatureRateOfChange>))]
 #endif
-    public partial struct TemperatureChange : IQuantity<TemperatureChange>
+    public partial struct TemperatureRateOfChange : IQuantity<TemperatureRateOfChange>
     {
         /// <summary>
         /// The backing field for the <see cref="KelvinPerSecond" /> property.
         /// </summary>
-        private static readonly TemperatureChange KelvinPerSecondField = new TemperatureChange(1);
+        private static readonly TemperatureRateOfChange KelvinPerSecondField = new TemperatureRateOfChange(1);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsiusPerSecond" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerSecondField = new TemperatureChange(1);
+        private static readonly TemperatureRateOfChange DegreeCelsiusPerSecondField = new TemperatureRateOfChange(1);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeFahrenheitPerSecond" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerSecondField = new TemperatureChange(5.0 / 9.0);
+        private static readonly TemperatureRateOfChange DegreeFahrenheitPerSecondField = new TemperatureRateOfChange(5.0 / 9.0);
 
         /// <summary>
         /// The backing field for the <see cref="KelvinPerMinute" /> property.
         /// </summary>
-        private static readonly TemperatureChange KelvinPerMinuteField = new TemperatureChange(1 / 60.0);
+        private static readonly TemperatureRateOfChange KelvinPerMinuteField = new TemperatureRateOfChange(1 / 60.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsiusPerMinute" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerMinuteField = new TemperatureChange(1 / 60.0);
+        private static readonly TemperatureRateOfChange DegreeCelsiusPerMinuteField = new TemperatureRateOfChange(1 / 60.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeFahrenheitPerMinute" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerMinuteField = new TemperatureChange(5.0 / 540.0);
+        private static readonly TemperatureRateOfChange DegreeFahrenheitPerMinuteField = new TemperatureRateOfChange(5.0 / 540.0);
 
         /// <summary>
         /// The backing field for the <see cref="KelvinPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange KelvinPerHourField = new TemperatureChange(1.0 / 3600.0);
+        private static readonly TemperatureRateOfChange KelvinPerHourField = new TemperatureRateOfChange(1.0 / 3600.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeCelsiusPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeCelsiusPerHourField = new TemperatureChange(1.0 / 3600.0);
+        private static readonly TemperatureRateOfChange DegreeCelsiusPerHourField = new TemperatureRateOfChange(1.0 / 3600.0);
 
         /// <summary>
         /// The backing field for the <see cref="DegreeFahrenheitPerHour" /> property.
         /// </summary>
-        private static readonly TemperatureChange DegreeFahrenheitPerHourField = new TemperatureChange(5.0 / 32400.0);
+        private static readonly TemperatureRateOfChange DegreeFahrenheitPerHourField = new TemperatureRateOfChange(5.0 / 32400.0);
 
         /// <summary>
         /// The value.
@@ -84,18 +84,18 @@ namespace QuantityTypes
         private double value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TemperatureChange"/> struct.
+        /// Initializes a new instance of the <see cref="TemperatureRateOfChange"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
         /// </param>
-        public TemperatureChange(double value)
+        public TemperatureRateOfChange(double value)
         {
             this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TemperatureChange"/> struct.
+        /// Initializes a new instance of the <see cref="TemperatureRateOfChange"/> struct.
         /// </summary>
         /// <param name="value">
         /// The value. 
@@ -103,7 +103,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">
         /// The unit provider. 
         /// </param>
-        public TemperatureChange(string value, IUnitProvider unitProvider = null)
+        public TemperatureRateOfChange(string value, IUnitProvider unitProvider = null)
         {
             this.value = Parse(value, unitProvider ?? UnitProvider.Default).value;
         }
@@ -112,7 +112,7 @@ namespace QuantityTypes
         /// Gets the "K/s" unit.
         /// </summary>
         [Unit("K/s", true)]
-        public static TemperatureChange KelvinPerSecond
+        public static TemperatureRateOfChange KelvinPerSecond
         {
             get { return KelvinPerSecondField; }
         }
@@ -121,7 +121,7 @@ namespace QuantityTypes
         /// Gets the "C/s" unit.
         /// </summary>
         [Unit("C/s")]
-        public static TemperatureChange DegreeCelsiusPerSecond
+        public static TemperatureRateOfChange DegreeCelsiusPerSecond
         {
             get { return DegreeCelsiusPerSecondField; }
         }
@@ -130,7 +130,7 @@ namespace QuantityTypes
         /// Gets the "F/s" unit.
         /// </summary>
         [Unit("F/s")]
-        public static TemperatureChange DegreeFahrenheitPerSecond
+        public static TemperatureRateOfChange DegreeFahrenheitPerSecond
         {
             get { return DegreeFahrenheitPerSecondField; }
         }
@@ -139,7 +139,7 @@ namespace QuantityTypes
         /// Gets the "K/min" unit.
         /// </summary>
         [Unit("K/min")]
-        public static TemperatureChange KelvinPerMinute
+        public static TemperatureRateOfChange KelvinPerMinute
         {
             get { return KelvinPerMinuteField; }
         }
@@ -148,7 +148,7 @@ namespace QuantityTypes
         /// Gets the "C/min" unit.
         /// </summary>
         [Unit("C/min")]
-        public static TemperatureChange DegreeCelsiusPerMinute
+        public static TemperatureRateOfChange DegreeCelsiusPerMinute
         {
             get { return DegreeCelsiusPerMinuteField; }
         }
@@ -157,7 +157,7 @@ namespace QuantityTypes
         /// Gets the "F/min" unit.
         /// </summary>
         [Unit("F/min")]
-        public static TemperatureChange DegreeFahrenheitPerMinute
+        public static TemperatureRateOfChange DegreeFahrenheitPerMinute
         {
             get { return DegreeFahrenheitPerMinuteField; }
         }
@@ -166,7 +166,7 @@ namespace QuantityTypes
         /// Gets the "K/h" unit.
         /// </summary>
         [Unit("K/h")]
-        public static TemperatureChange KelvinPerHour
+        public static TemperatureRateOfChange KelvinPerHour
         {
             get { return KelvinPerHourField; }
         }
@@ -175,7 +175,7 @@ namespace QuantityTypes
         /// Gets the "C/h" unit.
         /// </summary>
         [Unit("C/h")]
-        public static TemperatureChange DegreeCelsiusPerHour
+        public static TemperatureRateOfChange DegreeCelsiusPerHour
         {
             get { return DegreeCelsiusPerHourField; }
         }
@@ -184,13 +184,13 @@ namespace QuantityTypes
         /// Gets the "F/h" unit.
         /// </summary>
         [Unit("F/h")]
-        public static TemperatureChange DegreeFahrenheitPerHour
+        public static TemperatureRateOfChange DegreeFahrenheitPerHour
         {
             get { return DegreeFahrenheitPerHourField; }
         }
 
         /// <summary>
-        /// Gets or sets the temperature change as a string.
+        /// Gets or sets the temperature rate of change as a string.
         /// </summary>
         /// <value>The string.</value>
         /// <remarks>
@@ -213,7 +213,7 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the value of the temperature change in the base unit.
+        /// Gets the value of the temperature rate of change in the base unit.
         /// </summary>
         public double Value
         {
@@ -236,16 +236,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="TemperatureRateOfChange"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static TemperatureChange Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
+        public static TemperatureRateOfChange Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            TemperatureChange value;
+            TemperatureRateOfChange value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -264,13 +264,13 @@ namespace QuantityTypes
         /// An object that supplies culture-specific formatting information about <paramref name="input" />. If not specified, the culture of the default <see cref="UnitProvider" /> is used. 
         /// </param>
         /// <returns>
-        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="TemperatureRateOfChange"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static TemperatureChange Parse(string input, IFormatProvider provider = null)
+        public static TemperatureRateOfChange Parse(string input, IFormatProvider provider = null)
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            TemperatureChange value;
+            TemperatureRateOfChange value;
             if (!unitProvider.TryParse(input, provider, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -289,16 +289,16 @@ namespace QuantityTypes
         /// The unit provider. If not specified, the default <see cref="UnitProvider" /> is used.
         /// </param>
         /// <returns>
-        /// A <see cref="TemperatureChange"/> that represents the quantity in <paramref name="input" />. 
+        /// A <see cref="TemperatureRateOfChange"/> that represents the quantity in <paramref name="input" />. 
         /// </returns>
-        public static TemperatureChange Parse(string input, IUnitProvider unitProvider)
+        public static TemperatureRateOfChange Parse(string input, IUnitProvider unitProvider)
         {
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;
             }
 
-            TemperatureChange value;
+            TemperatureRateOfChange value;
             if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
             {
                 throw new FormatException("Invalid format.");
@@ -315,7 +315,7 @@ namespace QuantityTypes
         /// <param name="unitProvider">The unit provider.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if the string was parsed, <c>false</c> otherwise.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out TemperatureChange result)
+        public static bool TryParse(string input, IFormatProvider provider, IUnitProvider unitProvider, out TemperatureRateOfChange result)
         {
             if (unitProvider == null)
             {
@@ -330,9 +330,9 @@ namespace QuantityTypes
         /// </summary>
         /// <param name="input">The JSON input.</param>
         /// <returns>
-        /// The <see cref="TemperatureChange"/> .
+        /// The <see cref="TemperatureRateOfChange"/> .
         /// </returns>
-        public static TemperatureChange ParseJson(string input)
+        public static TemperatureRateOfChange ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
         }
@@ -349,9 +349,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator +(TemperatureChange x, TemperatureChange y)
+        public static TemperatureRateOfChange operator +(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
-            return new TemperatureChange(x.value + y.value);
+            return new TemperatureRateOfChange(x.value + y.value);
         }
 
         /// <summary>
@@ -366,9 +366,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator /(TemperatureChange x, double y)
+        public static TemperatureRateOfChange operator /(TemperatureRateOfChange x, double y)
         {
-            return new TemperatureChange(x.value / y);
+            return new TemperatureRateOfChange(x.value / y);
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static double operator /(TemperatureChange x, TemperatureChange y)
+        public static double operator /(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return x.value / y.value;
         }
@@ -400,7 +400,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator ==(TemperatureChange x, TemperatureChange y)
+        public static bool operator ==(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return x.value.Equals(y.value);
         }
@@ -417,7 +417,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >(TemperatureChange x, TemperatureChange y)
+        public static bool operator >(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return x.value > y.value;
         }
@@ -434,7 +434,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator >=(TemperatureChange x, TemperatureChange y)
+        public static bool operator >=(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return x.value >= y.value;
         }
@@ -451,7 +451,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator !=(TemperatureChange x, TemperatureChange y)
+        public static bool operator !=(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return !x.value.Equals(y.value);
         }
@@ -468,7 +468,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <(TemperatureChange x, TemperatureChange y)
+        public static bool operator <(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return x.value < y.value;
         }
@@ -485,7 +485,7 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static bool operator <=(TemperatureChange x, TemperatureChange y)
+        public static bool operator <=(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
             return x.value <= y.value;
         }
@@ -502,9 +502,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator *(double x, TemperatureChange y)
+        public static TemperatureRateOfChange operator *(double x, TemperatureRateOfChange y)
         {
-            return new TemperatureChange(x * y.value);
+            return new TemperatureRateOfChange(x * y.value);
         }
 
         /// <summary>
@@ -519,9 +519,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator *(TemperatureChange x, double y)
+        public static TemperatureRateOfChange operator *(TemperatureRateOfChange x, double y)
         {
-            return new TemperatureChange(x.value * y);
+            return new TemperatureRateOfChange(x.value * y);
         }
 
         /// <summary>
@@ -536,9 +536,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator -(TemperatureChange x, TemperatureChange y)
+        public static TemperatureRateOfChange operator -(TemperatureRateOfChange x, TemperatureRateOfChange y)
         {
-            return new TemperatureChange(x.value - y.value);
+            return new TemperatureRateOfChange(x.value - y.value);
         }
 
         /// <summary>
@@ -550,9 +550,9 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator +(TemperatureChange x)
+        public static TemperatureRateOfChange operator +(TemperatureRateOfChange x)
         {
-            return new TemperatureChange(x.value);
+            return new TemperatureRateOfChange(x.value);
         }
 
         /// <summary>
@@ -564,21 +564,21 @@ namespace QuantityTypes
         /// <returns>
         /// The result of the operator. 
         /// </returns>
-        public static TemperatureChange operator -(TemperatureChange x)
+        public static TemperatureRateOfChange operator -(TemperatureRateOfChange x)
         {
-            return new TemperatureChange(-x.value);
+            return new TemperatureRateOfChange(-x.value);
         }
 
         /// <summary>
-        /// Compares this instance to the specified <see cref="TemperatureChange"/> and returns an indication of their relative values.
+        /// Compares this instance to the specified <see cref="TemperatureRateOfChange"/> and returns an indication of their relative values.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="TemperatureChange"/> . 
+        /// The other <see cref="TemperatureRateOfChange"/> . 
         /// </param>
         /// <returns>
         /// A signed number indicating the relative values of this instance and the other value. 
         /// </returns>
-        public int CompareTo(TemperatureChange other)
+        public int CompareTo(TemperatureRateOfChange other)
         {
             return this.value.CompareTo(other.value);
         }
@@ -595,7 +595,7 @@ namespace QuantityTypes
         /// </returns>
         public int CompareTo(object obj)
         {
-            return this.CompareTo((TemperatureChange)obj);
+            return this.CompareTo((TemperatureRateOfChange)obj);
         }
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace QuantityTypes
         /// <returns>The amount of the specified unit.</returns>
         double IQuantity.ConvertTo(IQuantity unit)
         {
-            return this.ConvertTo((TemperatureChange)unit);
+            return this.ConvertTo((TemperatureRateOfChange)unit);
         }
 
         /// <summary>
@@ -617,7 +617,7 @@ namespace QuantityTypes
         /// <returns>
         /// The value in the specified unit. 
         /// </returns>
-        public double ConvertTo(TemperatureChange unit)
+        public double ConvertTo(TemperatureRateOfChange unit)
         {
             return this.value / unit.Value;
         }
@@ -633,24 +633,24 @@ namespace QuantityTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is TemperatureChange)
+            if (obj is TemperatureRateOfChange)
             {
-                return this.Equals((TemperatureChange)obj);
+                return this.Equals((TemperatureRateOfChange)obj);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Determines if the specified <see cref="TemperatureChange"/> is equal to this instance.
+        /// Determines if the specified <see cref="TemperatureRateOfChange"/> is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The other <see cref="TemperatureChange"/> . 
+        /// The other <see cref="TemperatureRateOfChange"/> . 
         /// </param>
         /// <returns>
         /// True if the values are equal. 
         /// </returns>
-        public bool Equals(TemperatureChange other)
+        public bool Equals(TemperatureRateOfChange other)
         {
             return this.value.Equals(other.value);
         }
@@ -683,12 +683,12 @@ namespace QuantityTypes
         /// <returns>The sum.</returns>
         public IQuantity Add(IQuantity x)
         {
-            if (!(x is TemperatureChange))
+            if (!(x is TemperatureRateOfChange))
             {
                 throw new InvalidOperationException("Can only add quantities of the same types.");
             }
 
-            return new TemperatureChange(this.value + x.Value);
+            return new TemperatureRateOfChange(this.value + x.Value);
         }
 
         /// <summary>
