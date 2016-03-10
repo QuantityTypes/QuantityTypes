@@ -38,13 +38,12 @@ namespace QuantityTypes
         /// <summary>
         ///     Implements the operator /.
         /// </summary>
-        /// <param name="x"> The x. </param>
-        /// <param name="y"> The y. </param>
+        /// <param name="e"> The energy. </param>
+        /// <param name="dt"> The time duration. </param>
         /// <returns> The result of the operator. </returns>
-        public static Power operator /(Energy x, Time dt)
+        public static Power operator /(Energy e, Time dt)
         {
-            return new Power(x.Value / dt.Value);
+            return new Power(e.Value / dt.Value);
         }
-
     }
 }

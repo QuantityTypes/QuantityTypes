@@ -37,6 +37,17 @@ namespace QuantityTypes
         }
 
         /// <summary>
+        ///     Implements the operator /.
+        /// </summary>
+        /// <param name="m"> The mass. </param>
+        /// <param name="dt"> The time duration. </param>
+        /// <returns> The result of the operator. </returns>
+        public static MassFlowRate operator /(Mass m, Time dt)
+        {
+            return new MassFlowRate(m.Value / dt.Value);
+        }
+
+        /// <summary>
         /// Implements the operator *.
         /// </summary>
         /// <param name="m">The mass.</param>
