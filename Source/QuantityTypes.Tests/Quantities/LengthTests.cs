@@ -248,6 +248,8 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
             Assert.AreEqual(-60 * Length.Metre, Length.Parse(" -60 m"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m "));
+            Assert.AreEqual(1e-9 * Length.Metre, Length.Parse("1 nm") );
+            Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1um"));
         }
 
         [Test]

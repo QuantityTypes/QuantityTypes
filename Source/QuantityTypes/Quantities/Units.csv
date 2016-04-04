@@ -12,6 +12,8 @@ Length,Metre,m,1
 Length,Decimetre,dm,1e-1
 Length,Centimetre,cm,1e-2
 Length,Millimetre,mm,1e-3
+Length,Micrometre,um,1e-6
+Length,Nanometre,nm,1e-9
 Length,Kilometre,km,1e3
 Length,Yard,yd,0.9144
 Length,Foot,ft,0.3048

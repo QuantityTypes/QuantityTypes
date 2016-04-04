@@ -54,6 +54,16 @@ namespace QuantityTypes
         private static readonly Length MillimetreField = new Length(1e-3);
 
         /// <summary>
+        /// The backing field for the <see cref="Micrometre" /> property.
+        /// </summary>
+        private static readonly Length MicrometreField = new Length(1e-6);
+
+        /// <summary>
+        /// The backing field for the <see cref="Nanometre" /> property.
+        /// </summary>
+        private static readonly Length NanometreField = new Length(1e-9);
+
+        /// <summary>
         /// The backing field for the <see cref="Kilometre" /> property.
         /// </summary>
         private static readonly Length KilometreField = new Length(1e3);
@@ -167,6 +177,24 @@ namespace QuantityTypes
         public static Length Millimetre
         {
             get { return MillimetreField; }
+        }
+
+        /// <summary>
+        /// Gets the "um" unit.
+        /// </summary>
+        [Unit("um")]
+        public static Length Micrometre
+        {
+            get { return MicrometreField; }
+        }
+
+        /// <summary>
+        /// Gets the "nm" unit.
+        /// </summary>
+        [Unit("nm")]
+        public static Length Nanometre
+        {
+            get { return NanometreField; }
         }
 
         /// <summary>
