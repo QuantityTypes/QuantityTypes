@@ -26,6 +26,8 @@ namespace QuantityTypes.Tests
         public void Constructor_String()
         {
             Assert.AreEqual(2d, new MassConcentration("2kg/m^3").Value);
+            Assert.AreEqual(3e-6d, new MassConcentration("3 ug/L").Value, 1e-9);
+            Assert.AreEqual(4e-6d, new MassConcentration("4µg/L").Value, 1e-9);
         }
 
         [Test]

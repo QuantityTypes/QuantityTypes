@@ -44,6 +44,16 @@ namespace QuantityTypes
         private static readonly Mass GramField = new Mass(1e-3);
 
         /// <summary>
+        /// The backing field for the <see cref="MilliGram" /> property.
+        /// </summary>
+        private static readonly Mass MilliGramField = new Mass( 1e-6);
+
+        /// <summary>
+        /// The backing field for the <see cref="MicroGram" /> property.
+        /// </summary>
+        private static readonly Mass MicroGramField = new Mass( 1e-9);
+
+        /// <summary>
         /// The backing field for the <see cref="Tonne" /> property.
         /// </summary>
         private static readonly Mass TonneField = new Mass(1e3);
@@ -114,6 +124,26 @@ namespace QuantityTypes
         public static Mass Gram
         {
             get { return GramField; }
+        }
+
+        /// <summary>
+        /// Gets the " mg" unit.
+        /// </summary>
+        [Unit(" mg")]
+        public static Mass MilliGram
+        {
+            get { return MilliGramField; }
+        }
+
+        /// <summary>
+        /// Gets the " ug,,µg" unit.
+        /// </summary>
+        [Unit(" ug")]
+        [Unit("")]
+        [Unit("µg")]
+        public static Mass MicroGram
+        {
+            get { return MicroGramField; }
         }
 
         /// <summary>

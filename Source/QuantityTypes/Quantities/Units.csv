@@ -12,7 +12,7 @@ Length,Metre,m,1
 Length,Decimetre,dm,1e-1
 Length,Centimetre,cm,1e-2
 Length,Millimetre,mm,1e-3
-Length,Micrometre,um,1e-6
+Length,Micrometre,um|µm,1e-6
 Length,Nanometre,nm,1e-9
 Length,Kilometre,km,1e3
 Length,Yard,yd,0.9144
@@ -54,6 +54,8 @@ SolidAngle,Steradian,sr,1
 // Mass
 Mass,Kilogram,kg,1
 Mass,Gram,g,1e-3
+Mass,MilliGram, mg, 1e-6
+Mass,MicroGram, ug||µg, 1e-9
 Mass,Tonne,t,1e3
 Mass,Kips,kips,453.59237
 Mass,Pound,lb,0.45359237
@@ -75,13 +77,13 @@ MassConcentration,KilogramPerCubicMetre,kg/m^3,1
 MassConcentration,GramPerCubicCentimetre,g/cm^3,1e3
 MassConcentration,KilogramPerLitre,kg/L,1e3
 MassConcentration,MilligramPerLitre,mg/L,1e-3
-MassConcentration,MicrogramPerLitre,ug/L,1e-6
+MassConcentration,MicrogramPerLitre,ug/L|µg/L,1e-6
 MassConcentration,GramPerMillilitre,g/mL,1e3
 
 // Mass Concentration In Water
 MassConcentrationInWater,KilogramPerCubicMetre,kg/m^3,1
 MassConcentrationInWater,MilligramPerLitre,mg/L,1e-3
-MassConcentrationInWater,MicrogramPerLitre,ug/L,1e-6
+MassConcentrationInWater,MicrogramPerLitre,ug/L|µg/L,1e-6
 
 // Volumetric Water Content (e.g. soil moisture)
 VolumetricWaterContent,CubicMetrePerCubicMetre,m^3/m^3,1
@@ -219,7 +221,7 @@ ElectricDipole,Debye,D,3.33564095e-30
 // Electromotive force, electric potential difference
 ElectricVoltage,Volt,V,1
 ElectricVoltage,Millivolt,mV,1e-3
-ElectricVoltage,Microvolt,µV,1e-6
+ElectricVoltage,Microvolt,µV|uV,1e-6
 
 // Electric resistance
 ElectricResistance,Ohm,Ω,1

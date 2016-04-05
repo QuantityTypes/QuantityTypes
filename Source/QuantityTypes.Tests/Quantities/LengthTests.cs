@@ -250,6 +250,7 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m "));
             Assert.AreEqual(1e-9 * Length.Metre, Length.Parse("1 nm") );
             Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1um"));
+            Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1 µm"));
         }
 
         [Test]
@@ -287,6 +288,11 @@ namespace QuantityTypes.Tests
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0}", l), Is.EqualTo("100 m"));
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.00 [km]}", l), Is.EqualTo("0.10 km"));
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.00 []}", l), Is.EqualTo("100.00"));
+
+            var l2 = 10*Length.Nanometre;
+            Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.000 [um]}", l2), Is.EqualTo("0.010 um"));
+            Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.000 [µm]}", l2), Is.EqualTo("0.010 µm"));
+            Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.0 [nm]}", l2), Is.EqualTo("10.0 nm"));
         }
 
         [Test]

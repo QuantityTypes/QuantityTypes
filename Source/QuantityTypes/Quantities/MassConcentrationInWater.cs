@@ -97,9 +97,10 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "ug/L" unit.
+        /// Gets the "ug/L,µg/L" unit.
         /// </summary>
         [Unit("ug/L")]
+        [Unit("µg/L")]
         public static MassConcentrationInWater MicrogramPerLitre
         {
             get { return MicrogramPerLitreField; }
