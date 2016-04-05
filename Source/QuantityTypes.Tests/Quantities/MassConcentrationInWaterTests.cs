@@ -25,7 +25,9 @@ namespace QuantityTypes.Tests
         [Test]
         public void Constructor_String()
         {
-           Assert.AreEqual(2e-2d, new MassConcentrationInWater("20mg/L").Value);
+            Assert.AreEqual(2e-2d, new MassConcentrationInWater("20mg/L").Value, 1e-9);
+            Assert.AreEqual(3e-5d, new MassConcentrationInWater("30ug/L").Value, 1e-9);
+            Assert.AreEqual(4e-5d, new MassConcentrationInWater("40 µg/L").Value, 1e-9);
         }
 
         [Test]

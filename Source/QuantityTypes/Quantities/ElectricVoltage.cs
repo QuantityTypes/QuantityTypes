@@ -97,9 +97,10 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "µV" unit.
+        /// Gets the "µV,uV" unit.
         /// </summary>
         [Unit("µV")]
+        [Unit("uV")]
         public static ElectricVoltage Microvolt
         {
             get { return MicrovoltField; }

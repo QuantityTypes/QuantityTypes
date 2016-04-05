@@ -180,9 +180,10 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the "um" unit.
+        /// Gets the "um,µm" unit.
         /// </summary>
         [Unit("um")]
+        [Unit("µm")]
         public static Length Micrometre
         {
             get { return MicrometreField; }
