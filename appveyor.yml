@@ -1,34 +1,35 @@
-version: 1.0.{build}
-
-environment:
-  nuget_api_key:
-    secure: kM3Kse+ivuuE5RVoe6dPdw+aguWx56K2YeXujGa9tMPQTms3lv7QxNpTLFMALYNa
-
 install:
-  - cinst LynxToolkit
+  - cinst gitversion.portable -y
   - cinst gitlink -Pre -y
 
 platform: Any CPU
-
 configuration: Release
 
 before_build:
-  - cmd: UpdateVersionNumbers /Version=%APPVEYOR_BUILD_VERSION% /Dependency=QuantityTypes /ExtractReleaseNotes=CHANGELOG.md /Directory=Source
+  - appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
   - nuget restore Source/QuantityTypes.sln
+  - gitversion /l console /output buildserver /updateAssemblyInfo
 
 build:
   project: Source/QuantityTypes.sln
   verbosity: minimal
 
 after_build:
-    cmd: gitlink c:\projects\QuantityTypes -u https://github.com/objorke/QuantityTypes -b master -f Source/QuantityTypes.sln -ignore QuantityTypes.Tests,WpfExample,PerformanceTest
-
-deploy_script:
-  - cmd: mkdir Packages
-  - cmd: NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -OutputDirectory Packages
-  - cmd: for %%G in (Packages\*.nupkg) do NuGet push %%G %nuget_api_key%
+  - gitlink c:\projects\QuantityTypes -u https://github.com/objorke/QuantityTypes -b master -f Source/QuantityTypes.sln -ignore QuantityTypes.Tests,WpfExample,PerformanceTest
+  - NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -version "%GitVersion_NuGetVersion%"
 
 artifacts:
   - path: Output
-    name: QuantityTypes-$(APPVEYOR_BUILD_VERSION)
+    name: QuantityTypes-$(GitVersion_SemVer)
     type: zip
+  - path: '*.nupkg'
+    name: QuantityTypes-packages-$(GitVersion_SemVer)
+    type: zip
+
+deploy:
+  provider: NuGet
+  api_key:
+    secure: kM3Kse+ivuuE5RVoe6dPdw+aguWx56K2YeXujGa9tMPQTms3lv7QxNpTLFMALYNa
+  skip_symbols: false
+  symbol_server:           # remove to push symbols to SymbolSource.org
+  artifact: /.*\.nupkg/
