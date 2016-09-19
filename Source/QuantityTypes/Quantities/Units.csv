@@ -55,7 +55,7 @@ SolidAngle,Steradian,sr,1
 Mass,Kilogram,kg,1
 Mass,Gram,g,1e-3
 Mass,MilliGram, mg, 1e-6
-Mass,MicroGram, ug||µg, 1e-9
+Mass,MicroGram, ug|µg, 1e-9
 Mass,Tonne,t,1e3
 Mass,Kips,kips,453.59237
 Mass,Pound,lb,0.45359237
