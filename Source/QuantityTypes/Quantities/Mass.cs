@@ -136,10 +136,9 @@ namespace QuantityTypes
         }
 
         /// <summary>
-        /// Gets the " ug,,µg" unit.
+        /// Gets the " ug,µg" unit.
         /// </summary>
         [Unit(" ug")]
-        [Unit("")]
         [Unit("µg")]
         public static Mass MicroGram
         {
