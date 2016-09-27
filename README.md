@@ -8,7 +8,7 @@ will be best remembered for the simple error that started everything: the value 
 in imperial, rather than SI units. That such a trivial mistake could ultimately bring about a mission failure is astonishing. It begs 
 the question of why computers cannot help more when working with physical quantities?_ [Ref. 1]
 
-[![Build status](https://img.shields.io/appveyor/ci/objorke/quantitytypes.svg?maxAge=2592000)](https://ci.appveyor.com/project/objorke/quantitytypes) 
+[![Build status](https://img.shields.io/appveyor/ci/objorke/quantitytypes/master.svg?maxAge=2592000)](https://ci.appveyor.com/project/objorke/quantitytypes) 
 [![Gitter](https://img.shields.io/gitter/room/objorke/quantitytypes.svg?maxAge=2592000)](https://gitter.im/objorke/QuantityTypes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![NuGet](https://img.shields.io/nuget/v/quantitytypes.svg?maxAge=2592000)](https://www.nuget.org/packages/QuantityTypes/)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/quantitytypes.svg?maxAge=2592000)](https://www.nuget.org/packages/QuantityTypes/)
