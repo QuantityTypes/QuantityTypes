@@ -14,7 +14,7 @@
     <tags>physical quantities unit conversion units of measurement</tags>
   </metadata>
   <files>
-    <file src="..\..\Output\PCL\QuantityTypes.???" target="lib\netstandard1.1" />
+    <file src="bin\Release\QuantityTypes.???" target="lib\netstandard1.1" />
     <file src="..\..\LICENSE" />
     <file src="..\..\README.md" />
   </files>

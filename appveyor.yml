@@ -19,7 +19,7 @@ after_build:
   - NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -version "%GitVersion_NuGetVersion%"
 
 artifacts:
-  - path: Output
+  - path: Source/QuantityTypes/bin/Release
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip
   - path: '*.nupkg'
