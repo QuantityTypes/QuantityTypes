@@ -1,7 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.0.0]
+### Changed
+- Target netstandard 1.1
+
+## [1.1.0]
 ### Added
 - Unit prefixes and operator overloads for electrical units
 - Use GitHub as source server (#12)
@@ -13,7 +17,6 @@ All notable changes to this project will be documented in this file.
 - Case sensitive unit prefixes
 - Switch PCL project to profile 328
 - Refactor UnitProvider.RegisterUnits to extension methods (#6)
-- Change portable library to profile 259 (#56)
 
 ### Removed
 - 
