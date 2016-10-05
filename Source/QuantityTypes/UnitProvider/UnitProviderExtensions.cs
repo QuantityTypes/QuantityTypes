@@ -11,6 +11,7 @@ namespace QuantityTypes
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
 
     /// <summary>
@@ -151,9 +152,9 @@ namespace QuantityTypes
         /// </param>
         public static void RegisterUnits(this IUnitProvider unitProvider, Assembly assembly)
         {
-            foreach (var t in assembly.GetTypes())
+            foreach (var t in assembly.ExportedTypes)
             {
-                if (typeof(IQuantity).IsAssignableFrom(t))
+                if (typeof(IQuantity).GetTypeInfo().IsAssignableFrom(t.GetTypeInfo()))
                 {
                     unitProvider.RegisterUnits(t);
                 }
@@ -171,9 +172,9 @@ namespace QuantityTypes
         /// </param>
         public static void RegisterUnits(this IUnitProvider unitProvider, Type type)
         {
-            foreach (var property in type.GetProperties(BindingFlags.Static | BindingFlags.Public))
+            foreach (var property in type.GetTypeInfo().DeclaredProperties)
             {
-                foreach (UnitAttribute ua in property.GetCustomAttributes(typeof(UnitAttribute), false))
+                foreach (var ua in property.GetCustomAttributes(typeof(UnitAttribute), false).Cast<UnitAttribute>())
                 {
                     unitProvider.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Symbol);
 

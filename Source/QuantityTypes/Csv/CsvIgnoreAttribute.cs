@@ -10,6 +10,7 @@
 namespace QuantityTypes.Csv
 {
     using System;
+    using System.Linq;
     using System.Reflection;
 
     /// <summary>
@@ -29,7 +30,7 @@ namespace QuantityTypes.Csv
         /// </returns>
         public static bool IsIgnored(PropertyInfo propertyInfo)
         {
-            return propertyInfo.GetCustomAttributes(typeof(CsvIgnoreAttribute), false).Length > 0;
+            return propertyInfo.GetCustomAttributes(typeof(CsvIgnoreAttribute), false).Count() > 0;
         }
 
         /// <summary>

@@ -10,6 +10,7 @@
 namespace QuantityTypes.Csv
 {
     using System;
+    using System.Linq;
     using System.Reflection;
 
     /// <summary>
@@ -44,7 +45,7 @@ namespace QuantityTypes.Csv
         /// <returns>The column.</returns>
         public static object GetColumn(PropertyInfo propertyInfo)
         {
-            var attributes = propertyInfo.GetCustomAttributes(typeof(CsvColumnAttribute), false);
+            var attributes = propertyInfo.GetCustomAttributes(typeof(CsvColumnAttribute), false).ToArray();
             return attributes.Length > 0 ? ((CsvColumnAttribute)attributes[0]).Column : 0;
         }
 

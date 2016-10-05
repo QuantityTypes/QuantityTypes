@@ -189,3 +189,5 @@ FakesAssemblies/
 
 # GhostDoc settings
 *.GhostDoc.xml
+*.lock.json
+.vs/
