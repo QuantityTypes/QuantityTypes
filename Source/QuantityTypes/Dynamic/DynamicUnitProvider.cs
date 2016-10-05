@@ -12,6 +12,7 @@ namespace QuantityTypes.Dynamic
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
     using System.Reflection;
 
     /// <summary>
@@ -108,11 +109,11 @@ namespace QuantityTypes.Dynamic
         /// <param name="type">The type.</param>
         public void Register(Type type)
         {
-            var props = type.GetProperties(BindingFlags.Static | BindingFlags.Public);
+            var props = type.GetTypeInfo().DeclaredProperties;
             foreach (var p in props)
             {
                 var q = (DynamicQuantity)p.GetValue(null, null);
-                foreach (UnitAttribute ua in p.GetCustomAttributes(typeof(UnitAttribute), false))
+                foreach (var ua in p.GetCustomAttributes(typeof(UnitAttribute), false).Cast<UnitAttribute>())
                 {
                     this.Register(ua.Symbol, q);
                     if (ua.IsDefaultDisplayUnit)

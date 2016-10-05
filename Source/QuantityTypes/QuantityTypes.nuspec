@@ -14,7 +14,7 @@
     <tags>physical quantities unit conversion units of measurement</tags>
   </metadata>
   <files>
-    <file src="..\..\Output\PCL\QuantityTypes.???" target="lib\portable-net40+net45+sl5+windowsphone8+windows8" />
+    <file src="..\..\Output\PCL\QuantityTypes.???" target="lib\portable-net45+wp80+win8+wpa81" />
     <file src="..\..\LICENSE" />
     <file src="..\..\README.md" />
   </files>

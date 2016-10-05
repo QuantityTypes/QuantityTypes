@@ -17,6 +17,7 @@ namespace QuantityTypes.Csv
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Text.RegularExpressions;
 
     /// <summary>
@@ -63,7 +64,7 @@ namespace QuantityTypes.Csv
         public static CsvFile Load<T>(IEnumerable<T> items, IUnitProvider unitProvider = null)
         {
             var type = typeof(T);
-            var properties = type.GetProperties().OrderBy(CsvColumnAttribute.GetColumn).ToList();
+            var properties = type.GetTypeInfo().DeclaredProperties.OrderBy(CsvColumnAttribute.GetColumn).ToList();
 
             var file = new CsvFile();
             foreach (var p in properties)
@@ -196,7 +197,7 @@ namespace QuantityTypes.Csv
         public static Type GetQuantityType(Type type)
         {
             type = Nullable.GetUnderlyingType(type) ?? type;
-            return QuantityType.IsAssignableFrom(type) ? type : null;
+            return QuantityType.GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()) ? type : null;
         }
 
 #if !PCL

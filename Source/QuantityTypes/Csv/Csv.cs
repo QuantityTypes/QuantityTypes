@@ -94,7 +94,7 @@ namespace QuantityTypes.Csv
             var type = typeof(T);
 
             // Get the properties from the type
-            var properties = type.GetProperties();
+            var properties = type.GetTypeInfo().DeclaredProperties.ToArray();
             var header = r.ReadLine();
             if (header == null)
             {
@@ -291,7 +291,7 @@ namespace QuantityTypes.Csv
 
             var type = typeof(T);
             var properties =
-                type.GetProperties()
+                type.GetTypeInfo().DeclaredProperties
                               .Where(CsvIgnoreAttribute.IsNotIgnored)
                               .OrderBy(CsvColumnAttribute.GetColumn)
                               .ToList();
@@ -461,7 +461,7 @@ namespace QuantityTypes.Csv
                 type = underlyingType;
             }
 
-            if (CsvFile.QuantityType.IsAssignableFrom(type))
+            if (CsvFile.QuantityType.GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
             {
                 if (string.IsNullOrEmpty(s) && underlyingType != null)
                 {

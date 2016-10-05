@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Case sensitive unit prefixes
 - Switch PCL project to profile 328
 - Refactor UnitProvider.RegisterUnits to extension methods (#6)
+- Change portable library to profile 259 (#56)
 
 ### Removed
 - 

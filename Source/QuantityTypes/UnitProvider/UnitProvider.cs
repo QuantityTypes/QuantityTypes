@@ -34,7 +34,7 @@ namespace QuantityTypes
         /// </summary>
         static UnitProvider()
         {
-            var up = new UnitProvider(typeof(Length).Assembly);
+            var up = new UnitProvider(typeof(Length).GetTypeInfo().Assembly);
             Default = up;
         }
 
@@ -103,7 +103,7 @@ namespace QuantityTypes
             {
                 return double.NaN.ToString(provider);
             }
-            
+
             if (double.IsPositiveInfinity(quantity.Value))
             {
                 return double.PositiveInfinity.ToString(provider);
@@ -130,7 +130,7 @@ namespace QuantityTypes
                     format = format.Remove(unitStart, unitEnd - unitStart + 1).Trim();
                 }
             }
-            
+
             // unit=null: convert to display unit, show display unit
             // unit=empty: convert to display unit, but do not show
             // otherwise: convert to specified unit, show specified unit
@@ -396,7 +396,7 @@ namespace QuantityTypes
                 quantity = (IQuantity)Activator.CreateInstance(unitType, double.NegativeInfinity);
                 return true;
             }
-            
+
             string unitString;
             double value;
             if (!Utilities.TrySplit(input, provider, out value, out unitString))
