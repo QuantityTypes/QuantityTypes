@@ -61,13 +61,13 @@
     <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.csproj">
-      <Project>{e0557c29-6cdc-4060-bb1a-461ed5c1ef19}</Project>
-      <Name>QuantityTypes</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.xproj">
+      <Project>{a6a7fa4a-2b1e-417e-b13c-50385adb303c}</Project>
+      <Name>QuantityTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,9 +12,12 @@
     <iconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>physical quantities unit conversion units of measurement</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard1.1" />
+    </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\QuantityTypes.???" target="lib\netstandard1.1" />
+    <file src="bin\Release\**\*.*" target="lib" />
     <file src="..\..\LICENSE" />
     <file src="..\..\README.md" />
   </files>
