@@ -1,35 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-namespace CodeGenerator
+﻿namespace CodeGenerator
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
     static class Program
     {
         static int Main(string[] args)
         {
+            Console.WriteLine("CodeGenerator " + typeof(Program).Assembly.GetName().Version);
+
             var sourceFile = args[0] ?? "units.csv";
+            var outputFolder = (args.Length > 0 ? args[1] : null) ?? ".";
             if (!File.Exists(sourceFile))
             {
                 Console.WriteLine("{0} not found.", Path.GetFullPath(sourceFile));
                 return 1;
             }
 
+            Console.WriteLine();
+            Console.WriteLine("Source: {0}", Path.GetFullPath(sourceFile));
+            Console.WriteLine("Output folder: {0}", Path.GetFullPath(outputFolder));
+            Console.WriteLine();
+
+            if (!Directory.Exists(outputFolder))
+            {
+                Directory.CreateDirectory(outputFolder);
+            }
+
             var allLines = File.ReadAllLines(sourceFile);
-            var dir = Path.GetDirectoryName(sourceFile) ?? ".";
             var typeNames = GetTypeNames(allLines).Distinct().ToArray();
             foreach (var typeName in typeNames)
             {
-                var fileName = Path.Combine(dir, typeName + ".cs");
+                var fileName = Path.Combine(outputFolder, typeName + ".cs");
                 if (GenerateQuantityType(fileName, typeName, allLines))
                 {
                     Console.WriteLine(typeName);
                 }
             }
-
-            // TODO: update .csproj file
 
             return 0;
         }
@@ -50,7 +60,8 @@ namespace CodeGenerator
 
         private static bool GenerateQuantityType(string fileName, string typeName, IEnumerable<string> lines)
         {
-            var input = File.ReadAllText("Template.cs");
+            var input = ReadFromEmbeddedResource("CodeGenerator.Template.cs");
+
             var backingFields = new StringBuilder();
             var staticProperties = new StringBuilder();
 
@@ -105,6 +116,23 @@ namespace CodeGenerator
             return isModified;
         }
 
+        private static string ReadFromEmbeddedResource(string name)
+        {
+            string input;
+            var stream = typeof(Program).Assembly.GetManifestResourceStream(name);
+            if (stream == null)
+            {
+                return null;
+            }
+
+            using (var r = new StreamReader(stream))
+            {
+                input = r.ReadToEnd();
+            }
+
+            return input;
+        }
+
         private static string GetDescriptiveName(string typeName)
         {
             string classname = typeName.Substring(0, 1);
@@ -123,19 +151,5 @@ namespace CodeGenerator
             b.AppendFormat(format, args);
             b.AppendLine();
         }
-
-        const string BackingFieldTemplate = @"        /// <summary>
-        /// The backing field for the <see cref=""Metre"" /> property.
-        /// </summary>
-        private static readonly Length MetreField = new Length(1);";
-
-        const string StaticPropertyTemplate = @"        /// <summary>
-        /// Gets the ""m"" unit.
-        /// </summary>
-        [Unit(""m"", true)]
-        public static Length Metre
-        {
-            get { return MetreField; }
-        }";
     }
 }
