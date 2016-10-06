@@ -11,7 +11,6 @@ the question of why computers cannot help more when working with physical quanti
 [![Build status](https://img.shields.io/appveyor/ci/objorke/quantitytypes/master.svg)](https://ci.appveyor.com/project/objorke/quantitytypes) 
 [![Gitter](https://img.shields.io/gitter/room/objorke/quantitytypes.svg)](https://gitter.im/objorke/QuantityTypes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![NuGet](https://img.shields.io/nuget/v/quantitytypes.svg)](https://www.nuget.org/packages/QuantityTypes/)
-[![NuGet pre-release](https://img.shields.io/nuget/vpre/quantitytypes.svg)](https://www.nuget.org/packages/QuantityTypes/)
 [![Issues](https://img.shields.io/github/issues/objorke/quantitytypes.svg)](https://github.com/objorke/QuantityTypes/issues)
 
 ### Features
