@@ -11,9 +11,6 @@ namespace QuantityTypes.Csv
 {
     using System;
     using System.Collections.Generic;
-#if !PCL
-    using System.ComponentModel;
-#endif
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -199,35 +196,6 @@ namespace QuantityTypes.Csv
             type = Nullable.GetUnderlyingType(type) ?? type;
             return QuantityType.GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()) ? type : null;
         }
-
-#if !PCL
-        /// <summary>
-        /// Loads from the specified path.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="cultureInfo">The culture info.</param>
-        /// <returns>
-        /// A <see cref="CsvFile" />.
-        /// </returns>
-        public static CsvFile Load(string path, CultureInfo cultureInfo = null)
-        {
-            using (var r = new StreamReader(path))
-            {
-                return Load(r, cultureInfo);
-            }
-        }
-
-        /// <summary>
-        /// Saves the specified path.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="cultureInfo">The culture info.</param>
-        /// <param name="unitProvider">The unit provider.</param>
-        public void Save(string path, CultureInfo cultureInfo = null, IUnitProvider unitProvider = null)
-        {
-            this.Save(new StreamWriter(path), cultureInfo, unitProvider);
-        }
-#endif
 
         /// <summary>
         /// Saves the csv file to the specified <see cref="Stream"/>.
@@ -448,7 +416,8 @@ namespace QuantityTypes.Csv
                 return input;
             }
         }
-#if !PCL
+
+#if NET45
         /// <summary>
         /// Provides a property descriptor for an object in the <see cref="CsvRow" />.
         /// </summary>
@@ -652,7 +621,7 @@ namespace QuantityTypes.Csv
         /// <summary>
         /// Represents a row in the <see cref="CsvFile"/>.
         /// </summary>
-#if !PCL
+#if NET45
         [TypeDescriptionProvider(typeof(CsvTypeDescriptionProvider))]
 #endif
         public class CsvRow

@@ -10,9 +10,6 @@
 namespace QuantityTypes
 {
     using System;
-#if !PCL
-    using System.ComponentModel;
-#endif
     using System.Globalization;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
@@ -21,27 +18,8 @@ namespace QuantityTypes
     /// Represents a thermodynamic temperature.
     /// </summary>
     [DataContract]
-#if !PCL
-    [Serializable]
-    [TypeConverter(typeof(QuantityTypeConverter<Temperature>))]
-#endif
     public partial struct Temperature : IQuantity<Temperature>
     {
-        /// <summary>
-        /// The backing field for the <see cref="DegreeCelsius" /> property.
-        /// </summary>
-        private static readonly Temperature DegreeCelsiusField = new Temperature(-2);
-
-        /// <summary>
-        /// The backing field for the <see cref="DegreeFahrenheit" /> property.
-        /// </summary>
-        private static readonly Temperature DegreeFahrenheitField = new Temperature(-3);
-
-        /// <summary>
-        /// The backing field for the <see cref="Kelvin" /> property.
-        /// </summary>
-        private static readonly Temperature KelvinField = new Temperature(-1);
-
         /// <summary>
         /// The value.
         /// </summary>
@@ -78,10 +56,7 @@ namespace QuantityTypes
         [Unit("°C", true)]
         [Unit("C")]
         [Unit("degC")]
-        public static Temperature DegreeCelsius
-        {
-            get { return DegreeCelsiusField; }
-        }
+        public static Temperature DegreeCelsius { get; } = new Temperature(-2);
 
         /// <summary>
         /// Gets the "°F" unit.
@@ -89,19 +64,13 @@ namespace QuantityTypes
         [Unit("°F")]
         [Unit("F")]
         [Unit("degF")]
-        public static Temperature DegreeFahrenheit
-        {
-            get { return DegreeFahrenheitField; }
-        }
+        public static Temperature DegreeFahrenheit { get; } = new Temperature(-3);
 
         /// <summary>
         /// Gets the "K" unit.
         /// </summary>
         [Unit("K")]
-        public static Temperature Kelvin
-        {
-            get { return KelvinField; }
-        }
+        public static Temperature Kelvin { get; } = new Temperature(-1);
 
         /// <summary>
         /// Gets or sets the temperature as a string.

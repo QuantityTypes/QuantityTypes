@@ -62,7 +62,6 @@
         {
             var input = ReadFromEmbeddedResource("CodeGenerator.Template.cs");
 
-            var backingFields = new StringBuilder();
             var staticProperties = new StringBuilder();
 
             bool isFirstUnit = true;
@@ -73,12 +72,6 @@
                 if (values.Length < 4 || values[0] != typeName) continue;
                 var name = values[1];
                 var value = values[3];
-
-                if (!isFirstUnit) backingFields.AppendLine();
-                backingFields.AppendLine(@"        /// <summary>");
-                backingFields.AppendLine(@"        /// The backing field for the <see cref=""{0}"" /> property.", name);
-                backingFields.AppendLine(@"        /// </summary>");
-                backingFields.AppendLine(@"        private static readonly {0} {1}Field = new {0}({2});", typeName, name, value);
 
                 var symbolList = values[2].Split('|');
                 var displayUnit = isFirstUnit ? ", true" : "";
@@ -92,18 +85,13 @@
                 {
                     staticProperties.AppendLine(@"        [Unit(""{0}""{1})]", symbol, displayUnit);
                 }
-                staticProperties.AppendLine(@"        public static {0} {1}", typeName, name);
-                staticProperties.AppendLine(@"        {");
-                staticProperties.AppendLine(@"            get {{ return {0}Field; }}", name);
-                staticProperties.AppendLine(@"        }");
+                staticProperties.AppendLine(@"        public static {0} {1} {{ get; }} = new {0}({2});", typeName, name, value);
                 isFirstUnit = false;
             }
 
             var output = input;
             output = output.Replace("Length", typeName);
             output = output.Replace("length", GetDescriptiveName(typeName));
-
-            output = output.Replace("        //// [BACKING FIELDS]", backingFields.ToString().TrimEnd());
 
             output = output.Replace("        //// [STATIC PROPERTIES]", staticProperties.ToString().TrimEnd());
 
