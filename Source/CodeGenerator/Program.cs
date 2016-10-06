@@ -34,7 +34,7 @@
             var typeNames = GetTypeNames(allLines).Distinct().ToArray();
             foreach (var typeName in typeNames)
             {
-                var fileName = Path.Combine(outputFolder, typeName + ".cs");
+                var fileName = Path.Combine(outputFolder, typeName + ".Generated.cs");
                 if (GenerateQuantityType(fileName, typeName, allLines))
                 {
                     Console.WriteLine(typeName);
