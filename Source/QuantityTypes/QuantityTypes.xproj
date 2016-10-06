@@ -16,4 +16,7 @@
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Target Name="BeforeBuild">
+    <Exec Command="$(SolutionDir)\CodeGenerator\bin\CodeGenerator.exe Units.csv Quantities" />
+  </Target>
 </Project>

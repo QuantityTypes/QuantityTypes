@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Imperial.cs" company="QuantityTypes">
+// <copyright file{get;}="Imperial.cs" company{get;}="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
 // <summary>
@@ -19,76 +19,76 @@ namespace QuantityTypes.Dynamic
         /// <summary>
         /// The Thou length unit.
         /// </summary>
-        public static readonly DynamicQuantity Thou = 0.0254 * SI.Millimetre;
+        public static DynamicQuantity Thou { get; } = 0.0254 * SI.Millimetre;
 
         /// <summary>
         /// The Inch length unit.
         /// </summary>
-        public static readonly DynamicQuantity Inch = 100 * Thou;
+        public static DynamicQuantity Inch { get; } = 100 * Thou;
 
         /// <summary>
         /// The Foot length unit.
         /// </summary>
-        public static readonly DynamicQuantity Foot = 12 * Inch;
+        public static DynamicQuantity Foot { get; } = 12 * Inch;
 
         /// <summary>
         /// The Yard length unit.
         /// </summary>
-        public static readonly DynamicQuantity Yard = 3 * Foot;
+        public static DynamicQuantity Yard { get; } = 3 * Foot;
 
         /// <summary>
         /// The Chain length unit.
         /// </summary>
-        public static readonly DynamicQuantity Chain = 22 * Yard;
+        public static DynamicQuantity Chain { get; } = 22 * Yard;
 
         /// <summary>
         /// The Furlong length unit.
         /// </summary>
-        public static readonly DynamicQuantity Furlong = 10 * Chain;
+        public static DynamicQuantity Furlong { get; } = 10 * Chain;
 
         /// <summary>
         /// The Mile length unit.
         /// </summary>
-        public static readonly DynamicQuantity Mile = 8 * Furlong;
+        public static DynamicQuantity Mile { get; } = 8 * Furlong;
 
         /// <summary>
         /// The League length unit.
         /// </summary>
-        public static readonly DynamicQuantity League = 3 * Mile;
+        public static DynamicQuantity League { get; } = 3 * Mile;
 
         /// <summary>
         /// The Fathom length unit.
         /// </summary>
-        public static readonly DynamicQuantity Fathom = 6.08 * Foot;
+        public static DynamicQuantity Fathom { get; } = 6.08 * Foot;
 
         /// <summary>
         /// The Cable length unit.
         /// </summary>
-        public static readonly DynamicQuantity Cable = 100 * Fathom;
+        public static DynamicQuantity Cable { get; } = 100 * Fathom;
 
         /// <summary>
         /// The Nautical mile length unit.
         /// </summary>
-        public static readonly DynamicQuantity NauticalMile = 10 * Cable;
+        public static DynamicQuantity NauticalMile { get; } = 10 * Cable;
 
         /// <summary>
         /// The Link length unit.
         /// </summary>
-        public static readonly DynamicQuantity Link = 0.66d * Foot;
+        public static DynamicQuantity Link { get; } = 0.66d * Foot;
 
         /// <summary>
         /// The Rod length unit.
         /// </summary>
-        public static readonly DynamicQuantity Rod = 25 * Link;
+        public static DynamicQuantity Rod { get; } = 25 * Link;
 
         /// <summary>
         /// The Chain length unit.
         /// </summary>
-        public static readonly DynamicQuantity Chain2 = 4 * Rod;
+        public static DynamicQuantity Chain2 { get; } = 4 * Rod;
 
         /// <summary>
         /// The Gallon volume unit.
         /// </summary>
-        public static readonly DynamicQuantity Gallon = 4.546 * SI.Litre;
+        public static DynamicQuantity Gallon { get; } = 4.546 * SI.Litre;
     }
 }

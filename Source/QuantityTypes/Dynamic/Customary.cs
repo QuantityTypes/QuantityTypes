@@ -19,6 +19,6 @@ namespace QuantityTypes.Dynamic
         /// <summary>
         /// The gallon unit.
         /// </summary>
-        public static readonly DynamicQuantity Gallon = 3.785412 * SI.Litre;
+        public static DynamicQuantity Gallon { get; } = 3.785412 * SI.Litre;
     }
 }

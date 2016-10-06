@@ -1,6 +1,5 @@
 install:
   - cinst gitversion.portable -y
-  - cinst gitlink -Pre -y
 
 platform: Any CPU
 configuration: Release
@@ -15,7 +14,6 @@ build:
   verbosity: minimal
 
 after_build:
-  - gitlink c:\projects\QuantityTypes -u https://github.com/objorke/QuantityTypes -b master -f Source/QuantityTypes.sln -ignore QuantityTypes.Tests,WpfExample,PerformanceTest
   - NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -version "%GitVersion_NuGetVersion%"
 
 artifacts:
