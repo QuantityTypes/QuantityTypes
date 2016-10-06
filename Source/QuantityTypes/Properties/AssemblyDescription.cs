@@ -6,6 +6,3 @@
 
 using System.Reflection;
 
-[assembly: AssemblyProduct("QuantityTypes")]
-[assembly: AssemblyTitle("QuantityTypes")]
-[assembly: AssemblyDescription("Strongly typed physical quantities.")]

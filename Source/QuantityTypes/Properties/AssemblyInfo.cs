@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("CodeGeneratorCodeGenerator for QuantityTypes")]
-[assembly: AssemblyDescription("Generates the Quantity types")]
+[assembly: AssemblyTitle("QuantityTypes")]
+[assembly: AssemblyDescription("Strongly typed physical quantities.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("QuantityTypes")]
-[assembly: AssemblyProduct("CodeGenerator for QuantityTypes")]
+[assembly: AssemblyProduct("QuantityTypes")]
 [assembly: AssemblyCopyright("Copyright (c) 2014 QuantityTypes contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
