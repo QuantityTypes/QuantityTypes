@@ -6,8 +6,8 @@
 
 namespace QuantityTypes.Tests
 {
-    using System.Globalization;
-
+    using System.IO;
+    using System.Text;
     using NUnit.Framework;
 
     using QuantityTypes.Csv;
@@ -18,7 +18,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void WriteCsvLine()
         {
-            using (var w = new MemoryStreamWriter())
+            using (var w = new StreamWriter(new MemoryStream(), Encoding.UTF8))
             {
                 var culture = CultureInfos.Norwegian;
                 w.WriteCsvLine(culture, "a b c", 3.14);
@@ -29,7 +29,11 @@ namespace QuantityTypes.Tests
                 w.WriteCsvLine(culture, (object)null, null);
                 w.WriteCsvLine(culture, (object)null);
                 w.WriteCsvLine(culture, true, false);
-                var output = w.ToString();
+                w.Flush();
+                var ms = w.BaseStream;
+                ms.Position = 0;
+                var r = new StreamReader(ms, Encoding.UTF8);
+                var output = r.ReadToEnd();
                 var expected = CsvParserTests.TestString1;
                 Assert.AreEqual(expected, output);
             }

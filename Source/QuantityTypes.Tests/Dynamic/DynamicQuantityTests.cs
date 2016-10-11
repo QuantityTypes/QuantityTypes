@@ -73,10 +73,10 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(36, speed.ConvertTo(SI.KilometrePerHour));
         }
 
-        [Test, ExpectedException]
+        [Test]
         public void Add_LengthAndTime_ThrowsException()
         {
-            var x = SI.Metre + SI.Second;
+            Assert.Throws<InvalidOperationException>(() => { var x = SI.Metre + SI.Second; });
         }
 
         [Test]

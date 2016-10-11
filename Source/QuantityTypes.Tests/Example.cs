@@ -8,13 +8,10 @@ namespace QuantityTypes.Tests
 {
     using System;
 
-    using NUnit.Framework;
-
     using QuantityTypes;
 
     public class Example
     {
-        [Test, Ignore]
         public void Example1()
         {
             var v = 100 * Length.Metre / (9 * Time.Second);
@@ -53,7 +50,6 @@ namespace QuantityTypes.Tests
             var ux = UnitProvider.Default.GetUnit("m");
         }
 
-        [Test, Ignore]
         public void ReadMeExample()
         {
             Length s = 100 * Length.Metre;

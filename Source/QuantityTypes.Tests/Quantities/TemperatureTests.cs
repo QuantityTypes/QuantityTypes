@@ -9,7 +9,10 @@ namespace QuantityTypes.Tests
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
-
+    using System.IO;
+    using System.Text;
+    using System.Xml.Serialization;
+    
     using NUnit.Framework;
     using QuantityTypes;
 
@@ -22,9 +25,9 @@ namespace QuantityTypes.Tests
         [Test]
         public void Operators()
         {
-            Temperature a = 0*Temperature.DegreeCelsius;
-            Temperature b = 100*Temperature.DegreeCelsius;
-            TemperatureDifference delta = 100*TemperatureDifference.DegreeCelsius;
+            Temperature a = 0 * Temperature.DegreeCelsius;
+            Temperature b = 100 * Temperature.DegreeCelsius;
+            TemperatureDifference delta = 100 * TemperatureDifference.DegreeCelsius;
             Assert.AreEqual(b, a + delta);
             Assert.AreEqual(a, b - delta);
             Assert.AreEqual(delta, b - a);
@@ -35,7 +38,7 @@ namespace QuantityTypes.Tests
         {
             Temperature a = 0 * Temperature.DegreeFahrenheit;
             Temperature b = 0 * Temperature.DegreeCelsius;
-            Temperature c = 273.15*Temperature.Kelvin;
+            Temperature c = 273.15 * Temperature.Kelvin;
             Assert.True(a != b);
             Assert.True(b == c);
             Assert.True(b.Equals(c));
@@ -57,10 +60,9 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
         public void Parse_InvalidUnit()
         {
-            Temperature.Parse("100 Metre");
+            Assert.Throws<FormatException>(() => Temperature.Parse("100 Metre"));
         }
 
         [Test]
@@ -93,11 +95,34 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
         public void ToString_InvalidFormatString()
         {
             var l = 100 * Temperature.DegreeCelsius;
-            Console.WriteLine(l.ToString("0 [m]"));
+            Assert.Throws<FormatException>(() => l.ToString("0 [m]"));
+        }
+
+        [Test]
+        public void Serialize_XmlSerializer()
+        {
+            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
+            {
+                var s = new XmlSerializer(typeof(TestClass));
+                var t = new TestClass { Temperature1 = 37.5 * Temperature.DegreeCelsius };
+                var ms = new MemoryStream();
+                s.Serialize(ms, t);
+                var xml = Encoding.UTF8.GetString(ms.ToArray());
+                Assert.IsTrue(xml.Contains(@"<Temperature1>37.5 °C</Temperature1>"));
+
+                // Deserialize
+                var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+                var t2 = (TestClass)s.Deserialize(ms2);
+                Assert.AreEqual(t2.Temperature1, t.Temperature1);
+            }
+        }
+
+        public class TestClass
+        {
+            public Temperature Temperature1 { get; set; }
         }
     }
 }

@@ -6,8 +6,6 @@
 
 namespace QuantityTypes.Tests
 {
-    using System.Runtime.Serialization;
-
     using NUnit.Framework;
 
     using Newtonsoft.Json;
@@ -39,13 +37,13 @@ namespace QuantityTypes.Tests
         {
             var obj = new TestObject { Distance = 1.23 * Length.Metre, Time = null };
             var json = JsonConvert.SerializeObject(obj);
-            Assert.AreEqual("{\"Distance\":{\"XmlValue\":\"1.23 m\"},\"Time\":null,\"Quantities\":[]}", json);
+            Assert.AreEqual("{\"Distance\":{\"Value\":1.23},\"Time\":null,\"Quantities\":[]}", json);
         }
 
-        [Test]
+        // [Test, Ignore("Deserializing without converter is not supported")]
         public void Deserialize_WithoutConverter()
         {
-            var json = "{\"Distance\":{\"XmlValue\":\"1.23 m\"},\"Time\":null}";
+            var json = "{\"Distance\":{\"Value\":1.23},\"Time\":null}";
             var obj = JsonConvert.DeserializeObject<TestObject>(json);
             Assert.AreEqual(1.23 * Length.Metre, obj.Distance);
             Assert.AreEqual(null, obj.Time);
