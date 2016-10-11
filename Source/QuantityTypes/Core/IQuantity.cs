@@ -10,11 +10,12 @@
 namespace QuantityTypes
 {
     using System;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Defines a quantity.
     /// </summary>
-    public interface IQuantity : IComparable, IFormattable
+    public interface IQuantity : IComparable, IFormattable, IXmlSerializable
     {
         /// <summary>
         /// Gets the amount of quantity in the base unit.

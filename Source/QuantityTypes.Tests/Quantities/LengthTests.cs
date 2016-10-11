@@ -248,7 +248,7 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
             Assert.AreEqual(-60 * Length.Metre, Length.Parse(" -60 m"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m "));
-            Assert.AreEqual(1e-9 * Length.Metre, Length.Parse("1 nm") );
+            Assert.AreEqual(1e-9 * Length.Metre, Length.Parse("1 nm"));
             Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1um"));
             Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1 µm"));
         }
@@ -289,7 +289,7 @@ namespace QuantityTypes.Tests
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.00 [km]}", l), Is.EqualTo("0.10 km"));
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.00 []}", l), Is.EqualTo("100.00"));
 
-            var l2 = 10*Length.Nanometre;
+            var l2 = 10 * Length.Nanometre;
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.000 [um]}", l2), Is.EqualTo("0.010 um"));
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.000 [µm]}", l2), Is.EqualTo("0.010 µm"));
             Assert.That(string.Format(CultureInfo.InvariantCulture, "{0:0.0 [nm]}", l2), Is.EqualTo("10.0 nm"));
@@ -356,11 +356,10 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
         public void ToString_InvalidFormatString()
         {
             var l = 100 * Length.Metre;
-            Console.WriteLine(l.ToString("0 [Metre]"));
+            Assert.Throws<FormatException>(() => l.ToString("0 [Metre]"));
         }
 
         [Test]
@@ -376,14 +375,6 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(1, l2.CompareTo(l1));
             Assert.AreEqual(-1, l1.CompareTo(l2));
             Assert.AreEqual(0, l1.CompareTo(l3));
-        }
-
-        [Test]
-        public void XmlValue_RoundTrip_ValuesShouldBeEqual()
-        {
-            var l1 = 4.0 / 7 * Length.Metre;
-            var l2 = new Length { XmlValue = l1.XmlValue };
-            Assert.AreEqual(l1, l2);
         }
 
         [Test]
@@ -406,6 +397,24 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void Serialize_XmlSerializer_RoundTrip()
+        {
+            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
+            {
+                var s = new XmlSerializer(typeof(Test));
+                var t = new Test { Distance = 4d / 7 * Length.Metre };
+                var ms = new MemoryStream();
+                s.Serialize(ms, t);
+                var xml = Encoding.UTF8.GetString(ms.ToArray());
+
+                // Deserialize
+                var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+                var t2 = (Test)s.Deserialize(ms2);
+                Assert.AreEqual(t2.Distance, t.Distance);
+            }
+        }
+
+        [Test]
         public void Serialize_DataContractSerializer()
         {
             var s = new DataContractSerializer(typeof(Test));
@@ -413,7 +422,7 @@ namespace QuantityTypes.Tests
             var ms = new MemoryStream();
             s.WriteObject(ms, t);
             var xml = Encoding.UTF8.GetString(ms.ToArray());
-            Assert.IsTrue(xml.Contains(@"<a:XmlValue>100.2 m</a:XmlValue>"));
+            Assert.IsTrue(xml.Contains(@"<Distance>100.2 m</Distance>"));
 
             // Deserialize
             var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));

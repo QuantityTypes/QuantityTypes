@@ -1,11 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [2.0.0]
+## Unreleased
+### Changed
+- IQuantity depends on IXmlSerializable - changed XML serialization  (#62)
+
+## 2.0.0
 ### Changed
 - Target netstandard 1.0
 
-## [1.1.0]
+## 1.1.0
 ### Added
 - Unit prefixes and operator overloads for electrical units
 - Use GitHub as source server (#12)
