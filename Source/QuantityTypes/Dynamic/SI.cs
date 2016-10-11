@@ -17,6 +17,16 @@ namespace QuantityTypes.Dynamic
     public static class SI
     {
         /// <summary>
+        /// Initializes static members of the <see cref="SI"/> class.
+        /// </summary>
+        static SI()
+        {
+            KilometrePerHour = Kilometre / Hour;
+            MetrePerSecond = Metre / Second;
+            MetrePerSecondSquared = Metre / (Second * Second);
+        }
+
+        /// <summary>
         /// Gets the kilogram.
         /// </summary>
         /// <value>The kilogram.</value>
@@ -35,14 +45,14 @@ namespace QuantityTypes.Dynamic
         /// </summary>
         /// <value>The meter per second.</value>
         [Unit("m/s", true)]
-        public static DynamicQuantity MetrePerSecond { get; } = Metre / Second;
+        public static DynamicQuantity MetrePerSecond { get; }
 
         /// <summary>
         /// Gets the kilometer per hour.
         /// </summary>
         /// <value>The kilometer per hour.</value>
         [Unit("km/h")]
-        public static DynamicQuantity KilometrePerHour { get; } = Kilometre / Hour;
+        public static DynamicQuantity KilometrePerHour { get; }
 
         /// <summary>
         /// The kilometer unit
@@ -77,7 +87,7 @@ namespace QuantityTypes.Dynamic
         /// <summary>
         /// The m/s^2 unit
         /// </summary>
-        public static DynamicQuantity MetrePerSecondSquared { get; } = Metre / (Second * Second);
+        public static DynamicQuantity MetrePerSecondSquared { get; }
 
 
         /// <summary>
