@@ -16,12 +16,13 @@ namespace QuantityTypes
     using System;
     using System.Globalization;
     using System.Runtime.Serialization;
+    using System.Xml;
+    using System.Xml.Schema;
     using System.Xml.Serialization;
 
     /// <summary>
     /// Represents the length quantity.
     /// </summary>
-    [DataContract]
     public partial struct Length : IQuantity<Length>
     {
         /// <summary>
@@ -55,29 +56,6 @@ namespace QuantityTypes
         }
 
         //// [STATIC PROPERTIES]
-
-        /// <summary>
-        /// Gets or sets the length as a string.
-        /// </summary>
-        /// <value>The string.</value>
-        /// <remarks>
-        /// This property is used for XML serialization.
-        /// </remarks>
-        [XmlText]
-        [DataMember]
-        public string XmlValue
-        {
-            get
-            {
-                // Use round-trip format
-                return this.ToString("R", CultureInfo.InvariantCulture);
-            }
-
-            set
-            {
-                this.value = Parse(value, CultureInfo.InvariantCulture).value;
-            }
-        }
 
         /// <summary>
         /// Gets the value of the length in the base unit.
@@ -641,6 +619,34 @@ namespace QuantityTypes
             }
 
             return unitProvider.Format(format, formatProvider, this);
+        }
+
+        /// <summary>
+        /// Gets the XML schema.
+        /// </summary>
+        /// <returns>The schema.</returns>
+        XmlSchema IXmlSerializable.GetSchema()
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Writes the XML.
+        /// </summary>
+        /// <param name="writer">The writer.</param>
+        void IXmlSerializable.WriteXml(XmlWriter writer)
+        {
+            writer.WriteString(this.ToString("R", CultureInfo.InvariantCulture));
+        }
+
+        /// <summary>
+        /// Reads the XML.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
+        void IXmlSerializable.ReadXml(XmlReader reader)
+        {
+            var content = reader.ReadElementContentAsString();
+            this.value = Parse(content, CultureInfo.InvariantCulture).value;
         }
     }
 }
