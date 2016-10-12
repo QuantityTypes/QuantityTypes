@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 - IQuantity depends on IXmlSerializable - changed XML serialization  (#62)
 - Moved CSV functionality to QuantityTypes.Csv (#67)
 
+### Added
+- TimeSpan extension methods (#43)
+
 ## 2.0.0
 ### Changed
 - Target netstandard 1.0

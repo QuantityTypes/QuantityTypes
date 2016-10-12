@@ -9,6 +9,8 @@
 
 namespace QuantityTypes.Tests
 {
+    using System;
+
     using NUnit.Framework;
 
     /// <summary>
@@ -34,6 +36,20 @@ namespace QuantityTypes.Tests
         {
             var a = 9.81 * Length.Metre / (Time.Second ^ 2);
             Assert.AreEqual(9.81 * Acceleration.MetrePerSecondSquared, a);
+        }
+
+        [Test]
+        public void FromTimeSpan()
+        {
+            var q = TimeSpan.FromSeconds(23).ToQuantity();
+            Assert.AreEqual(23 * Time.Second, q);
+        }
+
+        [Test]
+        public void ToTimeSpan()
+        {
+            var ts = (23 * Time.Second).ToTimeSpan();
+            Assert.AreEqual(23, ts.TotalSeconds);
         }
     }
 }
