@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>QuantityTypes.Csv</id>
+    <version>$version$</version>
+    <title>QuantityTypes CSV</title>
+    <authors>objo</authors>
+    <description>CSV extensions for QuantityTypes.</description>
+    <releaseNotes></releaseNotes>
+    <licenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/objorke/QuantityTypes</projectUrl>
+    <iconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>physical quantities unit conversion units of measurement csv</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard1.0" />
+      <dependency id="QuantityTypes" version="[$version$]"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\**\*.*" target="lib" />
+    <file src="..\..\LICENSE" />
+    <file src="..\..\README.md" />
+  </files>
+</package>

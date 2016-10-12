@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## Unreleased
 ### Changed
 - IQuantity depends on IXmlSerializable - changed XML serialization  (#62)
+- Moved CSV functionality to QuantityTypes.Csv (#67)
 
 ## 2.0.0
 ### Changed
