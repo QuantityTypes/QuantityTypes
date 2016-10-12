@@ -1,12 +1,17 @@
 {
-  "supports": {},
+  "version": "0.9.0",
+  "compilationOptions": {
+    "warningsAsErrors": true
+  },
+  "code": [ "**/*.cs" ],
+  "supports": { },
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "System.Runtime.Serialization.Primitives": "4.1.1",
     "System.Xml.XmlSerializer": "4.0.11"
   },
   "frameworks": {
-    "netstandard1.0": {}
+    "netstandard1.0": { }
   },
   "buildOptions": {
     "define": [ ]
