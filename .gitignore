@@ -4,3 +4,4 @@ obj
 packages
 project.lock.json
 *.Generated.cs
+*.user
