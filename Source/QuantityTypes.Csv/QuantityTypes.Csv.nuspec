@@ -13,7 +13,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>physical quantities unit conversion units of measurement csv</tags>
     <dependencies>
-      <group targetFramework=".NETStandard1.0" />
       <dependency id="QuantityTypes" version="[$version$]"/>
     </dependencies>
   </metadata>
