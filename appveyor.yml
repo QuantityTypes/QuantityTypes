@@ -17,6 +17,10 @@ after_build:
   - NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -version "%GitVersion_NuGetVersion%"
   - NuGet pack Source\QuantityTypes.Csv\QuantityTypes.Csv.nuspec -version "%GitVersion_NuGetVersion%"
 
+test:
+  assemblies:
+    - QuantityTypes.Tests.dll
+
 artifacts:
   - path: Source/QuantityTypes/bin/Release
     name: QuantityTypes-$(GitVersion_SemVer)
