@@ -284,12 +284,24 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
-        public void ToString_NoUnit()
+        public void ToString_ConvertToDisplayUnit()
         {
             var l = 100 * Length.Metre;
             Assert.AreEqual("100", l.ToString("[]"));
             Assert.AreEqual("100.00", l.ToString("0.00 []", CultureInfo.InvariantCulture));
             Assert.AreEqual("100.00", l.ToString("0.00[]", CultureInfo.InvariantCulture));
+        }
+
+        [Test]
+        public void ToString_ConvertButDoNotShowUnit()
+        {
+            var l = 1.2 * Length.Metre;
+            Assert.AreEqual("1.2", l.ToString("[!m]"));
+            Assert.AreEqual("1.20", l.ToString("0.00 [!m]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("1.20", l.ToString("0.00[!m]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("120", l.ToString("[!cm]"));
+            Assert.AreEqual("120.00", l.ToString("0.00 [!cm]", CultureInfo.InvariantCulture));
+            Assert.AreEqual("120.00", l.ToString("0.00[!cm]", CultureInfo.InvariantCulture));
         }
 
         [Test]

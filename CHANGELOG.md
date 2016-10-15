@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - TimeSpan extension methods (#43)
+- Format with conversion, without showing unit (#52)
 
 ## 2.0.1
 ### Changed

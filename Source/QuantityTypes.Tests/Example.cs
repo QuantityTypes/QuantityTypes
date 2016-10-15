@@ -56,8 +56,8 @@ namespace QuantityTypes.Tests
             Time t = 9.58 * Time.Second;
             Velocity v = s / t;
             Console.WriteLine(v);
-            Console.WriteLine(v.ToString("0.00 [km/h]"));
-            Console.WriteLine("Speed: {0:0.00 [km/h]}", v);
+            Console.WriteLine(v.ToString("0.00[km/h]"));
+            Console.WriteLine("Speed: {0:0.00[!km/h] kmph}", v);
             Mass m = Mass.Parse("92 kg");
             double massInPounds = m.ConvertTo(Mass.Pound);
             Temperature temp = 100 * Temperature.DegreeCelsius;
