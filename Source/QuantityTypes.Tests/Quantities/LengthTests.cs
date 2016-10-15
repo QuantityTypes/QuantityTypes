@@ -233,8 +233,13 @@ namespace QuantityTypes.Tests
         [Test]
         public void Parse_ValidStrings()
         {
+            Assert.AreEqual(1 * Length.Metre, Length.Parse("1 m"));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse("1m"));
             Assert.AreEqual(1e-2 * Length.Metre, Length.Parse("1e-2m"));
+            Assert.AreEqual(1e-2 * Length.Metre, Length.Parse("1e-2 m"));
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m "));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse(" m"));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse(" m "));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("0.1 km", CultureInfo.InvariantCulture));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("1e2"));
@@ -244,7 +249,7 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(-60 * Length.Metre, Length.Parse(" -60 m"));
             Assert.AreEqual(100 * Length.Metre, Length.Parse("100 m "));
             Assert.AreEqual(1e-9 * Length.Metre, Length.Parse("1 nm"));
-            Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1um"));
+            Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1 um"));
             Assert.AreEqual(1e-6 * Length.Metre, Length.Parse("1 µm"));
         }
 
@@ -261,6 +266,7 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m"));
             Assert.AreEqual(1 * Length.Metre, Length.Parse(" m"));
             Assert.AreEqual(1 * Length.Metre, Length.Parse("m "));
+            Assert.AreEqual(1 * Length.Metre, Length.Parse(" m "));
         }
 
         [Test]
