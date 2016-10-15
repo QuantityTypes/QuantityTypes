@@ -9,11 +9,6 @@ namespace QuantityTypes.Tests
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Text;
-    using System.Xml.Serialization;
-
     using NUnit.Framework;
 
     using QuantityTypes;
@@ -378,59 +373,6 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
-        public void Serialize_XmlSerializer()
-        {
-            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
-            {
-                var s = new XmlSerializer(typeof(Test));
-                var t = new Test { Distance = 100.2 * Length.Metre };
-                var ms = new MemoryStream();
-                s.Serialize(ms, t);
-                var xml = Encoding.UTF8.GetString(ms.ToArray());
-                Assert.IsTrue(xml.Contains(@"<Distance>100.2 m</Distance>"));
-
-                // Deserialize
-                var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
-                var t2 = (Test)s.Deserialize(ms2);
-                Assert.AreEqual(t2.Distance, t.Distance);
-            }
-        }
-
-        [Test]
-        public void Serialize_XmlSerializer_RoundTrip()
-        {
-            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
-            {
-                var s = new XmlSerializer(typeof(Test));
-                var t = new Test { Distance = 4d / 7 * Length.Metre };
-                var ms = new MemoryStream();
-                s.Serialize(ms, t);
-                var xml = Encoding.UTF8.GetString(ms.ToArray());
-
-                // Deserialize
-                var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
-                var t2 = (Test)s.Deserialize(ms2);
-                Assert.AreEqual(t2.Distance, t.Distance);
-            }
-        }
-
-        [Test]
-        public void Serialize_DataContractSerializer()
-        {
-            var s = new DataContractSerializer(typeof(Test));
-            var t = new Test { Distance = 100.2 * Length.Metre };
-            var ms = new MemoryStream();
-            s.WriteObject(ms, t);
-            var xml = Encoding.UTF8.GetString(ms.ToArray());
-            Assert.IsTrue(xml.Contains(@"<Distance>100.2 m</Distance>"));
-
-            // Deserialize
-            var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
-            var t2 = (Test)s.ReadObject(ms2);
-            Assert.AreEqual(t2.Distance, t.Distance);
-        }
-
-        [Test]
         public void StoppingDistance()
         {
             var speed = 100.0 * Velocity.KilometrePerHour;
@@ -482,11 +424,6 @@ namespace QuantityTypes.Tests
             TypographicLength length = 10 * Length.Centimetre;
             Assert.AreEqual(10 * TypographicLength.Centimetre, length);
             Assert.AreNotEqual(10 * Length.Centimetre, 10 * TypographicLength.Centimetre);
-        }
-
-        public class Test
-        {
-            public Length Distance { get; set; }
         }
     }
 }
