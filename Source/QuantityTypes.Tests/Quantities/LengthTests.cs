@@ -67,27 +67,6 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(0.1, l.ConvertTo(Length.Kilometre));
         }
 
-#if NET40
-        [Test]
-        public void Converter()
-        {
-            var converter = TypeDescriptor.GetConverter(typeof(Length));
-            Assert.IsTrue(converter.CanConvertFrom(typeof(string)));
-            Assert.AreEqual(100 * Length.Metre, converter.ConvertFrom("100m"));
-            Assert.AreEqual(0 * Length.Metre, converter.ConvertFrom(null));
-        }
-
-        [Test]
-        public void NullableLengthConverter()
-        {
-            var converter = TypeDescriptor.GetConverter(typeof(Length?));
-            Assert.AreEqual(100 * Length.Metre, converter.ConvertFrom("100m"));
-            Assert.AreEqual(null, converter.ConvertFrom(null));
-            const string nullString = null;
-            Assert.AreEqual(null, converter.ConvertFrom(nullString));
-            Assert.AreEqual(null, converter.ConvertFrom(string.Empty));
-        }
-#endif
 
         [Test]
         public void SetFromString()
