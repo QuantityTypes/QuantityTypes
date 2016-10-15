@@ -79,8 +79,19 @@ namespace QuantityTypes
         public static double operator *(Length x, TypographicResolution y) 
         { 
             return x.Value * y.Value; 
-        } 
-        
+        }
+
+        /// <summary>
+        /// Divides a number of dots by a length to get the resolution.
+        /// </summary>
+        /// <param name="x"> The number of dots. </param>
+        /// <param name="y"> The length. </param>
+        /// <returns> The resolution. </returns>
+        public static TypographicResolution operator /(double x, Length y)
+        {
+            return new TypographicResolution(x / y.Value);
+        }
+
         /// <summary>
         /// Implements the / operator for the product of <see cref="Acceleration" /> and <see cref="TimeSquared" />.
         /// </summary>
