@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 - IQuantity depends on IXmlSerializable - changed XML serialization  (#62)
 - Xml serialization without units (#66)
 - Moved CSV functionality to QuantityTypes.Csv (#67)
+- Moved dynamic types to separate project (#71)
 
 ### Added
 - TimeSpan extension methods (#43)

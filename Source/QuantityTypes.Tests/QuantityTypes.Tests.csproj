@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultUnitProvider.cs" />
-    <Compile Include="Dynamic\DynamicQuantityTests.cs" />
     <Compile Include="CurrentCulture.cs" />
     <Compile Include="JsonTests\NewtonSoftJsonTests.cs" />
     <Compile Include="JsonTests\QuantityJsonConverter.cs" />
