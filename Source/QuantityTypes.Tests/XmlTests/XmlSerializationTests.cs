@@ -8,7 +8,21 @@ namespace QuantityTypes.Tests
     [TestFixture]
     public class XmlSerializationTests
     {
-        const string ExpectedXml = "<?xml version=\"1.0\"?>\r\n<Test xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Distance>100.2</Distance>\r\n</Test>";
+        const string XmlDeclaration = "<?xml version=\"1.0\"?>\r\n";
+        const string ExpectedXml = XmlDeclaration + "<Test xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Distance>100.2</Distance>\r\n</Test>";
+
+        [Test]
+        public void Double_Serialize()
+        {
+            // assert that we are consistent with serialization of numbers
+            using (CurrentCulture.TemporaryChangeTo(CultureInfos.Norwegian))
+            {
+                // assert the current format provider uses , as decimal separator
+                Assert.AreEqual("1,2", 1.2.ToString());
+                var xml = Serialize(1.2);
+                Assert.AreEqual(XmlDeclaration + "<double>1.2</double>", xml);
+            }
+        }
 
         [Test]
         public void Serialize()
