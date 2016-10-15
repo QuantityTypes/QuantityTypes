@@ -12,7 +12,7 @@ Length,Metre,m,1
 Length,Decimetre,dm,1e-1
 Length,Centimetre,cm,1e-2
 Length,Millimetre,mm,1e-3
-Length,Micrometre,um|µm,1e-6
+Length,Micrometre,µm|um,1e-6
 Length,Nanometre,nm,1e-9
 Length,Kilometre,km,1e3
 Length,Yard,yd,0.9144
@@ -55,7 +55,7 @@ SolidAngle,Steradian,sr,1
 Mass,Kilogram,kg,1
 Mass,Gram,g,1e-3
 Mass,MilliGram, mg, 1e-6
-Mass,MicroGram, ug|µg, 1e-9
+Mass,MicroGram, µg|ug, 1e-9
 Mass,Tonne,t,1e3
 Mass,Kips,kips,453.59237
 Mass,Pound,lb,0.45359237
@@ -77,13 +77,13 @@ MassConcentration,KilogramPerCubicMetre,kg/m^3,1
 MassConcentration,GramPerCubicCentimetre,g/cm^3,1e3
 MassConcentration,KilogramPerLitre,kg/L,1e3
 MassConcentration,MilligramPerLitre,mg/L,1e-3
-MassConcentration,MicrogramPerLitre,ug/L|µg/L,1e-6
+MassConcentration,MicrogramPerLitre,µg/L|ug/L,1e-6
 MassConcentration,GramPerMillilitre,g/mL,1e3
 
 // Mass Concentration In Water
 MassConcentrationInWater,KilogramPerCubicMetre,kg/m^3,1
 MassConcentrationInWater,MilligramPerLitre,mg/L,1e-3
-MassConcentrationInWater,MicrogramPerLitre,ug/L|µg/L,1e-6
+MassConcentrationInWater,MicrogramPerLitre,µg/L|ug/L,1e-6
 
 // Volumetric Water Content (e.g. soil moisture)
 VolumetricWaterContent,CubicMetrePerCubicMetre,m^3/m^3,1
@@ -203,7 +203,7 @@ KinematicViscosity,SquareMillimetrePerSecond,mm^2/s,1e-6
 // Electric current
 ElectricCurrent,Ampere,A,1
 ElectricCurrent,Milliampere,mA,1e-3
-ElectricCurrent,Microampere,µA,1e-6
+ElectricCurrent,Microampere,µA|uA,1e-6
 
 // Electric charge
 ElectricCharge,Coulomb,C,1
@@ -232,7 +232,7 @@ ElectricResistance,Megaohm,MΩ,1e6
 // Electric conductance
 ElectricConductance,Siemens,S,1
 ElectricConductance,Millisiemens,mS,1e-3
-ElectricConductance,Microsiemens,uS,1e-6
+ElectricConductance,Microsiemens,µS|uS,1e-6
 ElectricConductance,Kilosiemens,kS,1e3
 ElectricConductance,Megasiemens,MS,1e6
 
@@ -240,7 +240,7 @@ ElectricConductance,Megasiemens,MS,1e6
 ElectricConductivity,SiemensPerMetre,S/m,1
 ElectricConductivity,SiemensPerCentimeter,S/cm,1e2
 ElectricConductivity,MillisiemensPerCentimeter,mS/cm,1e-1
-ElectricConductivity,MicrosiemensPerCentimeter,uS/cm,1e-4
+ElectricConductivity,MicrosiemensPerCentimeter,µS/cm|uS/cm,1e-4
 
 // Capacitance
 Capacitance,Farad,F,1
