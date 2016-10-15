@@ -115,6 +115,7 @@ namespace QuantityTypes
             }
 
             var unit = default(string);
+            var showUnit = true;
             if (!string.IsNullOrEmpty(format))
             {
                 var unitStart = format.IndexOf('[');
@@ -127,14 +128,26 @@ namespace QuantityTypes
                     }
 
                     unit = format.Substring(unitStart + 1, unitEnd - unitStart - 1);
+
+                    if (unit.StartsWith("!"))
+                    {
+                        showUnit = false;
+                        unit = unit.Substring(1);
+                    }
+
+                    if (unit == string.Empty)
+                    {
+                        showUnit = false;
+                    }
+
                     format = format.Remove(unitStart, unitEnd - unitStart + 1).Trim();
                 }
             }
 
             // unit=null: convert to display unit, show display unit
             // unit=empty: convert to display unit, but do not show
+            // unit starts with !: convert to specified unit, do not show specified unit
             // otherwise: convert to specified unit, show specified unit
-            var showUnit = unit != string.Empty;
 
             // find the conversion unit
             T q;

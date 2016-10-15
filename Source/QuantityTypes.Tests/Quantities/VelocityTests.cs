@@ -65,5 +65,12 @@ namespace QuantityTypes.Tests
             Assert.That(mySpeed * Velocity.KilometrePerHour, QuantityIs.EqualTo(100 / 3.6 * VelocitySquared.MetreSquaredPerSecondSquared).Within(1e-8));
             Assert.That((mySpeed * Velocity.KilometrePerHour).ToString("0.00", CultureInfo.InvariantCulture), Is.EqualTo("27.78 m^2/s^2"));
         }
+
+
+        [Test]
+        public void ToString_ConvertButDoNotShowUnit()
+        {
+            Assert.AreEqual("100.0 kmph", (100 * Velocity.KilometrePerHour).ToString("0.0[!km/h] kmph"));
+        }
     }
 }
