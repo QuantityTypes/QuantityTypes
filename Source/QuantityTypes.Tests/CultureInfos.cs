@@ -20,6 +20,7 @@ namespace QuantityTypes.Tests
         /// Gets the default Norwegian culture.
         /// </summary>
         /// <value>The Norwegian culture.</value>
+        /// <remarks>This culture has ',' as decimal separator.</remarks>
         public static CultureInfo Norwegian { get; } = new CultureInfo("nb-NO") { NumberFormat = { NumberDecimalSeparator = "," } };
     }
 }
