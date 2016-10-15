@@ -101,24 +101,7 @@ namespace QuantityTypes.Tests
             Assert.Throws<FormatException>(() => l.ToString("0 [m]"));
         }
 
-        [Test]
-        public void Serialize_XmlSerializer()
-        {
-            using (CurrentCulture.TemporaryChangeTo(CultureInfo.InvariantCulture))
-            {
-                var s = new XmlSerializer(typeof(TestClass));
-                var t = new TestClass { Temperature1 = 37.5 * Temperature.DegreeCelsius };
-                var ms = new MemoryStream();
-                s.Serialize(ms, t);
-                var xml = Encoding.UTF8.GetString(ms.ToArray());
-                Assert.IsTrue(xml.Contains(@"<Temperature1>37.5 °C</Temperature1>"));
 
-                // Deserialize
-                var ms2 = new MemoryStream(Encoding.UTF8.GetBytes(xml));
-                var t2 = (TestClass)s.Deserialize(ms2);
-                Assert.AreEqual(t2.Temperature1, t.Temperature1);
-            }
-        }
 
         public class TestClass
         {

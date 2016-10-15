@@ -64,6 +64,7 @@
     <Compile Include="JsonTests\QuantityJsonConverter.cs" />
     <Compile Include="Quantities\AngleTests.cs" />
     <Compile Include="CultureInfos.cs" />
+    <Compile Include="XmlTests\DataContractSerializationTests.cs" />
     <Compile Include="Quantities\FlowTests.cs" />
     <Compile Include="Quantities\MassConcentrationInWaterTests.cs" />
     <Compile Include="Quantities\MassConcentrationTests.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Quantities\TimeTests.cs" />
     <Compile Include="Quantities\TypographicLengthTests.cs" />
     <Compile Include="Quantities\VelocityTests.cs" />
+    <Compile Include="XmlTests\XmlSerializationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

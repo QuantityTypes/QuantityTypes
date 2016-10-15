@@ -635,7 +635,8 @@ namespace QuantityTypes
         /// <param name="writer">The writer.</param>
         void IXmlSerializable.WriteXml(XmlWriter writer)
         {
-            writer.WriteString(this.ToString("R", CultureInfo.InvariantCulture));
+            // write the raw value in the base unit
+            writer.WriteString(this.Value.ToString("R", CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -645,6 +646,15 @@ namespace QuantityTypes
         void IXmlSerializable.ReadXml(XmlReader reader)
         {
             var content = reader.ReadElementContentAsString();
+            double v;
+            if (double.TryParse(content, NumberStyles.Float, CultureInfo.InvariantCulture, out v))
+            {
+                this.value = v;
+                return;
+            }
+
+            // If content could not be parsed to a float, try to parse with unit. 
+            // This requires the UnitProvider.Default to be set.
             this.value = Parse(content, CultureInfo.InvariantCulture).value;
         }
     }
