@@ -53,8 +53,6 @@ namespace QuantityTypes.Tests
             Length s = 100 * Length.Metre;
             Time t = 9.58 * Time.Second;
             Velocity v = s / t;
-            Console.WriteLine(v.ToString("0.00"));
-            Console.WriteLine(v.ToString("0.00 km/h"));
 
             Assert.AreEqual(10.44, v.ConvertTo(Velocity.MetrePerSecond), 0.01);
             Assert.AreEqual(37.58, v.ConvertTo(Velocity.KilometrePerHour), 0.01);
