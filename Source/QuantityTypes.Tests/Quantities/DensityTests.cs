@@ -62,5 +62,13 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(0, Density.Parse(string.Empty).Value, "empty");
             Assert.AreEqual(0, Density.Parse(null).Value, "null");
         }
+
+        [Test]
+        public void Units()
+        {
+            Assert.AreEqual(1 * Density.PoundPerGallon, Mass.Pound / Volume.Gallon, "lb/gal");
+            Assert.AreEqual(1 * Density.PoundPerCubicFoot, Mass.Pound / (Volume)(Length.Foot ^ 3), "lb/ft^3");
+            Assert.AreEqual(1 * Density.PoundPerCubicInch, Mass.Pound / (Volume)(Length.Inch ^ 3), "lb/in^3");
+        }
     }
 }
