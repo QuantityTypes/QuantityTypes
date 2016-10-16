@@ -159,7 +159,19 @@ Pressure,InchOfMercury,inHg,3.386389e3
 Pressure,FootOfWater,ftH2O,2.98898e3
 Pressure,InchOfWater,inH2O,2.49082e2
 
-// Torque or moment of force
+// Moment of force
+// https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
+Moment,NewtonMetre,N*m,1
+Moment,NewtonCentimetre,N*cm,0.01
+Moment,NewtonMillimetre,N*mm,0.001
+Moment,FootPoundForce,lb*ft,1.3558179483314004
+Moment,FootPoundal,ft*pdl,0.0421401100938048
+Moment,InchPoundForce,in*lbf,0.1129848290276167
+Moment,InchOunceForce,in*ozf,0.0254 * 0283495231 * 9.80665
+Moment,MetreKilogramForce,m*kgf,9.80665
+
+// Torque
+// https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
 Torque,NewtonMetre,N*m,1
 Torque,NewtonCentimetre,N*cm,0.01
 Torque,NewtonMillimetre,N*mm,0.001
@@ -173,6 +185,7 @@ Torque,TonneMetre,tonne*m,1000 * 1 * 9.80665
 Torque,JoulePerRadian,J/m,1
 
 // Energy (note that Calorie and Btu are according to the International Table)
+// https://en.wikipedia.org/wiki/Conversion_of_units#Energy
 Energy,Joule,J,1
 Energy,Kilojoule,kJ,1e3
 Energy,Calorie,cal,4.1868
@@ -186,6 +199,7 @@ Energy,BritishThermalUnit,Btu,1.05505585262e3
 Energy,MillionBtu,MMBtu,1.05505585262e9
 
 // Power or heat flow rate
+// https://en.wikipedia.org/wiki/Conversion_of_units#Power_or_heat_flow_rate
 Power,Watt,W,1
 Power,Milliwatt,mW,1e-3
 Power,Kilowatt,kW,1e3
