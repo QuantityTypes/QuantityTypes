@@ -88,7 +88,22 @@ namespace QuantityTypes
         /// Gets the imperial rod unit.
         /// </summary>
         public static Length Rod { get; } = 25 * Link;
-        
+
+        /// <summary>
+        /// Gets the imperial perch unit.
+        /// </summary>
+        public static Area Perch { get; } = Rod * Rod;
+
+        /// <summary>
+        /// Gets the imperial rood unit.
+        /// </summary>
+        public static Area Rood { get; } = Furlong * Rod;
+
+        /// <summary>
+        /// Gets the imperial acre unit.
+        /// </summary>
+        public static Area Acre { get; } = Furlong * Chain;
+
         /// <summary>
         /// Gets the imperial fluid ounce unit.
         /// </summary>
@@ -118,5 +133,61 @@ namespace QuantityTypes
         /// </summary>
         [Unit("gal")]
         public static Volume Gallon { get; } = 160 * FluidOunce;
+
+        /// <summary>
+        /// Gets the imperial grain unit.
+        /// </summary>
+        [Unit("gr")]
+        public static Mass Grain { get; } = Mass.Pound / 7000;
+
+        /// <summary>
+        /// Gets the imperial drachm unit.
+        /// </summary>
+        [Unit("dr")]
+        public static Mass Drachm { get; } = Mass.Pound / 256;
+
+        /// <summary>
+        /// Gets the imperial ounce unit.
+        /// </summary>
+        [Unit("oz")]
+        public static Mass Ounce { get; } = Mass.Pound / 16;
+
+        /// <summary>
+        /// Gets the imperial pound unit.
+        /// </summary>
+        [Unit("lb")]
+        public static Mass Pound { get; } = 0.45359237 * Mass.Kilogram;
+
+        /// <summary>
+        /// Gets the imperial stone unit.
+        /// </summary>
+        [Unit("st")]
+        public static Mass Stone { get; } = Mass.Pound * 14;
+
+        /// <summary>
+        /// Gets the imperial quarter unit.
+        /// </summary>
+        [Unit("qr")]
+        [Unit("qtr")]
+        public static Mass Quarter { get; } = 2 * Stone;
+
+        /// <summary>
+        /// Gets the imperial hundredweight unit.
+        /// </summary>
+        [Unit("cwt")]
+        public static Mass Hundredweight { get; } = 8 * Stone;
+
+        /// <summary>
+        /// Gets the imperial ton unit.
+        /// </summary>
+        [Unit("t")]
+        public static Mass Ton { get; } = Mass.Pound * 2240;
+
+        /// <summary>
+        /// Gets the imperial slug unit.
+        /// </summary>
+        [Unit("slug")]
+        public static Mass Slug { get; } = Mass.Pound * 32.17404856;
+
     }
 }
