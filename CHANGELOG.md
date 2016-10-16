@@ -12,6 +12,9 @@ All notable changes to this project will be documented in this file.
 - TimeSpan extension methods (#43)
 - Format with conversion, without showing unit (#52)
 
+### Fixed
+- lb/gal unit (#1)
+
 ## 2.0.1
 ### Changed
 - Target netstandard 1.1
