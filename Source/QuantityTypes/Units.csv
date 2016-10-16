@@ -65,6 +65,7 @@ Mass,Ton,ton,1016.0469088
 
 // Density
 Density,KilogramPerCubicMetre,kg/m^3,1
+Density,TonnePerCubicMetre,t/m^3,1000
 Density,KilogramPerCubicDecimetre,kg/dm^3,1000
 Density,GramPerCubicCentimetre,g/cm^3,1000
 Density,KilogramPerLitre,kg/L,1000

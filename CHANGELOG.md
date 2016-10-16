@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Signing the QuantityTypes assembly (#51)
 
 ### Added
+- t/m^3 density unit (#80)
 - TimeSpan extension methods (#43)
 - Format with conversion, without showing unit (#52)
 - Moment type (#11)
