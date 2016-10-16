@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 - Xml serialization without units (#66)
 - Moved CSV functionality to QuantityTypes.Csv (#67)
 - Moved dynamic types to separate project (#71)
+- Signing the QuantityTypes assembly (#51)
 
 ### Added
 - TimeSpan extension methods (#43)
