@@ -69,9 +69,9 @@ Density,KilogramPerCubicDecimetre,kg/dm^3,1000
 Density,GramPerCubicCentimetre,g/cm^3,1000
 Density,KilogramPerLitre,kg/L,1000
 Density,GramPerMillilitre,g/mL,1000
-Density,PoundPerCubicFoot,lb/ft^3,16.01846337396
-Density,PoundPerCubicInch,lb/in^3,27679.9047102031
-Density,PoundPerGallon,lb/gal,99.7763287677
+Density,PoundPerCubicFoot,lb/ft^3,0.45359237 / (0.3048 * 0.3048 * 0.3048)
+Density,PoundPerCubicInch,lb/in^3,0.45359237 / (0.0254 * 0.0254 * 0.0254)
+Density,PoundPerGallon,lb/gal,0.45359237 / 3.785411784e-3
 
 // Mass Concentration
 MassConcentration,KilogramPerCubicMetre,kg/m^3,1
