@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="VolumeTests.cs" company="QuantityTypes">
 //   Copyright (c) 2014 QuantityTypes contributors
 // </copyright>
@@ -7,17 +7,26 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Globalization;
-
 namespace QuantityTypes.Tests
 {
+    using System.Globalization;
+
     using NUnit.Framework;
 
     /// <summary>
     /// Provides unit test for the <see cref="Volume" /> class.
     /// </summary>
-    public class VolumeTests
+    [TestFixture]
+    public class VolumeTests : Tests
     {
+        [Test]
+        public void Units()
+        {
+            AssertAreEqual(Length.Decimetre * Length.Decimetre * Length.Decimetre, Volume.CubicDecimetre);
+            AssertAreEqual(Length.Centimetre * Length.Centimetre * Length.Centimetre, Volume.CubicCentimetre);
+            AssertAreEqual(Length.Millimetre * Length.Millimetre * Length.Millimetre, Volume.CubicMillimetre);
+        }
+
         [Test]
         public void ImperialUnits()
         {
