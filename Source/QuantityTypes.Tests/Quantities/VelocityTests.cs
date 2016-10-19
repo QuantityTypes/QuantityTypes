@@ -70,7 +70,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void ToString_ConvertButDoNotShowUnit()
         {
-            Assert.AreEqual("100.0 kmph", (100 * Velocity.KilometrePerHour).ToString("0.0[!km/h] kmph"));
+            Assert.AreEqual("100.0 kmph", (100 * Velocity.KilometrePerHour).ToString("0.0[!km/h] kmph", CultureInfo.InvariantCulture));
         }
     }
 }
