@@ -14,25 +14,31 @@ namespace QuantityTypes.Tests
     /// <summary>
     /// Provides unit test for the <see cref="Moment" /> class.
     /// </summary>
-    public class MomentTests
+    public class MomentTests : Tests
     {
         [Test]
         public void MultiplicationOperatorAndImplicitConversion()
         {
-            Moment m = Force.Newton * Length.Metre;
-            Assert.AreEqual(Moment.NewtonMetre, m);
+            AssertAreEqual(Moment.NewtonMetre, Force.Newton * Length.Metre);
+        }
+
+        [Test]
+        public void Units()
+        {
+            AssertAreEqual(Moment.KilonewtonMetre, Force.Kilonewton * Length.Metre);
         }
 
         [Test]
         public void DivisionOperator()
         {
-            Assert.AreEqual(Length.Metre, Moment.NewtonMetre / Force.Newton);
+            AssertAreEqual(Length.Metre, Moment.NewtonMetre / Force.Newton);
         }
 
         [Test]
         public void Parse()
         {
-            Assert.AreEqual(Moment.NewtonMetre, Moment.Parse("1 N*m"));
+            AssertAreEqual(Moment.NewtonMetre, Moment.Parse("1 N*m"));
+            AssertAreEqual(Moment.KilonewtonMetre, Moment.Parse("1 kN*m"));
         }
     }
 }

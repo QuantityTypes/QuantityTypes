@@ -17,5 +17,10 @@ namespace QuantityTypes.Tests
         {
             Assert.That(actual, QuantityIs.EqualTo(expected).Within(tolerance), message);
         }
+
+        protected static void AssertAreEqual<T>(T expected, T actual, string message) where T : IQuantity
+        {
+            AssertAreEqual(expected, actual, 1e-6, message);
+        }
     }
 }
