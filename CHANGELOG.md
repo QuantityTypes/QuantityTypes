@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Format with conversion, without showing unit (#52)
 - Moment type (#11)
 - Imperial units
+- NaN, PositiveInfinity and NegativeInfinity quantities (#83)
 
 ### Fixed
 - lb/gal unit (#1)

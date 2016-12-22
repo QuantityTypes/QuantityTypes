@@ -57,6 +57,21 @@ namespace QuantityTypes
         //// [STATIC PROPERTIES]
 
         /// <summary>
+        /// Gets the positive infinity quantity.
+        /// </summary>
+        public static Length PositiveInfinity { get; } = new Length(double.PositiveInfinity);
+
+        /// <summary>
+        /// Gets the negative infinity quantity.
+        /// </summary>
+        public static Length NegativeInfinity { get; } = new Length(double.NegativeInfinity);
+
+        /// <summary>
+        /// Gets the NaN quantity.
+        /// </summary>
+        public static Length NaN { get; } = new Length(double.NaN);
+
+        /// <summary>
         /// Gets the value of the length in the base unit.
         /// </summary>
         public double Value
@@ -179,6 +194,42 @@ namespace QuantityTypes
         public static Length ParseJson(string input)
         {
             return Parse(input, CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Returns a value that indicates whether the specified quantity is not a number.
+        /// </summary>
+        /// <param name="x">The quantity.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified quantity is not a number; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNaN(Length x)
+        {
+            return double.IsNaN(x.Value);
+        }
+
+        /// <summary>
+        /// Returns a value that indicates whether the specified quantity evaluates to positive infinity.
+        /// </summary>
+        /// <param name="x">The quantity.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified quantity evaluates to positive infinity; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsPositiveInfinity(Length x)
+        {
+            return double.IsPositiveInfinity(x.Value);
+        }
+
+        /// <summary>
+        /// Returns a value that indicates whether the specified quantity evaluates to negative infinity.
+        /// </summary>
+        /// <param name="x">The quantity.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified quantity evaluates to negative infinity; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNegativeInfinity(Length x)
+        {
+            return double.IsNegativeInfinity(x.Value);
         }
 
         /// <summary>

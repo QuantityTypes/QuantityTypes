@@ -420,5 +420,32 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(10 * TypographicLength.Centimetre, length);
             Assert.AreNotEqual(10 * Length.Centimetre, 10 * TypographicLength.Centimetre);
         }
+
+        [Test]
+        public void NaN()
+        {
+            var l1 = Length.NaN;
+            Assert.AreEqual("NaN", l1.ToString(CultureInfo.InvariantCulture));
+            var l2 = Length.Parse("NaN", CultureInfo.InvariantCulture);
+            Assert.IsTrue(Length.IsNaN(l2));
+        }
+
+        [Test]
+        public void PositiveInfinity()
+        {
+            var l1 = Length.PositiveInfinity;
+            Assert.AreEqual("Infinity", l1.ToString(CultureInfo.InvariantCulture));
+            var l2 = Length.Parse("Infinity", CultureInfo.InvariantCulture);
+            Assert.IsTrue(Length.IsPositiveInfinity(l2));
+        }
+
+        [Test]
+        public void NegativeInfinity()
+        {
+            var l1 = Length.NegativeInfinity;
+            Assert.AreEqual("-Infinity", l1.ToString(CultureInfo.InvariantCulture));
+            var l2 = Length.Parse("-Infinity", CultureInfo.InvariantCulture);
+            Assert.IsTrue(Length.IsNegativeInfinity(l2));
+        }
     }
 }
