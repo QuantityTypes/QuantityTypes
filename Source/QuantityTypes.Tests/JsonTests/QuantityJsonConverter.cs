@@ -28,6 +28,7 @@ namespace QuantityTypes.Tests
             if (q == null)
             {
                 serializer.Serialize(writer, null);
+                return;
             }
 
             serializer.Serialize(writer, q.ToString(null, CultureInfo.InvariantCulture));
