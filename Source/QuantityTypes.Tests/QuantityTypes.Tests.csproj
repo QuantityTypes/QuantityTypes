@@ -61,6 +61,7 @@
     <Compile Include="CurrentCulture.cs" />
     <Compile Include="JsonTests\NewtonSoftJsonTests.cs" />
     <Compile Include="JsonTests\QuantityJsonConverter.cs" />
+    <Compile Include="JsonTests\QuantityJsonConverterTests.cs" />
     <Compile Include="Quantities\AngleTests.cs" />
     <Compile Include="CultureInfos.cs" />
     <Compile Include="Quantities\MomentTests.cs" />
