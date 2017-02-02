@@ -447,5 +447,13 @@ namespace QuantityTypes.Tests
             var l2 = Length.Parse("-Infinity", CultureInfo.InvariantCulture);
             Assert.IsTrue(Length.IsNegativeInfinity(l2));
         }
+
+        [Test]
+        public void ScandinavianMile()
+        {
+            Assert.AreEqual(10 * Length.Kilometre, Length.ScandinavianMile);
+            Assert.AreEqual(Length.ScandinavianMile, Length.Parse("1 mil"));
+            Assert.AreEqual("10 mil", (10 * Length.ScandinavianMile).ToString("[mil]"));
+        }
     }
 }

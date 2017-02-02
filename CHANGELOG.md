@@ -3,7 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 ### Added
-- LinearMassDensity type (#82)
+- Imperial units
+- NaN, PositiveInfinity and NegativeInfinity quantities (#83)
+- LinearMassDensity (#82)
+- Scandinavian mile length unit (#88)
+
+### Fixed
+- null reference exception in QuantityJsonConverter (#85)
 
 ## 3.0.1
 ### Changed
@@ -18,8 +24,6 @@ All notable changes to this project will be documented in this file.
 - TimeSpan extension methods (#43)
 - Format with conversion, without showing unit (#52)
 - Moment type (#11)
-- Imperial units
-- NaN, PositiveInfinity and NegativeInfinity quantities (#83)
 
 ### Fixed
 - lb/gal unit (#1)

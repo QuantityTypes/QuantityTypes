@@ -15,6 +15,7 @@ Length,Millimetre,mm,1e-3
 Length,Micrometre,µm|um,1e-6
 Length,Nanometre,nm,1e-9
 Length,Kilometre,km,1e3
+Length,ScandinavianMile,mil,1e4
 Length,Yard,yd,0.9144
 Length,Foot,ft,0.3048
 Length,Inch,in,0.0254
