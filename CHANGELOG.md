@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 - NaN, PositiveInfinity and NegativeInfinity quantities (#83)
 - LinearMassDensity (#82)
 - Scandinavian mile length unit (#88)
+- Custom length example (#89)
 
 ### Fixed
 - null reference exception in QuantityJsonConverter (#85)

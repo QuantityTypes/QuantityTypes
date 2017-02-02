@@ -65,6 +65,7 @@
     <Compile Include="Quantities\AngleTests.cs" />
     <Compile Include="CultureInfos.cs" />
     <Compile Include="Quantities\AreaTests.cs" />
+    <Compile Include="Quantities\CustomLengthTests.cs" />
     <Compile Include="Quantities\LinearMassDensityTests.cs" />
     <Compile Include="Quantities\ForceTests.cs" />
     <Compile Include="Quantities\MomentTests.cs" />
