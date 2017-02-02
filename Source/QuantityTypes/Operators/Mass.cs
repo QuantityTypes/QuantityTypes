@@ -29,6 +29,28 @@ namespace QuantityTypes
         ///     Implements the operator /.
         /// </summary>
         /// <param name="m"> The mass. </param>
+        /// <param name="l"> The length. </param>
+        /// <returns> The result of the operator. </returns>
+        public static LinearMassDensity operator /(Mass m, Length l)
+        {
+            return new LinearMassDensity(m.Value / l.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator /.
+        /// </summary>
+        /// <param name="m"> The mass. </param>
+        /// <param name="l"> The length. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Length operator /(Mass m, LinearMassDensity l)
+        {
+            return new Length(m.Value / l.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator /.
+        /// </summary>
+        /// <param name="m"> The mass. </param>
         /// <param name="d"> The density. </param>
         /// <returns> The result of the operator. </returns>
         public static Volume operator /(Mass m, Density d)

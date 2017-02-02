@@ -64,7 +64,13 @@
     <Compile Include="JsonTests\QuantityJsonConverterTests.cs" />
     <Compile Include="Quantities\AngleTests.cs" />
     <Compile Include="CultureInfos.cs" />
+    <Compile Include="Quantities\AreaTests.cs" />
+    <Compile Include="Quantities\LinearMassDensityTests.cs" />
+    <Compile Include="Quantities\ForceTests.cs" />
     <Compile Include="Quantities\MomentTests.cs" />
+    <Compile Include="Quantities\SecondMomentOfAreaTests.cs" />
+    <Compile Include="Quantities\Tests.cs" />
+    <Compile Include="Quantities\VolumeTests.cs" />
     <Compile Include="XmlTests\DataContractSerializationTests.cs" />
     <Compile Include="Quantities\FlowTests.cs" />
     <Compile Include="Quantities\MassConcentrationInWaterTests.cs" />

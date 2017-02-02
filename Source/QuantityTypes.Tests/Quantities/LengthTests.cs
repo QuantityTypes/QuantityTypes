@@ -296,7 +296,7 @@ namespace QuantityTypes.Tests
         public void ToString_ConvertButDoNotShowUnit()
         {
             var l = 1.2 * Length.Metre;
-            Assert.AreEqual("1.2", l.ToString("[!m]"));
+            Assert.AreEqual("1.2", l.ToString("[!m]", CultureInfo.InvariantCulture));
             Assert.AreEqual("1.20", l.ToString("0.00 [!m]", CultureInfo.InvariantCulture));
             Assert.AreEqual("1.20", l.ToString("0.00[!m]", CultureInfo.InvariantCulture));
             Assert.AreEqual("120", l.ToString("[!cm]"));

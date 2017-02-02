@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+### Added
+- LinearMassDensity type (#82)
+
 ## 3.0.1
 ### Changed
 - IQuantity depends on IXmlSerializable - changed XML serialization  (#62)

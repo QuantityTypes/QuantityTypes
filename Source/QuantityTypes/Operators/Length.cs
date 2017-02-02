@@ -62,6 +62,28 @@ namespace QuantityTypes
         /// <summary>
         ///     Implements the operator *.
         /// </summary>
+        /// <param name="l"> The length. </param>
+        /// <param name="d"> The linear mass density. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Mass operator *(Length l, LinearMassDensity d)
+        {
+            return new Mass(l.Value * d.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
+        /// <param name="l"> The length. </param>
+        /// <param name="d"> The linear mass density. </param>
+        /// <returns> The result of the operator. </returns>
+        public static Mass operator *(LinearMassDensity d, Length l)
+        {
+            return new Mass(l.Value * d.Value);
+        }
+
+        /// <summary>
+        ///     Implements the operator *.
+        /// </summary>
         /// <param name="x"> The x. </param>
         /// <param name="y"> The y. </param>
         /// <returns> The result of the operator. </returns>
@@ -76,9 +98,9 @@ namespace QuantityTypes
         /// <param name="x"> The x. </param>
         /// <param name="y"> The y. </param>
         /// <returns> The result of the operator. </returns>
-        public static double operator *(Length x, TypographicResolution y) 
-        { 
-            return x.Value * y.Value; 
+        public static double operator *(Length x, TypographicResolution y)
+        {
+            return x.Value * y.Value;
         }
 
         /// <summary>
