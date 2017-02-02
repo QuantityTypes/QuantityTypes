@@ -49,10 +49,8 @@ namespace QuantityTypes.Tests
         [Test]
         public void OperatorMassConcentrationInWater()
         {
-           MassConcentrationInWater expected = new MassConcentrationInWater("0.1kg/m^3");
-           MassConcentrationInWater actual = (MassConcentrationInWater)new Fraction("100ppm");
-           Assert.AreEqual(expected, actual);
+            MassConcentrationInWater actual = new Fraction("100ppm");
+            Assert.AreEqual(0.1 * MassConcentrationInWater.KilogramPerCubicMetre, actual);
         }
-
     }
 }

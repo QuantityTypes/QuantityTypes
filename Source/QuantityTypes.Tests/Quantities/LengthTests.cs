@@ -296,7 +296,7 @@ namespace QuantityTypes.Tests
         public void ToString_ConvertButDoNotShowUnit()
         {
             var l = 1.2 * Length.Metre;
-            Assert.AreEqual("1.2", l.ToString("[!m]"));
+            Assert.AreEqual("1.2", l.ToString("[!m]", CultureInfo.InvariantCulture));
             Assert.AreEqual("1.20", l.ToString("0.00 [!m]", CultureInfo.InvariantCulture));
             Assert.AreEqual("1.20", l.ToString("0.00[!m]", CultureInfo.InvariantCulture));
             Assert.AreEqual("120", l.ToString("[!cm]"));
@@ -446,6 +446,14 @@ namespace QuantityTypes.Tests
             Assert.AreEqual("-Infinity", l1.ToString(CultureInfo.InvariantCulture));
             var l2 = Length.Parse("-Infinity", CultureInfo.InvariantCulture);
             Assert.IsTrue(Length.IsNegativeInfinity(l2));
+        }
+
+        [Test]
+        public void ScandinavianMile()
+        {
+            Assert.AreEqual(10 * Length.Kilometre, Length.ScandinavianMile);
+            Assert.AreEqual(Length.ScandinavianMile, Length.Parse("1 mil"));
+            Assert.AreEqual("10 mil", (10 * Length.ScandinavianMile).ToString("[mil]"));
         }
     }
 }

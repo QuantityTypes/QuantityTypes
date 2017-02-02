@@ -15,6 +15,7 @@ Length,Millimetre,mm,1e-3
 Length,Micrometre,µm|um,1e-6
 Length,Nanometre,nm,1e-9
 Length,Kilometre,km,1e3
+Length,ScandinavianMile,mil,1e4
 Length,Yard,yd,0.9144
 Length,Foot,ft,0.3048
 Length,Inch,in,0.0254
@@ -27,6 +28,8 @@ Length,LightYear,ly,9.4607304725808e15
 
 // Area
 Area,SquareMetre,m^2,1
+Area,SquareCentimetre,cm^2,1e-4
+Area,SquareMillimetre,mm^2,1e-6
 Area,Acre,ac,4046.8564224
 Area,Hectare,ha,1e4
 Area,SquareFoot,ft^2,9.290304e-2
@@ -35,6 +38,9 @@ Area,SquareKilometre,km^2,1e6
 
 // Volume
 Volume,CubicMetre,m^3,1
+Volume,CubicDecimetre,dm^3,1e-3
+Volume,CubicCentimetre,cm^3,1e-6
+Volume,CubicMillimetre,mm^3,1e-9
 Volume,Litre,L,1e-3
 Volume,Gallon,gal,3.785411784e-3
 Volume,MillionGallon,MG,3.785411784e3
@@ -73,6 +79,9 @@ Density,GramPerMillilitre,g/mL,1000
 Density,PoundPerCubicFoot,lb/ft^3,0.45359237 / (0.3048 * 0.3048 * 0.3048)
 Density,PoundPerCubicInch,lb/in^3,0.45359237 / (0.0254 * 0.0254 * 0.0254)
 Density,PoundPerGallon,lb/gal,0.45359237 / 3.785411784e-3
+
+// Linear mass density https://en.wikipedia.org/wiki/Linear_density
+LinearMassDensity,KilogramPerMetre,kg/m,1
 
 // Mass Concentration
 MassConcentration,KilogramPerCubicMetre,kg/m^3,1
@@ -144,6 +153,7 @@ Acceleration,FootPerSecondSquared,ft/s^2,0.3048
 
 // Force
 Force,Newton,N,1
+Force,Kilonewton,kN,1000
 Force,KilogramForce,kgf,9.80665
 Force,KipForce,kipf,4.4482216152605e3
 
@@ -163,6 +173,7 @@ Pressure,InchOfWater,inH2O,2.49082e2
 // Moment of force
 // https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
 Moment,NewtonMetre,N*m,1
+Moment,KilonewtonMetre,kN*m,1000
 Moment,NewtonCentimetre,N*cm,0.01
 Moment,NewtonMillimetre,N*mm,0.001
 Moment,FootPoundForce,lb*ft,1.3558179483314004
@@ -174,6 +185,7 @@ Moment,MetreKilogramForce,m*kgf,9.80665
 // Torque
 // https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
 Torque,NewtonMetre,N*m,1
+Torque,KilonewtonMetre,kN*m,1000
 Torque,NewtonCentimetre,N*cm,0.01
 Torque,NewtonMillimetre,N*mm,0.001
 Torque,FootPoundForce,lb*ft,1.3558179483314004
@@ -350,6 +362,7 @@ LinearMomentum,NewtonSecond,N*s,1
 
 FirstMomentOfArea,MetreCubed,m^3,1
 SecondMomentOfArea,MetreToTheFourth,m^4,1
+SecondMomentOfArea,CentimetreToTheFourth,cm^4,1e-8
 
 MassMomentOfInertia,KilogramMetreSquared,kg*m^2,1
 MassMomentOfInertia,PoundInchSquared,lb*in^2,0.0002926396534292
