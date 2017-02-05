@@ -11,7 +11,6 @@ namespace QuantityTypes
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Reflection;
 
     /// <summary>
@@ -174,8 +173,9 @@ namespace QuantityTypes
         {
             foreach (var property in type.GetTypeInfo().DeclaredProperties)
             {
-                foreach (var ua in property.GetCustomAttributes(typeof(UnitAttribute), false).Cast<UnitAttribute>())
+                foreach (var a in property.GetCustomAttributes(typeof(UnitAttribute), false))
                 {
+                    var ua = (UnitAttribute)a;
                     unitProvider.RegisterUnit((IQuantity)property.GetValue(null, null), ua.Symbol);
 
                     if (ua.IsDefaultDisplayUnit)

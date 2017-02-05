@@ -13,7 +13,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>physical quantities unit conversion units of measurement</tags>
     <dependencies>
-      <group targetFramework=".NETStandard1.0" />
+      <dependency id="System.Collections" version="4.0.11"/>
+      <dependency id="System.Globalization" version="4.0.11"/>
+      <dependency id="System.Reflection.Extensions" version="4.0.1"/>
+      <dependency id="System.Runtime.Extensions" version="4.1.0"/>
+      <dependency id="System.Xml.XmlSerializer" version="4.0.11"/>
     </dependencies>
   </metadata>
   <files>
