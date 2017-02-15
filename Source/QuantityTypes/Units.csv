@@ -106,6 +106,9 @@ Time,Hour,h,3600
 Time,Day,d,24 * Hour.Value
 Time,Week,wk,7 * Day.Value
 Time,Millisecond,ms,1e-3
+Time,Microsecond,us|µs,1e-6
+Time,Nanosecond,ns,1e-9
+Time,Picosecond,ps,1e-12
 
 // Frequency
 Frequency,Hertz,Hz,1
