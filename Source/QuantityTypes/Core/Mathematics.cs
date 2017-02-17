@@ -138,5 +138,29 @@ namespace QuantityTypes
         {
             return Math.Sign(a.Value);
         }
+
+        /// <summary>
+        /// Return the maximum of two quantities
+        /// </summary>
+        /// <typeparam name="T">The quantity type</typeparam>
+        /// <param name="a">first quantity</param>
+        /// <param name="b">second quantity</param>
+        /// <returns></returns>
+        public static T Max<T>(T a, T b) where T : IQuantity
+        {
+            return a.Value > b.Value ? a : b;
+        }
+
+        /// <summary>
+        /// Return the minimum of two quantities
+        /// </summary>
+        /// <typeparam name="T">The quantity type</typeparam>
+        /// <param name="a">first quantity</param>
+        /// <param name="b">second quantity</param>
+        /// <returns></returns>
+        public static T Min<T>(T a, T b) where T : IQuantity
+        {
+            return a.Value > b.Value ? b : a;
+        }
     }
 }
