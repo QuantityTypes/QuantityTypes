@@ -13,9 +13,10 @@ before_build:
   - gitversion /l console /output buildserver
 
 build_script:
-  - dotnet build Source/CodeGenerator
-  - dotnet build Source/QuantityTypes /p:Version=%GitVersion_MajorMinorPatch%
-  - dotnet build Source/QuantityTypes.Csv /p:Version=%GitVersion_MajorMinorPatch%
+  - cd Source
+  - dotnet build CodeGenerator
+  - dotnet build QuantityTypes /p:Version=$(GitVersion_MajorMinorPatch)
+  - dotnet build QuantityTypes.Csv /p:Version=$(GitVersion_MajorMinorPatch)
 
 artifacts:
   - path: Source/QuantityTypes/bin/Release
