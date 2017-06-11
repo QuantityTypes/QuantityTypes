@@ -16,6 +16,8 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <PreBuildEvent>"$(SolutionDir)\CodeGenerator\bin\CodeGenerator.exe" "$(SolutionDir)QuantityTypes/Units.csv" "$(SolutionDir)QuantityTypes/Quantities"
+</PreBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
