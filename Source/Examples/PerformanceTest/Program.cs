@@ -30,7 +30,6 @@ namespace PerformanceTest
             results.Add("double", TestDouble(N).ToList());
             results.Add("QuantityTypes", TestQuantityTypes(N).ToList());
             results.Add("QuantityTypes (dynamic)", TestQuantityTypesDynamic(N).ToList());
-            results.Add("TypedUnits", TestTypedUnits(N).ToList());
 
             var tests = new[]
                             {
@@ -325,7 +324,7 @@ namespace PerformanceTest
             Console.WriteLine();
         }
 
-        static IEnumerable<long> TestTypedUnits(int N)
+/*        static IEnumerable<long> TestTypedUnits(int N)
         {
             // http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
             Console.WriteLine("=== TypedUnits ===");
@@ -436,7 +435,7 @@ namespace PerformanceTest
             }
 
             Console.WriteLine();
-        }
+        }*/
     }
 
     class LengthClass
