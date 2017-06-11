@@ -17,8 +17,8 @@ build_script:
   - cd Source
   - dotnet build CodeGenerator -o bin
   - dotnet CodeGenerator\bin\CodeGenerator.dll QuantityTypes\units.csv QuantityTypes\Quantities
-  - dotnet build QuantityTypes /p:Version=$(GitVersion_MajorMinorPatch)
-  - dotnet build QuantityTypes.Csv /p:Version=$(GitVersion_MajorMinorPatch)
+  - cmd: dotnet build QuantityTypes /p:Version=%GitVersion_MajorMinorPatch%
+  - dotnet build QuantityTypes.Csv /p:Version=%GitVersion_MajorMinorPatch%
 
 artifacts:
   - path: Source/QuantityTypes/bin/Release
