@@ -16,7 +16,7 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <PreBuildEvent>dotnet "$(SolutionDir)CodeGenerator\bin\netcoreapp1.1\CodeGenerator.dll" "$(SolutionDir)QuantityTypes\Units.csv" "$(SolutionDir)QuantityTypes\Quantities"
+    <PreBuildEvent>dotnet "..\..\..\..\CodeGenerator\bin\netcoreapp1.1\CodeGenerator.dll" "..\..\..\..\QuantityTypes\Units.csv" "..\..\..\..\QuantityTypes\Quantities"
 </PreBuildEvent>
     <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
