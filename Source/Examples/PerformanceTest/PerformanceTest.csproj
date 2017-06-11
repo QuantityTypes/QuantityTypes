@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PerformanceTest</RootNamespace>
     <AssemblyName>PerformanceTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -51,6 +51,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
     <Reference Include="TypedUnits">
       <HintPath>..\..\..\Components\TypedUnits.dll</HintPath>
     </Reference>
@@ -64,8 +65,12 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.xproj">
-      <Project>{a6a7fa4a-2b1e-417e-b13c-50385adb303c}</Project>
+    <ProjectReference Include="..\..\QuantityTypes.Dynamic\QuantityTypes.Dynamic.csproj">
+      <Project>{68d2dd7b-6b30-4da4-bf12-5073e08c1657}</Project>
+      <Name>QuantityTypes.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.csproj">
+      <Project>{b13917ba-1866-4211-b957-7227c0221e12}</Project>
       <Name>QuantityTypes</Name>
     </ProjectReference>
   </ItemGroup>
