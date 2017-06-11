@@ -18,6 +18,13 @@
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <PreBuildEvent>"$(SolutionDir)CodeGenerator\bin\CodeGenerator.exe" "$(SolutionDir)QuantityTypes/Units.csv" "$(SolutionDir)QuantityTypes/Quantities"
 </PreBuildEvent>
+    <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
+    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/objorke/QuantityTypes.git</RepositoryUrl>
+    <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

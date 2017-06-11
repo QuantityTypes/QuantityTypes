@@ -10,26 +10,12 @@ before_build:
   - appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
   - nuget restore Source/QuantityTypes.sln
   - dotnet restore Source/QuantityTypes.sln
-  - gitversion /l console /output buildserver /updateAssemblyInfo
+  - gitversion /l console /output buildserver
 
 build_script:
   - dotnet build Source/CodeGenerator
-  - dotnet build Source/QuantityTypes
-  - dotnet build Source/QuantityTypes.Tests
-  - dotnet build Source/QuantityTypes.Csv
-  - dotnet build Source/QuantityTypes.Csv.Tests
-  - dotnet build Source/QuantityTypes.Dynamic
-  - dotnet build Source/QuantityTypes.Dynamic.Tests
-  - dotnet build Source/Examples/WpfExample
-  - dotnet build Source/Examples/PerformanceTest
-
-after_build:
-  - NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -version "%GitVersion_NuGetVersion%"
-  - NuGet pack Source\QuantityTypes.Csv\QuantityTypes.Csv.nuspec -version "%GitVersion_NuGetVersion%"
-
-test:
-  assemblies:
-    - QuantityTypes.Tests.dll
+  - dotnet build Source/QuantityTypes /p:Version=%GitVersion_MajorMinorPatch%
+  - dotnet build Source/QuantityTypes.Csv /p:Version=%GitVersion_MajorMinorPatch%
 
 artifacts:
   - path: Source/QuantityTypes/bin/Release
