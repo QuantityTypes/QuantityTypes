@@ -20,6 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityTypes", "QuantityTypes\QuantityTypes.csproj", "{B13917BA-1866-4211-B957-7227C0221E12}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D7AAF844-9614-4A44-991D-248DD447D624} = {D7AAF844-9614-4A44-991D-248DD447D624}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityTypes.Tests", "QuantityTypes.Tests\QuantityTypes.Tests.csproj", "{714ED7D0-9ED8-4026-B9EB-AD2F3A705F11}"
 EndProject
