@@ -20,6 +20,6 @@ artifacts:
   - path: Output
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip
-  - path: **\*.nupkg
+  - path: '**\*.nupkg'
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip
