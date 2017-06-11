@@ -4,13 +4,12 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-
 namespace QuantityTypes.Tests
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
+    using System.Reflection;
 
     using NUnit.Framework;
 
@@ -59,7 +58,7 @@ namespace QuantityTypes.Tests
         public void ParseStringToAngleType()
         {
             const string Value = "50";
-            var parseMethod = typeof(Angle).GetMethod("Parse", new[] { Value.GetType(), typeof(IFormatProvider) });
+            var parseMethod = typeof(Angle).GetTypeInfo().GetMethod("Parse", new[] { Value.GetType(), typeof(IFormatProvider) });
             Assert.IsNotNull(parseMethod);
             var convertedValue = parseMethod.Invoke(null, new object[] { Value, CultureInfo.CurrentCulture });
             Assert.AreEqual(50, (convertedValue is Angle ? (Angle)convertedValue : new Angle()).ConvertTo(Angle.Radian));

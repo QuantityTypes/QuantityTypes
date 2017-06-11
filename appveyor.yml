@@ -8,22 +8,18 @@ platform: Any CPU
 configuration: Release
 
 before_build:
-  - appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  - nuget restore Source/QuantityTypes.sln
-  - dotnet restore Source/QuantityTypes.sln
+  - dotnet restore Source
   - gitversion /l console /output buildserver
 
 build_script:
-  - cd Source
-  - dotnet build CodeGenerator -o bin
-  - dotnet CodeGenerator\bin\CodeGenerator.dll QuantityTypes\units.csv QuantityTypes\Quantities
-  - cmd: dotnet build QuantityTypes /p:Version=%GitVersion_MajorMinorPatch%
-  - dotnet build QuantityTypes.Csv /p:Version=%GitVersion_MajorMinorPatch%
+  - dotnet build Source\CodeGenerator -o bin
+  - dotnet Source\CodeGenerator\bin\CodeGenerator.dll Source\QuantityTypes\units.csv Source\QuantityTypes\Quantities
+  - dotnet build Source\QuantityTypes.Csv /p:Version=%GitVersion_MajorMinorPatch%
 
 artifacts:
-  - path: Source/QuantityTypes/bin/Release
+  - path: Output
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip
-  - path: '*.nupkg'
+  - path: **\*.nupkg
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip

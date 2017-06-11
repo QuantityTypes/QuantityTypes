@@ -8,6 +8,7 @@ namespace QuantityTypes.Tests
 {
     using System;
     using System.Globalization;
+    using System.Reflection;
 
     using Newtonsoft.Json;
 
@@ -54,7 +55,7 @@ namespace QuantityTypes.Tests
         public override bool CanConvert(Type objectType)
         {
             var realType = Nullable.GetUnderlyingType(objectType) ?? objectType;
-            return typeof(IQuantity).IsAssignableFrom(realType);
+            return typeof(IQuantity).GetTypeInfo().IsAssignableFrom(realType);
         }
     }
 }

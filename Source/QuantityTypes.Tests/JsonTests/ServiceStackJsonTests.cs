@@ -7,7 +7,7 @@
 namespace QuantityTypes.Tests
 {
     using NUnit.Framework;
-
+/*
     using ServiceStack.Text;
 
     [TestFixture]
@@ -52,4 +52,5 @@ namespace QuantityTypes.Tests
             Assert.AreEqual(null, obj.Time);
         }
     }
+    */
 }

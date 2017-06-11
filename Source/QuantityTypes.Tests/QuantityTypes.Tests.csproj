@@ -1,99 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{714ED7D0-9ED8-4026-B9EB-AD2F3A705F11}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuantityTypes.Tests</RootNamespace>
+    <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>QuantityTypes.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <PackageId>QuantityTypes.Tests</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Description>QuantityTypes unit tests</Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=4.5.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Text.4.5.10\lib\net45\ServiceStack.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultUnitProvider.cs" />
-    <Compile Include="CurrentCulture.cs" />
-    <Compile Include="JsonTests\NewtonSoftJsonTests.cs" />
-    <Compile Include="JsonTests\QuantityJsonConverter.cs" />
-    <Compile Include="JsonTests\QuantityJsonConverterTests.cs" />
-    <Compile Include="Quantities\AngleTests.cs" />
-    <Compile Include="CultureInfos.cs" />
-    <Compile Include="Quantities\AreaTests.cs" />
-    <Compile Include="Quantities\CustomLengthTests.cs" />
-    <Compile Include="Quantities\LinearMassDensityTests.cs" />
-    <Compile Include="Quantities\ForceTests.cs" />
-    <Compile Include="Quantities\MomentTests.cs" />
-    <Compile Include="Quantities\SecondMomentOfAreaTests.cs" />
-    <Compile Include="Quantities\Tests.cs" />
-    <Compile Include="Quantities\VolumeTests.cs" />
-    <Compile Include="XmlTests\DataContractSerializationTests.cs" />
-    <Compile Include="Quantities\FlowTests.cs" />
-    <Compile Include="Quantities\MassConcentrationInWaterTests.cs" />
-    <Compile Include="Quantities\MassConcentrationTests.cs" />
-    <Compile Include="Quantities\FractionTests.cs" />
-    <Compile Include="Core\UnitProviderTests.cs" />
-    <Compile Include="Quantities\DensityTests.cs" />
-    <Compile Include="Properties\AssemblyDescription.cs" />
-    <Compile Include="Constraints\QuantityIs.cs" />
-    <Compile Include="Constraints\EqualConstraint.cs" />
-    <Compile Include="Quantities\TemperatureDifferenceTests.cs" />
-    <Compile Include="Quantities\TemperatureRateOfChangeTests.cs" />
-    <Compile Include="Quantities\TemperatureTests.cs" />
-    <Compile Include="Quantities\LengthTests.cs" />
-    <Compile Include="Example.cs" />
-    <Compile Include="JsonTests\ServiceStackJsonTests.cs" />
-    <Compile Include="JsonTests\TestObject.cs" />
-    <Compile Include="Quantities\EnergyTests.cs" />
-    <Compile Include="Quantities\TimeTests.cs" />
-    <Compile Include="Quantities\TypographicLengthTests.cs" />
-    <Compile Include="Quantities\VelocityTests.cs" />
-    <Compile Include="XmlTests\XmlSerializationTests.cs" />
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="15.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="NUnit" Version="3.7.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.7.0" />
+    <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj">
-      <Project>{a6a7fa4a-2b1e-417e-b13c-50385adb303c}</Project>
-      <Name>QuantityTypes</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
