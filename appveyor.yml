@@ -16,7 +16,7 @@ before_build:
 build_script:
   - cd Source
   - dotnet build CodeGenerator -o bin
-  - dotnet bin/CodeGenerator.dll QuantityTypes\units.csv QuantityTypes\Quantities
+  - dotnet CodeGenerator\bin\CodeGenerator.dll QuantityTypes\units.csv QuantityTypes\Quantities
   - dotnet build QuantityTypes /p:Version=$(GitVersion_MajorMinorPatch)
   - dotnet build QuantityTypes.Csv /p:Version=$(GitVersion_MajorMinorPatch)
 
