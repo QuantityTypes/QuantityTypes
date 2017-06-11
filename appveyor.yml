@@ -1,5 +1,4 @@
 image: Visual Studio 2017
-skip_branch_with_pr: true
 
 install:
   - cinst gitversion.portable -y
@@ -14,7 +13,7 @@ before_build:
 build_script:
   - dotnet build Source\CodeGenerator -o bin
   - dotnet Source\CodeGenerator\bin\CodeGenerator.dll Source\QuantityTypes\units.csv Source\QuantityTypes\Quantities
-  - dotnet build Source\QuantityTypes.Csv /p:Version=%GitVersion_MajorMinorPatch%
+  - dotnet build Source\QuantityTypes.Csv /p:Version=%GitVersion_NuGetVersionV2%
 
 artifacts:
   - path: Output
