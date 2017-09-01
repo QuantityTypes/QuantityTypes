@@ -1,3 +1,5 @@
+image: Visual Studio 2017
+
 install:
   - cinst gitversion.portable -y
 
@@ -5,26 +7,18 @@ platform: Any CPU
 configuration: Release
 
 before_build:
-  - appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  - nuget restore Source/QuantityTypes.sln
-  - gitversion /l console /output buildserver /updateAssemblyInfo
+  - dotnet restore Source
+  - gitversion /l console /output buildserver
 
-build:
-  project: Source/QuantityTypes.sln
-  verbosity: minimal
-
-after_build:
-  - NuGet pack Source\QuantityTypes\QuantityTypes.nuspec -version "%GitVersion_NuGetVersion%"
-  - NuGet pack Source\QuantityTypes.Csv\QuantityTypes.Csv.nuspec -version "%GitVersion_NuGetVersion%"
-
-test:
-  assemblies:
-    - QuantityTypes.Tests.dll
+build_script:
+  - dotnet build Source\CodeGenerator -o bin
+  - dotnet Source\CodeGenerator\bin\CodeGenerator.dll Source\QuantityTypes\units.csv Source\QuantityTypes\Quantities
+  - dotnet build Source\QuantityTypes.Csv /p:Version=%GitVersion_NuGetVersionV2%
 
 artifacts:
-  - path: Source/QuantityTypes/bin/Release
+  - path: Output
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip
-  - path: '*.nupkg'
+  - path: '**\*.nupkg'
     name: QuantityTypes-$(GitVersion_SemVer)
     type: zip

@@ -40,8 +40,8 @@ namespace QuantityTypes.Tests
         /// <returns>The disposable current culture object.</returns>
         public static IDisposable TemporaryChangeTo(CultureInfo cultureInfo)
         {
-            var cc = new CurrentCulture { previousCulture = Thread.CurrentThread.CurrentCulture };
-            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            var cc = new CurrentCulture { previousCulture = CultureInfo.CurrentCulture };
+            CultureInfo.CurrentCulture = cultureInfo;
             System.Diagnostics.Debug.WriteLine("Set CurrentCulture to " + cultureInfo.Name);
             return cc;
         }
@@ -52,7 +52,7 @@ namespace QuantityTypes.Tests
         public void Dispose()
         {
             System.Diagnostics.Debug.WriteLine("Revert CurrentCulture to " + this.previousCulture.Name);
-            Thread.CurrentThread.CurrentCulture = this.previousCulture;
+            CultureInfo.CurrentCulture = this.previousCulture;
         }
     }
 }

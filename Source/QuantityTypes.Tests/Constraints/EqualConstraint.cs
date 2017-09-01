@@ -62,34 +62,18 @@ namespace QuantityTypes.Tests
             return this;
         }
 
-        /// <summary>
-        /// Tests whether the constraint is satisfied by a given value
-        /// </summary>
-        /// <param name="actualValue">The value to be tested</param>
-        /// <returns>
-        /// True for success, false for failure
-        /// </returns>
-        public override bool Matches(object actualValue)
+        public override string Description { get { return this.expected + "+/-" + this.tolerance; } }
+
+        public override ConstraintResult ApplyTo<TActual>(TActual actual)
         {
-            this.actual = actualValue;
-            var actualQuantity = (IQuantity)actualValue;
+            var actualQuantity = (IQuantity)actual;
             var negativeTolerance = this.tolerance.MultiplyBy(-1);
             var lowerBound = this.expected.Add(negativeTolerance);
             var upperBound = this.expected.Add(this.tolerance);
             var lowerComparison = actualQuantity.CompareTo(lowerBound);
             var upperComparison = actualQuantity.CompareTo(upperBound);
-            return lowerComparison > 0 && upperComparison < 0;
-        }
-
-        /// <summary>
-        /// Write the constraint description to a MessageWriter
-        /// </summary>
-        /// <param name="writer">The writer on which the description is displayed</param>
-        public override void WriteDescriptionTo(MessageWriter writer)
-        {
-            writer.WriteExpectedValue(this.expected);
-            writer.WriteConnector("+/-");
-            writer.WriteExpectedValue(this.tolerance);
+            var isSuccess = lowerComparison > 0 && upperComparison < 0;
+            return new ConstraintResult(this, actual, isSuccess);
         }
     }
 }

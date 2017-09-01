@@ -9,6 +9,8 @@ namespace QuantityTypes.Tests
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
+    using System.Reflection;
+
     using NUnit.Framework;
 
     using QuantityTypes;
@@ -173,7 +175,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void TryParse_DifferentProviders_ReturnsCorrectValue()
         {
-            var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+            var up = new UnitProvider(typeof(UnitProvider).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
 
             Length q;
             var result = Length.TryParse("100,2 m", CultureInfos.Norwegian, up, out q);
@@ -315,7 +317,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void ToString_DifferentProviders()
         {
-            var up = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+            var up = new UnitProvider(typeof(UnitProvider).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
             var l = 100.1 * Length.Metre;
             Assert.AreEqual("100,1 m", l.ToString(null, CultureInfos.Norwegian, up));
         }

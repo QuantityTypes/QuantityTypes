@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>QuantityTypes.Csv.Tests</AssemblyName>
+    <PackageId>QuantityTypes.Csv.Tests</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj" />
+    <ProjectReference Include="..\QuantityTypes.Csv\QuantityTypes.Csv.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.7.1" />
+  </ItemGroup>
+
+</Project>

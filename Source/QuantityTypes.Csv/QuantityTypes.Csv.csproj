@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <AssemblyName>QuantityTypes.Csv</AssemblyName>
+    <PackageId>QuantityTypes.Csv</PackageId>
+    <Description>CSV extensions for QuantityTypes</Description>
+    <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
+    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
+    <PackageTags>physical quantities unit conversion units of measurement csv</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\LICENSE" Link="LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\README.md" Link="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -105,8 +105,8 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.xproj">
-      <Project>{a6a7fa4a-2b1e-417e-b13c-50385adb303c}</Project>
+    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.csproj">
+      <Project>{b13917ba-1866-4211-b957-7227c0221e12}</Project>
       <Name>QuantityTypes</Name>
     </ProjectReference>
   </ItemGroup>

@@ -4,16 +4,17 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
 
     static class Program
     {
         static int Main(string[] args)
         {
-            Console.WriteLine("CodeGenerator " + typeof(Program).Assembly.GetName().Version);
+            Console.WriteLine("CodeGenerator " + typeof(Program).GetTypeInfo().Assembly.GetName().Version);
 
-            var sourceFile = args[0] ?? "units.csv";
-            var outputFolder = (args.Length > 0 ? args[1] : null) ?? ".";
+            var sourceFile = args.Length > 0 ? args[0] : "units.csv";
+            var outputFolder = (args.Length > 1 ? args[1] : null) ?? ".";
             if (!File.Exists(sourceFile))
             {
                 Console.WriteLine("{0} not found.", Path.GetFullPath(sourceFile));
@@ -107,7 +108,7 @@
         private static string ReadFromEmbeddedResource(string name)
         {
             string input;
-            var stream = typeof(Program).Assembly.GetManifestResourceStream(name);
+            var stream = typeof(Program).GetTypeInfo().Assembly.GetManifestResourceStream(name);
             if (stream == null)
             {
                 return null;

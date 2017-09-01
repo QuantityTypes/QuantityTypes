@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>0.9.0</VersionPrefix>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <AssemblyName>QuantityTypes</AssemblyName>
+    <AssemblyOriginatorKeyFile>QuantityTypes.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>QuantityTypes</PackageId>
+    <PreBuildEvent>rem dotnet "..\..\..\..\CodeGenerator\bin\netcoreapp1.1\CodeGenerator.dll" "..\..\..\..\QuantityTypes\Units.csv" "..\..\..\..\QuantityTypes\Quantities"
+</PreBuildEvent>
+    <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
+    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/objorke/QuantityTypes.git</RepositoryUrl>
+    <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\LICENSE" Link="LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\README.md" Link="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Globalization" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

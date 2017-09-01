@@ -9,6 +9,7 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Width" Value="160"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <local:QuantityConverter x:Key="QuantityConverter"/>
     </Window.Resources>

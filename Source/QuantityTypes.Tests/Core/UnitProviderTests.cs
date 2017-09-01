@@ -9,6 +9,7 @@ namespace QuantityTypes.Tests
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
+    using System.Reflection;
 
     using NUnit.Framework;
 
@@ -20,7 +21,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void SetDisplayUnit()
         {
-            var unitProvider = new UnitProvider(typeof(UnitProvider).Assembly, CultureInfo.InvariantCulture);
+            var unitProvider = new UnitProvider(typeof(UnitProvider).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
             var unitSymbol = unitProvider.GetDisplayUnit(typeof(Length));
 
             // Change the display unit
@@ -69,7 +70,7 @@ namespace QuantityTypes.Tests
         public void RegisterUnitsByAssembly_AndParseRegisteredUnit()
         {
             var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
-            unitProvider.RegisterUnits(typeof(Length).Assembly);
+            unitProvider.RegisterUnits(typeof(Length).GetTypeInfo().Assembly);
             Assert.AreEqual(5 * Length.Kilometre, Length.Parse("5 km", unitProvider));
         }
 
@@ -180,14 +181,14 @@ namespace QuantityTypes.Tests
         [Test]
         public void InvariantCulture()
         {
-            var up = new UnitProvider(typeof(Length).Assembly, CultureInfo.InvariantCulture);
+            var up = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
             Assert.AreEqual("1.2 m", (1.2 * Length.Metre).ToString(up));
         }
 
         [Test]
         public void LocalCulture()
         {
-            var up = new UnitProvider(typeof(Length).Assembly, new CultureInfo("no"));
+            var up = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, new CultureInfo("no"));
             Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(up));
         }
 
@@ -210,7 +211,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void NumberGroup()
         {
-            var culture = new CultureInfo(1);
+            var culture = new CultureInfo("en-US");
             culture.NumberFormat.NumberDecimalSeparator = ".";
             culture.NumberFormat.NumberGroupSeparator = ",";
             var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);

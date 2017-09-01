@@ -10,7 +10,8 @@ All notable changes to this project will be documented in this file.
 - Custom length example (#89)
 
 ### Fixed
-- null reference exception in QuantityJsonConverter (#85)
+- Null reference exception in QuantityJsonConverter (#85)
+- Migrate projects to netstandard (#94)
 
 ## 3.0.1
 ### Changed
