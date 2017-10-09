@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>0.9.0</VersionPrefix>
-    <TargetFrameworks>netstandard1.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
     <AssemblyName>QuantityTypes</AssemblyName>
     <AssemblyOriginatorKeyFile>QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -16,22 +16,5 @@
     <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\LICENSE" Link="LICENSE">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\README.md" Link="README.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Collections" Version="4.3.0" />
-    <PackageReference Include="System.Globalization" Version="4.3.0" />
-    <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
-  </ItemGroup>
 
 </Project>
