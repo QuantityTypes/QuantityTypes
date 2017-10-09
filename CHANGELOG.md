@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 4.0.0
 ### Added
 - Imperial units
 - NaN, PositiveInfinity and NegativeInfinity quantities (#83)
