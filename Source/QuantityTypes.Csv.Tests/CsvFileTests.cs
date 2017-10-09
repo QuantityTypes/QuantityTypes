@@ -23,24 +23,17 @@ namespace QuantityTypes.Tests
     public class CsvFileTests
     {
         // Content of an invariant culture CSV file
-        internal const string Test1Content = @"Text,Number,Length [km],NullableLength [km]
-One,-3,1,0.1
-Two,17,42.195,";
+        internal const string Test1Content = "Text,Number,Length [km],NullableLength [km]\r\nOne,-3,1,0.1\r\nTwo,17,42.195,";
 
         // Content of a culture-specific CSV file
-        internal const string Test1ContentCultureSpecific = @"Text;Number;Length [km];NullableLength [km]
-One;-3;1;0,1
-Two;17;42,195;";
+        internal const string Test1ContentCultureSpecific = "Text;Number;Length [km];NullableLength [km]\r\nOne;-3;1;0,1\r\nTwo;17;42,195;";
 
         // Content of an invariant culture CSV file
-        internal const string Test2Content = @"Length [km]
-0
-0.1";
+        internal const string Test2Content = "Length [km]\r\n0\r\n0.1";
 
         // Content of a culture-specific CSV file
-        internal const string Test2ContentCultureSpecific = @"Length [km]
-0
-0,1";
+        internal const string Test2ContentCultureSpecific = "Length [km]\r\n0\r\n0,1";
+
         internal static List<CsvFileTests.TestObject> TestList = new List<TestObject>
                             {
                                 new CsvFileTests.TestObject { Text = "One", Number = -3, Length = 1 * Length.Kilometre, NullableLength=100*Length.Metre },
