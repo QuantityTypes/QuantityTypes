@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{D7AAF844-9614-4A44-991D-248DD447D624}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{D7AAF844-9614-4A44-991D-248DD447D624}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9601C66-538F-4F35-858A-B7A6ED572928}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,7 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\CONTRIBUTORS = ..\CONTRIBUTORS
 		..\GitVersion.yml = ..\GitVersion.yml
-		..\global.json = ..\global.json
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
 	EndProjectSection
@@ -24,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityTypes", "QuantityTy
 		{D7AAF844-9614-4A44-991D-248DD447D624} = {D7AAF844-9614-4A44-991D-248DD447D624}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityTypes.Tests", "QuantityTypes.Tests\QuantityTypes.Tests.csproj", "{714ED7D0-9ED8-4026-B9EB-AD2F3A705F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityTypes.Tests", "QuantityTypes.Tests\QuantityTypes.Tests.csproj", "{714ED7D0-9ED8-4026-B9EB-AD2F3A705F11}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityTypes.Csv", "QuantityTypes.Csv\QuantityTypes.Csv.csproj", "{2BF6E43E-376C-403F-A31E-053219AACB91}"
 EndProject
@@ -89,5 +88,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{967118DC-80CF-4403-BAEA-0A23CC2D9B9B} = {1D64386B-FA71-4ECB-8962-B0CDB48CAE96}
 		{C1EB77BC-D372-46E7-8A1D-8AF471CA7996} = {1D64386B-FA71-4ECB-8962-B0CDB48CAE96}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90E13D8E-4802-4637-95F7-951A9DBEF2DE}
 	EndGlobalSection
 EndGlobal

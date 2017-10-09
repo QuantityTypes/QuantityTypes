@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CodeGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "units.csv Quantities",
+      "workingDirectory": "..\\QuantityTypes"
+    }
+  }
+}

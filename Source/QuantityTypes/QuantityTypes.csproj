@@ -2,14 +2,12 @@
 
   <PropertyGroup>
     <VersionPrefix>0.9.0</VersionPrefix>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>netstandard1.0;net45</TargetFrameworks>
     <AssemblyName>QuantityTypes</AssemblyName>
     <AssemblyOriginatorKeyFile>QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageId>QuantityTypes</PackageId>
-    <PreBuildEvent>rem dotnet "..\..\..\..\CodeGenerator\bin\netcoreapp1.1\CodeGenerator.dll" "..\..\..\..\QuantityTypes\Units.csv" "..\..\..\..\QuantityTypes\Quantities"
-</PreBuildEvent>
     <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
     <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
