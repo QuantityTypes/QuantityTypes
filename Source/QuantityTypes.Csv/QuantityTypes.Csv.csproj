@@ -13,15 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\..\LICENSE" Link="LICENSE">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\README.md" Link="README.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj" />
   </ItemGroup>
 
