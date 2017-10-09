@@ -99,6 +99,11 @@ namespace QuantityTypes
         /// </returns>
         public static Length Parse(string input, IFormatProvider provider, IUnitProvider unitProvider)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+
             if (unitProvider == null)
             {
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
@@ -127,6 +132,11 @@ namespace QuantityTypes
         /// </returns>
         public static Length Parse(string input, IFormatProvider provider = null)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
             Length value;
@@ -152,6 +162,11 @@ namespace QuantityTypes
         /// </returns>
         public static Length Parse(string input, IUnitProvider unitProvider)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+
             if (unitProvider == null)
             {
                 unitProvider = UnitProvider.Default;

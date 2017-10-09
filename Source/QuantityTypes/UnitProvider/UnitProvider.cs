@@ -388,8 +388,8 @@ namespace QuantityTypes
 
             if (string.IsNullOrEmpty(input))
             {
-                quantity = (IQuantity)Activator.CreateInstance(unitType);
-                return true;
+                quantity = default(IQuantity);
+                return false;
             }
 
             if (string.Equals(input, double.NaN.ToString(provider)))
