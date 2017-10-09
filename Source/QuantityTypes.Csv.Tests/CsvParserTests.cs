@@ -16,17 +16,7 @@ namespace QuantityTypes.Tests
     [TestFixture]
     public class CsvParserTests
     {
-        public static string TestString1 = @"a b c;3,14
-""def
-ghi"";""3,14
-2.5""
-""a """"b"""" c"";""a ;b c""
-""""""abc"""""";"";""
-;
-;
-
-True;False
-";
+        public static string TestString1 = "a b c;3,14\r\n\"def\r\nghi\";\"3,14\r\n2.5\"\r\n\"a \"\"b\"\" c\";\"a ;b c\"\r\n\"\"\"abc\"\"\";\";\"\r\n;\r\n;\r\n\r\nTrue;False\r\n";
 
         [Test]
         public void Parse()

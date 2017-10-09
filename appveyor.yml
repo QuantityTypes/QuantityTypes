@@ -4,8 +4,6 @@ image: Visual Studio 2017
 install:
   - cinst gitversion.portable -y
 
-platform: Any CPU
-configuration: Release
 
 before_build:
   - dotnet restore Source
@@ -14,12 +12,14 @@ before_build:
 build_script:
   - dotnet build Source\CodeGenerator -o bin
   - dotnet Source\CodeGenerator\bin\CodeGenerator.dll Source\QuantityTypes\units.csv Source\QuantityTypes\Quantities
+  - dotnet build Source\QuantityTypes /p:Version=%GitVersion_NuGetVersionV2%
   - dotnet build Source\QuantityTypes.Csv /p:Version=%GitVersion_NuGetVersionV2%
+  - dotnet build Source\QuantityTypes.Dynamic /p:Version=%GitVersion_NuGetVersionV2%
+
+test_script:
+  - dotnet test Source\QuantityTypes.Tests
+  - dotnet test Source\QuantityTypes.Csv.Tests
+  - dotnet test Source\QuantityTypes.Dynamic.Tests
 
 artifacts:
-  - path: Output
-    name: QuantityTypes-$(GitVersion_SemVer)
-    type: zip
   - path: '**\*.nupkg'
-    name: QuantityTypes-$(GitVersion_SemVer)
-    type: zip
