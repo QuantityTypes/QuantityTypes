@@ -4,11 +4,11 @@
     <TargetFrameworks>netstandard1.0;net45</TargetFrameworks>
     <AssemblyName>QuantityTypes.Dynamic</AssemblyName>
     <PackageId>QuantityTypes.Dynamic</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <Description>Dynamic quantities</Description>
+    <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
+    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
+    <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
