@@ -12,9 +12,9 @@ before_build:
 build_script:
   - dotnet build Source\CodeGenerator -o bin
   - dotnet Source\CodeGenerator\bin\CodeGenerator.dll Source\QuantityTypes\units.csv Source\QuantityTypes\Quantities
-  - dotnet build Source\QuantityTypes /p:Version=%GitVersion_NuGetVersionV2%
-  - dotnet build Source\QuantityTypes.Csv /p:Version=%GitVersion_NuGetVersionV2%
-  - dotnet build Source\QuantityTypes.Dynamic /p:Version=%GitVersion_NuGetVersionV2%
+  - dotnet build -c Release Source\QuantityTypes /p:Version=%GitVersion_NuGetVersionV2%
+  - dotnet build -c Release Source\QuantityTypes.Csv /p:Version=%GitVersion_NuGetVersionV2%
+  - dotnet build -c Release Source\QuantityTypes.Dynamic /p:Version=%GitVersion_NuGetVersionV2%
 
 test_script:
   - dotnet test Source\QuantityTypes.Tests
