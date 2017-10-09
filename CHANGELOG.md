@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Null reference exception in QuantityJsonConverter (#85)
 - Migrate projects to netstandard (#94)
+- TryParse of `null` should return `false` (#96)
 
 ## 3.0.1
 ### Changed

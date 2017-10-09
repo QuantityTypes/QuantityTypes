@@ -164,12 +164,42 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void Parse_Empty_ThrowsException()
+        {
+            Assert.Throws<FormatException>(() => double.Parse(string.Empty, CultureInfo.InvariantCulture), "empty double");
+            Assert.Throws<FormatException>(() => Length.Parse(string.Empty, CultureInfo.InvariantCulture), "empty quantity (IFormatProvider)");
+            Assert.Throws<FormatException>(() => Length.Parse(string.Empty, CultureInfo.InvariantCulture, UnitProvider.Default), "empty quantity (IFormatProvider, IUnitProvider)");
+            Assert.Throws<FormatException>(() => Length.Parse(string.Empty, UnitProvider.Default), "empty quantity (IUnitProvider)");
+        }
+
+        [Test]
+        public void Parse_Null_ThrowsException()
+        {
+            Assert.Throws<ArgumentNullException>(() => double.Parse(null, CultureInfo.InvariantCulture), "null double");
+            Assert.Throws<ArgumentNullException>(() => Length.Parse(null, CultureInfo.InvariantCulture), "null quantity (IFormatProvider)");
+            Assert.Throws<ArgumentNullException>(() => Length.Parse(null, CultureInfo.InvariantCulture, UnitProvider.Default), "null quantity (IFormatProvider, IUnitProvider)");
+            Assert.Throws<ArgumentNullException>(() => Length.Parse(null, UnitProvider.Default), "null quantity (IUnitProvider)");
+        }
+
+        [Test]
         public void TryParse_ValidSyntax_ReturnsTrue()
         {
-            Length q;
-            var result = Length.TryParse("100.2 m", CultureInfo.InvariantCulture, null, out q);
-            Assert.IsTrue(result);
+            Assert.IsTrue(Length.TryParse("100.2 m", CultureInfo.InvariantCulture, null, out Length q));
             Assert.AreEqual(100.2 * Length.Metre, q);
+        }
+
+        [Test]
+        public void TryParse_Null_ReturnsFalse()
+        {
+            Assert.IsFalse(double.TryParse(null, out double d));
+            Assert.IsFalse(Length.TryParse(null, CultureInfo.InvariantCulture, null, out Length q));
+        }
+
+        [Test]
+        public void TryParse_Empty_ReturnsFalse()
+        {
+            Assert.IsFalse(double.TryParse(string.Empty, out double d));
+            Assert.IsFalse(Length.TryParse(string.Empty, CultureInfo.InvariantCulture, null, out Length q));
         }
 
         [Test]

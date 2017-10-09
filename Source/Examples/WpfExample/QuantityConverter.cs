@@ -11,6 +11,7 @@ namespace WpfExample
 {
     using System;
     using System.Globalization;
+    using System.Windows;
     using System.Windows.Data;
 
     using QuantityTypes;
@@ -75,7 +76,7 @@ namespace WpfExample
                         return null;
                     }
 
-                    throw new InvalidOperationException("Cannot set " + targetType + " to null.");
+                    return DependencyProperty.UnsetValue;
                 }
 
                 var s = value.ToString();
@@ -85,7 +86,7 @@ namespace WpfExample
                     return q;
                 }
 
-                throw new FormatException("Could not parse " + value + " to " + targetType + ".");
+                return DependencyProperty.UnsetValue;
             }
 
             throw new NotSupportedException("Conversion to " + targetType + " is not supported.");
