@@ -17,6 +17,10 @@ namespace QuantityTypes.Csv
     using System.Reflection;
     using System.Text.RegularExpressions;
 
+#if NET45
+    using System.ComponentModel;
+#endif
+
     /// <summary>
     /// Represents a comma separated file that supports units and reflection of the rows.
     /// </summary>

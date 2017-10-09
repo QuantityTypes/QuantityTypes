@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - LinearMassDensity (#82)
 - Scandinavian mile length unit (#88)
 - Custom length example (#89)
+- Multi-target netstandard1.0 and net45 (#97)
 
 ### Fixed
 - Null reference exception in QuantityJsonConverter (#85)
