@@ -9,7 +9,7 @@ namespace QuantityTypes.Tests
     public class XmlSerializationTests
     {
         const string XmlDeclaration = "<?xml version=\"1.0\"?>\r\n";
-        const string ExpectedXml = XmlDeclaration + "<Test xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Distance>100.2</Distance>\r\n</Test>";
+        const string TestXml = XmlDeclaration + "<Test xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Distance>100.2</Distance>\r\n</Test>";
 
         [Test]
         public void Double_Serialize()
@@ -20,7 +20,7 @@ namespace QuantityTypes.Tests
                 // assert the current format provider uses , as decimal separator
                 Assert.AreEqual("1,2", 1.2.ToString());
                 var xml = Serialize(1.2);
-                Assert.AreEqual(XmlDeclaration + "<double>1.2</double>", xml);
+                Assert.IsTrue(xml.Contains("<double>1.2</double>"));
             }
         }
 
@@ -29,13 +29,13 @@ namespace QuantityTypes.Tests
         {
             var t = new Test();
             var xml = Serialize(t);
-            Assert.AreEqual(ExpectedXml, xml);
+            Assert.IsTrue(xml.Contains("<Distance>100.2</Distance>"));
         }
 
         [Test]
         public void Deserialize()
         {
-            var t2 = Deserialize<Test>(ExpectedXml);
+            var t2 = Deserialize<Test>(TestXml);
             Assert.AreEqual(100.2 * Length.Metre, t2.Distance);
         }
 
@@ -46,7 +46,7 @@ namespace QuantityTypes.Tests
             {
                 var t = new Test();
                 var xml = Serialize(t);
-                Assert.AreEqual(ExpectedXml, xml);
+                Assert.IsTrue(xml.Contains("<Distance>100.2</Distance>"));
 
                 var t2 = Deserialize<Test>(xml);
                 Assert.AreEqual(t2.Distance, t.Distance);
@@ -60,7 +60,7 @@ namespace QuantityTypes.Tests
             {
                 var t = new Test();
                 var xml = Serialize(t);
-                Assert.AreEqual(ExpectedXml, xml);
+                Assert.IsTrue(xml.Contains("<Distance>100.2</Distance>"));
 
                 var t2 = Deserialize<Test>(xml);
                 Assert.AreEqual(t2.Distance, t.Distance);
