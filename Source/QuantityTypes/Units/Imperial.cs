@@ -188,6 +188,5 @@ namespace QuantityTypes
         /// </summary>
         [Unit("slug")]
         public static Mass Slug { get; } = Mass.Pound * 32.17404856;
-
     }
 }

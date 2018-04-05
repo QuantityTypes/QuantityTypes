@@ -8,10 +8,10 @@ namespace PerformanceTest
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Diagnostics;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Runtime.InteropServices;
 
     using QuantityTypes;
@@ -26,26 +26,36 @@ namespace PerformanceTest
             //Console.WriteLine("Culture = {0}", UnitProvider.Default.Culture);
             Console.WriteLine();
 
-            var results = new Dictionary<string, IList<long>>();
-            results.Add("double", TestDouble(N).ToList());
-            results.Add("QuantityTypes", TestQuantityTypes(N).ToList());
-            results.Add("QuantityTypes (dynamic)", TestQuantityTypesDynamic(N).ToList());
+            var results = new Dictionary<string, IList<long>>
+                              {
+                                  { "double", TestDouble(N).ToList() },
+                                  { "QuantityTypes", TestQuantityTypes(N).ToList() },
+                                  { "QuantityTypes (dynamic)", TestQuantityTypesDynamic(N).ToList() }
+                              };
 
             var tests = new[]
                             {
-                                "Type","Size", "Assign (multiplication)", "Assign (ctor)", "Add (operator)", "Add (property)", "Parse",
+                                "Type", "Size", "Assign (multiplication)", "Assign (ctor)", "Add (operator)", "Add (property)", "Parse",
                                 "Parse with unit", "Multiply", "Multiply (property, ctor)", "Sum (operator)",
                                 "Sum (property)"
                             };
 
             using (var s = new StreamWriter("results.txt"))
             {
-                foreach (var i in tests) s.Write(i + "\t");
+                foreach (var i in tests)
+                {
+                    s.Write(i + "\t");
+                }
+
                 s.WriteLine();
                 foreach (var r in results)
                 {
                     s.Write(r.Key + "\t");
-                    foreach (var i in r.Value) s.Write((i >= 0 ? i.ToString(CultureInfo.InvariantCulture) : string.Empty) + "\t");
+                    foreach (var i in r.Value)
+                    {
+                        s.Write((i >= 0 ? i.ToString(CultureInfo.InvariantCulture) : string.Empty) + "\t");
+                    }
+
                     s.WriteLine();
                 }
             }
@@ -282,7 +292,7 @@ namespace PerformanceTest
             var s = "10";
             using (var timer = new Timer("Parse"))
             {
-             //   for (int i = 0; i < N; i++) a1[i] = DynamicQuantity.Parse(s);
+                //   for (int i = 0; i < N; i++) a1[i] = DynamicQuantity.Parse(s);
                 yield return timer.Stop();
             }
 
@@ -324,118 +334,118 @@ namespace PerformanceTest
             Console.WriteLine();
         }
 
-/*        static IEnumerable<long> TestTypedUnits(int N)
-        {
-            // http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
-            Console.WriteLine("=== TypedUnits ===");
+        /*        static IEnumerable<long> TestTypedUnits(int N)
+                {
+                    // http://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
+                    Console.WriteLine("=== TypedUnits ===");
 
-            var a1 = new TypedUnits.Amount[N];
-            var a2 = new TypedUnits.Amount[N];
+                    var a1 = new TypedUnits.Amount[N];
+                    var a2 = new TypedUnits.Amount[N];
 
-            {
-                // http://stackoverflow.com/questions/207592/getting-the-size-of-a-field-in-bytes-with-c-sharp
-                var mem0 = GC.GetTotalMemory(true);
-                var a = new TypedUnits.Amount[N];
-                var mem1 = GC.GetTotalMemory(true);
-                for (int i = 0; i < N; i++) a[i] = new TypedUnits.Amount(1, StandardUnits.LengthUnits.Meter);
-                var mem2 = GC.GetTotalMemory(true);
-                var length = (mem2 - mem0) / (double)N;
-                Console.WriteLine("Approx. length = {0:0.###} bytes (incl. reference {1:0.###} bytes)", length, (mem1 - mem0) / (double)N);
-                yield return (int)length;
-            }
+                    {
+                        // http://stackoverflow.com/questions/207592/getting-the-size-of-a-field-in-bytes-with-c-sharp
+                        var mem0 = GC.GetTotalMemory(true);
+                        var a = new TypedUnits.Amount[N];
+                        var mem1 = GC.GetTotalMemory(true);
+                        for (int i = 0; i < N; i++) a[i] = new TypedUnits.Amount(1, StandardUnits.LengthUnits.Meter);
+                        var mem2 = GC.GetTotalMemory(true);
+                        var length = (mem2 - mem0) / (double)N;
+                        Console.WriteLine("Approx. length = {0:0.###} bytes (incl. reference {1:0.###} bytes)", length, (mem1 - mem0) / (double)N);
+                        yield return (int)length;
+                    }
 
-            var meter = new TypedUnits.Amount(1, StandardUnits.LengthUnits.Meter);
-            using (var timer = new Timer("Assign (reference)"))
-            {
-                for (int i = 0; i < N; i++) a1[i] = meter;
-            }
+                    var meter = new TypedUnits.Amount(1, StandardUnits.LengthUnits.Meter);
+                    using (var timer = new Timer("Assign (reference)"))
+                    {
+                        for (int i = 0; i < N; i++) a1[i] = meter;
+                    }
 
-            using (var timer = new Timer("Assign (multiplication)"))
-            {
-                for (int i = 0; i < N; i++) a1[i] = i * a1[i];
-                yield return timer.Stop();
-            }
+                    using (var timer = new Timer("Assign (multiplication)"))
+                    {
+                        for (int i = 0; i < N; i++) a1[i] = i * a1[i];
+                        yield return timer.Stop();
+                    }
 
-            using (var timer = new Timer("Assign (ctor)"))
-            {
-                for (int i = 0; i < N; i++) a1[i] = new TypedUnits.Amount(1, StandardUnits.LengthUnits.Meter);
-                yield return timer.Stop();
-            }
+                    using (var timer = new Timer("Assign (ctor)"))
+                    {
+                        for (int i = 0; i < N; i++) a1[i] = new TypedUnits.Amount(1, StandardUnits.LengthUnits.Meter);
+                        yield return timer.Stop();
+                    }
 
-            using (var timer = new Timer("Add (operator)"))
-            {
-                for (int i = 0; i < N; i++) a1[i] = a1[i] + a1[0];
-                yield return timer.Stop();
-            }
+                    using (var timer = new Timer("Add (operator)"))
+                    {
+                        for (int i = 0; i < N; i++) a1[i] = a1[i] + a1[0];
+                        yield return timer.Stop();
+                    }
 
-            using (var timer = new Timer("Add (property)"))
-            {
-                for (int i = 0; i < N; i++) a1[i] = new TypedUnits.Amount(a1[i].Value + a1[0].Value, StandardUnits.LengthUnits.Meter);
-                yield return timer.Stop();
-            }
+                    using (var timer = new Timer("Add (property)"))
+                    {
+                        for (int i = 0; i < N; i++) a1[i] = new TypedUnits.Amount(a1[i].Value + a1[0].Value, StandardUnits.LengthUnits.Meter);
+                        yield return timer.Stop();
+                    }
 
-            // var s = "10 m";
-            using (var timer = new Timer("Parse"))
-            {
-                // TODO:
-                // for (int i = 0; i < N; i++) a1[i] = Length.Parse(s);
-                // yield return timer.Stop();
-                yield return -1;
-            }
+                    // var s = "10 m";
+                    using (var timer = new Timer("Parse"))
+                    {
+                        // TODO:
+                        // for (int i = 0; i < N; i++) a1[i] = Length.Parse(s);
+                        // yield return timer.Stop();
+                        yield return -1;
+                    }
 
-            using (var timer = new Timer("Parse with unit"))
-            {
-                // TODO
-                // for (int i = 0; i < N; i++) a1[i] = Length.Parse(s);
-                // yield return timer.Stop();
-                yield return -1;
-            }
+                    using (var timer = new Timer("Parse with unit"))
+                    {
+                        // TODO
+                        // for (int i = 0; i < N; i++) a1[i] = Length.Parse(s);
+                        // yield return timer.Stop();
+                        yield return -1;
+                    }
 
-            using (var timer = new Timer("Multiply"))
-            {
-                for (int i = 0; i < N; i++) a2[i] = a1[i] * a1[i];
-                yield return timer.Stop();
-            }
+                    using (var timer = new Timer("Multiply"))
+                    {
+                        for (int i = 0; i < N; i++) a2[i] = a1[i] * a1[i];
+                        yield return timer.Stop();
+                    }
 
-#if PublicFields
-            using (var timer=new Timer("Multiply (field)"))
-            {
-                for (int i = 0; i < N; i++) a2[i] = new Area(a1[i].value * a1[i].value);
-                yield return timer.Stop();
-            }
-#endif
+        #if PublicFields
+                    using (var timer=new Timer("Multiply (field)"))
+                    {
+                        for (int i = 0; i < N; i++) a2[i] = new Area(a1[i].value * a1[i].value);
+                        yield return timer.Stop();
+                    }
+        #endif
 
-            using (var timer = new Timer("Multiply (property, ctor)"))
-            {
-                for (int i = 0; i < N; i++) a2[i] = new TypedUnits.Amount(a1[i].Value * a1[i].Value, StandardUnits.SurfaceUnits.Meter2);
-                yield return timer.Stop();
-            }
+                    using (var timer = new Timer("Multiply (property, ctor)"))
+                    {
+                        for (int i = 0; i < N; i++) a2[i] = new TypedUnits.Amount(a1[i].Value * a1[i].Value, StandardUnits.SurfaceUnits.Meter2);
+                        yield return timer.Stop();
+                    }
 
-            using (var timer = new Timer("Multiply (property, multiplication)"))
-            {
-                var m2 = new TypedUnits.Amount(1, StandardUnits.SurfaceUnits.Meter2);
-                for (int i = 0; i < N; i++) a2[i] = (a1[i].Value * a1[i].Value) * m2;
-            }
+                    using (var timer = new Timer("Multiply (property, multiplication)"))
+                    {
+                        var m2 = new TypedUnits.Amount(1, StandardUnits.SurfaceUnits.Meter2);
+                        for (int i = 0; i < N; i++) a2[i] = (a1[i].Value * a1[i].Value) * m2;
+                    }
 
-            double sum1;
-            using (var timer = new Timer("Sum (operator)"))
-            {
-                var sum = new TypedUnits.Amount(0, StandardUnits.SurfaceUnits.Meter2);
-                for (int i = 0; i < N; i++) sum += a2[i];
-                // todo
-                sum1 = sum.Value; // ConvertTo(Area.SquareMetre);
-                yield return timer.Stop();
-            }
+                    double sum1;
+                    using (var timer = new Timer("Sum (operator)"))
+                    {
+                        var sum = new TypedUnits.Amount(0, StandardUnits.SurfaceUnits.Meter2);
+                        for (int i = 0; i < N; i++) sum += a2[i];
+                        // todo
+                        sum1 = sum.Value; // ConvertTo(Area.SquareMetre);
+                        yield return timer.Stop();
+                    }
 
-            double sum3 = 0;
-            using (var timer = new Timer("Sum (property)"))
-            {
-                for (int i = 0; i < N; i++) sum3 += a2[i].Value;
-                yield return timer.Stop();
-            }
+                    double sum3 = 0;
+                    using (var timer = new Timer("Sum (property)"))
+                    {
+                        for (int i = 0; i < N; i++) sum3 += a2[i].Value;
+                        yield return timer.Stop();
+                    }
 
-            Console.WriteLine();
-        }*/
+                    Console.WriteLine();
+                }*/
     }
 
     class LengthClass

@@ -75,13 +75,7 @@ namespace QuantityTypes
         /// <summary>
         /// Gets the value of the temperature in the base unit.
         /// </summary>
-        public double Value
-        {
-            get
-            {
-                return this.value;
-            }
-        }
+        public double Value => this.value;
 
         /// <summary>
         /// Converts a string representation of a quantity in a specific culture-specific format with a specific unit provider.
@@ -105,8 +99,7 @@ namespace QuantityTypes
                 unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
             }
 
-            Temperature value;
-            if (!unitProvider.TryParse(input, provider, out value))
+            if (!unitProvider.TryParse(input, provider, out Temperature value))
             {
                 throw new FormatException("Invalid format.");
             }
@@ -130,8 +123,7 @@ namespace QuantityTypes
         {
             var unitProvider = provider as IUnitProvider ?? UnitProvider.Default;
 
-            Temperature value;
-            if (!unitProvider.TryParse(input, provider, out value))
+            if (!unitProvider.TryParse(input, provider, out Temperature value))
             {
                 throw new FormatException("Invalid format.");
             }
@@ -158,8 +150,7 @@ namespace QuantityTypes
                 unitProvider = UnitProvider.Default;
             }
 
-            Temperature value;
-            if (!unitProvider.TryParse(input, unitProvider.Culture, out value))
+            if (!unitProvider.TryParse(input, unitProvider.Culture, out Temperature value))
             {
                 throw new FormatException("Invalid format.");
             }
