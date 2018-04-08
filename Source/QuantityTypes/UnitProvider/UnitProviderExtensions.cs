@@ -87,8 +87,7 @@ namespace QuantityTypes
         public static bool TryGetUnit<T>(this IUnitProvider unitProvider, string symbol, out T unit)
             where T : IQuantity<T>
         {
-            IQuantity u;
-            if (unitProvider.TryGetUnit(typeof(T), symbol, out u))
+            if (unitProvider.TryGetUnit(typeof(T), symbol, out var u))
             {
                 unit = (T)u;
                 return true;
@@ -109,8 +108,7 @@ namespace QuantityTypes
         /// <returns>True if the parsing was successful.</returns>
         public static bool TryParse<T>(this IUnitProvider unitProvider, string input, IFormatProvider provider, out T unit)
         {
-            IQuantity quantity;
-            if (!unitProvider.TryParse(typeof(T), input, provider, out quantity))
+            if (!unitProvider.TryParse(typeof(T), input, provider, out var quantity))
             {
                 unit = default(T);
                 return false;
@@ -186,6 +184,5 @@ namespace QuantityTypes
                 }
             }
         }
-
     }
 }

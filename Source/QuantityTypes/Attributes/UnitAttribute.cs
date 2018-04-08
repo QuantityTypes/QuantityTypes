@@ -39,12 +39,12 @@ namespace QuantityTypes
         ///     Gets a value indicating whether this unit is the default display unit.
         /// </summary>
         /// <value> <c>true</c> if this instance is default display unit; otherwise, <c>false</c> . </value>
-        public bool IsDefaultDisplayUnit { get; private set; }
+        public bool IsDefaultDisplayUnit { get; }
 
         /// <summary>
         ///     Gets the symbol of the unit.
         /// </summary>
         /// <value> The name. </value>
-        public string Symbol { get; private set; }
+        public string Symbol { get; }
     }
 }

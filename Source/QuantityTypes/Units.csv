@@ -1,4 +1,7 @@
-﻿// This list of quantity types and units is converted to c# code by the CodeGenerator T4 template
+﻿// This list of quantity types and units is converted to c# code by the CodeGenerator tool
+
+// When doing changes to this file, the CodeGenerator tool must be executed
+// ..\CodeGenerator\bin\debug\net45\CodeGenerator.exe units.csv Quantities
 
 // http://en.wikipedia.org/wiki/Units_of_measurement
 // http://en.wikipedia.org/wiki/Conversion_of_units

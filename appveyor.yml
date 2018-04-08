@@ -6,7 +6,7 @@ install:
 
 
 before_build:
-  - dotnet restore Source
+  - dotnet restore Source\QuantityTypes.sln
   - gitversion /l console /output buildserver
 
 build_script:

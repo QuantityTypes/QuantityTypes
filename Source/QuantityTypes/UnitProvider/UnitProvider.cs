@@ -164,7 +164,7 @@ namespace QuantityTypes
             }
 
             // Convert the value to a string
-            string s = quantity.ConvertTo(q).ToString(format, provider ?? this);
+            var s = quantity.ConvertTo(q).ToString(format, provider ?? this);
 
             if (!showUnit)
             {
@@ -175,7 +175,7 @@ namespace QuantityTypes
             // Temperatures should have a space before the unit
             // Angles should not have a space before ° symbol
             var separator = this.Separator;
-            // ReSharper disable once CSharpWarnings::CS0184
+            // ReSharper disable once IsExpressionAlwaysFalse
             var isTemperature = quantity is Temperature;
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (!isTemperature && (string.IsNullOrEmpty(unit) || unit.StartsWith("°")))
@@ -326,8 +326,7 @@ namespace QuantityTypes
         /// </returns>
         public bool TryGetDisplayUnit(Type type, out IQuantity unit, out string unitName)
         {
-            UnitDefinition ud;
-            if (!this.displayUnits.TryGetValue(type, out ud))
+            if (!this.displayUnits.TryGetValue(type, out var ud))
             {
                 unit = null;
                 unitName = null;
@@ -356,15 +355,13 @@ namespace QuantityTypes
         /// </returns>
         public bool TryGetUnit(Type type, string name, out IQuantity unit)
         {
-            Dictionary<string, IQuantity> d;
-            if (!this.units.TryGetValue(type, out d))
+            if (!this.units.TryGetValue(type, out var d))
             {
                 unit = default(IQuantity);
                 return false;
             }
 
-            IQuantity u;
-            if (name == null || !d.TryGetValue(name, out u))
+            if (name == null || !d.TryGetValue(name, out IQuantity u))
             {
                 unit = default(IQuantity);
                 return false;
@@ -410,9 +407,7 @@ namespace QuantityTypes
                 return true;
             }
 
-            string unitString;
-            double value;
-            if (!Utilities.TrySplit(input, provider, out value, out unitString))
+            if (!Utilities.TrySplit(input, provider, out var value, out string unitString))
             {
                 quantity = null;
                 return false;
@@ -422,8 +417,7 @@ namespace QuantityTypes
             if (string.IsNullOrEmpty(unitString))
             {
                 // No unit was provided - use the display unit
-                string name;
-                if (!this.TryGetDisplayUnit(unitType, out unit, out name))
+                if (!this.TryGetDisplayUnit(unitType, out unit, out var name))
                 {
                     quantity = null;
                     return false;
@@ -457,8 +451,7 @@ namespace QuantityTypes
         /// </returns>
         public bool TrySetDisplayUnit(Type type, string name)
         {
-            IQuantity unit;
-            if (!this.TryGetUnit(type, name, out unit))
+            if (!this.TryGetUnit(type, name, out var unit))
             {
                 return false;
             }
@@ -481,20 +474,16 @@ namespace QuantityTypes
         /// </returns>
         private T GetUnit<T>(string name)
         {
-            Dictionary<string, IQuantity> typeUnits;
-            if (!this.units.TryGetValue(typeof(T), out typeUnits))
+            if (!this.units.TryGetValue(typeof(T), out var typeUnits))
             {
                 throw new InvalidOperationException(string.Format("No units registered for {0}.", typeof(T)));
             }
 
-            IQuantity unit;
-            if (!typeUnits.TryGetValue(name, out unit))
+            if (!typeUnits.TryGetValue(name, out var unit))
             {
                 if (string.IsNullOrEmpty(name))
                 {
-                    T displayUnit;
-                    string displayUnitName;
-                    if (this.TryGetDisplayUnit(out displayUnit, out displayUnitName))
+                    if (this.TryGetDisplayUnit(out T displayUnit, out var displayUnitName))
                     {
                         return displayUnit;
                     }
