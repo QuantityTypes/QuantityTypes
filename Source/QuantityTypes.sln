@@ -33,9 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityTypes.Dynamic", "Qu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityTypes.Dynamic.Tests", "QuantityTypes.Dynamic.Tests\QuantityTypes.Dynamic.Tests.csproj", "{32EAA9A4-3518-43A0-A573-9A3741AE3140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceTest", "Examples\PerformanceTest\PerformanceTest.csproj", "{967118DC-80CF-4403-BAEA-0A23CC2D9B9B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExample", "Examples\WpfExample\WpfExample.csproj", "{C1EB77BC-D372-46E7-8A1D-8AF471CA7996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PerformanceTest", "Examples\PerformanceTest\PerformanceTest.csproj", "{967118DC-80CF-4403-BAEA-0A23CC2D9B9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{1D64386B-FA71-4ECB-8962-B0CDB48CAE96}"
 EndProject
@@ -77,17 +75,12 @@ Global
 		{967118DC-80CF-4403-BAEA-0A23CC2D9B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{967118DC-80CF-4403-BAEA-0A23CC2D9B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{967118DC-80CF-4403-BAEA-0A23CC2D9B9B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1EB77BC-D372-46E7-8A1D-8AF471CA7996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1EB77BC-D372-46E7-8A1D-8AF471CA7996}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1EB77BC-D372-46E7-8A1D-8AF471CA7996}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1EB77BC-D372-46E7-8A1D-8AF471CA7996}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{967118DC-80CF-4403-BAEA-0A23CC2D9B9B} = {1D64386B-FA71-4ECB-8962-B0CDB48CAE96}
-		{C1EB77BC-D372-46E7-8A1D-8AF471CA7996} = {1D64386B-FA71-4ECB-8962-B0CDB48CAE96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90E13D8E-4802-4637-95F7-951A9DBEF2DE}

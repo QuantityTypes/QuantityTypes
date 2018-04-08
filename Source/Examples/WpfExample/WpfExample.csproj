@@ -18,7 +18,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
-    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.csproj" />
     <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
 
     <!-- Resources -->
@@ -36,5 +35,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QuantityTypes\QuantityTypes.csproj" />
   </ItemGroup>
 </Project>
