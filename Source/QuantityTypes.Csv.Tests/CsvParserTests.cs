@@ -4,9 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace QuantityTypes.Tests
+namespace QuantityTypes.Csv.Tests
 {
-    using System.Globalization;
     using System.Linq;
 
     using NUnit.Framework;
