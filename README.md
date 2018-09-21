@@ -30,7 +30,7 @@ Console.WriteLine(v);
 Console.WriteLine(v.ToString("0.00[km/h]")); 
 Console.WriteLine("Speed: {0:0.00[!km/h] kmph}", v);
 Mass m = Mass.Parse("92 kg");
-double massInPounds = m.ConvertTo(Mass.Pound);
+double massInPounds = m / Mass.Pound;
 Temperature temp = 100 * Temperature.DegreeCelsius;
 double tempInFahrenheit = temp.ConvertTo(Temperature.DegreeFahrenheit);
 ```
