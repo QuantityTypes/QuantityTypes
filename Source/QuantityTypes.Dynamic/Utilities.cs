@@ -35,14 +35,16 @@ namespace QuantityTypes.Dynamic
             var unitIndex = 0;
             Func<char, bool> isDecimalSeparator = c => false;
             Func<char, bool> isGroupSeparator = c => false;
-            var ci = provider as CultureInfo ?? CultureInfo.CurrentCulture;
-            var ngs = ci.NumberFormat.NumberGroupSeparator;
+
+            var numberFormatInfo = provider.GetFormat(typeof(NumberFormatInfo)) as NumberFormatInfo ?? CultureInfo.CurrentCulture.NumberFormat;
+
+            var ngs = numberFormatInfo.NumberGroupSeparator;
             if (ngs != null)
             {
                 isGroupSeparator = c => ngs.Contains(c.ToString());
             }
 
-            var nds = ci.NumberFormat.NumberDecimalSeparator;
+            var nds = numberFormatInfo.NumberDecimalSeparator;
             if (nds != null)
             {
                 isDecimalSeparator = c => nds.Contains(c.ToString());
