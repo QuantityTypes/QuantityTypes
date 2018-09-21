@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace QuantityTypes.Tests
+namespace QuantityTypes.Csv.Tests
 {
     using System.Collections.Generic;
     using System.Globalization;

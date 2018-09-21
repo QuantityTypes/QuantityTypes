@@ -8,15 +8,13 @@ namespace QuantityTypes.Tests
 {
     using System;
 
-    using QuantityTypes;
-
     public class Example
     {
         public void Example1()
         {
             var v = 100 * Length.Metre / (9 * Time.Second);
             var l = Length.Metre;
-            var mm = l.ConvertTo(Length.Millimetre);
+            var mm = l / Length.Millimetre;
             var l1 = Length.Parse("10.1 m");
             var s1 = l1.ToString();
             var s2 = l1.ToString("0.000");
@@ -59,7 +57,7 @@ namespace QuantityTypes.Tests
             Console.WriteLine(v.ToString("0.00[km/h]"));
             Console.WriteLine("Speed: {0:0.00[!km/h] kmph}", v);
             Mass m = Mass.Parse("92 kg");
-            double massInPounds = m.ConvertTo(Mass.Pound);
+            double massInPounds = m / Mass.Pound;
             Temperature temp = 100 * Temperature.DegreeCelsius;
             double tempInFahrenheit = temp.ConvertTo(Temperature.DegreeFahrenheit);
         }

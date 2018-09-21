@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace QuantityTypes.Tests
+namespace QuantityTypes.Csv.Tests
 {
     using System.Globalization;
 
