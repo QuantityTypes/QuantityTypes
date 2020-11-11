@@ -5,7 +5,7 @@
     <AssemblyName>QuantityTypes.Dynamic</AssemblyName>
     <PackageId>QuantityTypes.Dynamic</PackageId>
     <Description>Dynamic quantities</Description>
-    <PackageLicenseUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
     <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
     <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
