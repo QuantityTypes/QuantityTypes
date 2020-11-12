@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{D7AAF844-9614-4A44-991D-248DD447D624}"
 EndProject
@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitignore = ..\.gitignore
 		..\appveyor.yml = ..\appveyor.yml
 		..\AUTHORS = ..\AUTHORS
+		..\Azure-Pipelines.yml = ..\Azure-Pipelines.yml
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\CONTRIBUTORS = ..\CONTRIBUTORS
 		..\GitVersion.yml = ..\GitVersion.yml
