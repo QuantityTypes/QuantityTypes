@@ -1,4 +1,4 @@
-namespace QuantityTypes.Tests
+﻿namespace QuantityTypes.Tests
 {
     using System.IO;
     using System.Text;
@@ -86,7 +86,7 @@ namespace QuantityTypes.Tests
         public void Temperature_Serialize()
         {
             var xml = Serialize(37.5 * Temperature.DegreeCelsius);
-            Assert.AreEqual("<?xml version=\"1.0\"?>\r\n<Temperature>310.65</Temperature>", xml);
+            QAssert.AreEqual("<?xml version=\"1.0\"?>\r\n<Temperature>310.65</Temperature>", xml);
         }
 
         [Test]
@@ -99,7 +99,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void Temperature_Deserialize_WithUnit()
         {
-            var t2 = Deserialize<Temperature>(@"<Temperature>37.5 �C</Temperature>");
+            var t2 = Deserialize<Temperature>(@"<?xml version=""1.0"" encoding=""utf-8""?><Temperature>37.5 °C</Temperature>");
             Assert.AreEqual(37.5 * Temperature.DegreeCelsius, t2);
         }
 
@@ -122,8 +122,8 @@ namespace QuantityTypes.Tests
         private static T Deserialize<T>(string xml)
         {
             var s = new XmlSerializer(typeof(T));
-            var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml));
-            return (T)s.Deserialize(ms);
+            using var reader = new StringReader(xml);
+            return (T)s.Deserialize(reader);
         }
 
 

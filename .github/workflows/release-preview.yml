@@ -1,0 +1,42 @@
+name: Release preview (build and publish preview package)
+
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+-preview[0-9][0-9][0-9]"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Extract release notes
+      run: |
+        git log --pretty=format:'%d %s' ${GITHUB_REF} | perl -pe 's| \(.*tag: v(\d+.\d+.\d+(-preview\d{3})?)(, .*?)*\)|\n## \1\n|g' > RELEASE-NOTES.txt
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+    - name: Run code generator
+      working-directory: ./Source/CodeGenerator
+      run: dotnet run --configuration Release  --framework netcoreapp3.1 -- ../QuantityTypes/Units.csv ../QuantityTypes/Quantities
+    - name: Build
+      working-directory: ./Source
+      run: dotnet build --configuration Release /p:Version=${VERSION}
+    - name: Test
+      working-directory: ./Source
+      run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
+    - name: Pack QuantityTypes
+      working-directory: ./Source/QuantityTypes
+      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output ../../Packages
+    - name: Pack QuantityTypes.Csv
+      working-directory: ./Source/QuantityTypes.Csv
+      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output ../../Packages
+    - name: Pack QuantityTypes.Dynamic
+      working-directory: ./Source/QuantityTypes.Dynamic
+      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output ../../Packages
+    - name: Push
+      run: dotnet nuget push ./Packages/*.nupkg --source https://nuget.pkg.github.com/QuantityTypes/index.json --api-key ${GITHUB_TOKEN}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

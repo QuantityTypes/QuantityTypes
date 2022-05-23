@@ -1,0 +1,32 @@
+name: Continuous integration (build and test)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '3.1.x'
+    - name: Restore dependencies
+      working-directory: ./Source
+      run: dotnet restore
+    - name: Run code generator
+      working-directory: ./Source/CodeGenerator
+      run: dotnet run --configuration Release  --framework netcoreapp3.1 -- ../QuantityTypes/Units.csv ../QuantityTypes/Quantities
+    - name: Build
+      working-directory: ./Source
+      run: dotnet build --no-restore --configuration Release
+    - name: Test
+      working-directory: ./Source
+      run: dotnet test --no-build --configuration Release

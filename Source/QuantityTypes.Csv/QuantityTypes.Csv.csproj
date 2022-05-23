@@ -6,8 +6,8 @@
     <PackageId>QuantityTypes.Csv</PackageId>
     <Description>CSV extensions for QuantityTypes</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
-    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
+    <RepositoryUrl>http://github.com/QuantityTypes/QuantityTypes</RepositoryUrl>
+    <PackageIcon>Icon.png</PackageIcon>
     <PackageTags>physical quantities unit conversion units of measurement csv</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -16,4 +16,7 @@
     <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="../../Images/Icon.png" Pack="true" PackagePath="/"/>
+  </ItemGroup>
 </Project>

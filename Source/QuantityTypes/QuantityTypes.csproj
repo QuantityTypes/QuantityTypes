@@ -1,24 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>0.9.0</VersionPrefix>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes</AssemblyName>
+
     <AssemblyOriginatorKeyFile>QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>QuantityTypes</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
-    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/objorke/QuantityTypes.git</RepositoryUrl>
+    <PackageDescription>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../README.md")) $([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../CHANGELOG.md"))</PackageDescription>
+    <PackageIcon>Icon.png</PackageIcon>
     <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/QuantityTypes/QuantityTypes.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
-
+	
+  <ItemGroup>
+    <None Include="../../Images/Icon.png" Pack="true" PackagePath="/"/>
+  </ItemGroup>
 </Project>
