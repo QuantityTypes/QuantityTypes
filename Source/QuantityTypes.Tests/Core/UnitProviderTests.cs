@@ -188,7 +188,7 @@ namespace QuantityTypes.Tests
         [Test]
         public void LocalCulture()
         {
-            var up = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, new CultureInfo("no"));
+            var up = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, CultureInfos.Norwegian);
             Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(up));
         }
 

@@ -16,6 +16,7 @@ namespace QuantityTypes.Csv.Tests
     using NUnit.Framework;
 
     using QuantityTypes.Csv;
+    using QuantityTypes.Tests;
 
     [TestFixture]
     public class CsvFileTests
@@ -48,13 +49,13 @@ namespace QuantityTypes.Csv.Tests
 
             var outputStream = new MemoryStream();
             file.Save(outputStream, CultureInfo.InvariantCulture);
-            Assert.AreEqual(input, Encoding.UTF8.GetString(outputStream.ToArray()));
+            QAssert.AreEqual(input, Encoding.UTF8.GetString(outputStream.ToArray()));
         }
 
         [Test]
         public void LoadFromString_Test2()
         {
-            var c = new CultureInfo("no");
+            var c = CultureInfos.Norwegian;
             var input = Test1ContentCultureSpecific;
             var inputStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
             var file = CsvFile.Load(inputStream, c);
@@ -63,7 +64,7 @@ namespace QuantityTypes.Csv.Tests
 
             var outputStream = new MemoryStream();
             file.Save(outputStream, c);
-            Assert.AreEqual(input, Encoding.UTF8.GetString(outputStream.ToArray()));
+            QAssert.AreEqual(input, Encoding.UTF8.GetString(outputStream.ToArray()));
         }
 
         [Test]
@@ -77,7 +78,7 @@ namespace QuantityTypes.Csv.Tests
 
             var outputStream = new MemoryStream();
             file.Save(outputStream, null, up);
-            Assert.AreEqual(Test1Content, Encoding.UTF8.GetString(outputStream.ToArray()));
+            QAssert.AreEqual(Test1Content, Encoding.UTF8.GetString(outputStream.ToArray()));
         }
 
         //[Test]

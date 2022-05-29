@@ -11,6 +11,7 @@ namespace QuantityTypes.Csv.Tests
     using NUnit.Framework;
 
     using QuantityTypes.Csv;
+    using QuantityTypes.Tests;
 
     [TestFixture]
     public class CsvWriterTests
@@ -35,7 +36,7 @@ namespace QuantityTypes.Csv.Tests
                 var r = new StreamReader(ms, Encoding.UTF8);
                 var output = r.ReadToEnd();
                 var expected = CsvParserTests.TestString1;
-                Assert.AreEqual(expected, output);
+                QAssert.AreEqual(expected, output);
             }
         }
     }

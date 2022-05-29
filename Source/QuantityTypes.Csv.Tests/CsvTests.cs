@@ -15,6 +15,7 @@ namespace QuantityTypes.Csv.Tests
     using NUnit.Framework;
 
     using QuantityTypes.Csv;
+    using QuantityTypes.Tests;
 
     [TestFixture]
     public class CsvTests
@@ -40,11 +41,11 @@ namespace QuantityTypes.Csv.Tests
 
             var outputStream = new MemoryStream();
             Csv.Save(items, outputStream);
-            Assert.AreEqual(CsvFileTests.Test1Content, Encoding.UTF8.GetString(outputStream.ToArray()));
+            QAssert.AreEqual(CsvFileTests.Test1Content, Encoding.UTF8.GetString(outputStream.ToArray()));
 
             var outputStream2 = new MemoryStream();
-            Csv.Save(items, outputStream2, new CultureInfo("no"));
-            Assert.AreEqual(CsvFileTests.Test1ContentCultureSpecific, Encoding.UTF8.GetString(outputStream2.ToArray()));
+            Csv.Save(items, outputStream2, CultureInfos.Norwegian);
+            QAssert.AreEqual(CsvFileTests.Test1ContentCultureSpecific, Encoding.UTF8.GetString(outputStream2.ToArray()));
 
             UnitProvider.Default.TrySetDisplayUnit<Length>(old);
         }
@@ -69,11 +70,11 @@ namespace QuantityTypes.Csv.Tests
 
             var outputStream = new MemoryStream();
             Csv.SaveQuantities(items, outputStream);
-            Assert.AreEqual(CsvFileTests.Test2Content, Encoding.UTF8.GetString(outputStream.ToArray()));
+            QAssert.AreEqual(CsvFileTests.Test2Content, Encoding.UTF8.GetString(outputStream.ToArray()));
 
             var outputStream2 = new MemoryStream();
-            Csv.SaveQuantities(items, outputStream2, new CultureInfo("no"));
-            Assert.AreEqual(CsvFileTests.Test2ContentCultureSpecific, Encoding.UTF8.GetString(outputStream2.ToArray()));
+            Csv.SaveQuantities(items, outputStream2, CultureInfos.Norwegian);
+            QAssert.AreEqual(CsvFileTests.Test2ContentCultureSpecific, Encoding.UTF8.GetString(outputStream2.ToArray()));
 
             UnitProvider.Default.TrySetDisplayUnit<Length>(old);
         }

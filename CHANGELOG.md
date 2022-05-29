@@ -1,5 +1,14 @@
 # Change Log
-All notable changes to this project will be documented in this file.
+
+## 5.0.0
+
+### Added
+- GitHub workflows (#113)
+- Publish to GitHub packages (#114)
+- Examples with System.Text.Json (#108)
+
+### Removed
+- net45 target (#109)
 
 ## 4.0.0
 ### Added
@@ -54,9 +63,6 @@ All notable changes to this project will be documented in this file.
 - Rename DegreeKelvin to Kelvin and delete "degK" unit (#30)
 - Case sensitive unit prefixes
 - Switch PCL project to profile 328
-
-### Removed
-- 
 
 ### Fixed
 - Support parsing of "'" units (#20)

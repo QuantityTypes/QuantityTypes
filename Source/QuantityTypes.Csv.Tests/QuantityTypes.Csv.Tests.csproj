@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QuantityTypes.Tests\QuantityTypes.Tests.csproj" />
     <ProjectReference Include="..\QuantityTypes\QuantityTypes.csproj" />
     <ProjectReference Include="..\QuantityTypes.Csv\QuantityTypes.Csv.csproj" />
   </ItemGroup>

@@ -3,13 +3,20 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes.Dynamic</AssemblyName>
-    <PackageId>QuantityTypes.Dynamic</PackageId>
     <Description>Dynamic quantities</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://github.com/objorke/QuantityTypes</PackageProjectUrl>
-    <PackageIconUrl>http://raw.githubusercontent.com/objorke/QuantityTypes/master/Images/Icon.png</PackageIconUrl>
-    <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
+
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>QuantityTypes.Dynamic</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageDescription>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../README.md")) $([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../CHANGELOG.md"))</PackageDescription>
+    <PackageIcon>Icon.png</PackageIcon>
+    <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>http://github.com/QuantityTypes/QuantityTypes</RepositoryUrl>
   </PropertyGroup>
 
+	<ItemGroup>
+		<None Include="../../Images/Icon.png" Pack="true" PackagePath="/"/>
+	</ItemGroup>
 </Project>

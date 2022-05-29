@@ -1,14 +1,6 @@
-[![Build status](https://img.shields.io/appveyor/ci/objorke/quantitytypes/master.svg)](https://ci.appveyor.com/project/objorke/quantitytypes) 
-[![Gitter](https://img.shields.io/gitter/room/quantitytypes/quantitytypes.svg)](https://gitter.im/objorke/QuantityTypes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![NuGet](https://img.shields.io/nuget/v/quantitytypes.svg)](https://www.nuget.org/packages/QuantityTypes/)
-[![Issues](https://img.shields.io/github/issues/quantitytypes/quantitytypes.svg)](https://github.com/quantitytypes/QuantityTypes/issues)
+# QuantityTypes
 
-```
-License:       The MIT License (MIT)
-Project page:  https://github.com/objorke/QuantityTypes
-```
-
-### Features
+## Features
 
 - [Strongly typed](http://en.wikipedia.org/wiki/Strong_typing) arithmetics of [physical quantities](http://en.wikipedia.org/wiki/Physical_quantity)
 - Implemented as [value types](http://msdn.microsoft.com/en-us/library/s1ax56ch.aspx)
@@ -20,7 +12,7 @@ Project page:  https://github.com/objorke/QuantityTypes
 - Configurable (set default units for parsing and formatting)
 - [NuGet package](https://www.nuget.org/packages/QuantityTypes)
 
-### Examples
+## Examples
 
 ``` csharp
 Length s = 100 * Length.Metre;
