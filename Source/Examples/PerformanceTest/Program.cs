@@ -59,10 +59,6 @@ namespace PerformanceTest
                     s.WriteLine();
                 }
             }
-
-            Process.Start("results.txt");
-
-            Console.ReadKey();
         }
 
         static IEnumerable<long> TestDouble(int N)
