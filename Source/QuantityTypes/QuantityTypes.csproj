@@ -24,6 +24,11 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <None Include="../../Images/Icon.png" Pack="true" PackagePath="/"/>
+    <None Include="../../Images/Icon.png" Pack="true" PackagePath="/" />
   </ItemGroup>
+	<!--
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="..\CodeGenerator\bin\$(Configuration)\net7.0\CodeGenerator.exe Units.csv Quantities" />
+  </Target>
+  -->
 </Project>
