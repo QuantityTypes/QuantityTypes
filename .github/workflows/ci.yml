@@ -17,13 +17,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '3.1.x'
+        dotnet-version: '7.0'
     - name: Restore dependencies
       working-directory: ./Source
       run: dotnet restore
     - name: Run code generator
       working-directory: ./Source/CodeGenerator
-      run: dotnet run --configuration Release  --framework netcoreapp3.1 -- ../QuantityTypes/Units.csv ../QuantityTypes/Quantities
+      run: dotnet run --configuration Release  --framework net7.0 -- ../QuantityTypes/Units.csv ../QuantityTypes/Quantities
     - name: Build
       working-directory: ./Source
       run: dotnet build --no-restore --configuration Release
