@@ -38,6 +38,12 @@ namespace QuantityTypes.Dynamic.Tests
         }
 
         [Test]
+        public void Parse_Speed_WithoutProvider()
+        {
+            Assert.Throws<FormatException>(() => DynamicQuantity.Parse("3.6 km/h"));
+        }
+
+        [Test]
         public void ToString_Speed()
         {
             var speed = 10 * SI.Metre / SI.Second;
