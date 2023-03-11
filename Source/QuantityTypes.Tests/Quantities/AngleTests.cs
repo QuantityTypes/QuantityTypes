@@ -55,6 +55,20 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void ToString_30deg_CheckFormat()
+        {
+            var a = 30 * Angle.Degree;
+            Assert.AreEqual("30 deg", a.ToString("0[deg]"));
+        }
+
+        [Test]
+        public void ToDegrees_30deg_Returns30()
+        {
+            var a = 30 * Angle.Degree;
+            Assert.AreEqual(30, a.ToDegrees(), 1e-10);
+        }
+
+        [Test]
         public void ParseStringToAngleType()
         {
             const string Value = "50";
