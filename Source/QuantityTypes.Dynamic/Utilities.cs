@@ -36,7 +36,7 @@ namespace QuantityTypes.Dynamic
             Func<char, bool> isDecimalSeparator = c => false;
             Func<char, bool> isGroupSeparator = c => false;
 
-            var numberFormatInfo = provider.GetFormat(typeof(NumberFormatInfo)) as NumberFormatInfo ?? CultureInfo.CurrentCulture.NumberFormat;
+            var numberFormatInfo = provider?.GetFormat(typeof(NumberFormatInfo)) as NumberFormatInfo ?? CultureInfo.CurrentCulture.NumberFormat;
 
             var ngs = numberFormatInfo.NumberGroupSeparator;
             if (ngs != null)

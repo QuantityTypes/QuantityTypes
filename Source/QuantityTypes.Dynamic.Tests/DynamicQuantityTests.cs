@@ -37,6 +37,15 @@ namespace QuantityTypes.Dynamic.Tests
             Assert.AreEqual(-1, speed.Dimensions.Time);
         }
 
+        [Test, Ignore("not yet working on ubuntu")]
+        public void Parse_Speed_WithoutProvider()
+        {
+            var speed = DynamicQuantity.Parse("3 m/s");
+            Assert.AreEqual(3, speed.Value);
+            Assert.AreEqual(1, speed.Dimensions.Length);
+            Assert.AreEqual(-1, speed.Dimensions.Time);
+        }
+
         [Test]
         public void ToString_Speed()
         {

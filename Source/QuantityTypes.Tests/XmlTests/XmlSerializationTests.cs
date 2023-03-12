@@ -86,7 +86,7 @@
         public void Temperature_Serialize()
         {
             var xml = Serialize(37.5 * Temperature.DegreeCelsius);
-            QAssert.AreEqual("<?xml version=\"1.0\"?>\r\n<Temperature>310.65</Temperature>", xml);
+            QAssert.AreEqual("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<Temperature>310.65</Temperature>", xml);
         }
 
         [Test]

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Description>Generates the Quantity types</Description>
     <Product>CodeGeneratorCodeGenerator for QuantityTypes</Product>
     <Copyright>Copyright (c) 2014 QuantityTypes contributors</Copyright>
