@@ -3,7 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes.Csv</AssemblyName>
-    <Description>CSV extensions for QuantityTypes</Description>
+    <Authors>See AUTHORS file.</Authors>
+    <Copyright>Copyright (c) 2012 Oystein Bjorke</Copyright>
+    <Description>Provides CSV reading and writing, with support for QuantityTypes.</Description>
 
     <AssemblyOriginatorKeyFile>../QuantityTypes/QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -12,8 +14,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>QuantityTypes.Csv</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageDescription>Provides CSV reading and writing, with support for QuantityTypes.</PackageDescription>
     <PackageIcon>Icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/QuantityTypes/QuantityTypes</PackageProjectUrl>
     <PackageTags>physical quantities unit conversion units of measurement csv</PackageTags>
 
     <RepositoryType>git</RepositoryType>

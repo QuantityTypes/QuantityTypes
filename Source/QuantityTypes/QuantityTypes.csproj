@@ -3,7 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes</AssemblyName>
-    <Description>Value types for physical quantities</Description>
+    <Authors>See AUTHORS file.</Authors>
+    <Copyright>Copyright (c) 2012 Oystein Bjorke</Copyright>
+    <Description>Provides strongly typed arithmetics of physical quantities, implemented as value types. The library supports parsing, formatting, operators and unit conversion.</Description>
 
     <AssemblyOriginatorKeyFile>QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -12,8 +14,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>QuantityTypes</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageDescription>Provides strongly typed arithmetics of physical quantities, implemented as value types. The library supports parsing, formatting, operators and unit conversion.</PackageDescription>
     <PackageIcon>Icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/QuantityTypes/QuantityTypes</PackageProjectUrl>
     <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
 
     <RepositoryType>git</RepositoryType>
@@ -23,7 +25,7 @@
   <ItemGroup>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
-	
+
   <ItemGroup>
     <None Include="../../Images/Icon.png" Pack="true" PackagePath="/" />
   </ItemGroup>

@@ -3,7 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes.Dynamic</AssemblyName>
-    <Description>Dynamic types for physical quantities</Description>
+    <Authors>See AUTHORS file.</Authors>
+    <Copyright>Copyright (c) 2012 Oystein Bjorke</Copyright>
+    <Description>Provides a dynamic quantity type that supports any dimensions.</Description>
 
     <AssemblyOriginatorKeyFile>../QuantityTypes/QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -12,8 +14,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>QuantityTypes.Dynamic</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageDescription>Provides a dynamic quantity type that supports any dimensions.</PackageDescription>
     <PackageIcon>Icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/QuantityTypes/QuantityTypes</PackageProjectUrl>
     <PackageTags>physical quantities unit conversion units of measurement dynamic</PackageTags>
 
     <RepositoryType>git</RepositoryType>
@@ -22,5 +24,5 @@
 
 	<ItemGroup>
 		<None Include="../../Images/Icon.png" Pack="true" PackagePath="/" />
-	</ItemGroup>
+  </ItemGroup>
 </Project>
