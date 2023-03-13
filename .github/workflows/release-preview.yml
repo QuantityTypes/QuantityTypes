@@ -39,7 +39,18 @@ jobs:
     - name: Pack QuantityTypes.Dynamic
       working-directory: ./Source/QuantityTypes.Dynamic
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output ../../Packages
-    - name: Push
+    - name: Push to github
       run: dotnet nuget push ./Packages/*.nupkg --source https://nuget.pkg.github.com/QuantityTypes/index.json --api-key ${GITHUB_TOKEN}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Pre-release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Pre-release ${{ github.ref }}
+        body_path: CHANGELOG.md
+        draft: false
+        prerelease: true
