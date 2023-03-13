@@ -3,16 +3,19 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes</AssemblyName>
+    <Authors>See AUTHORS file.</Authors>
+    <Copyright>Copyright (c) 2012 Oystein Bjorke</Copyright>
+    <Description>Provides strongly typed arithmetics of physical quantities, implemented as value types. The library supports parsing, formatting, operators and unit conversion.</Description>
 
     <AssemblyOriginatorKeyFile>QuantityTypes.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
 
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>QuantityTypes</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageDescription>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../README.md")) $([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../CHANGELOG.md"))</PackageDescription>
     <PackageIcon>Icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/QuantityTypes/QuantityTypes</PackageProjectUrl>
     <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
 
     <RepositoryType>git</RepositoryType>
@@ -22,13 +25,13 @@
   <ItemGroup>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
-	
+
   <ItemGroup>
     <None Include="../../Images/Icon.png" Pack="true" PackagePath="/" />
   </ItemGroup>
-	<!--
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+
+  <!--<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="..\CodeGenerator\bin\$(Configuration)\net7.0\CodeGenerator.exe Units.csv Quantities" />
-  </Target>
-  -->
+  </Target>-->
+
 </Project>

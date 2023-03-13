@@ -1,45 +1,35 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Timer.cs" company="QuantityTypes">
-//   Copyright (c) 2014 QuantityTypes contributors
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
+﻿using System.Diagnostics;
 
-namespace PerformanceTest
+class Timer : IDisposable
 {
-    using System;
-    using System.Diagnostics;
+    public string Message { get; set; }
 
-    class Timer : IDisposable
+    private readonly Stopwatch watch;
+
+    public Timer(string message)
     {
-        public string Message { get; set; }
+        this.Message = message;
+        this.watch = new Stopwatch();
+        this.watch.Start();
+    }
 
-        private Stopwatch watch;
+    public long Stop()
+    {
+        this.watch.Stop();
+        return this.ElapsedMicroseconds / 1000;
+    }
 
-        public Timer(string message)
+    public void Dispose()
+    {
+        var ms = this.watch.ElapsedMilliseconds;
+        Console.WriteLine("{0}: {1} ms", this.Message, ms);
+    }
+
+    protected long ElapsedMicroseconds
+    {
+        get
         {
-            this.Message = message;
-            this.watch = new Stopwatch();
-            this.watch.Start();
-        }
-
-        public long Stop()
-        {
-            this.watch.Stop();
-            return this.ElapsedMicroseconds / 1000;
-        }
-
-        public void Dispose()
-        {
-            var ms = this.watch.ElapsedMilliseconds;
-            Console.WriteLine("{0}: {1} ms", this.Message, ms);
-        }
-
-        protected long ElapsedMicroseconds
-        {
-            get
-            {
-                return 1000000L * this.watch.ElapsedTicks / Stopwatch.Frequency;
-            }
+            return 1000000L * this.watch.ElapsedTicks / Stopwatch.Frequency;
         }
     }
 }
