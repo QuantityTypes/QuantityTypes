@@ -3,20 +3,24 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>QuantityTypes.Dynamic</AssemblyName>
-    <Description>Dynamic quantities</Description>
+    <Description>Dynamic types for physical quantities</Description>
+
+    <AssemblyOriginatorKeyFile>../QuantityTypes/QuantityTypes.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>QuantityTypes.Dynamic</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageDescription>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../README.md")) $([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../CHANGELOG.md"))</PackageDescription>
+    <PackageDescription>Provides a dynamic quantity type that supports any dimensions.</PackageDescription>
     <PackageIcon>Icon.png</PackageIcon>
-    <PackageTags>physical quantities unit conversion units of measurement</PackageTags>
+    <PackageTags>physical quantities unit conversion units of measurement dynamic</PackageTags>
 
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>http://github.com/QuantityTypes/QuantityTypes</RepositoryUrl>
   </PropertyGroup>
 
 	<ItemGroup>
-		<None Include="../../Images/Icon.png" Pack="true" PackagePath="/"/>
+		<None Include="../../Images/Icon.png" Pack="true" PackagePath="/" />
 	</ItemGroup>
 </Project>
