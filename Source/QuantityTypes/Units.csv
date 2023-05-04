@@ -123,6 +123,7 @@ Frequency,RevolutionsPerMinute,rpm,1.0 / 60
 //Angular Frequency
 AngularFrequency,RadiansPerSecond,rad/s,1
 AngularFrequency,DegreesPerSecond,deg/s,Math.PI / 180
+AngularFrequency,DegreesPerSecondSymbol,°/s,Math.PI / 180
 
 // Speed or velocity
 Velocity,MetrePerSecond,m/s,1
