@@ -69,6 +69,26 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void ParseStringWithSymbol()
+        {
+            Assert.AreEqual(50, Angle.Parse("50°").ToDegrees(), 1e-6);
+            Assert.AreEqual(50, Angle.Parse("50 deg").ToDegrees(), 1e-6);
+        }
+
+        [Test]
+        public void ToStringWithSymbol()
+        {
+            Assert.AreEqual("50°", (50 * Angle.Degree).ToString("[°]"));
+            Assert.AreEqual("50 deg", (50 * Angle.Degree).ToString("[deg]"));
+        }
+
+        [Test]
+        public void ParseStringWithInvalidSymbol()
+        {
+            Assert.Throws<FormatException>(() => Angle.Parse("50 degrees"));
+        }
+
+        [Test]
         public void ParseStringToAngleType()
         {
             const string Value = "50";
