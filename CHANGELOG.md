@@ -1,14 +1,21 @@
 # Change Log
 
-## 5.0.0
+## Next
 
 ### Added
 - GitHub workflows (#113)
 - Publish to GitHub packages (#114)
 - Examples with System.Text.Json (#108)
 
+### Changed
+- Target netstandard2.0 (#127)
+
 ### Removed
 - net45 target (#109)
+
+### Fixed
+- Removed all usages of regular expressions (#125)
+- Obsolete package reference (#124)
 
 ## 4.0.0
 ### Added
