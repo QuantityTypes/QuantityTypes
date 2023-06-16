@@ -15,6 +15,7 @@
 
 ### Fixed
 - Removed all usages of regular expressions (#125)
+- Obsolete package reference (#124)
 
 ## 4.0.0
 ### Added
