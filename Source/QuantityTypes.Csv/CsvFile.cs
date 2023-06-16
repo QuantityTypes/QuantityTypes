@@ -320,11 +320,12 @@ namespace QuantityTypes.Csv
                 throw new ArgumentNullException("header", "The header should be specified.");
             }
 
-            var m = Regex.Match(header, @"^(.*?)\s*(\[(.*)\])?$");
-            if (m.Success)
+            var i1 = header.IndexOf("[");
+            var i2 = header.IndexOf("]");
+            if (i1 != -1 && i2 != -1 && i2 > i1)
             {
-                name = m.Groups[1].Value;
-                unit = m.Groups[3].Value;
+                name = header.Substring(0, i1).Trim();
+                unit = header.Substring(i1 + 1, i2 - i1-1);
             }
             else
             {

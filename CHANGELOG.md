@@ -10,6 +10,9 @@
 ### Removed
 - net45 target (#109)
 
+### Fixed
+- Removed all usages of regular expressions (#125)
+
 ## 4.0.0
 ### Added
 - Imperial units
