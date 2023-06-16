@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>QuantityTypes</AssemblyName>
     <Authors>See AUTHORS file.</Authors>
     <Copyright>Copyright (c) 2012 Oystein Bjorke</Copyright>
