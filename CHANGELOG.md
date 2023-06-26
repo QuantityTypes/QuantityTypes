@@ -1,6 +1,6 @@
 # Change Log
 
-## Next
+## 5.0.0
 
 ### Added
 - GitHub workflows (#113)

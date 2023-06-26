@@ -15,6 +15,7 @@
 ## Examples
 
 ``` csharp
+using QuantityTypes;
 Length s = 100 * Length.Metre;
 Time t = 9.58 * Time.Second;
 Velocity v = s / t;
