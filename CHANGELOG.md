@@ -1,5 +1,14 @@
 # Change Log
 
+## Unreleased
+
+### Added
+- Standards alignment review and development plan documentation (#107)
+
+### Fixed
+- InchOunceForce conversion factor for Moment and Torque (#107)
+- Torque.JoulePerRadian unit symbol changed from `J/m` to `J/rad`, keeping `J/m` as a parse alias (#107)
+
 ## 5.0.0
 
 ### Added
