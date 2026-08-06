@@ -239,8 +239,8 @@ Power,Megawatt,MW,1e6
 // NIST SP 811 Appendix B.8: metric horsepower = 75 kgf·m/s = 735.49875 W
 Power,MetricHorsePower,hp(M),735.49875
 // NIST SP 811 Appendix B.8: mechanical horsepower = 550 ft·lbf/s
-Power,MechanicalHorsePower,hp,550 * 0.3048 * 4.4482216152605
-Power,HorsePower,hp(M),735.49875
+Power,MechanicalHorsePower,hp(I)|hp(mech),550 * 0.3048 * 4.4482216152605
+Power,HorsePower,hp,735.49875
 Power,BtuPerHour,Btu/h,1.05505585262 / 3.6
 Power,MillionBtuPerHour,MMBtu/h,1.05505585262e6 / 3.6
 
