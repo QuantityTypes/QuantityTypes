@@ -45,6 +45,7 @@ namespace QuantityTypes.Tests
         public void Parse()
         {
             AssertAreEqual(Moment.NewtonMetre, Moment.Parse("1 N*m"));
+            AssertAreEqual(Moment.NewtonMetre, Moment.Parse("1 N·m"));
             AssertAreEqual(Moment.KilonewtonMetre, Moment.Parse("1 kN*m"));
         }
     }
