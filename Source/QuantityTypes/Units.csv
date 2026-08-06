@@ -45,7 +45,10 @@ Volume,CubicDecimetre,dm^3,1e-3
 Volume,CubicCentimetre,cm^3,1e-6
 Volume,CubicMillimetre,mm^3,1e-9
 Volume,Litre,L,1e-3
+// NIST SP 811 Appendix B.8: US gallon = 3.785 411 784 L (exact)
 Volume,Gallon,gal,3.785411784e-3
+// NIST SP 811 Appendix B.8: imperial gallon = 4.546 09 L (exact)
+Volume,ImperialGallon,gal(imp)|impgal,4.54609e-3
 Volume,MillionGallon,MG,3.785411784e3
 Volume,CubicFoot,ft^3,2.8316846592e-2
 Volume,AcreFoot,ac-ft,1233.4892384681
@@ -69,6 +72,10 @@ Mass,Kips,kips,453.59237
 Mass,Pound,lb,0.45359237
 Mass,Ounce,oz,0.0283495231
 Mass,Slug,slug,14.5939035919985
+// NIST SP 811 Appendix B.8: short ton = 2000 lb (exact)
+Mass,ShortTon,ston,907.18474
+// NIST SP 811 Appendix B.8: long ton = 2240 lb (exact)
+Mass,LongTon,lton,1016.0469088
 Mass,Ton,ton,1016.0469088
 
 // Density
@@ -117,6 +124,7 @@ Frequency,Hertz,Hz,1
 Frequency,Kilohertz,kHz,1e3
 Frequency,Megahertz,MHz,1e6
 Frequency,Gigahertz,GHz,1e9
+Frequency,Terahertz,THz,1e12
 Frequency,RevolutionsPerMinute,rpm,1.0 / 60
 
 //Angular Frequency
@@ -154,7 +162,7 @@ PrecipitationIntensity,InchesPerSecond,in/s,9.1440e4
 PrecipitationIntensity,InchesPerDay,in/d,25.4 / 24
 
 // Acceleration
-Acceleration,MetrePerSecondSquared,m/s^2,1
+Acceleration,MetrePerSecondSquared,m/s^2|m/s²,1
 Acceleration,StandardGravity,g,9.80665
 Acceleration,FootPerSecondSquared,ft/s^2,0.3048
 
@@ -171,7 +179,8 @@ Pressure,PoundPerSquareInch,psi,6.894757e3
 Pressure,KilopoundPerSquareInch,ksi,6.8947572931783e6
 Pressure,MillimetreOfMercury,mmHg,133.3224
 Pressure,Bar,bar,1e5
-Pressure,Megapascal,Megapascal,1000000
+Pressure,Megapascal,MPa|Megapascal,1000000
+Pressure,Gigapascal,GPa,1e9
 Pressure,Atmosphere,atm,101325
 Pressure,InchOfMercury,inHg,3.386389e3
 Pressure,FootOfWater,ftH2O,2.98898e3
@@ -179,8 +188,8 @@ Pressure,InchOfWater,inH2O,2.49082e2
 
 // Moment of force
 // https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
-Moment,NewtonMetre,N*m,1
-Moment,KilonewtonMetre,kN*m,1000
+Moment,NewtonMetre,N*m|N·m,1
+Moment,KilonewtonMetre,kN*m|kN·m,1000
 Moment,NewtonCentimetre,N*cm,0.01
 Moment,NewtonMillimetre,N*mm,0.001
 Moment,FootPoundForce,lb*ft,1.3558179483314004
@@ -191,8 +200,8 @@ Moment,MetreKilogramForce,m*kgf,9.80665
 
 // Torque
 // https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
-Torque,NewtonMetre,N*m,1
-Torque,KilonewtonMetre,kN*m,1000
+Torque,NewtonMetre,N*m|N·m,1
+Torque,KilonewtonMetre,kN*m|kN·m,1000
 Torque,NewtonCentimetre,N*cm,0.01
 Torque,NewtonMillimetre,N*mm,0.001
 Torque,FootPoundForce,lb*ft,1.3558179483314004
@@ -208,7 +217,10 @@ Torque,JoulePerRadian,J/rad|J/m,1
 // https://en.wikipedia.org/wiki/Conversion_of_units#Energy
 Energy,Joule,J,1
 Energy,Kilojoule,kJ,1e3
+// NIST SP 811 Appendix B.8: calorie (international table) = 4.1868 J (exact by convention)
 Energy,Calorie,cal,4.1868
+// NIST SP 811 Appendix B.8: calorie (thermochemical) = 4.184 J (exact by convention)
+Energy,CalorieThermochemical,cal(th),4.184
 Energy,NewtonMetreRadian,N*m*rad,1
 Energy,WattSecond,W*s,1
 Energy,WattHour,W*h,3600
@@ -224,7 +236,11 @@ Power,Watt,W,1
 Power,Milliwatt,mW,1e-3
 Power,Kilowatt,kW,1e3
 Power,Megawatt,MW,1e6
-Power,HorsePower,hp,735.49875
+// NIST SP 811 Appendix B.8: metric horsepower = 75 kgf·m/s = 735.49875 W
+Power,MetricHorsePower,hp(M),735.49875
+// NIST SP 811 Appendix B.8: mechanical horsepower = 550 ft·lbf/s
+Power,MechanicalHorsePower,hp,550 * 0.3048 * 4.4482216152605
+Power,HorsePower,hp(M),735.49875
 Power,BtuPerHour,Btu/h,1.05505585262 / 3.6
 Power,MillionBtuPerHour,MMBtu/h,1.05505585262e6 / 3.6
 
@@ -341,7 +357,7 @@ Fraction,PartPerBillion,ppb,1E-09
 AmountOfSubstance,Mole,mol,1
 
 Stiffness,NewtonPerMetre,N/m,1
-RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
+RotationalStiffness,NewtonMetrePerRadian,N*m/rad|N·m/rad,1
 
 HeatCapacity,JoulePerKelvin,J/K,1
 
@@ -355,14 +371,14 @@ TemperatureDifference,DegreeFahrenheit,F|°F,5.0 / 9.0
 
 // Temperature rate of change per unit of time
 TemperatureRateOfChange,KelvinPerSecond,K/s,1
-TemperatureRateOfChange,DegreeCelsiusPerSecond,C/s,1
-TemperatureRateOfChange,DegreeFahrenheitPerSecond,F/s,5.0 / 9.0
+TemperatureRateOfChange,DegreeCelsiusPerSecond,C/s|°C/s,1
+TemperatureRateOfChange,DegreeFahrenheitPerSecond,F/s|°F/s,5.0 / 9.0
 TemperatureRateOfChange,KelvinPerMinute,K/min,1 / 60.0
-TemperatureRateOfChange,DegreeCelsiusPerMinute,C/min,1 / 60.0
-TemperatureRateOfChange,DegreeFahrenheitPerMinute,F/min,5.0 / 540.0
+TemperatureRateOfChange,DegreeCelsiusPerMinute,C/min|°C/min,1 / 60.0
+TemperatureRateOfChange,DegreeFahrenheitPerMinute,F/min|°F/min,5.0 / 540.0
 TemperatureRateOfChange,KelvinPerHour,K/h,1.0 / 3600.0
-TemperatureRateOfChange,DegreeCelsiusPerHour,C/h,1.0 / 3600.0
-TemperatureRateOfChange,DegreeFahrenheitPerHour,F/h,5.0 / 32400.0
+TemperatureRateOfChange,DegreeCelsiusPerHour,C/h|°C/h,1.0 / 3600.0
+TemperatureRateOfChange,DegreeFahrenheitPerHour,F/h|°F/h,5.0 / 32400.0
 
 LinearMomentum,KilogramMeterPerSecond,kg*m/s,1
 LinearMomentum,NewtonSecond,N*s,1
@@ -382,9 +398,30 @@ Curvature,PerMetre,1/m,1
 
 SectionModulus,MetreCubed,m^3,1
 
-FuelConsumption,LitrePer100Kilometre,l/100km,1e5
-FuelEconomy,KilometrePerLitre,km/l,1e6
+FuelConsumption,LitrePer100Kilometre,L/100km|l/100km,1e5
+FuelEconomy,KilometrePerLitre,km/L|km/l,1e6
 FuelEconomy,MilesPerGallon,mpg,425143.7074
+FuelEconomy,MilesPerImperialGallon,mpg(imp),1609.344 / 4.54609e-3
+
+// Information quantity (IEC 80000-13), base unit bit
+InformationQuantity,Bit,bit,1
+InformationQuantity,Byte,B,8
+InformationQuantity,Kilobit,kbit,1e3
+InformationQuantity,Megabit,Mbit,1e6
+InformationQuantity,Gigabit,Gbit,1e9
+InformationQuantity,Terabit,Tbit,1e12
+InformationQuantity,Kibibit,Kibit,1024
+InformationQuantity,Mebibit,Mibit,1024 * 1024
+InformationQuantity,Gibibit,Gibit,1024 * 1024 * 1024
+InformationQuantity,Tebibit,Tibit,1024 * 1024 * 1024 * 1024
+InformationQuantity,Kilobyte,kB,8e3
+InformationQuantity,Megabyte,MB,8e6
+InformationQuantity,Gigabyte,GB,8e9
+InformationQuantity,Terabyte,TB,8e12
+InformationQuantity,Kibibyte,KiB,8 * 1024
+InformationQuantity,Mebibyte,MiB,8 * 1024 * 1024
+InformationQuantity,Gibibyte,GiB,8 * 1024 * 1024 * 1024
+InformationQuantity,Tebibyte,TiB,8 * 1024 * 1024 * 1024 * 1024
 
 TypographicLength,Centimetre,cm,0.01
 TypographicLength,Point,pt,0.0254 / 72
