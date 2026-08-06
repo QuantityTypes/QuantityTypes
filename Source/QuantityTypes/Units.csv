@@ -410,18 +410,18 @@ InformationQuantity,Kilobit,kbit,1e3
 InformationQuantity,Megabit,Mbit,1e6
 InformationQuantity,Gigabit,Gbit,1e9
 InformationQuantity,Terabit,Tbit,1e12
-InformationQuantity,Kibibit,Kibit,1024
-InformationQuantity,Mebibit,Mibit,1024 * 1024
-InformationQuantity,Gibibit,Gibit,1024 * 1024 * 1024
-InformationQuantity,Tebibit,Tibit,1024 * 1024 * 1024 * 1024
+InformationQuantity,Kibibit,Kibit,1024.0
+InformationQuantity,Mebibit,Mibit,1024.0 * 1024
+InformationQuantity,Gibibit,Gibit,1024.0 * 1024 * 1024
+InformationQuantity,Tebibit,Tibit,1024.0 * 1024 * 1024 * 1024
 InformationQuantity,Kilobyte,kB,8e3
 InformationQuantity,Megabyte,MB,8e6
 InformationQuantity,Gigabyte,GB,8e9
 InformationQuantity,Terabyte,TB,8e12
-InformationQuantity,Kibibyte,KiB,8 * 1024
-InformationQuantity,Mebibyte,MiB,8 * 1024 * 1024
-InformationQuantity,Gibibyte,GiB,8 * 1024 * 1024 * 1024
-InformationQuantity,Tebibyte,TiB,8 * 1024 * 1024 * 1024 * 1024
+InformationQuantity,Kibibyte,KiB,8 * 1024.0
+InformationQuantity,Mebibyte,MiB,8 * 1024.0 * 1024
+InformationQuantity,Gibibyte,GiB,8 * 1024.0 * 1024 * 1024
+InformationQuantity,Tebibyte,TiB,8 * 1024.0 * 1024 * 1024 * 1024
 
 TypographicLength,Centimetre,cm,0.01
 TypographicLength,Point,pt,0.0254 / 72
