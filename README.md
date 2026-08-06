@@ -27,3 +27,10 @@ double massInPounds = m / Mass.Pound;
 Temperature temp = 100 * Temperature.DegreeCelsius;
 double tempInFahrenheit = temp.ConvertTo(Temperature.DegreeFahrenheit);
 ```
+
+## Documentation
+
+- [Standards Alignment Review](docs/StandardsAlignment.md) — how the library aligns with ISO 80000, NIST SP 811 and the SI Brochure
+- [Development Plan](docs/DevelopmentPlan.md) — the roadmap for developing the library further
+- [Contributing](CONTRIBUTING.md)
+- [Change log](CHANGELOG.md)
