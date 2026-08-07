@@ -32,10 +32,17 @@ namespace QuantityTypes.Tests
         [Test]
         public void Parse_Percent()
         {
-            Assert.AreEqual(0.5 * Fraction.Frac, Fraction.Parse("50 %"));
-            UnitProvider.Default.TrySetDisplayUnit<Fraction>("%");
-            Assert.AreEqual(0.5 * Fraction.Frac, Fraction.Parse("50"));
-            UnitProvider.Default.TrySetDisplayUnit<Fraction>(string.Empty);
+            var displayUnit = UnitProvider.Default.GetDisplayUnit(typeof(Fraction));
+            try
+            {
+                Assert.AreEqual(0.5 * Fraction.Frac, Fraction.Parse("50 %"));
+                Assert.IsTrue(UnitProvider.Default.TrySetDisplayUnit<Fraction>("%"));
+                Assert.AreEqual(0.5 * Fraction.Frac, Fraction.Parse("50"));
+            }
+            finally
+            {
+                UnitProvider.Default.TrySetDisplayUnit<Fraction>(displayUnit);
+            }
         }
 
         [Test]

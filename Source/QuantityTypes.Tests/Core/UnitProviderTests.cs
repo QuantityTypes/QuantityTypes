@@ -75,6 +75,15 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void RegisterUnitsByAssembly_ParseUnicodeEquivalentSymbols()
+        {
+            var unitProvider = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
+            Assert.AreEqual(5 * Area.SquareMetre, Area.Parse("5 m²", unitProvider));
+            Assert.AreEqual(6 * Volume.CubicMetre, Volume.Parse("6 m³", unitProvider));
+            Assert.AreEqual(7 * Torque.NewtonMetre, Torque.Parse("7 N·m", unitProvider));
+        }
+
+        [Test]
         public void GetUnit_NotUniqueUnit_GetsFirstRegistered()
         {
             var unitProvider = new UnitProvider(CultureInfo.InvariantCulture);
@@ -186,10 +195,27 @@ namespace QuantityTypes.Tests
         }
 
         [Test]
+        public void Format_WithUnicodeEquivalentSymbols()
+        {
+            var unitProvider = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
+            Assert.AreEqual("5 m²", (5 * Area.SquareMetre).ToString("[m²]", unitProvider));
+            Assert.AreEqual("6 m³", (6 * Volume.CubicMetre).ToString("[m³]", unitProvider));
+            Assert.AreEqual("7 N·m", (7 * Torque.NewtonMetre).ToString("[N·m]", unitProvider));
+        }
+
+        [Test]
         public void LocalCulture()
         {
             var up = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, CultureInfos.Norwegian);
             Assert.AreEqual("1,2 m", (1.2 * Length.Metre).ToString(up));
+        }
+
+        [Test]
+        public void TrySetDisplayUnit_UnicodeEquivalentSymbol()
+        {
+            var unitProvider = new UnitProvider(typeof(Length).GetTypeInfo().Assembly, CultureInfo.InvariantCulture);
+            Assert.IsTrue(unitProvider.TrySetDisplayUnit<Area>("m²"));
+            Assert.AreEqual("1 m²", Area.SquareMetre.ToString(unitProvider));
         }
 
         [Test]

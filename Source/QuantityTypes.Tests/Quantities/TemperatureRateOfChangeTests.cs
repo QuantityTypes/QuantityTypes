@@ -13,7 +13,7 @@ namespace QuantityTypes.Tests
     [TestFixture]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     // ReSharper disable InconsistentNaming
-    public class TemperatureRateOfChangeTests
+    public class TemperatureRateOfChangeTests : Tests
     {
         [Test]
         public void Operators()
@@ -40,6 +40,12 @@ namespace QuantityTypes.Tests
 
             Assert.AreEqual(TemperatureRateOfChange.KelvinPerSecond, TemperatureRateOfChange.DegreeCelsiusPerSecond);
             Assert.AreEqual(TemperatureRateOfChange.KelvinPerSecond, 1.8 * TemperatureRateOfChange.DegreeFahrenheitPerSecond);
+        }
+
+        [Test]
+        public void Parse_DegreeCelsiusPerSecondAlias()
+        {
+            AssertAreEqual(TemperatureRateOfChange.DegreeCelsiusPerSecond, TemperatureRateOfChange.Parse("1 °C/s"));
         }
     }
 }

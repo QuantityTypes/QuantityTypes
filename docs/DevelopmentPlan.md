@@ -23,18 +23,18 @@ Fix defects where the current behavior is simply wrong with respect to the stand
 
 Add missing units and aliases without changing existing behavior.
 
-- [ ] Add explicitly named variants for ambiguous units:
+- [x] Add explicitly named variants for ambiguous units:
   - `MetricHorsePower` / `MechanicalHorsePower` (power)
   - `ImperialGallon` (volume) and corresponding fuel-economy units
   - `CalorieThermochemical` (energy)
   - `ShortTon` / `LongTon` (mass)
-- [ ] Add standards-conformant symbol aliases (`°C`/`°F` for temperature rate of change,
+- [x] Add standards-conformant symbol aliases (`°C`/`°F` for temperature rate of change,
       `L`-based aliases where lowercase `l` is used, `·` and superscript forms such as `N·m`,
       `m/s²` as parse aliases).
-- [ ] Add commonly requested SI-prefixed units systematically (e.g. `Gigapascal`,
+- [x] Add commonly requested SI-prefixed units systematically (e.g. `Gigapascal`,
       `Terahertz`), preferably by teaching the code generator about SI prefixes instead of
       hand-writing each row.
-- [ ] Add an `InformationQuantity` type per IEC 80000-13 (bit, byte, decimal and binary
+- [x] Add an `InformationQuantity` type per IEC 80000-13 (bit, byte, decimal and binary
       prefixes), separate from the thermodynamic `InformationEntropy`.
 
 ## Phase 3 — Tooling: make alignment verifiable

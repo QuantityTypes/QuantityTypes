@@ -260,8 +260,7 @@ namespace QuantityTypes
         {
             foreach (var u in this.units.Values)
             {
-                IQuantity v;
-                if (u.TryGetValue(name, out v))
+                if (TryGetUnitBySymbol(u, name, out var v))
                 {
                     return v;
                 }
@@ -361,7 +360,7 @@ namespace QuantityTypes
                 return false;
             }
 
-            if (name == null || !d.TryGetValue(name, out IQuantity u))
+            if (!TryGetUnitBySymbol(d, name, out var u))
             {
                 unit = default(IQuantity);
                 return false;
@@ -479,7 +478,7 @@ namespace QuantityTypes
                 throw new InvalidOperationException(string.Format("No units registered for {0}.", typeof(T)));
             }
 
-            if (!typeUnits.TryGetValue(name, out var unit))
+            if (!TryGetUnitBySymbol(typeUnits, name, out var unit))
             {
                 if (string.IsNullOrEmpty(name))
                 {
@@ -493,6 +492,41 @@ namespace QuantityTypes
             }
 
             return (T)unit;
+        }
+
+        private static bool TryGetUnitBySymbol(Dictionary<string, IQuantity> units, string symbol, out IQuantity unit)
+        {
+            if (units.TryGetValue(symbol, out unit))
+            {
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(symbol))
+            {
+                unit = default(IQuantity);
+                return false;
+            }
+
+            var normalizedSymbol = NormalizeSymbol(symbol);
+            foreach (var pair in units)
+            {
+                if (string.Equals(NormalizeSymbol(pair.Key), normalizedSymbol, StringComparison.Ordinal))
+                {
+                    unit = pair.Value;
+                    return true;
+                }
+            }
+
+            unit = default(IQuantity);
+            return false;
+        }
+
+        private static string NormalizeSymbol(string symbol)
+        {
+            return symbol?
+                .Replace("·", "*")
+                .Replace("²", "^2")
+                .Replace("³", "^3");
         }
 
         /// <summary>

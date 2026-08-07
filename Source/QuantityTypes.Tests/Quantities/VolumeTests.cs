@@ -38,5 +38,11 @@ namespace QuantityTypes.Tests
 
             Assert.AreNotEqual(Imperial.Gallon, Volume.Gallon);
         }
+
+        [Test]
+        public void Parse_ImperialGallon()
+        {
+            AssertAreEqual(Volume.ImperialGallon, Volume.Parse("1 gal(imp)"));
+        }
     }
 }

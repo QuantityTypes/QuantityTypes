@@ -35,6 +35,7 @@ namespace QuantityTypes.Tests
         public void Parse()
         {
             AssertAreEqual(Torque.NewtonMetre, Torque.Parse("1 N*m"));
+            AssertAreEqual(Torque.NewtonMetre, Torque.Parse("1 N·m"));
             AssertAreEqual(Torque.JoulePerRadian, Torque.Parse("1 J/rad"));
 
             // legacy (incorrect) symbol is kept as an alias for backwards compatibility

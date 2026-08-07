@@ -14,7 +14,7 @@ namespace QuantityTypes.Tests
     /// <summary>
     /// Provides unit test for the <see cref="Energy" /> class.
     /// </summary>
-    public class EnergyTests
+    public class EnergyTests : Tests
     {
         /// <summary>
         /// Tests the division of <see cref="Energy" /> and <see cref="Time" />.
@@ -25,7 +25,11 @@ namespace QuantityTypes.Tests
             Power p = (0.1 * Energy.KilowattHour) / (10.0*Time.Second);
             Assert.AreEqual(36000.0 * Power.Watt, p);
         }
-     
 
+        [Test]
+        public void Parse_CalorieThermochemical()
+        {
+            AssertAreEqual(Energy.CalorieThermochemical, Energy.Parse("1 cal(th)"));
+        }
     }
 }
