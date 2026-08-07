@@ -496,15 +496,15 @@ namespace QuantityTypes
 
         private static bool TryGetUnitBySymbol(Dictionary<string, IQuantity> units, string symbol, out IQuantity unit)
         {
+            if (units.TryGetValue(symbol, out unit))
+            {
+                return true;
+            }
+
             if (string.IsNullOrEmpty(symbol))
             {
                 unit = default(IQuantity);
                 return false;
-            }
-
-            if (units.TryGetValue(symbol, out unit))
-            {
-                return true;
             }
 
             var normalizedSymbol = NormalizeSymbol(symbol);
