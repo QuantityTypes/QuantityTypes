@@ -162,7 +162,7 @@ PrecipitationIntensity,InchesPerSecond,in/s,9.1440e4
 PrecipitationIntensity,InchesPerDay,in/d,25.4 / 24
 
 // Acceleration
-Acceleration,MetrePerSecondSquared,m/s^2|m/s²,1
+Acceleration,MetrePerSecondSquared,m/s^2,1
 Acceleration,StandardGravity,g,9.80665
 Acceleration,FootPerSecondSquared,ft/s^2,0.3048
 
@@ -188,8 +188,8 @@ Pressure,InchOfWater,inH2O,2.49082e2
 
 // Moment of force
 // https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
-Moment,NewtonMetre,N*m|N·m,1
-Moment,KilonewtonMetre,kN*m|kN·m,1000
+Moment,NewtonMetre,N*m,1
+Moment,KilonewtonMetre,kN*m,1000
 Moment,NewtonCentimetre,N*cm,0.01
 Moment,NewtonMillimetre,N*mm,0.001
 Moment,FootPoundForce,lb*ft,1.3558179483314004
@@ -200,8 +200,8 @@ Moment,MetreKilogramForce,m*kgf,9.80665
 
 // Torque
 // https://en.wikipedia.org/wiki/Conversion_of_units#Torque_or_moment_of_force
-Torque,NewtonMetre,N*m|N·m,1
-Torque,KilonewtonMetre,kN*m|kN·m,1000
+Torque,NewtonMetre,N*m,1
+Torque,KilonewtonMetre,kN*m,1000
 Torque,NewtonCentimetre,N*cm,0.01
 Torque,NewtonMillimetre,N*mm,0.001
 Torque,FootPoundForce,lb*ft,1.3558179483314004
@@ -357,7 +357,7 @@ Fraction,PartPerBillion,ppb,1E-09
 AmountOfSubstance,Mole,mol,1
 
 Stiffness,NewtonPerMetre,N/m,1
-RotationalStiffness,NewtonMetrePerRadian,N*m/rad|N·m/rad,1
+RotationalStiffness,NewtonMetrePerRadian,N*m/rad,1
 
 HeatCapacity,JoulePerKelvin,J/K,1
 
